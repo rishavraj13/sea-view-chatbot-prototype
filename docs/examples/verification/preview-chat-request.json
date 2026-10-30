@@ -1,0 +1,9 @@
+{
+  "messages": [
+    {
+      "id": "preview",
+      "role": "user",
+      "parts": [{ "type": "text", "text": "brochure video pricing" }]
+    }
+  ]
+}

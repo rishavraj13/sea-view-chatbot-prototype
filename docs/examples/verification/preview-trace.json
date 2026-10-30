@@ -1,0 +1,62 @@
+{
+  "mode": "mock",
+  "chunks": [
+    {
+      "id": "1-0",
+      "text": "DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.",
+      "source": {
+        "title": "Pricing",
+        "url": "https://example.com/sea-view-demo/pricing",
+        "capturedAt": "2026-10-30T00:00:00Z",
+        "text": "DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer."
+      },
+      "score": 1
+    }
+  ],
+  "context": "[https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.",
+  "toolCalls": [
+    {
+      "name": "sendBrochure",
+      "input": { "id": "brochure" },
+      "result": {
+        "id": "brochure",
+        "title": "DEMO brochure",
+        "url": "/demo/brochure.pdf",
+        "isDemo": true,
+        "kind": "brochure",
+        "type": "pdf"
+      }
+    },
+    {
+      "name": "showVideo",
+      "input": { "id": "video" },
+      "result": {
+        "id": "video",
+        "title": "DEMO external sample video (not skydiving)",
+        "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        "isDemo": true,
+        "kind": "video",
+        "type": "video"
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "brochure",
+      "title": "DEMO brochure",
+      "url": "/demo/brochure.pdf",
+      "isDemo": true,
+      "kind": "brochure",
+      "type": "pdf"
+    },
+    {
+      "id": "video",
+      "title": "DEMO external sample video (not skydiving)",
+      "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      "isDemo": true,
+      "kind": "video",
+      "type": "video"
+    }
+  ],
+  "text": "[MOCK DEMO] [https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.\nDEMO DEMO brochure: /demo/brochure.pdf\nDEMO DEMO external sample video (not skydiving): https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+}

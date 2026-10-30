@@ -1,0 +1,86 @@
+[
+  {
+    "name": "unavailable",
+    "path": "/api/chat",
+    "body": {
+      "messages": [
+        {
+          "id": "unavailable",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send PDF brochure id retired."
+            }
+          ]
+        }
+      ]
+    },
+    "status": 429,
+    "latencyMs": 1854,
+    "response": "{\"mode\":\"live\",\"error\":{\"code\":\"RATE_LIMIT\",\"message\":\"The model rate limit was reached. Please retry later.\"}}"
+  },
+  {
+    "name": "follow-up",
+    "path": "/api/knowledge/trace",
+    "body": {
+      "question": "What does that include?",
+      "messages": [
+        {
+          "id": "prior",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What is the tandem package price?"
+            }
+          ]
+        },
+        {
+          "id": "answer",
+          "role": "assistant",
+          "parts": [
+            {
+              "type": "text",
+              "text": "The DEMO tandem price is USD 250."
+            }
+          ]
+        },
+        {
+          "id": "followup",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What does that include?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 429,
+    "latencyMs": 745,
+    "response": "{\"mode\":\"live\",\"error\":{\"code\":\"RATE_LIMIT\",\"message\":\"The model rate limit was reached. Please retry later.\"}}"
+  },
+  {
+    "name": "unknown",
+    "path": "/api/chat",
+    "body": {
+      "messages": [
+        {
+          "id": "unknown",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What is the quantum unicorn policy?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 429,
+    "latencyMs": 833,
+    "response": "{\"mode\":\"live\",\"error\":{\"code\":\"RATE_LIMIT\",\"message\":\"The model rate limit was reached. Please retry later.\"}}"
+  }
+]

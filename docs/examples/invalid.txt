@@ -1,0 +1,6 @@
+POST /api/chat
+Request: {"messages":[]}
+Status: 400
+Content-Type: application/json
+
+{"mode":"mock","error":{"code":"INVALID_INPUT","message":"Invalid message history."}}

@@ -1,0 +1,29 @@
+POST /api/chat
+Request: {"messages":[{"id":"demo","role":"user","parts":[{"type":"text","text":"brochure video pricing"}]}]}
+Status: 200
+Content-Type: text/event-stream
+
+data: {"type":"start","messageId":"a37d9cc7-5af9-4df1-ba65-88eb1030e3f2","messageMetadata":{"mode":"mock","isDemo":true}}
+
+data: {"type":"start-step"}
+
+data: {"type":"tool-input-available","toolCallId":"tool-0","toolName":"sendBrochure","input":{"id":"brochure"}}
+
+data: {"type":"tool-output-available","toolCallId":"tool-0","output":{"id":"brochure","title":"DEMO brochure","url":"/demo/brochure.pdf","isDemo":true,"kind":"brochure","type":"pdf"}}
+
+data: {"type":"tool-input-available","toolCallId":"tool-1","toolName":"showVideo","input":{"id":"video"}}
+
+data: {"type":"tool-output-available","toolCallId":"tool-1","output":{"id":"video","title":"DEMO external sample video (not skydiving)","url":"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4","isDemo":true,"kind":"video","type":"video"}}
+
+data: {"type":"text-start","id":"answer"}
+
+data: {"type":"text-delta","id":"answer","delta":"[MOCK DEMO] [https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.\nDEMO DEMO brochure: /demo/brochure.pdf\nDEMO DEMO external sample video (not skydiving): https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
+
+data: {"type":"text-end","id":"answer"}
+
+data: {"type":"finish-step"}
+
+data: {"type":"finish","finishReason":"stop","messageMetadata":{"mode":"mock","isDemo":true}}
+
+data: [DONE]
+
