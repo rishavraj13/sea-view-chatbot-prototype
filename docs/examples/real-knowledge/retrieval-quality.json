@@ -1,0 +1,737 @@
+{
+  "evidence": "OFFLINE pure retrieval; zero provider calls",
+  "threshold": 1,
+  "total": 35,
+  "passed": 35,
+  "results": [
+    {
+      "question": "How much is the VIP package?",
+      "expected": "VIP",
+      "actual": "VIP",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "VIP",
+          "score": 4,
+          "title": "VIP",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "Which package should I choose?",
+          "score": 2.6666666666666665,
+          "title": "Which package should I choose?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        },
+        {
+          "id": "Refunds",
+          "score": 2,
+          "title": "Refunds",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "How much does ECO cost?",
+      "expected": "ECO",
+      "actual": "ECO",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "ECO",
+          "score": 4,
+          "title": "ECO",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "Which package should I choose?",
+          "score": 1,
+          "title": "Which package should I choose?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        },
+        {
+          "id": "If the weather stops the activity",
+          "score": 1,
+          "title": "If the weather stops the activity",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "What is the DELUXE price?",
+      "expected": "DELUXE",
+      "actual": "DELUXE",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "DELUXE",
+          "score": 4,
+          "title": "DELUXE",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "Which package should I choose?",
+          "score": 1,
+          "title": "Which package should I choose?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        },
+        {
+          "id": "If the weather stops the activity",
+          "score": 1,
+          "title": "If the weather stops the activity",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "What is included?",
+      "expected": "What's included",
+      "actual": "What's included",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "What's included",
+          "score": 2,
+          "title": "What's included",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "ECO",
+          "score": 1,
+          "title": "ECO",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "DELUXE",
+          "score": 1,
+          "title": "DELUXE",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        }
+      ]
+    },
+    {
+      "question": "How high is the jump?",
+      "expected": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "actual": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 2.571428571428571,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "The plan",
+          "score": 2,
+          "title": "The plan",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day"
+        },
+        {
+          "id": "ECO",
+          "score": 1,
+          "title": "ECO",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        }
+      ]
+    },
+    {
+      "question": "What if it rains?",
+      "expected": "If the weather stops the activity",
+      "actual": "If the weather stops the activity",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "If the weather stops the activity",
+          "score": 1.6666666666666665,
+          "title": "If the weather stops the activity",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "Refunds",
+          "score": 1,
+          "title": "Refunds",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "Can I cancel?",
+      "expected": "If you cancel",
+      "actual": "If you cancel",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "If you cancel",
+          "score": 3,
+          "title": "If you cancel",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "If you do not turn up",
+          "score": 1,
+          "title": "If you do not turn up",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "Refunds",
+          "score": 1,
+          "title": "Refunds",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "Do I get photos with ECO?",
+      "expected": "ECO",
+      "actual": "ECO",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "ECO",
+          "score": 3,
+          "title": "ECO",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "The plan",
+          "score": 1,
+          "title": "The plan",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day"
+        },
+        {
+          "id": "Which package should I choose?",
+          "score": 1,
+          "title": "Which package should I choose?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        }
+      ]
+    },
+    {
+      "question": "Where do I meet?",
+      "expected": "Location and operator",
+      "actual": "Location and operator",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Location and operator",
+          "score": 2,
+          "title": "Location and operator",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "Where does the activity take place?",
+          "score": 1.6666666666666665,
+          "title": "Where does the activity take place?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        },
+        {
+          "id": "The plan",
+          "score": 1,
+          "title": "The plan",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day"
+        }
+      ]
+    },
+    {
+      "question": "How long does it take?",
+      "expected": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "actual": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 1.2857142857142856,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "If the weather stops the activity",
+          "score": 1,
+          "title": "If the weather stops the activity",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "If you cancel",
+          "score": 1,
+          "title": "If you cancel",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "Who operates the dropzone?",
+      "expected": "Location and operator",
+      "actual": "Location and operator",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Location and operator",
+          "score": 3,
+          "title": "Location and operator",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "The plan",
+          "score": 1,
+          "title": "The plan",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day"
+        },
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 1,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        }
+      ]
+    },
+    {
+      "question": "Is Bangkok pickup available?",
+      "expected": "Is Bangkok pickup available?",
+      "actual": "Is Bangkok pickup available?",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Is Bangkok pickup available?",
+          "score": 5,
+          "title": "Is Bangkok pickup available?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        },
+        {
+          "id": "Refunds",
+          "score": 1,
+          "title": "Refunds",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "Which package should I choose?",
+      "expected": "Which package should I choose?",
+      "actual": "Which package should I choose?",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Which package should I choose?",
+          "score": 5,
+          "title": "Which package should I choose?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        },
+        {
+          "id": "Refunds",
+          "score": 2,
+          "title": "Refunds",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 1,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        }
+      ]
+    },
+    {
+      "question": "Where does the activity take place?",
+      "expected": "Where does the activity take place?",
+      "actual": "Where does the activity take place?",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Where does the activity take place?",
+          "score": 5,
+          "title": "Where does the activity take place?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        },
+        {
+          "id": "Location and operator",
+          "score": 2,
+          "title": "Location and operator",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "Refunds",
+          "score": 2,
+          "title": "Refunds",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "Is the instructor USPA certified?",
+      "expected": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "actual": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 3.2857142857142856,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "ECO",
+          "score": 1,
+          "title": "ECO",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "DELUXE",
+          "score": 1,
+          "title": "DELUXE",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        }
+      ]
+    },
+    {
+      "question": "How long is the freefall?",
+      "expected": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "actual": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 2.571428571428571,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "Travel insurance",
+          "score": 2,
+          "title": "Travel insurance",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "The plan",
+          "score": 1,
+          "title": "The plan",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day"
+        }
+      ]
+    },
+    {
+      "question": "How long is the canopy flight?",
+      "expected": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "actual": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 2.571428571428571,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "The plan",
+          "score": 2,
+          "title": "The plan",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day"
+        },
+        {
+          "id": "If the weather stops the activity",
+          "score": 2,
+          "title": "If the weather stops the activity",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "Do I need previous experience?",
+      "expected": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "actual": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 2,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "ECO",
+          "score": 1,
+          "title": "ECO",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "DELUXE",
+          "score": 1,
+          "title": "DELUXE",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        }
+      ]
+    },
+    {
+      "question": "Is a certificate included?",
+      "expected": "What's included",
+      "actual": "What's included",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "What's included",
+          "score": 3,
+          "title": "What's included",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        },
+        {
+          "id": "ECO",
+          "score": 2,
+          "title": "ECO",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "DELUXE",
+          "score": 2,
+          "title": "DELUXE",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        }
+      ]
+    },
+    {
+      "question": "Do I need photo ID for check-in?",
+      "expected": "The plan",
+      "actual": "The plan",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "The plan",
+          "score": 3,
+          "title": "The plan",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day"
+        },
+        {
+          "id": "DELUXE",
+          "score": 1,
+          "title": "DELUXE",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 1,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        }
+      ]
+    },
+    {
+      "question": "What are the five steps of the plan?",
+      "expected": "The plan",
+      "actual": "The plan",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "The plan",
+          "score": 3,
+          "title": "The plan",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day"
+        },
+        {
+          "id": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "score": 1,
+          "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+        }
+      ]
+    },
+    {
+      "question": "What is the DELUXE tagline?",
+      "expected": "DELUXE",
+      "actual": "DELUXE",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "DELUXE",
+          "score": 3,
+          "title": "DELUXE",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "Which package should I choose?",
+          "score": 1,
+          "title": "Which package should I choose?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        }
+      ]
+    },
+    {
+      "question": "Does VIP have a personal cameraman?",
+      "expected": "VIP",
+      "actual": "VIP",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "VIP",
+          "score": 5,
+          "title": "VIP",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        },
+        {
+          "id": "Which package should I choose?",
+          "score": 1,
+          "title": "Which package should I choose?",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+        }
+      ]
+    },
+    {
+      "question": "What happens if I do not turn up?",
+      "expected": "If you do not turn up",
+      "actual": "If you do not turn up",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "If you do not turn up",
+          "score": 4,
+          "title": "If you do not turn up",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "If the weather stops the activity",
+          "score": 1,
+          "title": "If the weather stops the activity",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "If you cancel",
+          "score": 1,
+          "title": "If you cancel",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "How are refunds paid?",
+      "expected": "Refunds",
+      "actual": "Refunds",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Refunds",
+          "score": 4,
+          "title": "Refunds",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "If the weather stops the activity",
+          "score": 2,
+          "title": "If the weather stops the activity",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "If you cancel",
+          "score": 1,
+          "title": "If you cancel",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "What travel insurance do you recommend?",
+      "expected": "Travel insurance",
+      "actual": "Travel insurance",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Travel insurance",
+          "score": 5,
+          "title": "Travel insurance",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "Can I reschedule if it rains?",
+      "expected": "If the weather stops the activity",
+      "actual": "If the weather stops the activity",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "If the weather stops the activity",
+          "score": 1.6666666666666665,
+          "title": "If the weather stops the activity",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "Refunds",
+          "score": 1,
+          "title": "Refunds",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "How much cancellation notice should I give?",
+      "expected": "If you cancel",
+      "actual": "If you cancel",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "If you cancel",
+          "score": 4,
+          "title": "If you cancel",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "If you do not turn up",
+          "score": 2,
+          "title": "If you do not turn up",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "Refunds",
+          "score": 2,
+          "title": "Refunds",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "What is the age limit for this jump?",
+      "expected": null,
+      "actual": null,
+      "passed": true,
+      "chunks": []
+    },
+    {
+      "question": "What is the weight limit?",
+      "expected": null,
+      "actual": null,
+      "passed": true,
+      "chunks": []
+    },
+    {
+      "question": "Which health conditions prevent a jump?",
+      "expected": null,
+      "actual": null,
+      "passed": true,
+      "chunks": []
+    },
+    {
+      "question": "What should I wear for the jump?",
+      "expected": null,
+      "actual": null,
+      "passed": true,
+      "chunks": []
+    },
+    {
+      "question": "What is the Bangkok pickup price?",
+      "expected": null,
+      "actual": null,
+      "passed": true,
+      "chunks": []
+    },
+    {
+      "question": "What are the baggage rules?",
+      "expected": null,
+      "actual": null,
+      "passed": true,
+      "chunks": []
+    },
+    {
+      "question": "Can a child jump?",
+      "expected": null,
+      "actual": null,
+      "passed": true,
+      "chunks": []
+    }
+  ]
+}

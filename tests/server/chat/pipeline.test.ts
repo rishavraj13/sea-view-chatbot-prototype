@@ -34,7 +34,7 @@ it.each([
   const result = await runPipeline(request(q as string), { mock: true });
   expect(result.mode).toBe('mock');
   expect(result.media.map((m) => m.kind)).toEqual(kinds);
-  expect(result.text).toContain('[MOCK DEMO]');
+  expect(result.text).toContain('[MOCK]');
 });
 it('does not guess unknown answers', async () => {
   expect(

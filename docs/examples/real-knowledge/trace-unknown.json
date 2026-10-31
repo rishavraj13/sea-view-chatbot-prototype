@@ -1,0 +1,18 @@
+{
+  "evidence": "OFFLINE MOCK actual route response",
+  "request": {
+    "question": "What is the Bangkok pickup price?"
+  },
+  "status": 200,
+  "response": {
+    "mode": "mock",
+    "provider": "google",
+    "modelId": "gemini-2.5-flash",
+    "isDemo": false,
+    "chunks": [],
+    "context": "",
+    "toolCalls": [],
+    "media": [],
+    "text": "[MOCK] I do not have that information."
+  }
+}

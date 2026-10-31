@@ -1,9 +1,7 @@
 {
-  "messages": [
-    {
-      "id": "preview",
-      "role": "user",
-      "parts": [{ "type": "text", "text": "brochure video pricing" }]
-    }
-  ]
+  "superseded": true,
+  "historicalContentRemoved": true,
+  "sha256BeforeRedaction": "fef35362ea33ad770c982750b8efd041c1368de248d4ae98c4cd7e388ad953cd",
+  "reason": "Fictional knowledge capture retired; do not treat this file as current API evidence.",
+  "currentEvidence": "docs/examples/real-knowledge/"
 }

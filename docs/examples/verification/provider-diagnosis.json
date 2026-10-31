@@ -1,30 +1,7 @@
 {
-  "model": "gemini-2.5-flash",
-  "providerCalls": 1,
-  "calls": [
-    {
-      "number": 1,
-      "model": "gemini-2.5-flash",
-      "status": 429,
-      "latencyMs": 671,
-      "quota": [
-        {},
-        {
-          "violations": [
-            {
-              "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
-              "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
-              "quotaValue": "20"
-            }
-          ]
-        },
-        {
-          "retryDelay": "45636s"
-        }
-      ]
-    }
-  ],
-  "status": 429,
-  "totalLatencyMs": 704,
-  "response": "{\"mode\":\"live\",\"error\":{\"code\":\"RATE_LIMIT\",\"message\":\"The model rate limit was reached. Please retry later.\"}}"
+  "superseded": true,
+  "historicalContentRemoved": true,
+  "sha256BeforeRedaction": "95f190531460d17919065cd9d6f6e2e5ac5e854f35bda94b18d05baae3ed5acb",
+  "reason": "Fictional knowledge capture retired; do not treat this file as current API evidence.",
+  "currentEvidence": "docs/examples/real-knowledge/"
 }

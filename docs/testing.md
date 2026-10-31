@@ -1,55 +1,23 @@
-# Testing
+# Testing and capture verification
 
-Use Node >=22.12, npm ci, then npm run typecheck, npm run lint, npm test, npm run build and npm run format:check. Tests are offline and pin mock mode through tests/setup.ts; tests/server mirrors src/server.
+Required offline checks: npm run typecheck, npm run lint, npm test, npm run build, npm run format:check. Tests live under tests/server mirroring server modules. tests/setup.ts explicitly selects mock mode and blank keys. MOCK language-provider/HTTP tests exercise the live code path without network access; these are not real-provider success claims.
 
-Repeat endpoint captures: npm run dev -- --hostname 127.0.0.1, then node scripts/capture.mjs in another terminal. Inspect docs/examples/chat.txt and trace.txt: the question brochure video pricing must produce both PDF and video results. Ask pricing for text only; missing brochure for unavailable; quantum unicorn for refusal. POST /api/knowledge/trace with {"question":"missing brochure"} is a convenient manual check.
+## Retrieval quality
 
-Fallback: leave the key blank and set MODEL_MODE=live, restart server, rerun capture; mode must remain mock. MODEL_MODE=mock always overrides a configured key. Live provider failures do not silently switch to mock. Test SDK parsing of SSE, history roundtrip, ranking/no match, media resolution, mock scenarios, invalid input, timeout/rate/model error sanitization and trace equivalence.
+`npm test -- tests/server/knowledge/quality.test.ts` runs 35 realistic questions with expected top source, including seven no-matches. The six required absent topics are age, weight, health, clothing, Bangkok pickup price and baggage; child eligibility is also absent. `npx --yes tsx scripts/capture-retrieval-quality.mjs` records all scores and the full quality table in docs/examples/real-knowledge/retrieval-quality.json. Threshold is independently asserted to remain 1. Each logical JSON section is one chunk, retaining the complete package/policy context.
 
-Limitations: no credentialed Google calls, browser frontend integration, Vercel deployment, external clip uptime or load tests were performed. The SDK stream parser is exercised offline. Real HTTP examples are captured from Next dev, not invented fixtures. See progress-log.md for final output.
+## Guard and provenance
 
-## Reality verification follow-up
+answer.test.ts checks accepted number/currency/unit formatting variants, leading/trailing/Markdown citations, unknown citations, wrong currencies/amounts, changed duration/altitude units, unsupported number words and empty media fallback. Its semantic-limit test deliberately shows that a nonnumeric false claim can pass the property guard; do not claim entailment. sources.test.ts verifies real URLs, capture dates, all package taglines, identical inclusion lists, and ECO photos wording without fabricated entitlements. Media tests distinguish real-video, demo-PDF and unavailable flags. Existing mode, history, trace parity, error sanitization and one-call tests remain.
 
-See [reality-verification.md](reality-verification.md) for actual HTTP captures, SDK consumer commands, mode safety results, known failures, and unverified credentialed live/deployment checks. No API contract change was made. The existing checked-answer behavior is documented in [ADR 007](decisions/007-checked-answer-after-generation.md). This verification is incomplete; do not interpret earlier scaffold/test passes as credentialed live acceptance.
+## Actual current route examples
 
-### Credentialed live and Vercel follow-up
+For zero-call examples: select MODEL_MODE=mock, then `npx --yes tsx --env-file=.env.local scripts/capture-real-examples.mjs`. It invokes the actual three route handlers with Request/Response objects and blocks provider fetches. It saves public sources, trace VIP/weather/ECO-photos/unknown responses and media SSE. No separate HTTP listener is started. These records are labelled OFFLINE MOCK; they are not invented live transcripts.
 
-The live model was exercised: successful live info text, live chat with both media tools, live trace video, plus real 504 timeouts and 429 rate limits. See [credentialed captures](examples/verification/credentialed-live.json) and the [verification report](reality-verification.md). Preview deployment: https://sea-view-chatbot-prototype-3i05o5oyk-rishiiwithai-4565.vercel.app (protected, explicitly mock). Its three endpoints and PDF returned 200 through authenticated CLI. Deployed Node.js function timeouts are confirmed as 30/30/10 seconds. No API contract changed. Full live acceptance and commit remain pending.
+The bounded live script is `npx --yes tsx --env-file=.env.local scripts/real-knowledge-live.mjs` with Google live configuration. It permits exactly the two requested questions, persists a two-call ledger and refuses reruns. Do not clear the ledger or spend further calls in this task. It records raw non-reasoning answer, guard result, actual provider fetch count and latency through the real /api/chat handler. No provider retries or extra continuation calls. Full results are in real-knowledge-report.md.
 
-### Live HTTP and preview commands
+## Website/media authoring
 
-Run `node scripts/verify-http.mjs http://127.0.0.1:3000 credentialed-live live` against a locally started Next server that loaded `.env.local`. For a paced run, add `35000` as the fourth argument. Each endpoint call is spaced 35 seconds; a seven-case run therefore takes several minutes. The script uses `DefaultChatTransport` and `readUIMessageStream`, preserves raw SSE and parsed results, asserts discriminated media payloads and required tools, and exits nonzero when chat acceptance assertions fail. Trace statuses and actual tool calls are recorded independently and must also be reviewed; a successful chat does not imply successful trace.
+Two pages were fetched once manually into .next/real-capture, then scripts/build-website-sources.py extracted only the requested sections without network traversal. source-capture.json records hashes/anchors/poster. Exactly one video HEAD check is recorded in video-head.json; do not repeat it as part of automated tests or download the video.
 
-Protected preview captures were fetched with `npx --yes vercel@latest curl /api/knowledge/sources --deployment sea-view-chatbot-prototype-3i05o5oyk-rishiiwithai-4565.vercel.app` and equivalent POSTs for chat/trace, with request fixtures from `docs/examples/verification/preview-*-request.json`. The CLI supplies protection authorization without printing it. `node scripts/verify-preview.mjs` parses the captured preview SSE through the actual SDK transport/parser, compares text/media to trace and validates the downloaded PDF signature. This script requires `.next/preview-brochure.pdf`, fetched with authenticated `vercel curl /demo/brochure.pdf` and curl's `--output` option.
-
-Use `npx --yes vercel@latest inspect sea-view-chatbot-prototype-3i05o5oyk-rishiiwithai-4565.vercel.app --json` to verify actual lambda runtimes and timeout metadata. Do not commit `.env.local` or `.vercel/`. Both are confirmed ignored.
-
-### Final live result
-
-Both seven-case suites completed with real Google calls. Info, brochure, video, and combined chat tools have successful live captures, but remaining calls include 429/504 failures. The paced suite exited 1; acceptance and commit remain blocked. See the [complete table and command output](live-verification.md), [first captures](examples/verification/credentialed-live.json), and [paced captures](examples/verification/credentialed-paced.json). Preview endpoints, bundled JSON, SDK parsing and actual 30/30/10-second deployed settings passed. Git is initialized; secret files are ignored. API contracts are unchanged.
-
-## Approved narrow fixes — 2026-10-30
-
-See [approved-fixes-report.md](approved-fixes-report.md) for diagnosis, exact commands/output, full live captures, and separately labelled offline mock captures. All 25 tests, typecheck, lint and build pass. One diagnostic provider call confirms daily project/model quota 20 is exhausted; measured provider latency 671ms, handler 704ms. Exactly three post-fix live attempts, 61 seconds apart, return 429. No retries or quota bypass. The updated commit condition permits these explained live blocks.
-
-Regressions cover dependent query/first turn/topic change; retired, unknown, wrong-type and model-substituted explicit IDs; optional trace history with identical chat validation and pipeline parity. Repeat offline: npm run typecheck, npm run lint, npm test, npm run build. Repeat labelled mock capture: npx --yes tsx --env-file=.env.local scripts/capture-approved-mock.mjs. Repeat live only after quota reset: node scripts/verify-approved.mjs http://127.0.0.1:3000 with a live Next server. Diagnostic script: npx --yes tsx --env-file=.env.local scripts/diagnose-chat.mjs (one chat request, provider call counter and safe quota fields only). ADR 008 records retrieval-query rules and limitations. No model/stream/retry/timeout changes were made.
-
-## Phase 1.7 single-call and provider tests
-
-Run npm run typecheck, npm run lint, npm test, npm run build, npm run format:check. single-call.test.ts injects AI SDK MockLanguageModelV4 through a mocked Google factory and runs the real generateText loop. For info, brochure, video, both, unavailable, unknown and follow-up it asserts exactly one doGenerate call and zero stream calls. It does not replace generateText with a stub. A same-step text-plus-tools case preserves grounded text. Mock-provider errors assert typed safe responses and one attempt. This is offline simulated-live behavior, explicitly labelled MOCK; application MODEL_MODE=mock still makes zero provider calls.
-
-provider-wire.test.ts uses MOCK HTTP responses through each real provider adapter to verify selected MODEL_ID, Google budget, Groq effort and OpenRouter allow_fallbacks:false/require_parameters:true are actually serialized. No inference network calls are made. Other tests verify missing selected key produces explicit mock with selected public metadata.
-
-The bounded live script is `npx --yes tsx --env-file=.env.local scripts/phase17-live.mjs`. It persists call counts in docs/examples/phase17/budget.json and refuses to rerun a provider with recorded task calls. Do not clear this ledger or run the old unbounded scenario scripts in this phase. It invokes the actual /api/chat handler with a Request, instruments real provider HTTP fetches, and reads the resulting SSE with DefaultChatTransport/readUIMessageStream. It does not run a separate HTTP listener. Order: both media, info, retired brochure. Requests are spaced 61 seconds; SDK maxRetries=0 and there are no retry loops. Exactly 3 Google calls, 0 Groq, 0 OpenRouter were made.
-
-Live captures are under docs/examples/phase17. The live info question was refused by the exact grounding boundary; successful 200 status must not be reported as factual-answer success. Earlier safe error examples are historical actual endpoint captures, not new live quota-consuming tests. No deployment in this phase.
-
-## Repeatable covered-question retrieval check
-
-Run `npm test -- tests/server/knowledge/quality.test.ts`: a table-driven suite of 21 realistic questions expects the correct top-ranked source for 17 and an empty list for four. The six required package/cost/rain/meeting phrasings are included. Fixtures live in tests/fixtures/retrieval-quality.json. `npx --yes tsx scripts/capture-retrieval-quality.mjs` emits a score/URL snapshot without a provider call. Threshold is independently asserted to remain 1.
-
-For the exact failed question's current offline route trace use MODEL_MODE=mock and `npx --yes tsx --env-file=.env.local scripts/diagnose-covered-info.mjs after`. It invokes the actual trace handler with the original question, blocks outbound fetch and records query/chunks/threshold/exact context. It does not start a separate HTTP listener. The historical before snapshot is protected from overwrite.
-
-answer.test.ts checks shared context/prompt construction, the exact live trailing-citation output, and fabricated/uncited/unknown-URL rejection. single-call.test.ts replays that raw answer through the actual SDK loop with a MOCK language provider, confirming a sourced USD 250 answer and one call. These are explicitly offline simulations, not a second live validation. Full live before diagnosis used exactly one Google call; its persistent ledger prevents reruns. Do not clear it to spend another diagnostic call.
-
-Groq/OpenRouter keys were absent, so neither received a new live request. Run all required checks with npm run typecheck, npm run lint, npm test and npm run build. Final output is in covered-info-report.md and progress-log.md.
+Generate the demo PDF with `python scripts/build-brochure.py <path-to-Unicode-font-with-baht-glyph>`. ReportLab is an authoring dependency, not an application package. Render with pdftoppm and inspect the page; a font-glyph assertion prevents silently missing baht symbols. The current brochure was rendered and reviewed. No browser player/embed test or deployment was performed. Old fictional captures/scripts have explicit supersession notices, not current test data.

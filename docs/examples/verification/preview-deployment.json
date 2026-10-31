@@ -1,22 +1,7 @@
 {
-  "url": "sea-view-chatbot-prototype-3i05o5oyk-rishiiwithai-4565.vercel.app",
-  "target": "preview",
-  "state": "READY",
-  "functions": [
-    {
-      "path": "api/chat",
-      "runtime": "nodejs26.x",
-      "timeout": 30
-    },
-    {
-      "path": "api/knowledge/trace",
-      "runtime": "nodejs26.x",
-      "timeout": 30
-    },
-    {
-      "path": "api/knowledge/sources",
-      "runtime": "nodejs26.x",
-      "timeout": 10
-    }
-  ]
+  "superseded": true,
+  "historicalContentRemoved": true,
+  "sha256BeforeRedaction": "9ed8b5f2db1888de0d4081b3c6a427c100001431b977d34610ff4da3691d52db",
+  "reason": "Fictional knowledge capture retired; do not treat this file as current API evidence.",
+  "currentEvidence": "docs/examples/real-knowledge/"
 }

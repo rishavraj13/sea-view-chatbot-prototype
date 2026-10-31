@@ -1,1 +1,7 @@
-{ "question": "brochure video pricing" }
+{
+  "superseded": true,
+  "historicalContentRemoved": true,
+  "sha256BeforeRedaction": "2eb2c40d52cb9b6fdf8e849dcccb8de793df853dd453a0fb5a360ac1890db6d8",
+  "reason": "Fictional knowledge capture retired; do not treat this file as current API evidence.",
+  "currentEvidence": "docs/examples/real-knowledge/"
+}

@@ -29,7 +29,7 @@ export async function POST(request: Request) {
             mode: result.mode,
             provider: result.provider,
             modelId: result.modelId,
-            isDemo: true,
+            isDemo: result.isDemo,
           },
         });
         writer.write({ type: 'start-step' });
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
             mode: result.mode,
             provider: result.provider,
             modelId: result.modelId,
-            isDemo: true,
+            isDemo: result.isDemo,
           },
         });
       },

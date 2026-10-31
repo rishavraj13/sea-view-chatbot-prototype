@@ -2,7 +2,7 @@
   {
     "id": "brochure",
     "type": "pdf",
-    "title": "DEMO brochure",
+    "title": "DEMO brochure - Sea View Skydiving package facts",
     "url": "/demo/brochure.pdf",
     "isDemo": true,
     "available": true
@@ -10,10 +10,11 @@
   {
     "id": "video",
     "type": "video",
-    "title": "DEMO external sample video (not skydiving)",
-    "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-    "isDemo": true,
-    "available": true
+    "title": "Sea View Skydiving - page video (external link)",
+    "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+    "isDemo": false,
+    "available": true,
+    "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg"
   },
   {
     "id": "retired",

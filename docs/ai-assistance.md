@@ -1,13 +1,7 @@
 # AI assistance
 
-Codex authored the backend, demo corpus, sample brochure, tests and documentation. Official AI SDK, Google provider, assistant-ui and installed Next.js documentation informed the contracts. No scraped business content was used. All prices, policies and location details are fictional demo assumptions. Offline tests and real local endpoint captures support verification; no claim is made that credentialed live model quality was tested.
+Codex fetched exactly the two user-specified public pages, extracted only requested sections into dated static JSON, verified the video with one HEAD request without reading its body, and generated a clearly labelled demo PDF from the package records. No business facts were invented or contradictions reconciled. Navigation, footer and marketing boilerplate were excluded.
 
-Frontend: pending. Knowledge view: pending. No UI generated in this phase.
+Codex implemented the requested citation/numeric property guard, documented its semantic limitations, extended bounded retrieval vocabulary/coverage, and updated offline tests. Actual mocked route responses are clearly separated from the two real Google calls. No key values, provider authorization headers or hidden model reasoning are captured. Old fictional working-tree examples were superseded safely; original Git history remains. No deployment or UI features were added.
 
-## Phase 1.7
-
-Codex researched official AI SDK, Google, Groq and OpenRouter docs before selecting provider package versions, implemented the approved single-step loop/configuration/metadata changes, and authored regression tests and ADR 009. A real SDK mock language model and MOCK HTTP adapters separate offline call-count evidence from live inference. Exactly three live Google calls were made, with persistent budget accounting. No keys, raw provider errors, quota IDs, hidden reasoning or request authorization headers are in current public response captures. No deployment occurred. Earlier timeout causes remain unproven; new zero-thinking runs are not a controlled causal experiment. The covered info question's refusal is disclosed. The user confirmed local models are out of scope; no adapter or enum change was added.
-
-## Covered-question correction
-
-Codex reproduced the exact phase-1.7 refusal through an offline trace and one allowed live diagnostic. The capture proved a correct raw model answer was rejected solely by citation order. Codex authored citation normalization, a stricter covered-answer prompt, shared context construction and a 21-question offline retrieval suite. Live diagnostic facts, offline MOCK replay evidence and absent-provider-key limitations are separated in covered-info-report.md. No source facts, API shapes, provider configuration or deployment were changed.
+Frontend: pending. Knowledge view: pending. The PDF skill was used for generation and render/visual QA. See real-knowledge-report.md for exact outputs and limitations.

@@ -1,217 +1,75 @@
-> Phase 1.7: mode metadata now includes provider and modelId; live generation is one step. Current details below supersede older captures without these additive fields. Request shapes, SSE protocol and tool-result union are unchanged.
+# Backend API
 
-> Current approved extension: trace accepts optional messages with the same schema/limits as chat. See the approved contract below; earlier captured requests remain valid historical examples.
+Backend-only prototype. Requests and UIMessage SSE protocol remain unchanged. Static website knowledge was captured on 2026-10-31. The model is not a booking system and does not fetch web content at request time.
 
-# API contract
+## Sources
 
-All routes use runtime=nodejs. Chat/trace maxDuration=30 seconds; sources=10. No auth, persistence or application rate limiter. Provider 429 is mapped to RATE_LIMIT. Do not expose this prototype to uncontrolled traffic with paid credentials.
+- https://www.greedyadventures.com/experiences/sea-view-skydiving
+- https://www.greedyadventures.com/cancellations
+
+Capture date: 2026-10-31. Individual records cite actual page anchors observed in the HTML. Package taglines differ while all three list the same inclusions; no reconciliation or invented benefits are added.
 
 ## POST /api/chat
 
-Body: {messages: UIMessage[]}. 1-30 messages, id up to 128 chars, user/assistant roles only, 1-8 parts each, text 1-4000 trimmed chars. Final role must be user. Completed tool-sendBrochure/tool-showVideo parts (output-available state) and step-start parts are accepted, validated, and serialized into untrusted model history. No client system prompt or tools are executed. Send full history each time. Additional transport fields are stripped.
+Body: `{messages: UIMessage[]}` with 1-30 messages; id <=128 chars; user/assistant roles; final role user; 1-8 parts each; trimmed text 1-4000 chars. Text, step-start and completed tool-sendBrochure/tool-showVideo output-available parts are supported. Resend full history; there is no server memory. Unknown client fields are stripped and client tools/system instructions are not executed.
 
-Success: HTTP 200, text/event-stream, x-vercel-ai-ui-message-stream: v1, x-model-mode: mock|live, Cache-Control: no-store. Uses AI SDK 7 UIMessage SSE via createUIMessageStreamResponse; compatible with assistant-ui @assistant-ui/ai-sdk useChatRuntime and AssistantChatTransport. Each event is data: JSON followed by two newlines. Order: start (mode/isDemo metadata), start-step, zero or more tool-input-available/tool-output-available pairs, text-start, text-delta, text-end, finish-step, finish (mode metadata), data: [DONE]. No legacy numbered data-stream protocol. One checked answer delta is emitted after generation; not provider token streaming. Tool names are sendBrochure and showVideo.
+Success uses AI SDK 7 UIMessage SSE: HTTP 200, Content-Type text/event-stream, x-vercel-ai-ui-message-stream:v1, x-model-mode:live|mock, Cache-Control:no-store. Each event is `data: JSON` plus two newlines; terminal event is `data: [DONE]`. Event order: start, start-step, zero or more tool-input-available/tool-output-available pairs, text-start, text-delta, text-end, finish-step, finish, DONE. Start/finish metadata is `{mode,provider,modelId,isDemo}`. `provider` is google|groq|openrouter. No legacy numbered data-stream protocol.
+
+Live generation remains one provider call with maxRetries=0; text is checked before one final answer delta is emitted, not provider-token streaming. Missing selected key is explicitly labelled mock; provider failures never switch providers or mode. Mock responses say [MOCK], while knowledge/media provenance uses isDemo separately.
+
+Example request used for the real live price capture:
+
+```json
+{
+  "messages": [
+    {
+      "id": "real-0",
+      "role": "user",
+      "parts": [{ "type": "text", "text": "How much is the VIP package?" }]
+    }
+  ]
+}
+```
+
+Full real response bytes, raw answer, guard result and timings: [live-google.json](examples/real-knowledge/live-google.json). Actual offline mock media SSE: [chat-media.json](examples/real-knowledge/chat-media.json). Mock captures are explicitly labelled and must not be described as live inference.
 
 ## POST /api/knowledge/trace
 
-Body: {question: string, messages?: UIMessage[]}, question trimmed 1-4000 chars. Returns JSON {mode,chunks,context,toolCalls,media,text}. Uses exactly chat.runPipeline, with a single user history entry. For the same question/history and mode, retrieval and deterministic mock media agree. Live tool choices can vary. context is the exact retrieval block appended to the system prompt; chunks preserve source and exact text. No history or environment values are returned.
+Body: `{question:string,messages?:UIMessage[]}`. Question is required, trimmed 1-4000 chars. Optional messages use the identical chat schema and limits, including final user role. When supplied they are the full authoritative history and the final user text drives the pipeline; otherwise question becomes a single user turn. No duplicate question is appended.
+
+Response: `{mode,provider,modelId,isDemo,chunks,context,toolCalls,media,text}`. Each chunk contains `{id,text,score,source}` and source contains `{title,url,capturedAt,text,isDemo}`. Context is the exact shared model-context block. capturedAt is the requested date string YYYY-MM-DD; all current knowledge records are 2026-10-31 and isDemo:false. No conversations or environment values are returned.
+
+Real mock route captures: [VIP](examples/real-knowledge/trace-vip.json), [weather](examples/real-knowledge/trace-weather.json), [ECO photos](examples/real-knowledge/trace-eco-photos.json), [unsupported pickup price](examples/real-knowledge/trace-unknown.json). Trace and chat use the identical pipeline.
 
 ## GET /api/knowledge/sources
 
-Returns {isDemo:true,sources,media}, public bundled records only.
+Public response: `{isDemo:false,sources,media}`. The top flag describes the knowledge corpus; individual media flags are independent. Sources use the fields above. Public media include id, type, title, url, isDemo, available and optional posterUrl. No secrets/history. [Captured actual route response](examples/real-knowledge/sources.json).
 
-## Tool result union
+## Media tool result union
 
-- {kind:"brochure",id,title,url,isDemo,type:"pdf"}
-- {kind:"video",id,title,url,isDemo,type:"video"}
-- {kind:"unavailable",id,title,url:"",isDemo,reason:"unknown"|"unavailable"|"wrong-type"}
+- `{kind:"brochure",type:"pdf",id,title,url,isDemo,posterUrl?}`
+- `{kind:"video",type:"video",id,title,url,isDemo,posterUrl?}`
+- `{kind:"unavailable",id,title,url:"",isDemo,reason:"unknown"|"unavailable"|"wrong-type",posterUrl?}`
 
-All current assets have isDemo:true. Both tools accept {id:string} up to 100 chars; defaults brochure/video. Unavailable is an explicit output, never a fabricated link.
+Both tools take `{id:string}` <=100 chars, default brochure/video. Explicit IDs always resolve through the registry, including unknown/retired IDs. `brochure` is a generated DEMO MATERIAL PDF under /demo/brochure.pdf (isDemo:true); no official site PDF was found in this capture. `video` is the actual page video (isDemo:false), with the page-provided poster URL. `retired` remains unavailable and demo-labelled. Unknown/wrong-type results never invent URLs. Known asset provenance is retained on unavailable results.
 
-## Typed errors
+One HEAD request returned 200 video/mp4 for the video. It was not downloaded. Embedding/browser CORS compatibility was not tested; the title labels the result as an external link and the URL remains usable as a link if embedding fails. No frontend or player was added.
 
-Errors occur before SSE starts: JSON {mode:"mock"|"live",error:{code,message}}. No stack or provider body is exposed. Mode reflects deployment selection (invalid configuration receives the safe mock label).
+## Guard
 
-| Code          | HTTP | Meaning / user message                                             |
+Model prose needs at least one citation URL; every detected absolute URL and Markdown link target must equal a retrieved source URL, including anchors. Every recognized number, currency, currency amount, unit-bearing quantity and range must be present in the normalized retrieved context. Supported normalization includes comma/space-separated thousands, decimal trailing zeros, baht/THB aliases, bounded number words through ninety, common duration/altitude unit spellings, and range endpoints. Thus currency/number formatting can differ without requiring verbatim sentences. Missing/unknown citations or unsupported properties return the existing refusal. No arithmetic unit conversion or new numeric facts are inferred. An empty media-only generation is handled separately by a registry-only summary; model prose does not bypass the guard through that path.
+
+This is not semantic entailment: it cannot prove nonnumeric claims, scope, negation, who cancels, which package owns a fact, or resolve contradictory source wording. Unknown linguistic quantity expressions outside the bounded normalizer may not be recognized. The prompt requires faithful facts, but the guard alone is not a guarantee of truth. See ADR 011.
+
+## Typed errors and runtime
+
+All routes runtime=nodejs. maxDuration chat/trace=30 seconds, sources=10. Request deadline remains 20 seconds. Errors before SSE: `{mode,provider,modelId,error:{code,message}}`. No stack, raw upstream payload, quota ID or key is exposed.
+
+| Code          | HTTP | Safe message                                                       |
 | ------------- | ---- | ------------------------------------------------------------------ |
 | INVALID_INPUT | 400  | Invalid JSON., Invalid message history., or Invalid test question. |
 | MODEL_FAILURE | 502  | The model is temporarily unavailable.                              |
 | TIMEOUT       | 504  | The model timed out. Please retry.                                 |
 | RATE_LIMIT    | 429  | The model rate limit was reached. Please retry later.              |
 
-The serializer's unexpected post-start failure is an SDK error event with a generic message. Timeout is 20 seconds, retries disabled. Mock fallback occurs for configured mock mode or absent key, not on provider failures.
-
-## Captured local examples
-
-These are actual endpoint requests/responses captured by scripts/capture.mjs against Next dev in mock mode. No live model error examples are fabricated; their contracts are covered offline.
-
-### chat
-
-```text
-POST /api/chat
-Request: {"messages":[{"id":"demo","role":"user","parts":[{"type":"text","text":"brochure video pricing"}]}]}
-Status: 200
-Content-Type: text/event-stream
-
-data: {"type":"start","messageId":"a37d9cc7-5af9-4df1-ba65-88eb1030e3f2","messageMetadata":{"mode":"mock","isDemo":true}}
-
-data: {"type":"start-step"}
-
-data: {"type":"tool-input-available","toolCallId":"tool-0","toolName":"sendBrochure","input":{"id":"brochure"}}
-
-data: {"type":"tool-output-available","toolCallId":"tool-0","output":{"id":"brochure","title":"DEMO brochure","url":"/demo/brochure.pdf","isDemo":true,"kind":"brochure","type":"pdf"}}
-
-data: {"type":"tool-input-available","toolCallId":"tool-1","toolName":"showVideo","input":{"id":"video"}}
-
-data: {"type":"tool-output-available","toolCallId":"tool-1","output":{"id":"video","title":"DEMO external sample video (not skydiving)","url":"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4","isDemo":true,"kind":"video","type":"video"}}
-
-data: {"type":"text-start","id":"answer"}
-
-data: {"type":"text-delta","id":"answer","delta":"[MOCK DEMO] [https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.\nDEMO DEMO brochure: /demo/brochure.pdf\nDEMO DEMO external sample video (not skydiving): https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
-
-data: {"type":"text-end","id":"answer"}
-
-data: {"type":"finish-step"}
-
-data: {"type":"finish","finishReason":"stop","messageMetadata":{"mode":"mock","isDemo":true}}
-
-data: [DONE]
-
-
-```
-
-### trace
-
-```text
-POST /api/knowledge/trace
-Request: {"question":"brochure video pricing"}
-Status: 200
-Content-Type: application/json
-
-{"mode":"mock","chunks":[{"id":"1-0","text":"DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.","source":{"title":"Pricing","url":"https://example.com/sea-view-demo/pricing","capturedAt":"2026-10-30T00:00:00Z","text":"DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer."},"score":1}],"context":"[https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.","toolCalls":[{"name":"sendBrochure","input":{"id":"brochure"},"result":{"id":"brochure","title":"DEMO brochure","url":"/demo/brochure.pdf","isDemo":true,"kind":"brochure","type":"pdf"}},{"name":"showVideo","input":{"id":"video"},"result":{"id":"video","title":"DEMO external sample video (not skydiving)","url":"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4","isDemo":true,"kind":"video","type":"video"}}],"media":[{"id":"brochure","title":"DEMO brochure","url":"/demo/brochure.pdf","isDemo":true,"kind":"brochure","type":"pdf"},{"id":"video","title":"DEMO external sample video (not skydiving)","url":"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4","isDemo":true,"kind":"video","type":"video"}],"text":"[MOCK DEMO] [https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.\nDEMO DEMO brochure: /demo/brochure.pdf\nDEMO DEMO external sample video (not skydiving): https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"}
-```
-
-### sources
-
-```text
-GET /api/knowledge/sources
-Request: null
-Status: 200
-Content-Type: application/json
-
-{"isDemo":true,"sources":[{"title":"Package inclusions","url":"https://example.com/sea-view-demo/packages","capturedAt":"2026-10-30T00:00:00Z","text":"DEMO CONTENT: The tandem package includes a briefing, equipment, instructor and jump. Photos are not included."},{"title":"Pricing","url":"https://example.com/sea-view-demo/pricing","capturedAt":"2026-10-30T00:00:00Z","text":"DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer."},{"title":"Safety","url":"https://example.com/sea-view-demo/safety","capturedAt":"2026-10-30T00:00:00Z","text":"DEMO CONTENT: Safety briefing is required. An instructor checks equipment. Eligibility requires operator confirmation; no medical advice is supplied."},{"title":"Weather cancellation","url":"https://example.com/sea-view-demo/weather","capturedAt":"2026-10-30T00:00:00Z","text":"DEMO CONTENT: Weather cancellation allows rescheduling. Refund terms are not supplied in this demo."},{"title":"Location booking","url":"https://example.com/sea-view-demo/booking","capturedAt":"2026-10-30T00:00:00Z","text":"DEMO CONTENT: The fictional meeting location is Sea View Demo Airfield. Booking enquiries use the demo booking page; no actual reservations are accepted."}],"media":[{"id":"brochure","title":"DEMO brochure","url":"/demo/brochure.pdf","isDemo":true,"type":"pdf","available":true},{"id":"video","title":"DEMO external sample video (not skydiving)","url":"https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4","isDemo":true,"type":"video","available":true},{"id":"retired","title":"DEMO retired brochure","url":"","isDemo":true,"type":"pdf","available":false}]}
-```
-
-### invalid
-
-```text
-POST /api/chat
-Request: {"messages":[]}
-Status: 400
-Content-Type: application/json
-
-{"mode":"mock","error":{"code":"INVALID_INPUT","message":"Invalid message history."}}
-```
-
-## Reality verification follow-up
-
-See [reality-verification.md](reality-verification.md) for actual HTTP captures, SDK consumer commands, mode safety results, known failures, and unverified credentialed live/deployment checks. No API contract change was made. The existing checked-answer behavior is documented in [ADR 007](decisions/007-checked-answer-after-generation.md). This verification is incomplete; do not interpret earlier scaffold/test passes as credentialed live acceptance.
-
-### Credentialed live and Vercel follow-up
-
-The live model was exercised: successful live info text, live chat with both media tools, live trace video, plus real 504 timeouts and 429 rate limits. See [credentialed captures](examples/verification/credentialed-live.json) and the [verification report](reality-verification.md). Preview deployment: https://sea-view-chatbot-prototype-3i05o5oyk-rishiiwithai-4565.vercel.app (protected, explicitly mock). Its three endpoints and PDF returned 200 through authenticated CLI. Deployed Node.js function timeouts are confirmed as 30/30/10 seconds. No API contract changed. Full live acceptance and commit remain pending.
-
-### Final live result
-
-Both seven-case suites completed with real Google calls. Info, brochure, video, and combined chat tools have successful live captures, but remaining calls include 429/504 failures. The paced suite exited 1; acceptance and commit remain blocked. See the [complete table and command output](live-verification.md), [first captures](examples/verification/credentialed-live.json), and [paced captures](examples/verification/credentialed-paced.json). Preview endpoints, bundled JSON, SDK parsing and actual 30/30/10-second deployed settings passed. Git is initialized; secret files are ignored. API contracts are unchanged.
-
-## Approved trace-history extension
-
-`POST /api/knowledge/trace` now accepts `{question, messages?}`. Question stays required (trimmed 1-4000 chars). When messages is absent the question becomes a single user turn exactly as before. When messages is present it is the full authoritative history, validated through the same chat schema: 1-30 messages, user/assistant roles, final user role, id <=128 chars, 1-8 supported parts per message, trimmed text 1-4000 chars. The final supplied user text is the test question used by the shared pipeline; send the same value in question for clarity. The server does not append or duplicate question. Responses, errors, stream protocol and limits are unchanged. Invalid histories return existing 400 INVALID_INPUT.
-
-```json
-{
-  "question": "What does that include?",
-  "messages": [
-    {
-      "id": "1",
-      "role": "user",
-      "parts": [{ "type": "text", "text": "What is the tandem package price?" }]
-    },
-    {
-      "id": "2",
-      "role": "user",
-      "parts": [{ "type": "text", "text": "What does that include?" }]
-    }
-  ]
-}
-```
-
-An actual history-bearing live trace request and its quota-blocked response are in [approved-live.json](examples/verification/approved-live.json). Offline route tests assert exact equality to the shared chat pipeline with that history. Follow-up query construction is deterministic (ADR 008). Explicit asset IDs are bound to registry resolution before model completion, using the same tool execution handler; resulting trace toolCalls describe server handler executions, not proof that a model emitted each explicit selection.
-
-See [diagnosis, test output, and evidence](approved-fixes-report.md).
-
-## Phase 1.7 provider metadata and single-step generation
-
-Every successful chat start/finish messageMetadata includes `{mode, provider, modelId, isDemo:true}`. Trace JSON adds provider and modelId beside mode. The shared Zod modelMetadataSchema validates `{mode:"live"|"mock",provider:"google"|"groq"|"openrouter",modelId:string}`. Typed error JSON also carries the same public selection; it never includes key values, provider response bodies, stacks, quota IDs or reasoning. Invalid deployment configuration uses the existing safe mock error label with provider google/modelId unconfigured. Missing selected keys use explicit mock metadata rather than silently claiming live generation.
-
-```json
-{
-  "mode": "live",
-  "provider": "google",
-  "modelId": "gemini-2.5-flash",
-  "isDemo": true
-}
-```
-
-Live generation uses exactly one provider call with no retry or post-tool continuation. The provider may select both tools in that one step. Tool execution remains local. Registry-only summarizeMedia supplies text when no acceptable same-step text exists; grounded same-step text is kept and registry summaries appended. The exact-line grounding guard now accepts retrieval lines or exact registry-summary lines; unsupported factual text is still rejected. Mock mode uses no provider calls and all mock labels remain. Media-result discriminants and fields are unchanged.
-
-Real Phase 1.7 live chat SSE and parsed SDK messages are in [live-google.json](examples/phase17/live-google.json), with measured call counts and latency. Info returned the existing refusal despite a covered question, so it is not counted as factual-answer success. Trace history remains the approved `{question,messages?}` body without any new request fields.
-
-### Real user-safe error examples
-
-These are actual earlier endpoint captures, not fabricated current live errors. Their mode/error fields remain valid; current responses additionally include provider/modelId as above. Capturing new artificial error cases would waste the three-call live budget. Current MOCK-provider route tests verify the new envelope for all three errors.
-
-HTTP 429 — RATE_LIMIT (actual capture: docs/examples/verification/credentialed-live.json)
-
-```json
-{
-  "mode": "live",
-  "error": {
-    "code": "RATE_LIMIT",
-    "message": "The model rate limit was reached. Please retry later."
-  }
-}
-```
-
-HTTP 504 — TIMEOUT (actual capture: docs/examples/verification/credentialed-live.json)
-
-```json
-{
-  "mode": "live",
-  "error": {
-    "code": "TIMEOUT",
-    "message": "The model timed out. Please retry."
-  }
-}
-```
-
-HTTP 502 — MODEL_FAILURE (actual capture: docs/examples/verification/invalid-key.json)
-
-```json
-{
-  "mode": "live",
-  "error": {
-    "code": "MODEL_FAILURE",
-    "message": "The model is temporarily unavailable."
-  }
-}
-```
-
-See [provider research](providers.md), [ADR 009](decisions/009-provider-selection-and-single-step.md) and [Phase 1.7 report](phase-1.7-report.md). No deployments in this phase.
-
-## Covered-question correction
-
-No request, response metadata, stream or tool-result schema changes. The original covered-question refusal was caused by rejecting a trailing citation, not empty retrieval. buildModelContext now supplies the shared canonical source block. The prompt requires an answer for facts explicitly present and refuses only missing requested facts. groundedAnswer accepts a verbatim source fact with its exact bracketed URL before or after it and canonicalizes citation placement; invented, uncited and unknown-source prose remains rejected.
-
-Retrieval now normalizes bounded customer terms and morphological variants on both sides. Score is body-token matches plus a total title field weight of 2 apportioned across normalized title tokens. Threshold remains 1; top-three and stable tie breaking remain. See [diagnosis and exact before/after context](covered-info-report.md), [quality scores](examples/covered-info/retrieval-quality.json) and ADR 010.
+Unexpected post-start serialization failures use an SDK error event with a generic message. Offline MOCK-provider tests verify error sanitization and no retry/fallback. Obsolete fictional captures have explicit supersession notices rather than presenting old facts as current evidence.

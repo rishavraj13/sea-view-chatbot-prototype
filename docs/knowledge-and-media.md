@@ -1,19 +1,26 @@
-# Demo knowledge and media
+# Website knowledge and media
 
-All five JSON sources are fictional representative content, captured 2026-10-30. example.com URLs are citation identifiers, not real business sources. Pricing USD 250 is fictional; eligibility, refunds and medical advice are deliberately incomplete. No crawler or live availability.
+## Sources
 
-JSON is imported statically and validated with Zod. Each newline is a chunk; current sources have one paragraph each. Retrieval is pure, case-insensitive unique-token overlap with stop words removed, score >= 1, deterministic ties by chunk id. It is lexical, not semantic: synonyms and follow-ups without explicit nouns can miss. No embeddings.
+- https://www.greedyadventures.com/experiences/sea-view-skydiving
+- https://www.greedyadventures.com/cancellations
 
-The manifest includes brochure (local generated PDF), video (external short CC0 flower clip, explicitly not skydiving), and retired (unavailable PDF). All are isDemo:true. public/demo/brochure.pdf was generated using ReportLab and rendered with Poppler for visual inspection. The sample clip is https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4; external availability is not monitored. available is a static registry flag.
+Capture date: 2026-10-31. This is a manually selected static two-page capture, not a crawler. Fifteen logical records are bundled as JSON imports so Vercel serverless needs no working-directory fs access. Every record has title, real anchored URL, capturedAt:"2026-10-31", text and isDemo:false. Original HTML was temporarily fetched outside published data; selected sections and HTML hashes are recorded in source-capture.json. No navigation, footer, customer clips or unrelated marketing paragraphs were kept.
 
-sendBrochure and showVideo resolve IDs against the same registry. Unknown, disabled, and wrong-type assets produce unavailable with an empty URL; the assistant explicitly reports unavailable. Never render a link for unavailable results.
+Each JSON section remains an atomic retrieval chunk. This prevents an inclusion line from being separated from a package name, tagline or price. ECO/DELUXE/VIP taglines and identical four inclusion lists are preserved verbatim; source data do not infer photo entitlements. Jump facts retain the page's numeric and spelled-out values; location/address/operator wording is unchanged. All five plan steps and the three FAQ answers are captured. Cancellation material distinguishes weather, customer cancellation, no-show, refunds/operator cancellation/part-way stops, and insurance. No contradictions are reconciled.
 
-## Approved conversational retrieval and media correction
+Retrieval remains pure with threshold 1 and top three. Body-token matches weigh 1 and title evidence totals 2 over title terms. Bounded vocabulary handles package names, media terms, altitude/time, certificate/instructor/ID, pickup/Bangkok and policy topics. Requested package names scope out other package cards. Weather qualifiers are not treated as customer cancellation intent; an unpriced pickup FAQ cannot displace a package price answer. Equal scores follow captured section order. The six explicitly unsupported facets (age, weight, health, clothing, pickup amount and baggage) abstain instead of matching generic jump terms. This is a declared coverage boundary for this capture, not a general web claim. Refresh coverage rules if source content changes. No threshold reduction.
 
-The knowledge public boundary now also exports buildRetrievalQuery and QueryMessage. The pipeline derives a bounded deterministic query from user history before pure keyword retrieval; see ADR 008. Explicit media IDs resolve through the registry, respecting requested media type and unavailable status. Trace optionally accepts full chat-schema history; existing question-only calls still work. See approved-fixes-report.md for exact behavior and evidence.
+## Media
 
-## Covered-question correction
+The video registry URL is https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4, isDemo:false. Its poster comes directly from the hero video element: https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg. Exactly one HEAD check returned 200 and video/mp4; no video body was read or stored. The title labels it as an external link. Browser embedding, CORS and playback were not tested; consumers must keep a link fallback.
 
-No request, response metadata, stream or tool-result schema changes. The original covered-question refusal was caused by rejecting a trailing citation, not empty retrieval. buildModelContext now supplies the shared canonical source block. The prompt requires an answer for facts explicitly present and refuses only missing requested facts. groundedAnswer accepts a verbatim source fact with its exact bracketed URL before or after it and canonicalizes citation placement; invented, uncited and unknown-source prose remains rejected.
+No official PDF was supplied by either captured page. public/demo/brochure.pdf is generated demo material from the exact package facts, titled DEMO MATERIAL and flagged isDemo:true. It is not represented as an official brochure. A Unicode font with the baht glyph was used and the rendered page was visually checked. The retired registry asset remains unavailable and isDemo:true.
 
-Retrieval now normalizes bounded customer terms and morphological variants on both sides. Score is body-token matches plus a total title field weight of 2 apportioned across normalized title tokens. Threshold remains 1; top-three and stable tie breaking remain. See [diagnosis and exact before/after context](covered-info-report.md), [quality scores](examples/covered-info/retrieval-quality.json) and ADR 010.
+UI badges should use source/media flags; mode:mock describes generation, not whether factual source material is invented. Pure media summaries describe only registry records. The top /sources isDemo flag describes the knowledge corpus; mixed media flags remain independent.
+
+## Reproduction and limitations
+
+scripts/build-website-sources.py has no network calls and reads the two manually fetched HTML files under .next/real-capture; it extracts only selected sections using HTMLParser, not a crawler. scripts/build-brochure.py takes a font path argument and uses the generated JSON facts. The original HTML is not committed. Capture metadata includes page hashes and observed anchors/poster. Re-fetch manually before refreshing a dated corpus; do not imply that a static capture remains current forever.
+
+Old fictional data records were removed; old reports/response files were replaced by explicit supersession notices to avoid misleading current readers. Their previous versions remain in Git history. No history rewrite was performed. Source capture, current response examples, quality scores and video HEAD evidence are under docs/examples/real-knowledge/.

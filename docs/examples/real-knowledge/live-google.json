@@ -1,0 +1,32 @@
+[
+  {
+    "question": "How much is the VIP package?",
+    "evidence": "LIVE Google, actual chat handler and provider HTTP call",
+    "status": 200,
+    "callCount": 1,
+    "providerLatencyMs": 1491,
+    "latencyMs": 1552,
+    "rawAnswer": "The VIP package is ฿14,000 per person. [https://www.greedyadventures.com/experiences/sea-view-skydiving#options]",
+    "guard": {
+      "accepted": true,
+      "reason": "accepted",
+      "text": "The VIP package is ฿14,000 per person. [https://www.greedyadventures.com/experiences/sea-view-skydiving#options]"
+    },
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"02a23017-8abb-4d99-82af-afbfdb1da8cf\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"google\",\"modelId\":\"gemini-2.5-flash\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"The VIP package is ฿14,000 per person. [https://www.greedyadventures.com/experiences/sea-view-skydiving#options]\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"google\",\"modelId\":\"gemini-2.5-flash\",\"isDemo\":false}}\n\ndata: [DONE]\n\n"
+  },
+  {
+    "question": "What if it rains?",
+    "evidence": "LIVE Google, actual chat handler and provider HTTP call",
+    "status": 200,
+    "callCount": 1,
+    "providerLatencyMs": 2174,
+    "latencyMs": 2187,
+    "rawAnswer": "Skydiving runs only in safe conditions, and the person on the ground decides what is safe. Diving is called on sea state and visibility. If your load, flight, or dive is held for weather you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund of anything you have paid. There is no charge and no admin fee for a weather move. It is the most common reason an activity does not run and it is nobody's fault. (https://www.greedyadventures.com/cancellations#page-content)",
+    "guard": {
+      "accepted": true,
+      "reason": "accepted",
+      "text": "Skydiving runs only in safe conditions, and the person on the ground decides what is safe. Diving is called on sea state and visibility. If your load, flight, or dive is held for weather you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund of anything you have paid. There is no charge and no admin fee for a weather move. It is the most common reason an activity does not run and it is nobody's fault. (https://www.greedyadventures.com/cancellations#page-content)"
+    },
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"a0c9b8f9-f9a0-4a33-9ca1-3ea2f04e2d9b\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"google\",\"modelId\":\"gemini-2.5-flash\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"Skydiving runs only in safe conditions, and the person on the ground decides what is safe. Diving is called on sea state and visibility. If your load, flight, or dive is held for weather you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund of anything you have paid. There is no charge and no admin fee for a weather move. It is the most common reason an activity does not run and it is nobody's fault. (https://www.greedyadventures.com/cancellations#page-content)\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"google\",\"modelId\":\"gemini-2.5-flash\",\"isDemo\":false}}\n\ndata: [DONE]\n\n"
+  }
+]

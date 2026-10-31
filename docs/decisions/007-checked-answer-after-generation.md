@@ -40,3 +40,7 @@ Credentialed verification subsequently produced mixed successes, timeouts and ra
 ## Phase 1.7 supersession
 
 ADR 009 replaces post-tool model continuation with one generation step and a pure registry summary. The existing checked-answer boundary remains: grounded same-step text is retained, otherwise media use the registry summary; text-only unsupported answers become the existing refusal. No stream or tool-result schema change.
+
+## Current supersession
+
+ADR 011 replaces the former corpus and verbatim-line check with real dated website sections and citation/numeric property validation. Static imports and single-call generation remain. See current knowledge-and-media.md and api.md; earlier response fixtures are not current evidence.

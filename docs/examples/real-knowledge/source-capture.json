@@ -1,0 +1,90 @@
+{
+  "capturedAt": "2026-10-31",
+  "pages": [
+    "https://www.greedyadventures.com/experiences/sea-view-skydiving",
+    "https://www.greedyadventures.com/cancellations"
+  ],
+  "htmlSha256": {
+    "experience": "76ff539fdc7795be056858979cd08ed8f29980a782559216164e25086cb099ad",
+    "cancellations": "ec24b02b2c124d973db05ec29b2084489cc1a3d6f072e47203afd04233a8c293"
+  },
+  "sources": [
+    {
+      "file": "data/knowledge/eco.json",
+      "title": "ECO",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+    },
+    {
+      "file": "data/knowledge/deluxe.json",
+      "title": "DELUXE",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+    },
+    {
+      "file": "data/knowledge/vip.json",
+      "title": "VIP",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+    },
+    {
+      "file": "data/knowledge/included.json",
+      "title": "What's included",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+    },
+    {
+      "file": "data/knowledge/plan.json",
+      "title": "The plan",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day"
+    },
+    {
+      "file": "data/knowledge/jump-facts.json",
+      "title": "Jump facts: altitude, freefall, canopy, instructor and time",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+    },
+    {
+      "file": "data/knowledge/location.json",
+      "title": "Location and operator",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details"
+    },
+    {
+      "file": "data/knowledge/faq-location.json",
+      "title": "Where does the activity take place?",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+    },
+    {
+      "file": "data/knowledge/faq-package.json",
+      "title": "Which package should I choose?",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+    },
+    {
+      "file": "data/knowledge/faq-pickup.json",
+      "title": "Is Bangkok pickup available?",
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs"
+    },
+    {
+      "file": "data/knowledge/weather.json",
+      "title": "If the weather stops the activity",
+      "url": "https://www.greedyadventures.com/cancellations#page-content"
+    },
+    {
+      "file": "data/knowledge/cancel.json",
+      "title": "If you cancel",
+      "url": "https://www.greedyadventures.com/cancellations#page-content"
+    },
+    {
+      "file": "data/knowledge/no-show.json",
+      "title": "If you do not turn up",
+      "url": "https://www.greedyadventures.com/cancellations#page-content"
+    },
+    {
+      "file": "data/knowledge/insurance.json",
+      "title": "Travel insurance",
+      "url": "https://www.greedyadventures.com/cancellations#page-content"
+    },
+    {
+      "file": "data/knowledge/refunds.json",
+      "title": "Refunds",
+      "url": "https://www.greedyadventures.com/cancellations#page-content"
+    }
+  ],
+  "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg",
+  "note": "Only requested logical sections retained. Text extracted from the two fetched pages; no contradiction reconciliation."
+}

@@ -64,7 +64,7 @@ it('maps provider rate limits', () => {
     mapError(
       new APICallError({
         message: 'private',
-        url: 'https://example.com',
+        url: 'https://provider.invalid',
         requestBodyValues: {},
         statusCode: 429,
       }),

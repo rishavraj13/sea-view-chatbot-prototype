@@ -19,3 +19,7 @@ Lowering threshold (does not fix the actual refusal and adds weak matches); remo
 ## Consequences
 
 A formatting difference no longer discards a verbatim sourced fact. Prompted refusal applies to missing facts, while the guard still refuses unsupported model output. Retrieval is more tolerant of common customer terms but is not semantic coreference or a general language stemmer. Citation normalization does not accept arbitrary paraphrases. One live diagnostic was used; corrected behavior is established by an exact offline replay to respect the user's budget.
+
+## Current supersession
+
+ADR 011 replaces the former corpus and verbatim-line check with real dated website sections and citation/numeric property validation. Static imports and single-call generation remain. See current knowledge-and-media.md and api.md; earlier response fixtures are not current evidence.

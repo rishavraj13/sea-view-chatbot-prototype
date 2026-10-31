@@ -24,9 +24,9 @@ const results = cases.map((item) => {
     })),
   };
 });
-await mkdir('docs/examples/covered-info', { recursive: true });
+await mkdir('docs/examples/real-knowledge', { recursive: true });
 await writeFile(
-  'docs/examples/covered-info/retrieval-quality.json',
+  'docs/examples/real-knowledge/retrieval-quality.json',
   JSON.stringify(
     {
       evidence: 'OFFLINE pure retrieval; zero provider calls',

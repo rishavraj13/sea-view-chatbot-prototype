@@ -1,3 +1,3 @@
-# Phase 1 backend documentation
+# Backend documentation
 
-See architecture.md, api.md, knowledge-and-media.md, testing.md, ai-assistance.md, progress-log.md and decisions/. The original scaffold phase was followed by the explicitly approved backend scope. At completion the backend is frozen pending approved contract changes.
+Current: api.md, architecture.md, knowledge-and-media.md, testing.md, providers.md, ai-assistance.md, progress-log.md and real-knowledge-report.md. ADR 011 records the new provenance and guard boundary. Obsolete fictional reports/captures are explicitly superseded in place.

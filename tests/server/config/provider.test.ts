@@ -13,7 +13,7 @@ it.each(['google', 'groq', 'openrouter'])(
     });
     expect(trace.mode).toBe('mock');
     expect(trace.provider).toBe(provider);
-    expect(trace.text).toContain('[MOCK DEMO]');
+    expect(trace.text).toContain('[MOCK]');
     expect(modelMetadataSchema.safeParse(trace).success).toBe(true);
   },
 );

@@ -1,5 +1,7 @@
 {
-  "google": 3,
-  "groq": 0,
-  "openrouter": 0
+  "superseded": true,
+  "historicalContentRemoved": true,
+  "sha256BeforeRedaction": "876d72e88a35130ba8025a3f100cba73119c00c31210c28fbafffbd6e8c44205",
+  "reason": "Fictional knowledge capture retired; do not treat this file as current API evidence.",
+  "currentEvidence": "docs/examples/real-knowledge/"
 }

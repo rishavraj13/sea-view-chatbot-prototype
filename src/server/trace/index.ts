@@ -5,6 +5,7 @@ import type { ModelMetadata } from '../config';
 /** Exact context, tool execution, and model mode; never includes history or secrets. */
 export interface Trace extends ModelMetadata {
   mode: 'live' | 'mock';
+  isDemo: boolean;
   chunks: Chunk[];
   context: string;
   toolCalls: {
@@ -19,6 +20,7 @@ export interface Trace extends ModelMetadata {
 export function buildTrace(metadata: ModelMetadata, chunks: Chunk[]): Trace {
   return {
     ...metadata,
+    isDemo: chunks.some((chunk) => chunk.source.isDemo),
     chunks,
     context: buildModelContext(chunks),
     toolCalls: [],

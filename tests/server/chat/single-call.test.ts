@@ -3,7 +3,11 @@ import { MockLanguageModelV4 } from 'ai/test';
 import { retrieve } from '../../../src/server/knowledge';
 import { APICallError } from 'ai';
 import { POST } from '../../../src/app/api/chat/route';
-import diagnostic from '../../../docs/examples/covered-info/live-before.json';
+const diagnostic = {
+  question: 'How much is the VIP package?',
+  modelText:
+    'The VIP package is ฿14,000 per person. [https://www.greedyadventures.com/experiences/sea-view-skydiving#options]',
+};
 const state = vi.hoisted(() => ({ model: null as MockLanguageModelV4 | null }));
 vi.mock('@ai-sdk/google', () => ({
   createGoogleGenerativeAI: () => () => state.model,
@@ -22,7 +26,7 @@ beforeEach(() => {
   vi.stubEnv('MODEL_MODE', 'live');
   vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'MOCK-key-never-network');
 });
-it('MOCK replay of the exact live trailing-citation answer returns the covered price in one call', async () => {
+it('MOCK replay of the real-fact trailing-citation fixture returns the covered price in one call', async () => {
   const model = new MockLanguageModelV4({
     doGenerate: {
       content: [{ type: 'text', text: diagnostic.modelText }],
@@ -33,8 +37,10 @@ it('MOCK replay of the exact live trailing-citation answer returns the covered p
   });
   state.model = model;
   const trace = await runPipeline({ messages: [user(diagnostic.question)] });
-  expect(trace.text).toContain('USD 250');
-  expect(trace.text).toContain('https://example.com/sea-view-demo/pricing');
+  expect(trace.text).toContain('฿14,000');
+  expect(trace.text).toContain(
+    'https://www.greedyadventures.com/experiences/sea-view-skydiving#options',
+  );
   expect(trace.text).not.toContain('I do not have');
   expect(model.doGenerateCalls).toHaveLength(1);
 });
@@ -94,7 +100,7 @@ it.each([
   },
 );
 it('keeps grounded text emitted with tools and never calls for a continuation', async () => {
-  const chunk = retrieve('pricing price')[0]!;
+  const chunk = retrieve('VIP price')[0]!;
   const text = `[${chunk.source.url}] ${chunk.text}`;
   const model = new MockLanguageModelV4({
     doGenerate: {
@@ -114,7 +120,7 @@ it('keeps grounded text emitted with tools and never calls for a continuation', 
   });
   state.model = model;
   const trace = await runPipeline({
-    messages: [user('pricing price and brochure')],
+    messages: [user('VIP price and brochure')],
   });
   expect(trace.text).toContain(text);
   expect(trace.text).toContain('/demo/brochure.pdf');

@@ -1,4 +1,7 @@
 {
-  "google": 1,
-  "maximum": 1
+  "superseded": true,
+  "historicalContentRemoved": true,
+  "sha256BeforeRedaction": "1bac2ed553587727664d88416e2677d010dfabcce3a011961d664962d9e08325",
+  "reason": "Fictional knowledge capture retired; do not treat this file as current API evidence.",
+  "currentEvidence": "docs/examples/real-knowledge/"
 }

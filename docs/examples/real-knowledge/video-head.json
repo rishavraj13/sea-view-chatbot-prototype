@@ -1,0 +1,9 @@
+{
+  "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+  "method": "HEAD",
+  "checkedAt": "2026-10-31",
+  "status": 200,
+  "contentType": "video/mp4",
+  "contentLength": "12777587",
+  "note": "One HEAD request; response body not read; video not downloaded."
+}

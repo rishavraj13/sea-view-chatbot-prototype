@@ -5,6 +5,7 @@ const base = {
   title: z.string(),
   url: z.string(),
   isDemo: z.boolean(),
+  posterUrl: z.url().optional(),
 };
 /** Discriminated payload consumed by assistant-ui tool renderers. */
 export const mediaResultSchema = z.discriminatedUnion('kind', [
@@ -18,7 +19,7 @@ export const mediaResultSchema = z.discriminatedUnion('kind', [
 ]);
 /** Validated tool result; unavailable URLs are empty and must not be rendered. */
 export type MediaResult = z.infer<typeof mediaResultSchema>;
-/** Public demo asset registry, bundled for serverless. */
+/** Public website video and explicitly demo-labelled PDF registry, bundled for serverless. */
 export const registry = z
   .array(
     z.object({
@@ -39,9 +40,9 @@ export function resolveMedia(
     return {
       kind: 'unavailable',
       id,
-      title: asset?.title ?? 'Unknown demo asset',
+      title: asset?.title ?? 'Unknown asset',
       url: '',
-      isDemo: true,
+      isDemo: asset?.isDemo ?? false,
       reason: !asset
         ? 'unknown'
         : !asset.available

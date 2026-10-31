@@ -19,3 +19,15 @@ it('validates discriminated tool payloads', () => {
     false,
   );
 });
+it('keeps actual-video, generated-brochure and retired flags distinct', () => {
+  expect(resolveMedia('video', 'video')).toMatchObject({
+    isDemo: false,
+    posterUrl:
+      'https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg',
+  });
+  expect(resolveMedia('brochure', 'pdf').isDemo).toBe(true);
+  expect(resolveMedia('retired', 'pdf')).toMatchObject({
+    kind: 'unavailable',
+    isDemo: true,
+  });
+});

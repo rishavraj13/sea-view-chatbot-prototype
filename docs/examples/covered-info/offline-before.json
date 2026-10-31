@@ -1,52 +1,7 @@
 {
-  "evidence": "OFFLINE MOCK trace route; no provider generation",
-  "question": "What is the demo tandem price?",
-  "retrievalQuery": "What is the demo tandem price?",
-  "threshold": 1,
-  "providerCalls": 0,
-  "status": 200,
-  "trace": {
-    "mode": "mock",
-    "provider": "google",
-    "modelId": "gemini-2.5-flash",
-    "chunks": [
-      {
-        "id": "1-0",
-        "text": "DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.",
-        "source": {
-          "title": "Pricing",
-          "url": "https://example.com/sea-view-demo/pricing",
-          "capturedAt": "2026-10-30T00:00:00Z",
-          "text": "DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer."
-        },
-        "score": 3
-      },
-      {
-        "id": "0-0",
-        "text": "DEMO CONTENT: The tandem package includes a briefing, equipment, instructor and jump. Photos are not included.",
-        "source": {
-          "title": "Package inclusions",
-          "url": "https://example.com/sea-view-demo/packages",
-          "capturedAt": "2026-10-30T00:00:00Z",
-          "text": "DEMO CONTENT: The tandem package includes a briefing, equipment, instructor and jump. Photos are not included."
-        },
-        "score": 2
-      },
-      {
-        "id": "2-0",
-        "text": "DEMO CONTENT: Safety briefing is required. An instructor checks equipment. Eligibility requires operator confirmation; no medical advice is supplied.",
-        "source": {
-          "title": "Safety",
-          "url": "https://example.com/sea-view-demo/safety",
-          "capturedAt": "2026-10-30T00:00:00Z",
-          "text": "DEMO CONTENT: Safety briefing is required. An instructor checks equipment. Eligibility requires operator confirmation; no medical advice is supplied."
-        },
-        "score": 1
-      }
-    ],
-    "context": "[https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.\n[https://example.com/sea-view-demo/packages] DEMO CONTENT: The tandem package includes a briefing, equipment, instructor and jump. Photos are not included.\n[https://example.com/sea-view-demo/safety] DEMO CONTENT: Safety briefing is required. An instructor checks equipment. Eligibility requires operator confirmation; no medical advice is supplied.",
-    "toolCalls": [],
-    "media": [],
-    "text": "[MOCK DEMO] [https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.\n[https://example.com/sea-view-demo/packages] DEMO CONTENT: The tandem package includes a briefing, equipment, instructor and jump. Photos are not included.\n[https://example.com/sea-view-demo/safety] DEMO CONTENT: Safety briefing is required. An instructor checks equipment. Eligibility requires operator confirmation; no medical advice is supplied."
-  }
+  "superseded": true,
+  "historicalContentRemoved": true,
+  "sha256BeforeRedaction": "9888db25029a297cf760a5a6cff00a9b9b3422ad30257c44df83e161cdc06762",
+  "reason": "Fictional knowledge capture retired; do not treat this file as current API evidence.",
+  "currentEvidence": "docs/examples/real-knowledge/"
 }

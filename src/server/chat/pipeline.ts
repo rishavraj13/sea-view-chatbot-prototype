@@ -43,12 +43,14 @@ export async function runPipeline(
   };
   const tools = {
     sendBrochure: tool({
-      description: 'Send demo PDF brochure; default id brochure.',
+      description:
+        'Send generated demo PDF brochure with real package facts; default id brochure.',
       inputSchema: z.object({ id: z.string().max(100).default('brochure') }),
       execute: async ({ id }) => execute('sendBrochure', id),
     }),
     showVideo: tool({
-      description: 'Show demo sample video; default id video.',
+      description:
+        'Show the real website skydiving video as an external link; default id video.',
       inputSchema: z.object({ id: z.string().max(100).default('video') }),
       execute: async ({ id }) => execute('showVideo', id),
     }),
@@ -60,7 +62,7 @@ export async function runPipeline(
     if (trace.mode === 'mock') {
       for (const item of selection) execute(item.name, item.id);
       trace.text =
-        '[MOCK DEMO] ' +
+        '[MOCK] ' +
         (trace.chunks.length
           ? trace.context
           : 'I do not have that information.');
@@ -85,6 +87,9 @@ export async function runPipeline(
     const summary = summarizeMedia(trace.media);
     if (summary)
       trace.text = trace.text ? `${trace.text}\n${summary}` : summary;
+    trace.isDemo =
+      trace.chunks.some((c) => c.source.isDemo) ||
+      trace.media.some((m) => m.isDemo);
     return trace;
   } catch (error) {
     throw mapError(error);

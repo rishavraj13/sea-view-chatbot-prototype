@@ -11,26 +11,28 @@ it('first turn uses the current user text', () => {
 });
 it('dependent follow-up carries prior user topic, never assistant claims', () => {
   const messages = [
-    user('What is the tandem package price?'),
+    user('What is included?'),
     {
       role: 'assistant',
       parts: [{ type: 'text', text: 'Untrusted quantum claims' }],
     },
-    user('What does that include?'),
+    user('Does that include a certificate?'),
   ];
   const query = buildRetrievalQuery(messages);
-  expect(query).toContain('tandem package price');
+  expect(query).toContain('included');
   expect(query).not.toContain('quantum');
   expect(
-    retrieve(query).some((c) => c.source.title === 'Package inclusions'),
+    retrieve(query).some((c) => c.source.title === "What's included"),
   ).toBe(true);
 });
 it('a topic change discards old retrieval terms', () => {
   const query = buildRetrievalQuery([
-    user('tandem package price'),
+    user('included'),
     user('What is the weather cancellation policy?'),
   ]);
   expect(query).toBe('What is the weather cancellation policy?');
-  expect(retrieve(query)[0]?.source.title).toBe('Weather cancellation');
+  expect(retrieve(query)[0]?.source.title).toBe(
+    'If the weather stops the activity',
+  );
   expect(query).not.toContain('price');
 });

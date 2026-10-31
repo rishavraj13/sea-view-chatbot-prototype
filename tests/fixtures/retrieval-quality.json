@@ -1,38 +1,142 @@
 [
   {
-    "question": "What is included in the package?",
-    "expected": "Package inclusions"
-  },
-  { "question": "What's in the package?", "expected": "Package inclusions" },
-  { "question": "What do I get?", "expected": "Package inclusions" },
-  { "question": "How much does it cost?", "expected": "Pricing" },
-  { "question": "What if it rains?", "expected": "Weather cancellation" },
-  { "question": "Where do I meet?", "expected": "Location booking" },
-  { "question": "What is the demo tandem price?", "expected": "Pricing" },
-  {
-    "question": "What is the price of the tandem package?",
-    "expected": "Pricing"
-  },
-  { "question": "Are photos included?", "expected": "Package inclusions" },
-  { "question": "How much per person?", "expected": "Pricing" },
-  {
-    "question": "Can I reschedule after rain?",
-    "expected": "Weather cancellation"
+    "question": "How much is the VIP package?",
+    "expected": "VIP"
   },
   {
-    "question": "What happens if weather cancels the jump?",
-    "expected": "Weather cancellation"
+    "question": "How much does ECO cost?",
+    "expected": "ECO"
   },
   {
-    "question": "What are the refund terms?",
-    "expected": "Weather cancellation"
+    "question": "What is the DELUXE price?",
+    "expected": "DELUXE"
   },
-  { "question": "Where is the meeting point?", "expected": "Location booking" },
-  { "question": "How do I book?", "expected": "Location booking" },
-  { "question": "Do I need a safety briefing?", "expected": "Safety" },
-  { "question": "What equipment checks happen?", "expected": "Safety" },
-  { "question": "Can I pay with Bitcoin?", "expected": null },
-  { "question": "Do you offer hotel accommodation?", "expected": null },
-  { "question": "Is scuba diving available?", "expected": null },
-  { "question": "When should I arrive?", "expected": null }
+  {
+    "question": "What is included?",
+    "expected": "What's included"
+  },
+  {
+    "question": "How high is the jump?",
+    "expected": "Jump facts: altitude, freefall, canopy, instructor and time"
+  },
+  {
+    "question": "What if it rains?",
+    "expected": "If the weather stops the activity"
+  },
+  {
+    "question": "Can I cancel?",
+    "expected": "If you cancel"
+  },
+  {
+    "question": "Do I get photos with ECO?",
+    "expected": "ECO"
+  },
+  {
+    "question": "Where do I meet?",
+    "expected": "Location and operator"
+  },
+  {
+    "question": "How long does it take?",
+    "expected": "Jump facts: altitude, freefall, canopy, instructor and time"
+  },
+  {
+    "question": "Who operates the dropzone?",
+    "expected": "Location and operator"
+  },
+  {
+    "question": "Is Bangkok pickup available?",
+    "expected": "Is Bangkok pickup available?"
+  },
+  {
+    "question": "Which package should I choose?",
+    "expected": "Which package should I choose?"
+  },
+  {
+    "question": "Where does the activity take place?",
+    "expected": "Where does the activity take place?"
+  },
+  {
+    "question": "Is the instructor USPA certified?",
+    "expected": "Jump facts: altitude, freefall, canopy, instructor and time"
+  },
+  {
+    "question": "How long is the freefall?",
+    "expected": "Jump facts: altitude, freefall, canopy, instructor and time"
+  },
+  {
+    "question": "How long is the canopy flight?",
+    "expected": "Jump facts: altitude, freefall, canopy, instructor and time"
+  },
+  {
+    "question": "Do I need previous experience?",
+    "expected": "Jump facts: altitude, freefall, canopy, instructor and time"
+  },
+  {
+    "question": "Is a certificate included?",
+    "expected": "What's included"
+  },
+  {
+    "question": "Do I need photo ID for check-in?",
+    "expected": "The plan"
+  },
+  {
+    "question": "What are the five steps of the plan?",
+    "expected": "The plan"
+  },
+  {
+    "question": "What is the DELUXE tagline?",
+    "expected": "DELUXE"
+  },
+  {
+    "question": "Does VIP have a personal cameraman?",
+    "expected": "VIP"
+  },
+  {
+    "question": "What happens if I do not turn up?",
+    "expected": "If you do not turn up"
+  },
+  {
+    "question": "How are refunds paid?",
+    "expected": "Refunds"
+  },
+  {
+    "question": "What travel insurance do you recommend?",
+    "expected": "Travel insurance"
+  },
+  {
+    "question": "Can I reschedule if it rains?",
+    "expected": "If the weather stops the activity"
+  },
+  {
+    "question": "How much cancellation notice should I give?",
+    "expected": "If you cancel"
+  },
+  {
+    "question": "What is the age limit for this jump?",
+    "expected": null
+  },
+  {
+    "question": "What is the weight limit?",
+    "expected": null
+  },
+  {
+    "question": "Which health conditions prevent a jump?",
+    "expected": null
+  },
+  {
+    "question": "What should I wear for the jump?",
+    "expected": null
+  },
+  {
+    "question": "What is the Bangkok pickup price?",
+    "expected": null
+  },
+  {
+    "question": "What are the baggage rules?",
+    "expected": null
+  },
+  {
+    "question": "Can a child jump?",
+    "expected": null
+  }
 ]

@@ -1,41 +1,7 @@
 {
-  "evidence": "OFFLINE MOCK trace route; no provider generation",
-  "question": "What is the demo tandem price?",
-  "retrievalQuery": "What is the demo tandem price?",
-  "threshold": 1,
-  "providerCalls": 0,
-  "status": 200,
-  "trace": {
-    "mode": "mock",
-    "provider": "google",
-    "modelId": "gemini-2.5-flash",
-    "chunks": [
-      {
-        "id": "1-0",
-        "text": "DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.",
-        "source": {
-          "title": "Pricing",
-          "url": "https://example.com/sea-view-demo/pricing",
-          "capturedAt": "2026-10-30T00:00:00Z",
-          "text": "DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer."
-        },
-        "score": 4
-      },
-      {
-        "id": "0-0",
-        "text": "DEMO CONTENT: The tandem package includes a briefing, equipment, instructor and jump. Photos are not included.",
-        "source": {
-          "title": "Package inclusions",
-          "url": "https://example.com/sea-view-demo/packages",
-          "capturedAt": "2026-10-30T00:00:00Z",
-          "text": "DEMO CONTENT: The tandem package includes a briefing, equipment, instructor and jump. Photos are not included."
-        },
-        "score": 1
-      }
-    ],
-    "context": "[https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.\n[https://example.com/sea-view-demo/packages] DEMO CONTENT: The tandem package includes a briefing, equipment, instructor and jump. Photos are not included.",
-    "toolCalls": [],
-    "media": [],
-    "text": "[MOCK DEMO] [https://example.com/sea-view-demo/pricing] DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer.\n[https://example.com/sea-view-demo/packages] DEMO CONTENT: The tandem package includes a briefing, equipment, instructor and jump. Photos are not included."
-  }
+  "superseded": true,
+  "historicalContentRemoved": true,
+  "sha256BeforeRedaction": "cd3cb1d10129a3266e9341a74e7f30328cde9acce614e6cef461efdcd4218c57",
+  "reason": "Fictional knowledge capture retired; do not treat this file as current API evidence.",
+  "currentEvidence": "docs/examples/real-knowledge/"
 }

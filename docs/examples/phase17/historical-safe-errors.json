@@ -1,35 +1,7 @@
 {
-  "TIMEOUT": {
-    "source": "docs/examples/verification/credentialed-live.json",
-    "status": 504,
-    "response": {
-      "mode": "live",
-      "error": {
-        "code": "TIMEOUT",
-        "message": "The model timed out. Please retry."
-      }
-    }
-  },
-  "RATE_LIMIT": {
-    "source": "docs/examples/verification/credentialed-live.json",
-    "status": 429,
-    "response": {
-      "mode": "live",
-      "error": {
-        "code": "RATE_LIMIT",
-        "message": "The model rate limit was reached. Please retry later."
-      }
-    }
-  },
-  "MODEL_FAILURE": {
-    "source": "docs/examples/verification/invalid-key.json",
-    "status": 502,
-    "response": {
-      "mode": "live",
-      "error": {
-        "code": "MODEL_FAILURE",
-        "message": "The model is temporarily unavailable."
-      }
-    }
-  }
+  "superseded": true,
+  "historicalContentRemoved": true,
+  "sha256BeforeRedaction": "6ad1cb5772e1fcade19e07aac0184b3d5db130f11941598282e1a11c264ef4c2",
+  "reason": "Fictional knowledge capture retired; do not treat this file as current API evidence.",
+  "currentEvidence": "docs/examples/real-knowledge/"
 }
