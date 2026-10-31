@@ -155,3 +155,25 @@ npm run build
 The 32 new offline cases exercise unchanged status mapping, present/absent/garbage retry headers, clamping, HTTP dates, schema rejection of invalid integers or retry fields on other errors, actual mocked Groq HTTP through chat and trace, one log per mapped error, safe type/code fallback from response JSON, fixed header allowlisting, key/conversation exclusion and no input-error log. All HTTP in these tests is MOCK; no provider/network call occurs. Six separately captured mocked route responses are explicitly labelled OFFLINE MOCK in examples/rate-limit-diagnostics/mock-errors.json. Raw provider error messages are never made public. Both routes validate the same public error envelope.
 
 Full diagnostic headers, interpretation and real final command output are in rate-limit-diagnostics-report.md. The observed header limits are daily requests and per-minute tokens; a later successful minimal call cannot identify the bucket behind the earlier production 429. This revision is not deployed.
+
+## backend-v1: production redeployment plus labelled mock
+
+Both deploy the clean 6710c21 archive, with no code changes:
+
+- Live: https://sea-view-chatbot-prototype.vercel.app — live Groq qwen/qwen3.8-27b, reasoning none, unchanged environment/key, shared free quota.
+- Mock: https://sea-view-chatbot-prototype-mock.vercel.app — explicit mock mode, no provider key, deterministic [MOCK] text and mode:mock metadata, zero provider calls.
+
+Both are anonymously accessible with protection off. Public sources equal the committed 18-section dataset with no extra/env/conversation fields; PDF returns 200/application/pdf/%PDF-; external-video HEAD returns 200/video/mp4; invalid chat returns typed INVALID_INPUT/400. Actual Vercel metadata confirms nodejs26.x and maxDuration 30/30/10 for chat/trace/sources on both. The mock valid chat was consumed with DefaultChatTransport/readUIMessageStream, asserted both media tools and the mock label.
+
+The unchanged verify:live harness was run from a fresh task-specific working directory, preserving every prior campaign ledger. Equivalent entry command used, with no .env.local/key needed in remote mode:
+
+```powershell
+# Working directory: C:\assignment\.next\release-checks
+node C:\assignment\node_modules\tsx\dist\cli.mjs --tsconfig C:\assignment\tsconfig.json C:\assignment\scripts\verify-live.mjs --base-url https://sea-view-chatbot-prototype.vercel.app
+```
+
+All eight requested turns passed; eight requests/provider calls expected from the one-step code, no retries, minimum measured start spacing 10.101 seconds. Brochure, video and both returned exactly the requested tools under required choice. No 429 occurred, so no retryAfterSeconds or request-specific provider_error event needed retrieval; logging was not deliberately triggered with an extra call. The cap is spent: do not rerun this campaign. Its files were copied to docs/examples/backend-v1/live before temporary directories were cleared by build. Existing root production-smoke, source-attribution and direct-diagnostic ledgers remain unchanged.
+
+Raw public wire/visible answers, separate sources and executed results are preserved. Private pre-guard provider text and upstream HTTP count remain unobservable over the unchanged API; expected one provider call per turn is based on deployed code/offline tests, while eight public requests are directly measured. No direct provider requests were made in this deployment task. There is no automatic fallback between URLs. Mock is a separately selected, always-available scripted fallback independent of provider quota, not a live model substitute presented as live.
+
+See backend-v1-release-report.md for the full table, every answer, deployment output and real final typecheck/lint/test/build output. The existing protected citation-report edit remains untouched. Source provenance remains real knowledge/video plus a demo PDF, independent of generation mode. The planned Knowledge test button uses one live call per valid test on the live site.

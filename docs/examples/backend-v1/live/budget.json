@@ -1,0 +1,8 @@
+{
+  "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+  "cap": 8,
+  "minimumSpacingMs": 10000,
+  "calls": 8,
+  "lastCallAt": 1793467336103,
+  "stopped429": false
+}

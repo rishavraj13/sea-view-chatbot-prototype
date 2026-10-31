@@ -1,0 +1,136 @@
+{
+  "evidence": "REAL anonymous HTTP to explicit keyless mock deployment; scripted mock answers, ZERO provider calls",
+  "baseUrl": "https://sea-view-chatbot-prototype-mock.vercel.app",
+  "deployedCommit": "6710c21ee3dcccd04b591e3b64031c4f3e0b009a",
+  "checks": [
+    {
+      "name": "anonymous homepage",
+      "status": 200
+    },
+    {
+      "name": "public sources only, exact committed data",
+      "status": 200,
+      "sections": 18
+    },
+    {
+      "name": "demo PDF",
+      "status": 200,
+      "signature": "%PDF-",
+      "contentType": "application/pdf"
+    },
+    {
+      "name": "external video HEAD only",
+      "status": 200,
+      "contentType": "video/mp4"
+    },
+    {
+      "name": "invalid chat",
+      "status": 400,
+      "body": {
+        "mode": "mock",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "error": {
+          "code": "INVALID_INPUT",
+          "message": "Invalid message history."
+        }
+      }
+    },
+    {
+      "name": "mock chat through real SDK parser",
+      "status": 200,
+      "mode": "mock",
+      "hasMockLabel": true,
+      "tools": ["tool-sendBrochure", "tool-showVideo"],
+      "providerCalls": 0
+    },
+    {
+      "name": "deployed runtime/maxDuration",
+      "functions": [
+        {
+          "path": "api/chat",
+          "runtime": "nodejs26.x",
+          "maxDuration": 30
+        },
+        {
+          "path": "api/knowledge/trace",
+          "runtime": "nodejs26.x",
+          "maxDuration": 30
+        },
+        {
+          "path": "api/knowledge/sources",
+          "runtime": "nodejs26.x",
+          "maxDuration": 10
+        }
+      ]
+    }
+  ],
+  "message": {
+    "id": "d7c83b71-793c-4c2f-ae75-da7306c325ba",
+    "metadata": {
+      "mode": "mock",
+      "provider": "groq",
+      "modelId": "qwen/qwen3.8-27b",
+      "isDemo": true
+    },
+    "role": "assistant",
+    "parts": [
+      {
+        "type": "step-start"
+      },
+      {
+        "type": "tool-sendBrochure",
+        "toolCallId": "tool-0",
+        "state": "output-available",
+        "input": {
+          "id": "brochure"
+        },
+        "output": {
+          "id": "brochure",
+          "title": "Sea View Skydiving package brochure",
+          "url": "/demo/brochure.pdf",
+          "isDemo": true,
+          "kind": "brochure",
+          "type": "pdf"
+        }
+      },
+      {
+        "type": "tool-showVideo",
+        "toolCallId": "tool-1",
+        "state": "output-available",
+        "input": {
+          "id": "video"
+        },
+        "output": {
+          "id": "video",
+          "title": "Sea View Skydiving - page video (external link)",
+          "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+          "isDemo": false,
+          "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg",
+          "kind": "video",
+          "type": "video"
+        }
+      },
+      {
+        "type": "text",
+        "text": "[MOCK] DELUXE\nVideo and photos included\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿12,500 per person\nVIP\nPersonal cameraman and edited film\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿14,000 per person\nWhich package should I choose?\nChoose ECO for the standard jump, Deluxe if you want handy cam video, and VIP if you want full media coverage.\nHere is the brochure (demo material).\nHere is the video.",
+        "state": "done"
+      },
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "title": "DELUXE"
+      },
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs",
+        "title": "Which package should I choose?"
+      }
+    ]
+  },
+  "visibleText": "[MOCK] DELUXE\nVideo and photos included\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿12,500 per person\nVIP\nPersonal cameraman and edited film\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿14,000 per person\nWhich package should I choose?\nChoose ECO for the standard jump, Deluxe if you want handy cam video, and VIP if you want full media coverage.\nHere is the brochure (demo material).\nHere is the video.",
+  "wire": "data: {\"type\":\"start\",\"messageId\":\"d7c83b71-793c-4c2f-ae75-da7306c325ba\",\"messageMetadata\":{\"mode\":\"mock\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-0\",\"toolName\":\"sendBrochure\",\"input\":{\"id\":\"brochure\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-0\",\"output\":{\"id\":\"brochure\",\"title\":\"Sea View Skydiving package brochure\",\"url\":\"/demo/brochure.pdf\",\"isDemo\":true,\"kind\":\"brochure\",\"type\":\"pdf\"}}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-1\",\"toolName\":\"showVideo\",\"input\":{\"id\":\"video\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-1\",\"output\":{\"id\":\"video\",\"title\":\"Sea View Skydiving - page video (external link)\",\"url\":\"https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4\",\"isDemo\":false,\"posterUrl\":\"https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg\",\"kind\":\"video\",\"type\":\"video\"}}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"[MOCK] DELUXE\\nVideo and photos included\\nIncluded\\nTandem skydive experience in Pattaya, Thailand\\nSafety briefing and tandem instructor support\\nAircraft ascent and ocean-view jump experience\\nCertificate of completion\\n฿12,500 per person\\nVIP\\nPersonal cameraman and edited film\\nIncluded\\nTandem skydive experience in Pattaya, Thailand\\nSafety briefing and tandem instructor support\\nAircraft ascent and ocean-view jump experience\\nCertificate of completion\\n฿14,000 per person\\nWhich package should I choose?\\nChoose ECO for the standard jump, Deluxe if you want handy cam video, and VIP if you want full media coverage.\\nHere is the brochure (demo material).\\nHere is the video.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"url\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"title\":\"DELUXE\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs\",\"url\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs\",\"title\":\"Which package should I choose?\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"mock\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: [DONE]\n\n",
+  "passed": true
+}

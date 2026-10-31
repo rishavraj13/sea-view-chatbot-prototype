@@ -1,0 +1,1118 @@
+[
+  {
+    "id": "brochure",
+    "question": "Can you send me a brochure?",
+    "evidence": "LIVE deployed endpoint through DefaultChatTransport + readUIMessageStream; no direct provider request",
+    "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "request": {
+      "messages": [
+        {
+          "id": "production-brochure",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Can you send me a brochure?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 200,
+    "startedAt": "2026-10-31T17:21:05.353Z",
+    "latencyMs": 1362,
+    "transportRequests": 1,
+    "providerCalls": {
+      "expected": 1,
+      "measured": null,
+      "basis": "Committed pipeline has one generateText call, maxRetries=0, no continuation; upstream dispatch is not observable over the public API"
+    },
+    "rawProviderAnswer": null,
+    "rawAnswerMeaning": "Exact unsanitized text received from deployed UIMessage stream, after the existing server guard; private pre-guard provider text is not exposed",
+    "rawAnswer": "Here is the brochure (demo material).",
+    "visibleText": "Here is the brochure (demo material).",
+    "message": {
+      "id": "cf2ec22a-88a7-4cbf-bd73-03418a493f19",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": true
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "tool-sendBrochure",
+          "toolCallId": "tool-0",
+          "state": "output-available",
+          "input": {
+            "id": "brochure"
+          },
+          "output": {
+            "id": "brochure",
+            "title": "Sea View Skydiving package brochure",
+            "url": "/demo/brochure.pdf",
+            "isDemo": true,
+            "kind": "brochure",
+            "type": "pdf"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Here is the brochure (demo material).",
+          "state": "done"
+        }
+      ]
+    },
+    "citations": [],
+    "tools": [
+      {
+        "type": "tool-sendBrochure",
+        "toolCallId": "tool-0",
+        "state": "output-available",
+        "input": {
+          "id": "brochure"
+        },
+        "output": {
+          "id": "brochure",
+          "title": "Sea View Skydiving package brochure",
+          "url": "/demo/brochure.pdf",
+          "isDemo": true,
+          "kind": "brochure",
+          "type": "pdf"
+        }
+      }
+    ],
+    "rateLimitHeaders": {},
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"cf2ec22a-88a7-4cbf-bd73-03418a493f19\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-0\",\"toolName\":\"sendBrochure\",\"input\":{\"id\":\"brochure\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-0\",\"output\":{\"id\":\"brochure\",\"title\":\"Sea View Skydiving package brochure\",\"url\":\"/demo/brochure.pdf\",\"isDemo\":true,\"kind\":\"brochure\",\"type\":\"pdf\"}}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"Here is the brochure (demo material).\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "one transport request; no retries",
+        "passed": true
+      },
+      {
+        "name": "live Groq Qwen metadata",
+        "passed": true
+      },
+      {
+        "name": "nonempty answer",
+        "passed": true
+      },
+      {
+        "name": "no raw URL or citation label",
+        "passed": true
+      },
+      {
+        "name": "no serialized parts or retrieval language",
+        "passed": true
+      },
+      {
+        "name": "exact requested executed tools",
+        "passed": true
+      },
+      {
+        "name": "valid structured source shapes",
+        "passed": true
+      },
+      {
+        "name": "valid available media shapes",
+        "passed": true
+      },
+      {
+        "name": "no refusal beside media",
+        "passed": true
+      },
+      {
+        "name": "one demo badge per demo result",
+        "passed": true
+      },
+      {
+        "name": "PDF and video kinds match tools",
+        "passed": true
+      },
+      {
+        "name": "no refusal on covered question or requested file",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "video",
+    "question": "Can I see a video of the experience?",
+    "evidence": "LIVE deployed endpoint through DefaultChatTransport + readUIMessageStream; no direct provider request",
+    "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "request": {
+      "messages": [
+        {
+          "id": "production-video",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Can I see a video of the experience?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 200,
+    "startedAt": "2026-10-31T17:21:15.465Z",
+    "latencyMs": 765,
+    "transportRequests": 1,
+    "providerCalls": {
+      "expected": 1,
+      "measured": null,
+      "basis": "Committed pipeline has one generateText call, maxRetries=0, no continuation; upstream dispatch is not observable over the public API"
+    },
+    "rawProviderAnswer": null,
+    "rawAnswerMeaning": "Exact unsanitized text received from deployed UIMessage stream, after the existing server guard; private pre-guard provider text is not exposed",
+    "rawAnswer": "Here is the video.",
+    "visibleText": "Here is the video.",
+    "message": {
+      "id": "33a96b39-8d81-4994-9522-dacc514ec559",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": false
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "tool-showVideo",
+          "toolCallId": "tool-0",
+          "state": "output-available",
+          "input": {
+            "id": "video"
+          },
+          "output": {
+            "id": "video",
+            "title": "Sea View Skydiving - page video (external link)",
+            "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+            "isDemo": false,
+            "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg",
+            "kind": "video",
+            "type": "video"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Here is the video.",
+          "state": "done"
+        }
+      ]
+    },
+    "citations": [],
+    "tools": [
+      {
+        "type": "tool-showVideo",
+        "toolCallId": "tool-0",
+        "state": "output-available",
+        "input": {
+          "id": "video"
+        },
+        "output": {
+          "id": "video",
+          "title": "Sea View Skydiving - page video (external link)",
+          "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+          "isDemo": false,
+          "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg",
+          "kind": "video",
+          "type": "video"
+        }
+      }
+    ],
+    "rateLimitHeaders": {},
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"33a96b39-8d81-4994-9522-dacc514ec559\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-0\",\"toolName\":\"showVideo\",\"input\":{\"id\":\"video\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-0\",\"output\":{\"id\":\"video\",\"title\":\"Sea View Skydiving - page video (external link)\",\"url\":\"https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4\",\"isDemo\":false,\"posterUrl\":\"https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg\",\"kind\":\"video\",\"type\":\"video\"}}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"Here is the video.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "one transport request; no retries",
+        "passed": true
+      },
+      {
+        "name": "live Groq Qwen metadata",
+        "passed": true
+      },
+      {
+        "name": "nonempty answer",
+        "passed": true
+      },
+      {
+        "name": "no raw URL or citation label",
+        "passed": true
+      },
+      {
+        "name": "no serialized parts or retrieval language",
+        "passed": true
+      },
+      {
+        "name": "exact requested executed tools",
+        "passed": true
+      },
+      {
+        "name": "valid structured source shapes",
+        "passed": true
+      },
+      {
+        "name": "valid available media shapes",
+        "passed": true
+      },
+      {
+        "name": "no refusal beside media",
+        "passed": true
+      },
+      {
+        "name": "one demo badge per demo result",
+        "passed": true
+      },
+      {
+        "name": "PDF and video kinds match tools",
+        "passed": true
+      },
+      {
+        "name": "no refusal on covered question or requested file",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "both",
+    "question": "Send me the brochure and a video.",
+    "evidence": "LIVE deployed endpoint through DefaultChatTransport + readUIMessageStream; no direct provider request",
+    "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "request": {
+      "messages": [
+        {
+          "id": "production-both",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send me the brochure and a video."
+            }
+          ]
+        }
+      ]
+    },
+    "status": 200,
+    "startedAt": "2026-10-31T17:21:25.579Z",
+    "latencyMs": 714,
+    "transportRequests": 1,
+    "providerCalls": {
+      "expected": 1,
+      "measured": null,
+      "basis": "Committed pipeline has one generateText call, maxRetries=0, no continuation; upstream dispatch is not observable over the public API"
+    },
+    "rawProviderAnswer": null,
+    "rawAnswerMeaning": "Exact unsanitized text received from deployed UIMessage stream, after the existing server guard; private pre-guard provider text is not exposed",
+    "rawAnswer": "Here is the brochure (demo material).\nHere is the video.",
+    "visibleText": "Here is the brochure (demo material).\nHere is the video.",
+    "message": {
+      "id": "2146aad6-90e1-41eb-b6b4-83ea02e2d2fe",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": true
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "tool-sendBrochure",
+          "toolCallId": "tool-0",
+          "state": "output-available",
+          "input": {
+            "id": "brochure"
+          },
+          "output": {
+            "id": "brochure",
+            "title": "Sea View Skydiving package brochure",
+            "url": "/demo/brochure.pdf",
+            "isDemo": true,
+            "kind": "brochure",
+            "type": "pdf"
+          }
+        },
+        {
+          "type": "tool-showVideo",
+          "toolCallId": "tool-1",
+          "state": "output-available",
+          "input": {
+            "id": "video"
+          },
+          "output": {
+            "id": "video",
+            "title": "Sea View Skydiving - page video (external link)",
+            "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+            "isDemo": false,
+            "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg",
+            "kind": "video",
+            "type": "video"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Here is the brochure (demo material).\nHere is the video.",
+          "state": "done"
+        }
+      ]
+    },
+    "citations": [],
+    "tools": [
+      {
+        "type": "tool-sendBrochure",
+        "toolCallId": "tool-0",
+        "state": "output-available",
+        "input": {
+          "id": "brochure"
+        },
+        "output": {
+          "id": "brochure",
+          "title": "Sea View Skydiving package brochure",
+          "url": "/demo/brochure.pdf",
+          "isDemo": true,
+          "kind": "brochure",
+          "type": "pdf"
+        }
+      },
+      {
+        "type": "tool-showVideo",
+        "toolCallId": "tool-1",
+        "state": "output-available",
+        "input": {
+          "id": "video"
+        },
+        "output": {
+          "id": "video",
+          "title": "Sea View Skydiving - page video (external link)",
+          "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+          "isDemo": false,
+          "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg",
+          "kind": "video",
+          "type": "video"
+        }
+      }
+    ],
+    "rateLimitHeaders": {},
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"2146aad6-90e1-41eb-b6b4-83ea02e2d2fe\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-0\",\"toolName\":\"sendBrochure\",\"input\":{\"id\":\"brochure\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-0\",\"output\":{\"id\":\"brochure\",\"title\":\"Sea View Skydiving package brochure\",\"url\":\"/demo/brochure.pdf\",\"isDemo\":true,\"kind\":\"brochure\",\"type\":\"pdf\"}}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-1\",\"toolName\":\"showVideo\",\"input\":{\"id\":\"video\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-1\",\"output\":{\"id\":\"video\",\"title\":\"Sea View Skydiving - page video (external link)\",\"url\":\"https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4\",\"isDemo\":false,\"posterUrl\":\"https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg\",\"kind\":\"video\",\"type\":\"video\"}}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"Here is the brochure (demo material).\\nHere is the video.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "one transport request; no retries",
+        "passed": true
+      },
+      {
+        "name": "live Groq Qwen metadata",
+        "passed": true
+      },
+      {
+        "name": "nonempty answer",
+        "passed": true
+      },
+      {
+        "name": "no raw URL or citation label",
+        "passed": true
+      },
+      {
+        "name": "no serialized parts or retrieval language",
+        "passed": true
+      },
+      {
+        "name": "exact requested executed tools",
+        "passed": true
+      },
+      {
+        "name": "valid structured source shapes",
+        "passed": true
+      },
+      {
+        "name": "valid available media shapes",
+        "passed": true
+      },
+      {
+        "name": "no refusal beside media",
+        "passed": true
+      },
+      {
+        "name": "one demo badge per demo result",
+        "passed": true
+      },
+      {
+        "name": "PDF and video kinds match tools",
+        "passed": true
+      },
+      {
+        "name": "no refusal on covered question or requested file",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "included",
+    "question": "What is included in the package?",
+    "evidence": "LIVE deployed endpoint through DefaultChatTransport + readUIMessageStream; no direct provider request",
+    "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "request": {
+      "messages": [
+        {
+          "id": "production-included",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What is included in the package?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 200,
+    "startedAt": "2026-10-31T17:21:35.683Z",
+    "latencyMs": 1329,
+    "transportRequests": 1,
+    "providerCalls": {
+      "expected": 1,
+      "measured": null,
+      "basis": "Committed pipeline has one generateText call, maxRetries=0, no continuation; upstream dispatch is not observable over the public API"
+    },
+    "rawProviderAnswer": null,
+    "rawAnswerMeaning": "Exact unsanitized text received from deployed UIMessage stream, after the existing server guard; private pre-guard provider text is not exposed",
+    "rawAnswer": "The Sea View Skydiving package includes a tandem skydive in Pattaya, a safety briefing, a tandem instructor, the aircraft ascent with an ocean-view jump, and a certificate of completion.",
+    "visibleText": "The Sea View Skydiving package includes a tandem skydive in Pattaya, a safety briefing, a tandem instructor, the aircraft ascent with an ocean-view jump, and a certificate of completion.",
+    "message": {
+      "id": "41f4f651-d965-4494-aa7e-e06545102a9c",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": false
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "text",
+          "text": "The Sea View Skydiving package includes a tandem skydive in Pattaya, a safety briefing, a tandem instructor, the aircraft ascent with an ocean-view jump, and a certificate of completion.",
+          "state": "done"
+        },
+        {
+          "type": "source-url",
+          "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details",
+          "title": "What's included"
+        }
+      ]
+    },
+    "citations": [
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details",
+        "title": "What's included"
+      }
+    ],
+    "tools": [],
+    "rateLimitHeaders": {},
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"41f4f651-d965-4494-aa7e-e06545102a9c\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"The Sea View Skydiving package includes a tandem skydive in Pattaya, a safety briefing, a tandem instructor, the aircraft ascent with an ocean-view jump, and a certificate of completion.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#details\",\"url\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#details\",\"title\":\"What's included\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "one transport request; no retries",
+        "passed": true
+      },
+      {
+        "name": "live Groq Qwen metadata",
+        "passed": true
+      },
+      {
+        "name": "nonempty answer",
+        "passed": true
+      },
+      {
+        "name": "no raw URL or citation label",
+        "passed": true
+      },
+      {
+        "name": "no serialized parts or retrieval language",
+        "passed": true
+      },
+      {
+        "name": "exact requested executed tools",
+        "passed": true
+      },
+      {
+        "name": "valid structured source shapes",
+        "passed": true
+      },
+      {
+        "name": "valid available media shapes",
+        "passed": true
+      },
+      {
+        "name": "no refusal beside media",
+        "passed": true
+      },
+      {
+        "name": "covered fact answered with structured sources",
+        "passed": true
+      },
+      {
+        "name": "terminal factual punctuation",
+        "passed": true
+      },
+      {
+        "name": "no refusal on covered question or requested file",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "vip",
+    "question": "How much is the VIP package?",
+    "evidence": "LIVE deployed endpoint through DefaultChatTransport + readUIMessageStream; no direct provider request",
+    "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "request": {
+      "messages": [
+        {
+          "id": "production-vip",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "How much is the VIP package?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 200,
+    "startedAt": "2026-10-31T17:21:45.784Z",
+    "latencyMs": 1029,
+    "transportRequests": 1,
+    "providerCalls": {
+      "expected": 1,
+      "measured": null,
+      "basis": "Committed pipeline has one generateText call, maxRetries=0, no continuation; upstream dispatch is not observable over the public API"
+    },
+    "rawProviderAnswer": null,
+    "rawAnswerMeaning": "Exact unsanitized text received from deployed UIMessage stream, after the existing server guard; private pre-guard provider text is not exposed",
+    "rawAnswer": "The VIP package costs ฿14,000 per person and includes a personal cameraman and edited film.",
+    "visibleText": "The VIP package costs ฿14,000 per person and includes a personal cameraman and edited film.",
+    "message": {
+      "id": "b41672b0-ade6-4972-9488-7d63676f6cdd",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": false
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "text",
+          "text": "The VIP package costs ฿14,000 per person and includes a personal cameraman and edited film.",
+          "state": "done"
+        },
+        {
+          "type": "source-url",
+          "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+          "title": "VIP"
+        }
+      ]
+    },
+    "citations": [
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "title": "VIP"
+      }
+    ],
+    "tools": [],
+    "rateLimitHeaders": {},
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"b41672b0-ade6-4972-9488-7d63676f6cdd\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"The VIP package costs ฿14,000 per person and includes a personal cameraman and edited film.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"url\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"title\":\"VIP\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "one transport request; no retries",
+        "passed": true
+      },
+      {
+        "name": "live Groq Qwen metadata",
+        "passed": true
+      },
+      {
+        "name": "nonempty answer",
+        "passed": true
+      },
+      {
+        "name": "no raw URL or citation label",
+        "passed": true
+      },
+      {
+        "name": "no serialized parts or retrieval language",
+        "passed": true
+      },
+      {
+        "name": "exact requested executed tools",
+        "passed": true
+      },
+      {
+        "name": "valid structured source shapes",
+        "passed": true
+      },
+      {
+        "name": "valid available media shapes",
+        "passed": true
+      },
+      {
+        "name": "no refusal beside media",
+        "passed": true
+      },
+      {
+        "name": "covered fact answered with structured sources",
+        "passed": true
+      },
+      {
+        "name": "terminal factual punctuation",
+        "passed": true
+      },
+      {
+        "name": "no refusal on covered question or requested file",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "follow-up",
+    "question": "and what's included?",
+    "evidence": "LIVE deployed endpoint through DefaultChatTransport + readUIMessageStream; no direct provider request",
+    "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "request": {
+      "messages": [
+        {
+          "id": "production-vip",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "How much is the VIP package?"
+            }
+          ]
+        },
+        {
+          "id": "b41672b0-ade6-4972-9488-7d63676f6cdd",
+          "role": "assistant",
+          "parts": [
+            {
+              "type": "step-start"
+            },
+            {
+              "type": "text",
+              "text": "The VIP package costs ฿14,000 per person and includes a personal cameraman and edited film."
+            },
+            {
+              "type": "source-url",
+              "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+              "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+              "title": "VIP"
+            }
+          ]
+        },
+        {
+          "id": "production-follow-up",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "and what's included?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 200,
+    "startedAt": "2026-10-31T17:21:55.892Z",
+    "latencyMs": 700,
+    "transportRequests": 1,
+    "providerCalls": {
+      "expected": 1,
+      "measured": null,
+      "basis": "Committed pipeline has one generateText call, maxRetries=0, no continuation; upstream dispatch is not observable over the public API"
+    },
+    "rawProviderAnswer": null,
+    "rawAnswerMeaning": "Exact unsanitized text received from deployed UIMessage stream, after the existing server guard; private pre-guard provider text is not exposed",
+    "rawAnswer": "The VIP package includes a tandem skydive in Pattaya, a personal cameraman with an edited film, a safety briefing, tandem instructor support, an aircraft ascent with an ocean-view jump, and a certificate of completion.",
+    "visibleText": "The VIP package includes a tandem skydive in Pattaya, a personal cameraman with an edited film, a safety briefing, tandem instructor support, an aircraft ascent with an ocean-view jump, and a certificate of completion.",
+    "message": {
+      "id": "65b3f406-3710-4689-82de-fec5e88ff7be",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": false
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "text",
+          "text": "The VIP package includes a tandem skydive in Pattaya, a personal cameraman with an edited film, a safety briefing, tandem instructor support, an aircraft ascent with an ocean-view jump, and a certificate of completion.",
+          "state": "done"
+        },
+        {
+          "type": "source-url",
+          "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+          "title": "VIP"
+        },
+        {
+          "type": "source-url",
+          "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details",
+          "title": "What's included"
+        }
+      ]
+    },
+    "citations": [
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "title": "VIP"
+      },
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#details",
+        "title": "What's included"
+      }
+    ],
+    "tools": [],
+    "rateLimitHeaders": {},
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"65b3f406-3710-4689-82de-fec5e88ff7be\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"The VIP package includes a tandem skydive in Pattaya, a personal cameraman with an edited film, a safety briefing, tandem instructor support, an aircraft ascent with an ocean-view jump, and a certificate of completion.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"url\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"title\":\"VIP\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#details\",\"url\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#details\",\"title\":\"What's included\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "one transport request; no retries",
+        "passed": true
+      },
+      {
+        "name": "live Groq Qwen metadata",
+        "passed": true
+      },
+      {
+        "name": "nonempty answer",
+        "passed": true
+      },
+      {
+        "name": "no raw URL or citation label",
+        "passed": true
+      },
+      {
+        "name": "no serialized parts or retrieval language",
+        "passed": true
+      },
+      {
+        "name": "exact requested executed tools",
+        "passed": true
+      },
+      {
+        "name": "valid structured source shapes",
+        "passed": true
+      },
+      {
+        "name": "valid available media shapes",
+        "passed": true
+      },
+      {
+        "name": "no refusal beside media",
+        "passed": true
+      },
+      {
+        "name": "covered fact answered with structured sources",
+        "passed": true
+      },
+      {
+        "name": "terminal factual punctuation",
+        "passed": true
+      },
+      {
+        "name": "no refusal on covered question or requested file",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "rain",
+    "question": "What if it rains?",
+    "evidence": "LIVE deployed endpoint through DefaultChatTransport + readUIMessageStream; no direct provider request",
+    "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "request": {
+      "messages": [
+        {
+          "id": "production-rain",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What if it rains?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 200,
+    "startedAt": "2026-10-31T17:22:06.002Z",
+    "latencyMs": 1601,
+    "transportRequests": 1,
+    "providerCalls": {
+      "expected": 1,
+      "measured": null,
+      "basis": "Committed pipeline has one generateText call, maxRetries=0, no continuation; upstream dispatch is not observable over the public API"
+    },
+    "rawProviderAnswer": null,
+    "rawAnswerMeaning": "Exact unsanitized text received from deployed UIMessage stream, after the existing server guard; private pre-guard provider text is not exposed",
+    "rawAnswer": "Skydiving only runs in safe conditions, so rain could lead to a hold. If your activity is held for weather, you can wait for the next window the same day, move to any other date, or receive a full refund at no cost. There are no charges or admin fees for weather-related moves.",
+    "visibleText": "Skydiving only runs in safe conditions, so rain could lead to a hold. If your activity is held for weather, you can wait for the next window the same day, move to any other date, or receive a full refund at no cost. There are no charges or admin fees for weather-related moves.",
+    "message": {
+      "id": "a0134bda-d482-4fb9-88de-d37b65013fbc",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": false
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "text",
+          "text": "Skydiving only runs in safe conditions, so rain could lead to a hold. If your activity is held for weather, you can wait for the next window the same day, move to any other date, or receive a full refund at no cost. There are no charges or admin fees for weather-related moves.",
+          "state": "done"
+        },
+        {
+          "type": "source-url",
+          "sourceId": "https://www.greedyadventures.com/cancellations#page-content",
+          "url": "https://www.greedyadventures.com/cancellations#page-content",
+          "title": "If the weather stops the activity"
+        }
+      ]
+    },
+    "citations": [
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/cancellations#page-content",
+        "url": "https://www.greedyadventures.com/cancellations#page-content",
+        "title": "If the weather stops the activity"
+      }
+    ],
+    "tools": [],
+    "rateLimitHeaders": {},
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"a0134bda-d482-4fb9-88de-d37b65013fbc\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"Skydiving only runs in safe conditions, so rain could lead to a hold. If your activity is held for weather, you can wait for the next window the same day, move to any other date, or receive a full refund at no cost. There are no charges or admin fees for weather-related moves.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/cancellations#page-content\",\"url\":\"https://www.greedyadventures.com/cancellations#page-content\",\"title\":\"If the weather stops the activity\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "one transport request; no retries",
+        "passed": true
+      },
+      {
+        "name": "live Groq Qwen metadata",
+        "passed": true
+      },
+      {
+        "name": "nonempty answer",
+        "passed": true
+      },
+      {
+        "name": "no raw URL or citation label",
+        "passed": true
+      },
+      {
+        "name": "no serialized parts or retrieval language",
+        "passed": true
+      },
+      {
+        "name": "exact requested executed tools",
+        "passed": true
+      },
+      {
+        "name": "valid structured source shapes",
+        "passed": true
+      },
+      {
+        "name": "valid available media shapes",
+        "passed": true
+      },
+      {
+        "name": "no refusal beside media",
+        "passed": true
+      },
+      {
+        "name": "covered fact answered with structured sources",
+        "passed": true
+      },
+      {
+        "name": "terminal factual punctuation",
+        "passed": true
+      },
+      {
+        "name": "no refusal on covered question or requested file",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "age",
+    "question": "What is the age limit?",
+    "evidence": "LIVE deployed endpoint through DefaultChatTransport + readUIMessageStream; no direct provider request",
+    "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "request": {
+      "messages": [
+        {
+          "id": "production-age",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What is the age limit?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 200,
+    "startedAt": "2026-10-31T17:22:16.103Z",
+    "latencyMs": 1445,
+    "transportRequests": 1,
+    "providerCalls": {
+      "expected": 1,
+      "measured": null,
+      "basis": "Committed pipeline has one generateText call, maxRetries=0, no continuation; upstream dispatch is not observable over the public API"
+    },
+    "rawProviderAnswer": null,
+    "rawAnswerMeaning": "Exact unsanitized text received from deployed UIMessage stream, after the existing server guard; private pre-guard provider text is not exposed",
+    "rawAnswer": "I do not have that information.",
+    "visibleText": "I do not have that information.",
+    "message": {
+      "id": "60b4daa7-7a4d-4f95-9061-8c5caee992c3",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": false
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "text",
+          "text": "I do not have that information.",
+          "state": "done"
+        }
+      ]
+    },
+    "citations": [],
+    "tools": [],
+    "rateLimitHeaders": {},
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"60b4daa7-7a4d-4f95-9061-8c5caee992c3\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"I do not have that information.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "one transport request; no retries",
+        "passed": true
+      },
+      {
+        "name": "live Groq Qwen metadata",
+        "passed": true
+      },
+      {
+        "name": "nonempty answer",
+        "passed": true
+      },
+      {
+        "name": "no raw URL or citation label",
+        "passed": true
+      },
+      {
+        "name": "no serialized parts or retrieval language",
+        "passed": true
+      },
+      {
+        "name": "exact requested executed tools",
+        "passed": true
+      },
+      {
+        "name": "valid structured source shapes",
+        "passed": true
+      },
+      {
+        "name": "valid available media shapes",
+        "passed": true
+      },
+      {
+        "name": "no refusal beside media",
+        "passed": true
+      },
+      {
+        "name": "unsupported question refused without sources",
+        "passed": true
+      }
+    ],
+    "passed": true
+  }
+]

@@ -1,0 +1,46 @@
+{
+  "sourceCommit": "6710c21ee3dcccd04b591e3b64031c4f3e0b009a",
+  "source": "Both deployments use a clean git archive; no application/script/test/config code changes in this task",
+  "live": {
+    "url": "https://sea-view-chatbot-prototype.vercel.app",
+    "immutableUrl": "https://sea-view-chatbot-prototype-j93w5onmm-rishiiwithai-4565.vercel.app",
+    "deploymentId": "dpl_2aM7vssHSjsa2KmybFNXKgDj9TXd",
+    "project": "sea-view-chatbot-prototype",
+    "mode": "live",
+    "provider": "groq",
+    "modelId": "qwen/qwen3.8-27b",
+    "reasoningEffort": "none",
+    "environment": "Unchanged; existing production secret retained, value never read/printed in this task",
+    "protection": []
+  },
+  "mock": {
+    "url": "https://sea-view-chatbot-prototype-mock.vercel.app",
+    "immutableUrl": "https://sea-view-chatbot-prototype-mock-mvx3u2mrj-rishiiwithai-4565.vercel.app",
+    "deploymentId": "dpl_FYt5GAnCSXNaJgv3hum53Kq5FW3V",
+    "projectId": "prj_sxzSYCvqHxdDzTmjECSI1qsiNp01",
+    "project": "sea-view-chatbot-prototype-mock",
+    "mode": "mock",
+    "provider": "groq",
+    "modelId": "qwen/qwen3.8-27b",
+    "reasoningEffort": "none",
+    "configuredEnvironmentNames": [
+      "REASONING_EFFORT",
+      "MODEL_ID",
+      "MODEL_PROVIDER",
+      "MODEL_MODE"
+    ],
+    "providerKeysPresent": false,
+    "protection": []
+  },
+  "automaticFallback": false,
+  "smoke": {
+    "attempted": 8,
+    "passed": 8,
+    "reruns": 0,
+    "stopped429": false,
+    "minimumStartSpacingSeconds": 10.101,
+    "requiredBrochure": true,
+    "requiredVideo": true,
+    "requiredBoth": true
+  }
+}
