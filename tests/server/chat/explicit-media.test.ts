@@ -5,11 +5,11 @@ vi.mock('ai', async (original) => ({
   generateText: async (options: {
     tools: {
       sendBrochure: {
-        execute: (input: { id: string }) => Promise<MediaResult>;
+        execute: () => Promise<MediaResult>;
       };
     };
   }) => {
-    await options.tools.sendBrochure.execute({ id: 'brochure' });
+    await options.tools.sendBrochure.execute();
     return { text: '' };
   },
 }));
@@ -32,7 +32,7 @@ it('MOCK provider substitution cannot override an explicit unavailable asset ID'
       kind: 'unavailable',
       id: 'retired',
     });
-    expect(trace.text).toContain('unavailable');
+    expect(trace.text).toContain("isn't available");
   } finally {
     vi.stubEnv('MODEL_MODE', 'mock');
     vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', '');

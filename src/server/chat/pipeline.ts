@@ -10,6 +10,7 @@ import { selectMedia } from './media-selection';
 import { summarizeMedia } from './media-summary';
 import { buildSystemPrompt, groundedAnswer } from './answer';
 import { presentCitations } from './citations';
+import { hasMediaIntent } from './media-intent';
 /** Shared request-local pipeline for chat and trace; no conversation persistence. */
 export async function runPipeline(
   request: ChatRequest,
@@ -45,15 +46,15 @@ export async function runPipeline(
   const tools = {
     sendBrochure: tool({
       description:
-        'Send generated demo PDF brochure with real package facts; default id brochure.',
-      inputSchema: z.object({ id: z.string().max(100).default('brochure') }),
-      execute: async ({ id }) => execute('sendBrochure', id),
+        'Call only when the customer asks to receive the brochure/PDF file itself. Never call to answer a question about its contents, inclusions, price or photos. The registry resolves the fixed brochure; no id parameter.',
+      inputSchema: z.strictObject({}),
+      execute: async () => execute('sendBrochure', 'brochure'),
     }),
     showVideo: tool({
       description:
-        'Show the real website skydiving video as an external link; default id video.',
-      inputSchema: z.object({ id: z.string().max(100).default('video') }),
-      execute: async ({ id }) => execute('showVideo', id),
+        'Call only when the customer asks to receive or watch the video file itself. Never call to answer a question about its contents or package benefits. The registry resolves the fixed video; no id parameter.',
+      inputSchema: z.strictObject({}),
+      execute: async () => execute('showVideo', 'video'),
     }),
   };
   try {
@@ -77,7 +78,7 @@ export async function runPipeline(
             .map((p) => (p.type === 'text' ? p.text : JSON.stringify(p)))
             .join('\n'),
         })),
-        tools,
+        ...(hasMediaIntent(question) ? { tools } : {}),
         providerOptions: p.providerOptions,
         maxOutputTokens: 1500,
         maxRetries: 0,

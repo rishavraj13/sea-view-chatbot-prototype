@@ -1,0 +1,11 @@
+{
+  "calls": 40,
+  "lastCallAt": 1793442299851,
+  "stopped429": false,
+  "runs": [
+    "qwen-qwen3-8-27b-initial",
+    "qwen-qwen3-8-27b-rerun",
+    "llama-3-3-70b-versatile-initial",
+    "llama-3-3-70b-versatile-rerun"
+  ]
+}

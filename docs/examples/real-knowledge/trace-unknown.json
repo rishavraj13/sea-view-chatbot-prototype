@@ -6,8 +6,8 @@
   "status": 200,
   "response": {
     "mode": "mock",
-    "provider": "google",
-    "modelId": "gemini-2.5-flash",
+    "provider": "groq",
+    "modelId": "qwen/qwen3.8-27b",
     "isDemo": false,
     "chunks": [],
     "context": "",

@@ -1,0 +1,387 @@
+[
+  {
+    "id": "brief-pdf",
+    "question": "Send me the PDF",
+    "attempt": "rerun",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "qwen/qwen3.8-27b",
+    "request": {
+      "messages": [
+        {
+          "id": "qwen-qwen3-8-27b-rerun-brief-pdf",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send me the PDF"
+            }
+          ]
+        }
+      ]
+    },
+    "message": {
+      "id": "43341bac-b87b-4482-b8a4-ba17a61b1200",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": true
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "tool-sendBrochure",
+          "toolCallId": "tool-0",
+          "state": "output-available",
+          "input": {
+            "id": "brochure"
+          },
+          "output": {
+            "id": "brochure",
+            "title": "Sea View Skydiving package brochure",
+            "url": "/demo/brochure.pdf",
+            "isDemo": true,
+            "kind": "brochure",
+            "type": "pdf"
+          }
+        },
+        {
+          "type": "text",
+          "text": "Here is Sea View Skydiving package brochure (demo material).",
+          "state": "done"
+        }
+      ]
+    },
+    "status": 200,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:14.835Z",
+    "latencyMs": 696,
+    "providerLatencyMs": 627,
+    "rawAnswer": "",
+    "rawToolCalls": [
+      {
+        "id": "as34md9r4",
+        "type": "function",
+        "function": {
+          "name": "sendBrochure",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "citations": [],
+    "tools": [
+      {
+        "type": "tool-sendBrochure",
+        "toolCallId": "tool-0",
+        "state": "output-available",
+        "input": {
+          "id": "brochure"
+        },
+        "output": {
+          "id": "brochure",
+          "title": "Sea View Skydiving package brochure",
+          "url": "/demo/brochure.pdf",
+          "isDemo": true,
+          "kind": "brochure",
+          "type": "pdf"
+        }
+      }
+    ],
+    "visibleText": "Here is Sea View Skydiving package brochure (demo material).",
+    "guard": null,
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"43341bac-b87b-4482-b8a4-ba17a61b1200\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-0\",\"toolName\":\"sendBrochure\",\"input\":{\"id\":\"brochure\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-0\",\"output\":{\"id\":\"brochure\",\"title\":\"Sea View Skydiving package brochure\",\"url\":\"/demo/brochure.pdf\",\"isDemo\":true,\"kind\":\"brochure\",\"type\":\"pdf\"}}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"Here is Sea View Skydiving package brochure (demo material).\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": true
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "model selected requested tools",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      },
+      {
+        "name": "requested media available",
+        "passed": true
+      },
+      {
+        "name": "demo badge exactly matches flags",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "eco-photos",
+    "question": "Does ECO include photos?",
+    "attempt": "rerun",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "qwen/qwen3.8-27b",
+    "request": {
+      "messages": [
+        {
+          "id": "qwen-qwen3-8-27b-rerun-eco-photos",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Does ECO include photos?"
+            }
+          ]
+        }
+      ]
+    },
+    "message": {
+      "id": "bc9d34ea-73f4-40f8-8be5-471087c401dc",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": false
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "text",
+          "text": "The ECO package tagline is \"The jump, nothing else,\" and its listed inclusions are the tandem skydive experience, safety briefing and instructor support, aircraft ascent and ocean-view jump, and certificate of completion.\nI do not have that information regarding whether photos are included or excluded.",
+          "state": "done"
+        },
+        {
+          "type": "source-url",
+          "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+          "title": "ECO"
+        }
+      ]
+    },
+    "status": 200,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:17.951Z",
+    "latencyMs": 2846,
+    "providerLatencyMs": 364,
+    "rawAnswer": "The ECO package tagline is \"The jump, nothing else,\" and its listed inclusions are the tandem skydive experience, safety briefing and instructor support, aircraft ascent and ocean-view jump, and certificate of completion.\nI do not have that information regarding whether photos are included or excluded.\n[https://www.greedyadventures.com/experiences/sea-view-skydiving#options]",
+    "rawToolCalls": [],
+    "citations": [
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "title": "ECO"
+      }
+    ],
+    "tools": [],
+    "visibleText": "The ECO package tagline is \"The jump, nothing else,\" and its listed inclusions are the tandem skydive experience, safety briefing and instructor support, aircraft ascent and ocean-view jump, and certificate of completion.\nI do not have that information regarding whether photos are included or excluded.",
+    "guard": {
+      "accepted": true,
+      "reason": "accepted",
+      "text": "The ECO package tagline is \"The jump, nothing else,\" and its listed inclusions are the tandem skydive experience, safety briefing and instructor support, aircraft ascent and ocean-view jump, and certificate of completion.\nI do not have that information regarding whether photos are included or excluded.\n[https://www.greedyadventures.com/experiences/sea-view-skydiving#options]"
+    },
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"bc9d34ea-73f4-40f8-8be5-471087c401dc\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"The ECO package tagline is \\\"The jump, nothing else,\\\" and its listed inclusions are the tandem skydive experience, safety briefing and instructor support, aircraft ascent and ocean-view jump, and certificate of completion.\\nI do not have that information regarding whether photos are included or excluded.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"url\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"title\":\"ECO\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": true
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "factual answer has structured sources",
+        "passed": true
+      },
+      {
+        "name": "covered question not refused",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  {
+    "id": "retired",
+    "question": "Send the brochure with id retired.",
+    "attempt": "rerun",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "qwen/qwen3.8-27b",
+    "request": {
+      "messages": [
+        {
+          "id": "qwen-qwen3-8-27b-rerun-retired",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send the brochure with id retired."
+            }
+          ]
+        }
+      ]
+    },
+    "message": {
+      "id": "30b07c67-cfc7-4c32-ad18-49880a60f3b6",
+      "metadata": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "isDemo": true
+      },
+      "role": "assistant",
+      "parts": [
+        {
+          "type": "step-start"
+        },
+        {
+          "type": "tool-sendBrochure",
+          "toolCallId": "tool-0",
+          "state": "output-available",
+          "input": {
+            "id": "retired"
+          },
+          "output": {
+            "kind": "unavailable",
+            "id": "retired",
+            "title": "Retired brochure",
+            "url": "",
+            "isDemo": true,
+            "reason": "unavailable"
+          }
+        },
+        {
+          "type": "text",
+          "text": "I do not have that information.\nThat file isn't available right now. (demo material)",
+          "state": "done"
+        }
+      ]
+    },
+    "status": 200,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:21.061Z",
+    "latencyMs": 3145,
+    "providerLatencyMs": 424,
+    "rawAnswer": "The brochure registry resolves a single fixed brochure, so I can’t send one by a specific id. If you’d like the standard brochure, I can send it now.\n\n",
+    "rawToolCalls": [
+      {
+        "id": "jjp8h7xjg",
+        "type": "function",
+        "function": {
+          "name": "sendBrochure",
+          "arguments": "{}"
+        }
+      }
+    ],
+    "citations": [],
+    "tools": [
+      {
+        "type": "tool-sendBrochure",
+        "toolCallId": "tool-0",
+        "state": "output-available",
+        "input": {
+          "id": "retired"
+        },
+        "output": {
+          "kind": "unavailable",
+          "id": "retired",
+          "title": "Retired brochure",
+          "url": "",
+          "isDemo": true,
+          "reason": "unavailable"
+        }
+      }
+    ],
+    "visibleText": "I do not have that information.\nThat file isn't available right now. (demo material)",
+    "guard": {
+      "accepted": false,
+      "reason": "missing-citation",
+      "text": "I do not have that information."
+    },
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"30b07c67-cfc7-4c32-ad18-49880a60f3b6\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-0\",\"toolName\":\"sendBrochure\",\"input\":{\"id\":\"retired\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-0\",\"output\":{\"kind\":\"unavailable\",\"id\":\"retired\",\"title\":\"Retired brochure\",\"url\":\"\",\"isDemo\":true,\"reason\":\"unavailable\"}}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"I do not have that information.\\nThat file isn't available right now. (demo material)\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: [DONE]\n\n",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": true
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": true
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": false
+      },
+      {
+        "name": "retired asset unavailable with customer wording",
+        "passed": true
+      }
+    ],
+    "passed": false
+  }
+]

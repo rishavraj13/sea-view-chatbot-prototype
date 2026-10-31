@@ -1,0 +1,1364 @@
+[
+  {
+    "id": "included",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-included",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What is included in the package?"
+            }
+          ]
+        }
+      ]
+    },
+    "question": "What is included in the package?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:37.022Z",
+    "latencyMs": 695,
+    "providerLatencyMs": 651,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "factual answer has structured sources",
+        "passed": false
+      },
+      {
+        "name": "covered question not refused",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "brochure",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-brochure",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Can you send me a brochure?"
+            }
+          ]
+        }
+      ]
+    },
+    "question": "Can you send me a brochure?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:40.127Z",
+    "latencyMs": 2520,
+    "providerLatencyMs": 81,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": false
+      },
+      {
+        "name": "model selected requested tools",
+        "passed": false
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      },
+      {
+        "name": "requested media available",
+        "passed": true
+      },
+      {
+        "name": "demo badge exactly matches flags",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "video",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-video",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Can I see a video of the experience?"
+            }
+          ]
+        }
+      ]
+    },
+    "question": "Can I see a video of the experience?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:43.237Z",
+    "latencyMs": 3413,
+    "providerLatencyMs": 395,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": false
+      },
+      {
+        "name": "model selected requested tools",
+        "passed": false
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      },
+      {
+        "name": "requested media available",
+        "passed": true
+      },
+      {
+        "name": "demo badge exactly matches flags",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "both",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-both",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send me the brochure and a video."
+            }
+          ]
+        }
+      ]
+    },
+    "question": "Send me the brochure and a video.",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:46.342Z",
+    "latencyMs": 2779,
+    "providerLatencyMs": 71,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": false
+      },
+      {
+        "name": "model selected requested tools",
+        "passed": false
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      },
+      {
+        "name": "requested media available",
+        "passed": true
+      },
+      {
+        "name": "demo badge exactly matches flags",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "brief-brochure",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-brief-brochure",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Brochure please"
+            }
+          ]
+        }
+      ]
+    },
+    "question": "Brochure please",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:49.458Z",
+    "latencyMs": 3125,
+    "providerLatencyMs": 75,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": false
+      },
+      {
+        "name": "model selected requested tools",
+        "passed": false
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      },
+      {
+        "name": "requested media available",
+        "passed": true
+      },
+      {
+        "name": "demo badge exactly matches flags",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "brief-pdf",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-brief-pdf",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send me the PDF"
+            }
+          ]
+        }
+      ]
+    },
+    "question": "Send me the PDF",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:52.574Z",
+    "latencyMs": 3376,
+    "providerLatencyMs": 347,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": false
+      },
+      {
+        "name": "model selected requested tools",
+        "passed": false
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      },
+      {
+        "name": "requested media available",
+        "passed": true
+      },
+      {
+        "name": "demo badge exactly matches flags",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "brief-video",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-brief-video",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Show me a video"
+            }
+          ]
+        }
+      ]
+    },
+    "question": "Show me a video",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:55.675Z",
+    "latencyMs": 2980,
+    "providerLatencyMs": 234,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": false
+      },
+      {
+        "name": "model selected requested tools",
+        "passed": false
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      },
+      {
+        "name": "requested media available",
+        "passed": true
+      },
+      {
+        "name": "demo badge exactly matches flags",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "rain",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-rain",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What if it rains?"
+            }
+          ]
+        }
+      ]
+    },
+    "question": "What if it rains?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:21:58.784Z",
+    "latencyMs": 3153,
+    "providerLatencyMs": 281,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "factual answer has structured sources",
+        "passed": false
+      },
+      {
+        "name": "covered question not refused",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "cancel",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-cancel",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Can I cancel?"
+            }
+          ]
+        }
+      ]
+    },
+    "question": "Can I cancel?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:22:01.889Z",
+    "latencyMs": 3065,
+    "providerLatencyMs": 244,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "factual answer has structured sources",
+        "passed": false
+      },
+      {
+        "name": "covered question not refused",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "vip",
+    "passed": false,
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-vip",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "How much is the VIP package?"
+            }
+          ]
+        }
+      ]
+    },
+    "question": "How much is the VIP package?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "status": 502,
+    "providerCalls": 1,
+    "providerStartedAt": "2026-10-31T10:22:04.993Z",
+    "latencyMs": 3072,
+    "providerLatencyMs": 224,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "factual answer has structured sources",
+        "passed": false
+      },
+      {
+        "name": "covered question not refused",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "id": "follow-up",
+    "question": "and what's included?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-vip",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "How much is the VIP package?"
+            }
+          ]
+        },
+        {
+          "id": "llama-3-3-70b-versatile-initial-follow-up",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "and what's included?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 502,
+    "providerCalls": 1,
+    "providerStatus": 404,
+    "providerStartedAt": "2026-10-31T10:23:09.333Z",
+    "latencyMs": 219,
+    "providerLatencyMs": 173,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "factual answer has structured sources",
+        "passed": false
+      },
+      {
+        "name": "covered question not refused",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      }
+    ],
+    "passed": false
+  },
+  {
+    "id": "eco-photos",
+    "question": "Does ECO include photos?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-eco-photos",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Does ECO include photos?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 502,
+    "providerCalls": 1,
+    "providerStatus": 404,
+    "providerStartedAt": "2026-10-31T10:23:12.444Z",
+    "latencyMs": 3027,
+    "providerLatencyMs": 107,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "factual answer has structured sources",
+        "passed": false
+      },
+      {
+        "name": "covered question not refused",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      }
+    ],
+    "passed": false
+  },
+  {
+    "id": "altitude",
+    "question": "How high is the jump?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-altitude",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "How high is the jump?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 502,
+    "providerCalls": 1,
+    "providerStatus": 404,
+    "providerStartedAt": "2026-10-31T10:23:15.553Z",
+    "latencyMs": 3077,
+    "providerLatencyMs": 75,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "factual answer has structured sources",
+        "passed": false
+      },
+      {
+        "name": "covered question not refused",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      }
+    ],
+    "passed": false
+  },
+  {
+    "id": "retired",
+    "question": "Send the brochure with id retired.",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-retired",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send the brochure with id retired."
+            }
+          ]
+        }
+      ]
+    },
+    "status": 502,
+    "providerCalls": 1,
+    "providerStatus": 404,
+    "providerStartedAt": "2026-10-31T10:23:18.662Z",
+    "latencyMs": 3121,
+    "providerLatencyMs": 97,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": false
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      },
+      {
+        "name": "retired asset unavailable with customer wording",
+        "passed": false
+      }
+    ],
+    "passed": false
+  },
+  {
+    "id": "age",
+    "question": "What is the age limit?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-age",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What is the age limit?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 502,
+    "providerCalls": 1,
+    "providerStatus": 404,
+    "providerStartedAt": "2026-10-31T10:23:21.762Z",
+    "latencyMs": 3176,
+    "providerLatencyMs": 174,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "missing fact explicitly refused",
+        "passed": false
+      },
+      {
+        "name": "refusal has no citations",
+        "passed": true
+      }
+    ],
+    "passed": false
+  },
+  {
+    "id": "weight",
+    "question": "What is the weight limit?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-weight",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What is the weight limit?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 502,
+    "providerCalls": 1,
+    "providerStatus": 404,
+    "providerStartedAt": "2026-10-31T10:23:24.876Z",
+    "latencyMs": 3017,
+    "providerLatencyMs": 80,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "missing fact explicitly refused",
+        "passed": false
+      },
+      {
+        "name": "refusal has no citations",
+        "passed": true
+      }
+    ],
+    "passed": false
+  },
+  {
+    "id": "pickup-price",
+    "question": "What is the Bangkok pickup price?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-pickup-price",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What is the Bangkok pickup price?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 502,
+    "providerCalls": 1,
+    "providerStatus": 404,
+    "providerStartedAt": "2026-10-31T10:23:27.977Z",
+    "latencyMs": 3215,
+    "providerLatencyMs": 202,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "missing fact explicitly refused",
+        "passed": false
+      },
+      {
+        "name": "refusal has no citations",
+        "passed": true
+      }
+    ],
+    "passed": false
+  },
+  {
+    "id": "clothing",
+    "question": "What should I wear?",
+    "attempt": "initial",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-initial-clothing",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What should I wear?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 502,
+    "providerCalls": 1,
+    "providerStatus": 404,
+    "providerStartedAt": "2026-10-31T10:23:31.090Z",
+    "latencyMs": 2965,
+    "providerLatencyMs": 58,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "missing fact explicitly refused",
+        "passed": false
+      },
+      {
+        "name": "refusal has no citations",
+        "passed": true
+      }
+    ],
+    "passed": false
+  }
+]

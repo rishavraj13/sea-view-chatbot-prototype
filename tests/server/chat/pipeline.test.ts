@@ -51,7 +51,7 @@ it.each(['retired', 'unknown-asset'])(
     expect(trace.media).toHaveLength(1);
     expect(trace.media[0]).toMatchObject({ kind: 'unavailable', id, url: '' });
     expect(trace.toolCalls[0]?.input.id).toBe(id);
-    expect(trace.text).toContain('unavailable');
+    expect(trace.text).toMatch(/isn't available|couldn't find/);
   },
 );
 it('resolves an explicitly requested available video ID through its registry type', async () => {

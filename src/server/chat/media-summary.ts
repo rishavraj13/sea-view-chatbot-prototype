@@ -4,8 +4,8 @@ export function summarizeMedia(media: readonly MediaResult[]): string {
   return media
     .map((m) =>
       m.kind === 'unavailable'
-        ? `${m.title}: unavailable.`
-        : `${m.isDemo ? 'DEMO ' : ''}${m.title}: ${m.url}`,
+        ? `${m.reason === 'unknown' ? "I couldn't find that file." : m.reason === 'wrong-type' ? "That file isn't available in the requested format." : "That file isn't available right now."}${m.isDemo ? ' (demo material)' : ''}`
+        : `Here is ${m.title}${m.isDemo ? ' (demo material)' : ''}.`,
     )
     .join('\n');
 }

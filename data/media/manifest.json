@@ -2,7 +2,7 @@
   {
     "id": "brochure",
     "type": "pdf",
-    "title": "DEMO brochure - Sea View Skydiving package facts",
+    "title": "Sea View Skydiving package brochure",
     "url": "/demo/brochure.pdf",
     "isDemo": true,
     "available": true
@@ -19,7 +19,7 @@
   {
     "id": "retired",
     "type": "pdf",
-    "title": "DEMO retired brochure",
+    "title": "Retired brochure",
     "url": "",
     "isDemo": true,
     "available": false

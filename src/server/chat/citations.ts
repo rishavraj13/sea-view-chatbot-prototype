@@ -1,5 +1,9 @@
 import { citationSchema } from '../knowledge';
 import type { Chunk, Citation } from '../knowledge';
+import {
+  CITATION_MARKER,
+  stripCitationPresentation,
+} from './citation-presentation';
 
 /** Moves validated source URLs out of prose; call only after grounding has accepted the original answer. */
 export function presentCitations(
@@ -24,22 +28,16 @@ export function presentCitations(
   for (const match of answer.matchAll(/\b[a-z][a-z0-9+.-]*:\/\/[^\s<>"\]]+/gi))
     remember(match[0].replace(/[).,;!?]+$/, ''));
   const text = answer
-    .replace(/^\s*\[[^\]\n]+\]:\s*(https?:\/\/\S+)\s*$/gm, '')
+    .replace(/^\s*\[[^\]\n]+\]:\s*(https?:\/\/\S+)\s*$/gm, CITATION_MARKER)
     .replace(
       /\[([^\]]*)\]\((https?:\/\/[^\s)]+)\)/g,
       (_match, label: string, url: string) => {
-        return label === url ? '' : label;
+        return label === url ? CITATION_MARKER : `${label} ${CITATION_MARKER}`;
       },
     )
     .replace(/\bhttps?:\/\/[^\s<>"\]]+/gi, (match) => {
       const url = match.replace(/[).,;!?]+$/, '');
-      return match.slice(url.length);
-    })
-    .replace(/\[\s*\]|\(\s*\)|<\s*>/g, '')
-    .replace(/[ \t]+([.,;!?])/g, '$1')
-    .replace(/[ \t]{2,}/g, ' ')
-    .replace(/^[ \t]+|[ \t]+$/gm, '')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
-  return { text, citations };
+      return CITATION_MARKER + match.slice(url.length);
+    });
+  return { text: stripCitationPresentation(text), citations };
 }

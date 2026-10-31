@@ -5,9 +5,54 @@ import {
   runPipeline,
 } from '../../../src/server/chat';
 import { retrieve, citationSchema } from '../../../src/server/knowledge';
+import live from '../../../docs/examples/live-provider/groq.json';
 
 const chunks = retrieve('VIP price');
 const url = chunks[0]!.source.url;
+it.each([
+  'Cite:',
+  'Source:',
+  'Sources:',
+  'Reference:',
+  'Ref:',
+  'See:',
+  '(source)',
+  'Citation:',
+  'References:',
+  'Read more:',
+])('removes directly attached label %s and punctuation', (label) => {
+  for (const raw of [
+    `VIP is ฿14,000 per person. ${label} [${url}].`,
+    `${label} (${url}) VIP is ฿14,000 per person.`,
+    `VIP is ฿14,000 per person. [${label} ${url}];`,
+  ]) {
+    expect(evaluateGrounding(raw, chunks).accepted).toBe(true);
+    expect(presentCitations(raw, chunks).text).toBe(
+      'VIP is ฿14,000 per person.',
+    );
+  }
+});
+it('replays the exact live VIP raw answer and removes its dangling Cite label', () => {
+  const raw = live.find(
+    (record) => record.question === 'How much is the VIP package?',
+  )!.providerResponse!.rawAnswer;
+  const guarded = evaluateGrounding(raw, chunks);
+  expect(guarded.accepted).toBe(true);
+  expect(presentCitations(guarded.text, chunks).text).toBe(
+    'The VIP package is ฿14,000 per person.',
+  );
+});
+it('preserves ordinary use of the word source away from citation markers', () => {
+  expect(
+    presentCitations(`Source wording says VIP. [${url}] (source).`, chunks)
+      .text,
+  ).toBe('Source wording says VIP.');
+});
+it('does not join factual words when removing a citation in the middle of a sentence', () => {
+  expect(
+    presentCitations(`The VIP [${url}] package is available.`, chunks).text,
+  ).toBe('The VIP package is available.');
+});
 it.each([
   `VIP is ฿14,000 per person. [${url}]`,
   `(${url}) VIP is ฿14,000 per person.`,

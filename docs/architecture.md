@@ -17,3 +17,7 @@ Other layers import public index boundaries. Capture and PDF scripts are authori
 The guard now checks literal properties instead of exact source lines. It permits paraphrasing with allowed citations and normalized numeric properties; it cannot prove semantic entailment or fact associations. ADR 011 states these limitations and the deterministic fallback. Property sets and guard outcomes are internal diagnostics, not new HTTP request fields. Source/media isDemo data is additive; stream and media discriminants remain unchanged.
 
 Google/Groq/OpenRouter selection, reasoning controls, single-step execution, 20-second deadline, route Node runtimes and maxDuration remain as before. No deployment in this change. See api.md, knowledge-and-media.md and real-knowledge-report.md.
+
+## Latest-turn file gating and presentation
+
+The chat boundary additionally exports hasMediaIntent. Only the latest user text controls model tool exposure, using the bounded vocabulary in ADR 013; earlier media turns cannot keep tools exposed. Eligible turns offer both strict empty-input tools, each resolving one fixed registry entry. Explicit customer ids still resolve independently through selection. Streamed/resendable input remains {id}; tool-result and request shapes are unchanged. No classifier or extra model call. Citation labels/wrappers are removed after unchanged grounding. Summaries derive one demo-material label from isDemo and keep URLs in tool payloads only. The authoring-only verify:live harness records failures without runtime fallback.

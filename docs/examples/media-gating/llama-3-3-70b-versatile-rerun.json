@@ -1,0 +1,79 @@
+[
+  {
+    "id": "included",
+    "question": "What is included in the package?",
+    "attempt": "rerun",
+    "evidence": "LIVE Groq via actual chat route and SDK transport; no separate trace/model call",
+    "modelId": "llama-3.3-70b-versatile",
+    "request": {
+      "messages": [
+        {
+          "id": "llama-3-3-70b-versatile-rerun-included",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What is included in the package?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 502,
+    "providerCalls": 1,
+    "providerStatus": 404,
+    "providerStartedAt": "2026-10-31T10:24:59.852Z",
+    "latencyMs": 812,
+    "providerLatencyMs": 763,
+    "rawAnswer": "",
+    "rawToolCalls": [],
+    "citations": [],
+    "tools": [],
+    "visibleText": "",
+    "guard": null,
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"llama-3.3-70b-versatile\",\"error\":{\"code\":\"MODEL_FAILURE\",\"message\":\"The model is temporarily unavailable.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "exactly one provider call",
+        "passed": true
+      },
+      {
+        "name": "nonempty visible text",
+        "passed": false
+      },
+      {
+        "name": "no raw URL in visible text",
+        "passed": true
+      },
+      {
+        "name": "no dangling citation label or empty wrapper",
+        "passed": true
+      },
+      {
+        "name": "expected executed tools only",
+        "passed": true
+      },
+      {
+        "name": "no model tool call on text turn",
+        "passed": true
+      },
+      {
+        "name": "factual answer has structured sources",
+        "passed": false
+      },
+      {
+        "name": "covered question not refused",
+        "passed": true
+      },
+      {
+        "name": "no refusal on requested answer or media",
+        "passed": true
+      }
+    ],
+    "passed": false
+  }
+]

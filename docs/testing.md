@@ -46,3 +46,24 @@ The later user-authorized Groq check found the key present. scripts/check-live-g
 The one-shot script refuses any existing examples/live-provider/budget.json, counts provider HTTP requests before dispatch, permits only the Groq chat-completions host/path, enforces a hard maximum of four calls and spaces scenarios by 25 seconds. It captures only public text/tool content and numeric quota-limit headers, never keys, request authorization, hidden reasoning or upstream error bodies. The VIP follow-up resends the actual VIP user/assistant exchange, including structured sources. There is no extra trace/model request. Do not remove the ledger or rerun under this task's budget.
 
 See live-provider-report.md and examples/live-provider/groq.json for exact answers, structured citations, tool arguments/results, guard outcomes and timings. Three intended tasks passed; the dependent follow-up failed by selecting a brochure with an unknown id instead of answering. An offline-only replay confirmed the query retrieves VIP first; it did not spend another model call. Dangling Cite: and duplicate DEMO presentation are recorded, not fixed. Four calls total; no retries, provider switch, Google/OpenRouter calls or deployment. The required typecheck/lint/test/build outputs are pasted in the report; the existing offline suite is not evidence that the failed live scenario passed.
+
+## Media gating and repeatable live regression
+
+`npm run verify:live` uses the committed dev-only tsx runner, invokes the actual chat route in-process, and consumes SSE with DefaultChatTransport/readUIMessageStream. It requires MODEL_MODE=live, MODEL_PROVIDER=groq, MODEL_ID and a private GROQ_API_KEY in .env.local through readEnv. For PowerShell process overrides:
+
+```powershell
+$env:MODEL_MODE='live'
+$env:MODEL_PROVIDER='groq'
+$env:MODEL_ID='qwen/qwen3.8-27b'
+$env:REASONING_EFFORT='none'
+npm run verify:live
+npm run verify:live -- --failures
+```
+
+The second command is a separately recorded failure-only attempt, not an internal retry. A documented parallel-tool alternative can be selected explicitly if Qwen retains defects. All models/attempts share docs/examples/media-gating/live-budget.json: maximum forty provider HTTP calls, a 3.1-second scheduling target (measured minimum 3.097 seconds, above the required three seconds), maxRetries=0 and stop on the first 429. A completed model/attempt cannot run twice. `--resume` selects only unattempted initial cases after a process interruption; it never repeats recorded failures. VIP history retains the actual user request and includes an assistant reply only if one exists. No invented history. This campaign is exhausted: do not reset its ledger or make more calls. For a future independently authorized campaign, archive the complete previous capture directory before starting afresh.
+
+The eighteen amended cases are in scripts/live-scenarios.mjs: the exact four brief examples, including the negative inclusion question; three extra brief positives; rain/cancellation; VIP plus dependent follow-up; ECO photos; altitude; retired brochure id; and age/weight/pickup-price/clothing refusals. Assertions cover status, one provider call, visible text, no raw URL/Cite/empty wrapper, model/executed tool choice, structured factual sources, refusal with no sources on missing knowledge, registry unavailability and demo-flag consistency. Prose is not matched exactly apart from detecting the established refusal. This is not semantic entailment: inspect raw answers too. Captures include raw model text, separate sources, tools/results, call-start timestamp, provider/route timing, check results and safe wire errors. No keys, authorization, hidden reasoning or upstream error bodies are logged. External request/capture/config/provider data are Zod-validated at their boundaries.
+
+`npm test -- tests/server/chat/media-intent.test.ts tests/server/chat/single-call.test.ts tests/server/chat/citations.test.ts tests/server/chat/media-summary.test.ts tests/server/chat/live-assertions.test.ts` checks the intent table, absent tools for negatives even with prior media history, strict empty tool inputs/arbitrary-id rejection, one-call execution, exact saved VIP replay and each attached citation-label variant, normal source wording, customer-safe summaries and live-assertion failure detection. Existing trace/SDK-consumer/result-shape tests remain.
+
+Real results and raw answers are in media-gating-report.md. Qwen passed 15/18 initially and 17/18 after three failure-only reruns. Retired media remained a failure. The alternative returned typed model errors; only one alternate failure could be rerun before forty calls. A harness bug after the failed alternate VIP request was corrected and only unattempted scenarios resumed. No backend/model workaround, Google/OpenRouter call or deployment.

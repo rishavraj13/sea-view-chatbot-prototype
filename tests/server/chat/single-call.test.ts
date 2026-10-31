@@ -26,6 +26,80 @@ beforeEach(() => {
   vi.stubEnv('MODEL_MODE', 'live');
   vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'MOCK-key-never-network');
 });
+it.each([
+  'What is included in the package?',
+  'Are photos included?',
+  "and what's included?",
+  'How much is the VIP package?',
+  'Show me prices',
+  'Can I see the location?',
+  'Does ECO include photos?',
+])(
+  'MOCK provider receives no tools for latest non-media turn: %s',
+  async (question) => {
+    const model = new MockLanguageModelV4({
+      doGenerate: {
+        content: [{ type: 'text', text: 'I do not have that information.' }],
+        finishReason: { unified: 'stop', raw: 'stop' },
+        usage,
+        warnings: [],
+      },
+    });
+    state.model = model;
+    const trace = await runPipeline({
+      messages: [user('Send a brochure', 'old-media'), user(question)],
+    });
+    expect(model.doGenerateCalls).toHaveLength(1);
+    expect(model.doGenerateCalls[0]?.tools ?? []).toEqual([]);
+    expect(trace.toolCalls).toEqual([]);
+  },
+);
+it('offers both tools with strict empty input schemas on a media turn', async () => {
+  const model = new MockLanguageModelV4({
+    doGenerate: {
+      content: [],
+      finishReason: { unified: 'stop', raw: 'stop' },
+      usage,
+      warnings: [],
+    },
+  });
+  state.model = model;
+  await runPipeline({ messages: [user('Brochure please')] });
+  const tools = model.doGenerateCalls[0]!.tools!;
+  expect(tools.map((tool) => tool.name)).toEqual(['sendBrochure', 'showVideo']);
+  for (const tool of tools) {
+    if (tool.type === 'function') {
+      expect(tool.inputSchema).toMatchObject({
+        type: 'object',
+        properties: {},
+        additionalProperties: false,
+      });
+      expect(tool.inputSchema.properties).toEqual({});
+    }
+  }
+});
+it('does not execute a model-supplied arbitrary asset id', async () => {
+  const model = new MockLanguageModelV4({
+    doGenerate: {
+      content: [
+        {
+          type: 'tool-call',
+          toolCallId: 'invalid-id',
+          toolName: 'sendBrochure',
+          input: '{"id":"invented"}',
+        },
+      ],
+      finishReason: { unified: 'tool-calls', raw: 'tool_calls' },
+      usage,
+      warnings: [],
+    },
+  });
+  state.model = model;
+  const trace = await runPipeline({ messages: [user('Send a brochure')] });
+  expect(trace.media).toEqual([]);
+  expect(trace.toolCalls).toEqual([]);
+  expect(model.doGenerateCalls).toHaveLength(1);
+});
 it('MOCK replay of the real-fact trailing-citation fixture returns the covered price in one call', async () => {
   const model = new MockLanguageModelV4({
     doGenerate: {
@@ -61,14 +135,7 @@ it.each([
           type: 'tool-call' as const,
           toolCallId: `call-${i}`,
           toolName,
-          input: JSON.stringify({
-            id:
-              name === 'unavailable'
-                ? 'retired'
-                : toolName === 'sendBrochure'
-                  ? 'brochure'
-                  : 'video',
-          }),
+          input: '{}',
         }))
       : [{ type: 'text' as const, text: 'I do not have that information.' }];
     const model = new MockLanguageModelV4({
@@ -141,7 +208,7 @@ it('keeps grounded text emitted with tools and never calls for a continuation', 
           type: 'tool-call',
           toolCallId: 'pdf',
           toolName: 'sendBrochure',
-          input: '{"id":"brochure"}',
+          input: '{}',
         },
       ],
       finishReason: { unified: 'tool-calls', raw: 'tool_calls' },
@@ -155,7 +222,8 @@ it('keeps grounded text emitted with tools and never calls for a continuation', 
   });
   expect(trace.text).toContain(retrieve('VIP price')[0]!.text);
   expect(trace.citations[0]?.url).toBe(retrieve('VIP price')[0]!.source.url);
-  expect(trace.text).toContain('/demo/brochure.pdf');
+  expect(trace.text).not.toContain('/demo/brochure.pdf');
+  expect(trace.media[0]?.url).toBe('/demo/brochure.pdf');
   expect(model.doGenerateCalls).toHaveLength(1);
 });
 it('pure media summary describes registry output without invented facts', () => {
@@ -170,7 +238,7 @@ it('pure media summary describes registry output without invented facts', () => 
         reason: 'unavailable',
       },
     ]),
-  ).toBe('DEMO retired: unavailable.');
+  ).toBe("That file isn't available right now. (demo material)");
   expect(summarizeMedia([])).toBe('');
 });
 it.each([

@@ -110,7 +110,7 @@
   "media": [
     {
       "id": "brochure",
-      "title": "DEMO brochure - Sea View Skydiving package facts",
+      "title": "Sea View Skydiving package brochure",
       "url": "/demo/brochure.pdf",
       "isDemo": true,
       "type": "pdf",
@@ -127,7 +127,7 @@
     },
     {
       "id": "retired",
-      "title": "DEMO retired brochure",
+      "title": "Retired brochure",
       "url": "",
       "isDemo": true,
       "type": "pdf",

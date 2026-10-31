@@ -40,7 +40,7 @@ export function resolveMedia(
     return {
       kind: 'unavailable',
       id,
-      title: asset?.title ?? 'Unknown asset',
+      title: asset?.title ?? 'Requested file',
       url: '',
       isDemo: asset?.isDemo ?? false,
       reason: !asset
