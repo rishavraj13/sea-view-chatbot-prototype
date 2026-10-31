@@ -1,0 +1,293 @@
+[
+  {
+    "evidence": "LIVE Groq through actual /api/chat handler and SDK transport; no separate trace/model call",
+    "question": "What if it rains?",
+    "request": {
+      "messages": [
+        {
+          "id": "groq-user-0",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "What if it rains?"
+            }
+          ]
+        }
+      ]
+    },
+    "provider": "groq",
+    "modelId": "qwen/qwen3.8-27b",
+    "status": 200,
+    "providerCalls": 1,
+    "latencyMs": 474,
+    "providerResponse": {
+      "status": 200,
+      "latencyMs": 408,
+      "rawAnswer": "If your activity is held for weather, you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund. https://www.greedyadventures.com/cancellations#page-content",
+      "toolCalls": [],
+      "limits": {
+        "rpd": "1000",
+        "tpm": "8000"
+      }
+    },
+    "guard": {
+      "accepted": true,
+      "reason": "accepted",
+      "text": "If your activity is held for weather, you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund. https://www.greedyadventures.com/cancellations#page-content"
+    },
+    "retrievalQuery": "What if it rains?",
+    "visibleText": "If your activity is held for weather, you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund.",
+    "citations": [
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/cancellations#page-content",
+        "url": "https://www.greedyadventures.com/cancellations#page-content",
+        "title": "If the weather stops the activity"
+      }
+    ],
+    "toolResults": [],
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"af3cc566-5fbf-4d97-99f2-493739d4e2c8\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"If your activity is held for weather, you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/cancellations#page-content\",\"url\":\"https://www.greedyadventures.com/cancellations#page-content\",\"title\":\"If the weather stops the activity\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n"
+  },
+  {
+    "evidence": "LIVE Groq through actual /api/chat handler and SDK transport; no separate trace/model call",
+    "question": "How much is the VIP package?",
+    "request": {
+      "messages": [
+        {
+          "id": "groq-user-1",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "How much is the VIP package?"
+            }
+          ]
+        }
+      ]
+    },
+    "provider": "groq",
+    "modelId": "qwen/qwen3.8-27b",
+    "status": 200,
+    "providerCalls": 1,
+    "latencyMs": 403,
+    "providerResponse": {
+      "status": 200,
+      "latencyMs": 351,
+      "rawAnswer": "The VIP package is ฿14,000 per person. Cite: [https://www.greedyadventures.com/experiences/sea-view-skydiving#options]",
+      "toolCalls": [],
+      "limits": {
+        "rpd": "1000",
+        "tpm": "8000"
+      }
+    },
+    "guard": {
+      "accepted": true,
+      "reason": "accepted",
+      "text": "The VIP package is ฿14,000 per person. Cite: [https://www.greedyadventures.com/experiences/sea-view-skydiving#options]"
+    },
+    "retrievalQuery": "How much is the VIP package?",
+    "visibleText": "The VIP package is ฿14,000 per person. Cite:",
+    "citations": [
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "title": "VIP"
+      }
+    ],
+    "toolResults": [],
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"702f4295-85ad-449d-a936-97ffc3869065\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"The VIP package is ฿14,000 per person. Cite:\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"source-url\",\"sourceId\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"url\":\"https://www.greedyadventures.com/experiences/sea-view-skydiving#options\",\"title\":\"VIP\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n"
+  },
+  {
+    "evidence": "LIVE Groq through actual /api/chat handler and SDK transport; no separate trace/model call",
+    "question": "Send me the brochure and a video",
+    "request": {
+      "messages": [
+        {
+          "id": "groq-user-2",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send me the brochure and a video"
+            }
+          ]
+        }
+      ]
+    },
+    "provider": "groq",
+    "modelId": "qwen/qwen3.8-27b",
+    "status": 200,
+    "providerCalls": 1,
+    "latencyMs": 613,
+    "providerResponse": {
+      "status": 200,
+      "latencyMs": 574,
+      "rawAnswer": "",
+      "toolCalls": [
+        {
+          "id": "qe3n52k9z",
+          "type": "function",
+          "function": {
+            "name": "sendBrochure",
+            "arguments": "{}"
+          }
+        },
+        {
+          "id": "ph72pk881",
+          "type": "function",
+          "function": {
+            "name": "showVideo",
+            "arguments": "{}"
+          }
+        }
+      ],
+      "limits": {
+        "rpd": "1000",
+        "tpm": "8000"
+      }
+    },
+    "guard": null,
+    "retrievalQuery": "Send me the brochure and a video",
+    "visibleText": "DEMO DEMO brochure - Sea View Skydiving package facts: /demo/brochure.pdf\nSea View Skydiving - page video (external link): https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+    "citations": [],
+    "toolResults": [
+      {
+        "type": "tool-sendBrochure",
+        "toolCallId": "tool-0",
+        "state": "output-available",
+        "input": {
+          "id": "brochure"
+        },
+        "output": {
+          "id": "brochure",
+          "title": "DEMO brochure - Sea View Skydiving package facts",
+          "url": "/demo/brochure.pdf",
+          "isDemo": true,
+          "kind": "brochure",
+          "type": "pdf"
+        }
+      },
+      {
+        "type": "tool-showVideo",
+        "toolCallId": "tool-1",
+        "state": "output-available",
+        "input": {
+          "id": "video"
+        },
+        "output": {
+          "id": "video",
+          "title": "Sea View Skydiving - page video (external link)",
+          "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+          "isDemo": false,
+          "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg",
+          "kind": "video",
+          "type": "video"
+        }
+      }
+    ],
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"68e0d36a-1dd9-452b-8fc1-945efd2f2a81\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-0\",\"toolName\":\"sendBrochure\",\"input\":{\"id\":\"brochure\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-0\",\"output\":{\"id\":\"brochure\",\"title\":\"DEMO brochure - Sea View Skydiving package facts\",\"url\":\"/demo/brochure.pdf\",\"isDemo\":true,\"kind\":\"brochure\",\"type\":\"pdf\"}}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-1\",\"toolName\":\"showVideo\",\"input\":{\"id\":\"video\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-1\",\"output\":{\"id\":\"video\",\"title\":\"Sea View Skydiving - page video (external link)\",\"url\":\"https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4\",\"isDemo\":false,\"posterUrl\":\"https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg\",\"kind\":\"video\",\"type\":\"video\"}}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"DEMO DEMO brochure - Sea View Skydiving package facts: /demo/brochure.pdf\\nSea View Skydiving - page video (external link): https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":true}}\n\ndata: [DONE]\n\n"
+  },
+  {
+    "evidence": "LIVE Groq through actual /api/chat handler and SDK transport; no separate trace/model call",
+    "question": "and what's included?",
+    "request": {
+      "messages": [
+        {
+          "id": "groq-user-1",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "How much is the VIP package?"
+            }
+          ]
+        },
+        {
+          "id": "702f4295-85ad-449d-a936-97ffc3869065",
+          "metadata": {
+            "mode": "live",
+            "provider": "groq",
+            "modelId": "qwen/qwen3.8-27b",
+            "isDemo": false
+          },
+          "role": "assistant",
+          "parts": [
+            {
+              "type": "step-start"
+            },
+            {
+              "type": "text",
+              "text": "The VIP package is ฿14,000 per person. Cite:",
+              "state": "done"
+            },
+            {
+              "type": "source-url",
+              "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+              "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+              "title": "VIP"
+            }
+          ]
+        },
+        {
+          "id": "groq-user-3",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "and what's included?"
+            }
+          ]
+        }
+      ]
+    },
+    "provider": "groq",
+    "modelId": "qwen/qwen3.8-27b",
+    "status": 200,
+    "providerCalls": 1,
+    "latencyMs": 454,
+    "providerResponse": {
+      "status": 200,
+      "latencyMs": 430,
+      "rawAnswer": "",
+      "toolCalls": [
+        {
+          "id": "ztcja56sv",
+          "type": "function",
+          "function": {
+            "name": "sendBrochure",
+            "arguments": "{\"id\":\"\\\"\\u003e\"}"
+          }
+        }
+      ],
+      "limits": {
+        "rpd": "1000",
+        "tpm": "8000"
+      }
+    },
+    "guard": null,
+    "retrievalQuery": "How much is the VIP package?\nand what's included?",
+    "visibleText": "Unknown asset: unavailable.",
+    "citations": [],
+    "toolResults": [
+      {
+        "type": "tool-sendBrochure",
+        "toolCallId": "tool-0",
+        "state": "output-available",
+        "input": {
+          "id": "\">"
+        },
+        "output": {
+          "kind": "unavailable",
+          "id": "\">",
+          "title": "Unknown asset",
+          "url": "",
+          "isDemo": false,
+          "reason": "unknown"
+        }
+      }
+    ],
+    "wire": "data: {\"type\":\"start\",\"messageId\":\"a81cdfa7-63ed-4998-b083-221865b552c6\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"tool-input-available\",\"toolCallId\":\"tool-0\",\"toolName\":\"sendBrochure\",\"input\":{\"id\":\"\\\">\"}}\n\ndata: {\"type\":\"tool-output-available\",\"toolCallId\":\"tool-0\",\"output\":{\"kind\":\"unavailable\",\"id\":\"\\\">\",\"title\":\"Unknown asset\",\"url\":\"\",\"isDemo\":false,\"reason\":\"unknown\"}}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"Unknown asset: unavailable.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"isDemo\":false}}\n\ndata: [DONE]\n\n"
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-31",
+  "rateLimitsUrl": "https://console.groq.com/docs/rate-limits",
+  "htmlSha256": "480bed0bdbb8c196e65a711f2bc3522756db8a5f7f387da16edc6ae59ad7f9da",
+  "planButtons": [
+    {
+      "label": "Free Plan Limits",
+      "class": "block rounded-full text-xs px-3 py-1 h-auto transition-all happy bg-black dark:bg-white text-white hover:text-white dark:text-black dark:hover:text-black"
+    },
+    {
+      "label": "Developer Plan Limits",
+      "class": "block rounded-full text-xs px-3 py-1 h-auto hover:text-groq-orange transition-all"
+    }
+  ],
+  "selectedModelRows": ["qwen/qwen3.8-27b 30 1K 8K 200K - -"],
+  "toolUseUrl": "https://console.groq.com/docs/tool-use/overview",
+  "selection": {
+    "provider": "groq",
+    "modelId": "qwen/qwen3.8-27b",
+    "reasoningEffort": "none"
+  },
+  "caveat": "Free Plan tab is styled as selected; page prose also calls the table Developer base limits. Account RPM and plan membership are not independently verified."
+}

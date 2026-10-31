@@ -87,3 +87,7 @@ All routes runtime=nodejs. maxDuration chat/trace=30 seconds, sources=10. Reques
 | RATE_LIMIT    | 429  | The model rate limit was reached. Please retry later.              |
 
 Unexpected post-start serialization failures use an SDK error event with a generic message. Offline MOCK-provider tests verify error sanitization and no retry/fallback. Obsolete fictional captures have explicit supersession notices rather than presenting old facts as current evidence.
+
+## Subsequent live Groq verification
+
+The four-call provider-selection phase used the unchanged API and qwen/qwen3.8-27b. [Actual live route/SDK captures](examples/live-provider/groq.json) include request history, raw model prose, separate structured sources, tool arguments/results and wire responses. Rain and VIP answers passed grounding; both media tools returned in one provider call. The dependent VIP follow-up incorrectly invoked sendBrochure with an unknown id and returned unavailable instead of answering. The model's VIP `Cite:` label remained visible after URL removal, and the existing media summary duplicated `DEMO`. These failures are recorded without an API change, code workaround or retry. See [the live provider report](live-provider-report.md); no deployment occurred.
