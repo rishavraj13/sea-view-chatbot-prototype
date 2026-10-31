@@ -94,8 +94,22 @@ python scripts/verify-source-anchors.py
 npx tsx scripts/capture-prompt-cost.mjs
 ```
 
-The 42-phrase policy fixture asserts state, matching tool names, SDK toolChoice and exactly one mock-provider generation per case. Actual Groq serialization tests assert no tools for none, auto for optional, required for requested matching tools, strict empty schemas, simultaneous tool execution and a safe failure without retry when a required response is only a promise. Required is at least one call, not all requested calls; a separate mixed tool-only case deliberately demonstrates lost factual prose. The recorded ECO instruction-describing answer is replayed through the unchanged guard and refused.
+The 95-phrase policy fixture retains the original 42 rows and adds 53. It asserts state, matching tool names, SDK toolChoice and exactly one mock-provider generation per case. Actual Groq serialization tests assert no tools for none, auto for optional, required for requested matching tools, strict empty schemas, simultaneous tool execution and a safe failure without retry when a required response is only a promise. Required is at least one call, not all requested calls; a separate mixed tool-only case deliberately demonstrates lost factual prose. The recorded ECO instruction-describing answer is replayed through the unchanged guard and refused.
 
 Cancellation tests compare four concatenated paragraphs against the saved original fixture, including URL/date/provenance, and test procedural tie ordering without changing scores. Retrieval quality is 38/38, including the four requested cancellation questions and seven no-match cases. Attribution calibration remains 28/28 at 0.5 with two matched words; the two cancellation fixture source titles change to Single-day activities without changing coefficients, matched words or classifications.
 
 The prompt-cost script snapshots committed server/data files from 505b90a under ignored .next, imports both pipelines and completely mocks their HTTP transport. It performs 48 MOCK exchanges across all 24 scenarios, asserting one exchange per pipeline/turn. The same historical SDK histories are used before/after; the missing DELUXE root is explicitly MOCK text emitted through readUIMessageStream. It measures serialized messages + tool schemas + choice characters / 4, not billed tokens or latency. JSON overhead is included. See required-media-report.md for every scenario. The average is below 1,500, so no extra prompt optimization is proposed or implemented. Historical live captures and the stopped ledger remain unchanged.
+
+## Request-form refinement (offline only)
+
+```powershell
+npm test -- tests/server/chat/media-policy.test.ts tests/server/chat/history.test.ts
+npm run typecheck
+npm run lint
+npm test
+npm run build
+```
+
+No live verifier or provider endpoint is called. The 95-row table in tests/fixtures/media-policy.json includes every supplied positive/negative, all question openers, mixed modal clauses, polite noun phrases, verb-less desires and whole-word boundaries. Eight original expectations change to optional; no existing phrase is removed. Every row still checks the one-call mocked provider choice and matching tool set. Will/would at sentence start remain optional under the question-opener precedence; later explicit modal clauses are the documented exception. Unknown verbs or forms are conservative optional/none, not a classifier call.
+
+The additional exact SDK-history replay uses the saved media-history message from examples/history-revision/qwen-qwen3-8-27b-initial.json. Its actual step-start and completed brochure tool-result shape pass the request schema, but only “Here is the brochure (demo material).” becomes assistant model content. Existing end-to-end mocked HTTP tests still use DefaultChatTransport + readUIMessageStream for both structured-source and media histories. No server history conversion was changed. The new command output is in request-form-report.md; prior live records and the stopped campaign ledger are unchanged.

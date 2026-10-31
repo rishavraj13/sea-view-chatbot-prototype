@@ -2,6 +2,7 @@ import { beforeEach, afterEach, expect, it, vi } from 'vitest';
 import { DefaultChatTransport, readUIMessageStream } from 'ai';
 import type { UIMessage } from 'ai';
 import { z } from 'zod';
+import recorded from '../../../docs/examples/history-revision/qwen-qwen3-8-27b-initial.json';
 import { POST } from '../../../src/app/api/chat/route';
 import {
   buildModelMessages,
@@ -81,6 +82,37 @@ async function send(messages: UIMessage[]): Promise<UIMessage> {
   expect(last).toBeDefined();
   return last!;
 }
+it('projects the exact recorded SDK media-result message to its visible assistant text only', () => {
+  const capture = recorded.find((record) => record.id === 'media-history')!;
+  const request = chatRequestSchema.parse({
+    messages: [
+      ...capture.request.messages,
+      capture.message,
+      user('How much is ECO?', 'follow'),
+    ],
+  });
+  const assistant = request.messages.find(
+    (message) => message.role === 'assistant',
+  )!;
+  expect(assistant.parts.some((part) => part.type === 'step-start')).toBe(true);
+  expect(
+    assistant.parts.some((part) => part.type === 'tool-sendBrochure'),
+  ).toBe(true);
+  const text = assistant.parts
+    .filter((part) => part.type === 'text')
+    .map((part) => part.text)
+    .join('\n');
+  expect(text).toBe('Here is the brochure (demo material).');
+  const projected = buildModelMessages(request.messages);
+  expect(projected.find((message) => message.role === 'assistant')).toEqual({
+    role: 'assistant',
+    content: text,
+  });
+  for (const message of projected)
+    expect(message.content).not.toMatch(
+      /\{|\btype\b|sourceId|step-start|source-url|tool-sendBrochure|tool-showVideo/,
+    );
+});
 it.each(['source', 'media'] as const)(
   'MOCK HTTP replay of actual SDK %s history sends only visible user/assistant text',
   async (kind) => {
