@@ -58,3 +58,7 @@ Route (app)
 ├ ƒ /api/knowledge/sources
 └ ƒ /api/knowledge/trace
 ```
+
+# Captured-text cleanup — 2026-10-31
+
+Completed the narrowly approved icon cleanup: audited 15 JSON sections, cleaned six, fixed the static authoring extractor, regenerated and rendered the demo PDF, and refreshed affected offline examples. Added corpus artifact and actual-PDF package/price regression tests. All facts and API behavior remain unchanged. No new live calls and no deployment. Previous VIP/rain raw answers are reproduced verbatim with guard/count/latency in [the cleanup report](captured-text-cleanup-report.md), which also pastes the actual typecheck, lint, test (110/110) and build output. Retrieval quality remains 35/35. The only added dependency is test-only pdf2json; no runtime dependency changes.

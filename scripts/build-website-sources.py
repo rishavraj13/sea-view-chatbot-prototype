@@ -51,6 +51,21 @@ def clean(text):
     return re.sub(r'\s+', ' ', text).strip()
 
 
+def source_lines(lines, included_section=False):
+    result = []
+    if included_section:
+        result.append('Included')
+    for line in lines:
+        line = re.sub(r'^[+•●▪◦‣⁃]+\s*', '', line).strip()
+        if line.startswith('Included:'):
+            if 'Included' not in result:
+                result.append('Included')
+            line = line.removeprefix('Included:').strip()
+        if line:
+            result.append(line)
+    return result
+
+
 roots = {}
 hashes = {}
 for name in ('experience', 'cancellations'):
@@ -66,7 +81,7 @@ sources = []
 
 
 def add(name, title, url, lines):
-    record = dict(title=title, url=url, capturedAt='2026-10-31', text='\n'.join(lines), isDemo=False)
+    record = dict(title=title, url=url, capturedAt='2026-10-31', text='\n'.join(source_lines(lines, name == 'included')), isDemo=False)
     path = Path('data/knowledge') / f'{name}.json'
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(record, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
