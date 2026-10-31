@@ -26,14 +26,17 @@ if (
   env.MODEL_MODE !== 'live' ||
   env.MODEL_PROVIDER !== 'groq' ||
   !env.GROQ_API_KEY ||
-  !env.MODEL_ID
+  env.MODEL_ID !== 'qwen/qwen3.8-27b' ||
+  env.REASONING_EFFORT !== 'none'
 )
-  throw Error('Explicit live Groq configuration and key required');
-const dir = join('docs', 'examples', 'media-gating');
+  throw Error(
+    'Explicit live Groq Qwen configuration, reasoning none and key required',
+  );
+const dir = join('docs', 'examples', 'history-revision');
 await mkdir(dir, { recursive: true });
 const ledgerPath = join(dir, 'live-budget.json');
 const ledgerSchema = z.object({
-  calls: z.number().int().min(0).max(40),
+  calls: z.number().int().min(0).max(30),
   lastCallAt: z.number(),
   stopped429: z.boolean(),
   runs: z.array(z.string()),
@@ -104,7 +107,7 @@ globalThis.fetch = async (input, init) => {
   if (
     url.hostname !== 'api.groq.com' ||
     url.pathname !== '/openai/v1/chat/completions' ||
-    ledger.calls >= 40 ||
+    ledger.calls >= 30 ||
     ledger.stopped429
   )
     throw Error('Groq-only campaign budget restriction');
@@ -115,6 +118,11 @@ globalThis.fetch = async (input, init) => {
   await saveLedger();
   const started = performance.now();
   const startedAt = new Date().toISOString();
+  const providerMessages = z
+    .object({
+      messages: z.array(z.object({ role: z.string(), content: z.string() })),
+    })
+    .parse(JSON.parse(String(init?.body))).messages;
   const response = await nativeFetch(input, init);
   if (response.status === 429) {
     ledger.stopped429 = true;
@@ -123,6 +131,7 @@ globalThis.fetch = async (input, init) => {
   const body = response.ok ? reply.parse(await response.clone().json()) : null;
   observed = {
     status: response.status,
+    providerMessages,
     startedAt,
     latencyMs: Math.round(performance.now() - started),
     rawAnswer: body?.choices[0]?.message.content ?? '',
@@ -131,27 +140,31 @@ globalThis.fetch = async (input, init) => {
   return response;
 };
 const records = resume ? [...previous] : [];
-let vipHistory = [];
+const histories = new Map();
 if (attempt === 'rerun' || resume) {
-  const vip = previous.find((r) => r.id === 'vip');
-  if (vip)
-    vipHistory = [
-      ...vip.request.messages,
-      ...(vip.message ? [vip.message] : []),
-    ];
+  for (const record of previous)
+    histories.set(record.id, [
+      ...record.request.messages,
+      ...(record.message ? [record.message] : []),
+    ]);
 }
 for (const scenario of selected) {
-  if (ledger.calls >= 40 || ledger.stopped429) break;
+  if (ledger.calls >= 30 || ledger.stopped429) break;
   const user = {
     id: `${runKey}-${scenario.id}`,
     role: 'user',
     parts: [{ type: 'text', text: scenario.question }],
   };
   const request = chatRequestSchema.parse({
-    messages: [...(scenario.id === 'follow-up' ? vipHistory : []), user],
+    messages: [
+      ...(scenario.historyFrom
+        ? (histories.get(scenario.historyFrom) ?? [])
+        : []),
+      user,
+    ],
   });
-  if (scenario.id === 'follow-up' && !vipHistory.length)
-    throw Error('No captured VIP history for dependent follow-up');
+  if (scenario.historyFrom && !histories.has(scenario.historyFrom))
+    throw Error('No captured history for dependent follow-up');
   const before = ledger.calls;
   observed = null;
   let status = 0,
@@ -179,8 +192,10 @@ for (const scenario of selected) {
   } catch {
     /* Only the sanitized route response is recorded, not upstream error bodies. */
   }
-  if (scenario.id === 'vip')
-    vipHistory = [...request.messages, ...(message ? [message] : [])];
+  histories.set(scenario.id, [
+    ...request.messages,
+    ...(message ? [message] : []),
+  ]);
   const chunks = retrieve(buildRetrievalQuery(request.messages));
   const record = {
     id: scenario.id,
@@ -194,6 +209,7 @@ for (const scenario of selected) {
     status,
     providerCalls: ledger.calls - before,
     providerStatus: observed?.status ?? null,
+    providerMessages: observed?.providerMessages ?? [],
     providerStartedAt: observed?.startedAt ?? null,
     latencyMs: Math.round(performance.now() - started),
     providerLatencyMs: observed?.latencyMs ?? null,

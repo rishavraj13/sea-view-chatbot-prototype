@@ -15,7 +15,7 @@ export function stripCitationPresentation(text: string): string {
       .replace(new RegExp(`[\\[(<]\\s*${marker}\\s*[\\])>]`, 'g'), marker);
   }
   return text
-    .replace(new RegExp(`[ \\t]*${marker}[ \\t]*[.,;:!?]*`, 'g'), ' ')
+    .replace(new RegExp(`[ \\t]*${marker}[ \\t]*`, 'g'), ' ')
     .replace(/\[\s*\]|\(\s*\)|<\s*>/g, '')
     .replace(/[ \t]+([.,;!?])/g, '$1')
     .replace(/[ \t]{2,}/g, ' ')

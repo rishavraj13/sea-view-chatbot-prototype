@@ -39,3 +39,7 @@ REASONING_EFFORT defaults to low. Groq GPT-OSS uses low/medium/high (none is cla
 ## Scope confirmation
 
 The user confirmed that local models are out of scope. Provider enum remains google | groq | openrouter. At the initial Phase 1.7 check neither Groq nor OpenRouter key was configured. The later four-call Groq check above supersedes that historical Groq status; OpenRouter was not called in this phase. No cross-provider speed winner is claimed. Provider switching remains explicit configuration, documented in README.md.
+
+## History revision: Qwen only
+
+This revision uses only qwen/qwen3.8-27b with reasoning none, a new thirty-call maximum and no retries inside a run. The preceding Llama evaluation returned upstream HTTP 404 for this key on recorded requests, mapped safely to MODEL_FAILURE; cause unverified. No Llama call is made here, and the public support table does not prove account access. The current Qwen campaign and two explicit failure-only reruns used 23 calls, with the mixed request retaining a missing-citation defect. See history-revision-report.md; neither an automatic model switch nor a workaround was added.

@@ -11,6 +11,7 @@ import { summarizeMedia } from './media-summary';
 import { buildSystemPrompt, groundedAnswer } from './answer';
 import { presentCitations } from './citations';
 import { hasMediaIntent } from './media-intent';
+import { buildModelMessages } from './history';
 /** Shared request-local pipeline for chat and trace; no conversation persistence. */
 export async function runPipeline(
   request: ChatRequest,
@@ -72,12 +73,7 @@ export async function runPipeline(
       const result = await generateText({
         model: p.model(),
         system: buildSystemPrompt(trace.context),
-        messages: request.messages.map((m) => ({
-          role: m.role,
-          content: m.parts
-            .map((p) => (p.type === 'text' ? p.text : JSON.stringify(p)))
-            .join('\n'),
-        })),
+        messages: buildModelMessages(request.messages),
         ...(hasMediaIntent(question) ? { tools } : {}),
         providerOptions: p.providerOptions,
         maxOutputTokens: 1500,

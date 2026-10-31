@@ -12,3 +12,4 @@ export type { GroundingResult } from './answer';
 export { answerProperties } from './properties';
 export { presentCitations } from './citations';
 export { hasMediaIntent } from './media-intent';
+export { buildModelMessages } from './history';

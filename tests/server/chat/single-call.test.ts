@@ -3,6 +3,8 @@ import { MockLanguageModelV4 } from 'ai/test';
 import { retrieve } from '../../../src/server/knowledge';
 import { APICallError } from 'ai';
 import { POST } from '../../../src/app/api/chat/route';
+import previousInitial from '../../../docs/examples/media-gating/qwen-qwen3-8-27b-initial.json';
+import previousRerun from '../../../docs/examples/media-gating/qwen-qwen3-8-27b-rerun.json';
 const diagnostic = {
   question: 'How much is the VIP package?',
   modelText:
@@ -238,8 +240,82 @@ it('pure media summary describes registry output without invented facts', () => 
         reason: 'unavailable',
       },
     ]),
-  ).toBe("That file isn't available right now. (demo material)");
+  ).toBe("That file isn't available right now.");
   expect(summarizeMedia([])).toBe('');
+});
+it.each([
+  previousInitial.find((r) => r.id === 'brief-pdf')!,
+  previousInitial.find((r) => r.id === 'retired')!,
+  previousRerun.find((r) => r.id === 'retired')!,
+])(
+  'MOCK exact media prose replay drops failed grounding: $id $attempt',
+  async (capture) => {
+    const model = new MockLanguageModelV4({
+      doGenerate: {
+        content: [
+          { type: 'text', text: capture.rawAnswer },
+          {
+            type: 'tool-call',
+            toolCallId: 'pdf',
+            toolName: 'sendBrochure',
+            input: '{}',
+          },
+        ],
+        finishReason: { unified: 'tool-calls', raw: 'tool_calls' },
+        usage,
+        warnings: [],
+      },
+    });
+    state.model = model;
+    const trace = await runPipeline({ messages: [user(capture.question)] });
+    expect(trace.text).toBe(
+      capture.id === 'retired'
+        ? "That file isn't available right now."
+        : 'Here is the brochure (demo material).',
+    );
+    expect(trace.citations).toEqual([]);
+    expect(model.doGenerateCalls).toHaveLength(1);
+  },
+);
+it('MOCK mixed turn retains a guarded price and the fixed brochure summary', async () => {
+  state.model = new MockLanguageModelV4({
+    doGenerate: {
+      content: [
+        { type: 'text', text: diagnostic.modelText },
+        {
+          type: 'tool-call',
+          toolCallId: 'pdf',
+          toolName: 'sendBrochure',
+          input: '{}',
+        },
+      ],
+      finishReason: { unified: 'tool-calls', raw: 'tool_calls' },
+      usage,
+      warnings: [],
+    },
+  });
+  const trace = await runPipeline({
+    messages: [
+      user('How much is the VIP package and can you send me the brochure?'),
+    ],
+  });
+  expect(trace.text).toBe(
+    'The VIP package is ฿14,000 per person.\nHere is the brochure (demo material).',
+  );
+  expect(trace.citations).toHaveLength(1);
+});
+it('MOCK uncited prose without any media still returns the existing refusal', async () => {
+  state.model = new MockLanguageModelV4({
+    doGenerate: {
+      content: [{ type: 'text', text: "I'm sending the brochure PDF now." }],
+      finishReason: { unified: 'stop', raw: 'stop' },
+      usage,
+      warnings: [],
+    },
+  });
+  const trace = await runPipeline({ messages: [user('How much is VIP?')] });
+  expect(trace.text).toBe('I do not have that information.');
+  expect(trace.media).toEqual([]);
 });
 it.each([
   [

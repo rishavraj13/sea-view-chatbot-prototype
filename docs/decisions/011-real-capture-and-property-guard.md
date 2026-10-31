@@ -27,3 +27,7 @@ Continue exact-line matching (rejects harmless phrasing); remove validation enti
 ## Consequences
 
 A property-passing answer may still be semantically wrong and needs review. The source corpus is a dated capture, not live operational availability. Explicit unsupported facets abstain without lowering threshold; coverage rules must be reviewed on refresh. Video embedding is unverified so consumers keep the labelled link. Old fictional files are superseded in place while original history remains in Git. No new request fields, provider switching behavior or stream protocol.
+
+## Current media-turn application policy
+
+ADR 014 changes only how a failed result is presented: media turns drop rejected prose and keep the registry summary; text-only turns retain the refusal. evaluateGrounding's citation/numeric checks and semantic limitations are unchanged. Conversation history is projected to visible text only before generation.

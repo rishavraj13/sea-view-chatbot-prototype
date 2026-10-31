@@ -44,3 +44,7 @@ ADR 009 replaces post-tool model continuation with one generation step and a pur
 ## Current supersession
 
 ADR 011 replaces the former corpus and verbatim-line check with real dated website sections and citation/numeric property validation. Static imports and single-call generation remain. See current knowledge-and-media.md and api.md; earlier response fixtures are not current evidence.
+
+## Media-result wrapper revision
+
+ADR 014 clarifies the current policy after the unchanged property guard: reject/drop prose silently on any found/unavailable media turn and retain its fixed registry summary; produce the existing refusal only when no media result exists. Accepted cited mixed answers keep both prose and media summary. This does not admit previously ungrounded text or add another generation step.

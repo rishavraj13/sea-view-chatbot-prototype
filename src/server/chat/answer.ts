@@ -65,12 +65,12 @@ export function evaluateGrounding(
     text: text.replace(/DEMO CONTENT:\s*/g, '').trim(),
   };
 }
-/** Returns guarded model prose; an empty media-only step is summarized by the registry instead. */
+/** Keeps only guarded prose on media turns; without media, failed grounding retains the existing refusal. */
 export function groundedAnswer(
   text: string,
   chunks: readonly Chunk[],
   media: readonly MediaResult[],
 ): string {
-  if (!text.trim() && media.length) return '';
-  return evaluateGrounding(text, chunks).text;
+  const result = evaluateGrounding(text, chunks);
+  return !result.accepted && media.length ? '' : result.text;
 }

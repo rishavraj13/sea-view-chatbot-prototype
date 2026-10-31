@@ -4,6 +4,8 @@ export interface ScenarioExpectation {
   fact?: boolean;
   refuse?: boolean;
   unavailable?: boolean;
+  ecoPhotos?: boolean;
+  historyFrom?: string;
 }
 /** Public fields inspected by the live assertion function. */
 export interface CheckedRecord {
@@ -16,8 +18,9 @@ export interface CheckedRecord {
     output: { kind: string; id: string; isDemo: boolean };
   }[];
   rawToolCalls: readonly { function: { name: string } }[];
+  providerMessages?: readonly { role: string; content: string }[];
 }
-/** The eighteen amended regression scenarios. */
+/** The twenty-one regression scenarios, including source and media history replay. */
 export const scenarios: readonly (ScenarioExpectation & {
   id: string;
   question: string;

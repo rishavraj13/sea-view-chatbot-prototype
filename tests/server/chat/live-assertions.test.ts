@@ -42,3 +42,67 @@ it('live refusal checks reject factual-looking prose for missing knowledge', () 
     ).every((check) => check.passed),
   ).toBe(true);
 });
+it.each([
+  '{"type":"step-start"}',
+  'sourceId leaked',
+  'step-start leaked',
+  'source-url leaked',
+])('live checks reject serialized history visible as %s', (text) => {
+  expect(
+    checkScenario({ fact: true }, { ...base, visibleText: text }).some(
+      (check) =>
+        check.name === 'no serialized UI message parts' && !check.passed,
+    ),
+  ).toBe(true);
+});
+it('requires terminal punctuation on non-refusal factual prose', () => {
+  expect(
+    checkScenario(
+      { fact: true },
+      { ...base, visibleText: 'An answer without punctuation' },
+    ).some(
+      (check) =>
+        check.name === 'factual answer has terminal punctuation' &&
+        !check.passed,
+    ),
+  ).toBe(true);
+});
+it.each([
+  ['I do not have that information.', true],
+  ['ECO is described as the jump, nothing else.', true],
+  ['ECO includes photos.', false],
+  ['Photos are included with ECO.', false],
+  ['I cannot confirm whether ECO includes photos.', true],
+  ['Does ECO include photos? I do not have that information.', true],
+])('ECO wording check: %s -> %s', (text, expected) => {
+  const record = {
+    ...base,
+    visibleText: text,
+    citations: text === 'I do not have that information.' ? [] : base.citations,
+  };
+  expect(
+    checkScenario({ ecoPhotos: true }, record).every((check) => check.passed),
+  ).toBe(expected);
+});
+it('rejects a refusal beside a successful or unavailable media result', () => {
+  for (const kind of ['brochure', 'unavailable'])
+    expect(
+      checkScenario(
+        { tools: ['sendBrochure'] },
+        {
+          ...base,
+          visibleText: 'I do not have that information. Here is the brochure.',
+          tools: [
+            {
+              type: 'tool-sendBrochure',
+              output: { kind, id: 'brochure', isDemo: true },
+            },
+          ],
+          rawToolCalls: [{ function: { name: 'sendBrochure' } }],
+        },
+      ).some(
+        (check) =>
+          check.name === 'no refusal beside a media result' && !check.passed,
+      ),
+    ).toBe(true);
+});
