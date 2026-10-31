@@ -1,0 +1,28 @@
+{
+  "productionUrl": "https://sea-view-chatbot-prototype.vercel.app",
+  "immutableUrl": "https://sea-view-chatbot-prototype-rmstbksqm-rishiiwithai-4565.vercel.app",
+  "deploymentId": "dpl_8VzVPqjj9XrQssEHBiEFxDjHAepD",
+  "readyState": "READY",
+  "target": "production",
+  "deployedCommit": "d5caf5366eb8baa96272c0cc649c2e5fad8740fd",
+  "upload": "Clean git archive of committed files; protected uncommitted report and .env.local excluded",
+  "environment": {
+    "MODEL_MODE": "live",
+    "MODEL_PROVIDER": "groq",
+    "MODEL_ID": "qwen/qwen3.8-27b",
+    "REASONING_EFFORT": "none",
+    "GROQ_API_KEY": "Configured as a production secret via CLI stdin; value withheld"
+  },
+  "protection": {
+    "vercelAuthentication": false,
+    "passwordProtection": false,
+    "trustedIps": false
+  },
+  "nodeRuntime": "nodejs26.x",
+  "providerDeadlineSeconds": 20,
+  "maxDurationSeconds": {
+    "/api/chat": 30,
+    "/api/knowledge/trace": 30,
+    "/api/knowledge/sources": 10
+  }
+}

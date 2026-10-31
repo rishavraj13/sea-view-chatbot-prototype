@@ -119,3 +119,23 @@ The additional exact SDK-history replay uses the saved media-history message fro
 The current media-policy table retains all previous 95 phrases and adds 32 (127 total). Six specified direct/file-action requests become required; Do not send a brochure becomes none with no tools. Direct I want / I'd like / I would like / I need / I'm after forms qualify, except when followed by an information verb. Every existing factual negative stays non-required. Bare Watch/Video/Brochure stay optional. The same mock-provider matrix asserts choice, tool set and one generation, including none/no-tools for explicit negation.
 
 Run `npm run typecheck`, `npm run lint`, `npm test`, and `npm run build`. This phase must pass all four before commit/deployment. Complete captured output is in desire-form-report.md. No live verifier/provider endpoint is called during Part A. Deployment is separately authorized only after the Part A commit.
+
+## Production deployment checks and smoke campaign
+
+Production: https://sea-view-chatbot-prototype.vercel.app, backend commit d5caf53. Public static/error checks passed without provider calls; actual function metadata is Node 26 with chat/trace maxDuration 30 seconds, sources 10 seconds. The external video was checked once with HEAD only (200 video/mp4).
+
+The verify:live harness now accepts a remote base URL:
+
+```powershell
+npm run verify:live -- --base-url https://sea-view-chatbot-prototype.vercel.app
+```
+
+**This campaign already stopped on its first 429. Do not rerun this command or reset its ledger in this task.** Remote mode uses a separate docs/examples/production-smoke/budget.json, cap eight, at least ten seconds between starts (10.1-second target), no retries and permanent immediate stop on any 429. It does not touch the previous stopped local campaign ledger. Eight initial scenarios fill the cap; no failure rerun is scheduled. It rejects duplicate remote runs. The SDK transport is restricted to the chosen public /api/chat URL, without credentials/bypass headers or redirects. VIP follow-up history uses the actual SDK message, including structured source parts.
+
+Records include exact public wire/visible text, sources separately, executed tool results, latency, metadata and any retry-after/x-ratelimit-* response headers. Provider-private pre-guard text and wire call counts are not exposed by the unchanged API; they are explicitly null/unmeasured, with the one-call expectation based on the deployed code and offline provider tests. Do not describe the served answer as raw provider prose. The first production request returned the safe RATE_LIMIT body in 695 ms; no rate-limit headers were forwarded by the existing route, so the exhausted bucket cannot be identified. Seven scenarios and all reruns remain unattempted. No live model success or required-tool success is claimed.
+
+Offline harness tests cover public answer/tool/source assertions and a MOCK 429 that proves a single request, header capture and immediate stop without retry. Run `npm test -- tests/server/chat/production-harness.test.ts tests/server/chat/production-budget.test.ts`; these tests make no network/provider calls. The complete final typecheck/lint/test/build output and scenario table are in production-deployment-report.md.
+
+Non-inference deployment checks can be repeated in a separately authorized run with `npx tsx scripts/verify-deployed-static.mjs https://sea-view-chatbot-prototype.vercel.app d5caf5366eb8baa96272c0cc649c2e5fad8740fd`. First export actual Vercel function metadata to .vercel/production-runtime.json as an array of {path,runtime,maxDuration}; use `vercel inspect <immutable-url> --json`, select builds.output for the three API paths and project lambda.runtime/lambda.timeout. This script checks public sources against the committed public JSON, PDF signature, one video HEAD and invalid chat/trace bodies, never valid inference requests.
+
+Quota: this is a shared free Groq quota. Exhaustion produces typed RATE_LIMIT with a retry-later message and no automatic mock fallback. The planned frontend can show a manual retry option. The Knowledge view is pending; its test-question button will use one live call to the same pipeline per valid test, sharing this quota.

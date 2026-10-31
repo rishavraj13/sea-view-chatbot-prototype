@@ -1,0 +1,75 @@
+{
+  "evidence": "Production HTTP checks with ZERO model/provider calls; unauthenticated, no bypass headers/cookies",
+  "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+  "deployedCommit": "d5caf5366eb8baa96272c0cc649c2e5fad8740fd",
+  "checks": [
+    {
+      "name": "unauthenticated public homepage",
+      "status": 200
+    },
+    {
+      "name": "public sources exactly match committed public knowledge/media; no extra fields or env values",
+      "status": 200,
+      "sections": 18
+    },
+    {
+      "name": "demo PDF",
+      "status": 200,
+      "contentType": "application/pdf",
+      "signature": "%PDF-"
+    },
+    {
+      "name": "external video HEAD only, no download",
+      "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+      "status": 200,
+      "contentType": "video/mp4"
+    },
+    {
+      "name": "invalid /api/chat; no pipeline/provider call",
+      "status": 400,
+      "body": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "error": {
+          "code": "INVALID_INPUT",
+          "message": "Invalid message history."
+        }
+      }
+    },
+    {
+      "name": "invalid /api/knowledge/trace; no pipeline/provider call",
+      "status": 400,
+      "body": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "error": {
+          "code": "INVALID_INPUT",
+          "message": "Invalid test question."
+        }
+      }
+    },
+    {
+      "name": "actual Vercel function runtime and maxDuration",
+      "functions": [
+        {
+          "path": "api/chat",
+          "runtime": "nodejs26.x",
+          "maxDuration": 30
+        },
+        {
+          "path": "api/knowledge/trace",
+          "runtime": "nodejs26.x",
+          "maxDuration": 30
+        },
+        {
+          "path": "api/knowledge/sources",
+          "runtime": "nodejs26.x",
+          "maxDuration": 10
+        }
+      ]
+    }
+  ],
+  "passed": true
+}
