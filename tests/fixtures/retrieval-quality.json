@@ -1,0 +1,38 @@
+[
+  {
+    "question": "What is included in the package?",
+    "expected": "Package inclusions"
+  },
+  { "question": "What's in the package?", "expected": "Package inclusions" },
+  { "question": "What do I get?", "expected": "Package inclusions" },
+  { "question": "How much does it cost?", "expected": "Pricing" },
+  { "question": "What if it rains?", "expected": "Weather cancellation" },
+  { "question": "Where do I meet?", "expected": "Location booking" },
+  { "question": "What is the demo tandem price?", "expected": "Pricing" },
+  {
+    "question": "What is the price of the tandem package?",
+    "expected": "Pricing"
+  },
+  { "question": "Are photos included?", "expected": "Package inclusions" },
+  { "question": "How much per person?", "expected": "Pricing" },
+  {
+    "question": "Can I reschedule after rain?",
+    "expected": "Weather cancellation"
+  },
+  {
+    "question": "What happens if weather cancels the jump?",
+    "expected": "Weather cancellation"
+  },
+  {
+    "question": "What are the refund terms?",
+    "expected": "Weather cancellation"
+  },
+  { "question": "Where is the meeting point?", "expected": "Location booking" },
+  { "question": "How do I book?", "expected": "Location booking" },
+  { "question": "Do I need a safety briefing?", "expected": "Safety" },
+  { "question": "What equipment checks happen?", "expected": "Safety" },
+  { "question": "Can I pay with Bitcoin?", "expected": null },
+  { "question": "Do you offer hotel accommodation?", "expected": null },
+  { "question": "Is scuba diving available?", "expected": null },
+  { "question": "When should I arrive?", "expected": null }
+]

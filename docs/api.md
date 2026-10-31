@@ -209,3 +209,9 @@ HTTP 502 — MODEL_FAILURE (actual capture: docs/examples/verification/invalid-k
 ```
 
 See [provider research](providers.md), [ADR 009](decisions/009-provider-selection-and-single-step.md) and [Phase 1.7 report](phase-1.7-report.md). No deployments in this phase.
+
+## Covered-question correction
+
+No request, response metadata, stream or tool-result schema changes. The original covered-question refusal was caused by rejecting a trailing citation, not empty retrieval. buildModelContext now supplies the shared canonical source block. The prompt requires an answer for facts explicitly present and refuses only missing requested facts. groundedAnswer accepts a verbatim source fact with its exact bracketed URL before or after it and canonicalizes citation placement; invented, uncited and unknown-source prose remains rejected.
+
+Retrieval now normalizes bounded customer terms and morphological variants on both sides. Score is body-token matches plus a total title field weight of 2 apportioned across normalized title tokens. Threshold remains 1; top-three and stable tie breaking remain. See [diagnosis and exact before/after context](covered-info-report.md), [quality scores](examples/covered-info/retrieval-quality.json) and ADR 010.

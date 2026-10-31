@@ -6,3 +6,4 @@ export { ChatError, mapError } from './errors';
 export { modelMode } from './provider';
 export { publicModelMetadata } from './provider';
 export { summarizeMedia } from './media-summary';
+export { buildSystemPrompt, groundedAnswer } from './answer';

@@ -1,0 +1,12 @@
+{
+  "question": "What is the demo tandem price?",
+  "evidence": "LIVE original answering pipeline, before fixes",
+  "provider": "google",
+  "modelId": "gemini-2.5-flash",
+  "providerCalls": 1,
+  "providerLatencyMs": 1261,
+  "totalLatencyMs": 1325,
+  "status": 200,
+  "modelText": "DEMO CONTENT: The tandem price is USD 250 per person. This fictional price is not a real offer. [https://example.com/sea-view-demo/pricing]",
+  "wire": "data: {\"type\":\"start\",\"messageId\":\"c27e2466-0c76-4743-a4c8-9c0141e485a4\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"google\",\"modelId\":\"gemini-2.5-flash\",\"isDemo\":true}}\n\ndata: {\"type\":\"start-step\"}\n\ndata: {\"type\":\"text-start\",\"id\":\"answer\"}\n\ndata: {\"type\":\"text-delta\",\"id\":\"answer\",\"delta\":\"I do not have that information.\"}\n\ndata: {\"type\":\"text-end\",\"id\":\"answer\"}\n\ndata: {\"type\":\"finish-step\"}\n\ndata: {\"type\":\"finish\",\"finishReason\":\"stop\",\"messageMetadata\":{\"mode\":\"live\",\"provider\":\"google\",\"modelId\":\"gemini-2.5-flash\",\"isDemo\":true}}\n\ndata: [DONE]\n\n"
+}

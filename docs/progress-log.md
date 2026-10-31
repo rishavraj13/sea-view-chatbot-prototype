@@ -73,3 +73,58 @@ Regressions cover dependent query/first turn/topic change; retired, unknown, wro
 Implemented one-step provider generation, pure registry media summary, Google/Groq/OpenRouter env selection, configurable model-specific reasoning, and additive public provider/modelId metadata. Updated ADRs and all required docs. No deployment. All 47 tests, typecheck, lint and build pass; full real output is pasted in [phase-1.7-report.md](phase-1.7-report.md). Real-SDK MOCK-provider tests assert one call for seven scenarios and safe typed errors; provider-wire tests validate actual serialized controls.
 
 Exactly three live Google calls, no retries/continuations: both 200/1538ms, info 200/1459ms, retired brochure 200/1480ms; each 1 provider call and 0 reasoning tokens. Groq/OpenRouter 0 calls. Both tools worked in one step; unavailable output worked. Info returned a refusal for a covered question, so factual-answer quality did not pass despite transport success. The old timeout thinking cause remains unproven. Public quota research, unverified limits, assumptions and deployment variables are in the report and providers.md.
+
+## Covered questions — 2026-10-31
+
+Replayed the exact failed question through the offline trace before changes. Retrieval already returned Pricing 3, Package inclusions 2 and Safety 1 at threshold 1. The one allowed additional Google call (1261ms provider / 1325ms handler) proved that the model answered correctly but the backend rejected the trailing URL citation. Answering-stage case (b), more precisely a guard refusal rather than model refusal. No additional live retry. Groq/OpenRouter keys were absent and neither was called.
+
+Fixed citation-placement normalization for verbatim source facts, clarified the prompt and shared context construction. Added bounded source/query lexical normalization and title-length weighting for realistic customer phrasings; threshold stays 1. Retrieval-quality suite passes 21/21, including all six requested questions and four no-matches. Exact live raw output replay succeeds offline in the real SDK pipeline with one MOCK-provider call. Negative grounding tests still reject fabricated, uncited and unknown-source answers. No request/stream/tool-result/provider configuration/deployment change.
+
+Full diagnosis, exact context, captures and assumptions: [covered-info-report.md](covered-info-report.md). All required checks passed:
+
+```text
+> assignment@0.1.0 typecheck
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully
+
+> assignment@0.1.0 lint
+> eslint . --max-warnings=0
+
+> assignment@0.1.0 test
+> vitest run
+
+ RUN  v5.0.5 C:/assignment
+
+ Test Files  13 passed (13)
+      Tests  73 passed (73)
+   Start at  13:08:59
+   Duration  948ms (import 78%, transform 11%, tests 5%, setup 5%, worker 2%)
+
+> assignment@0.1.0 build
+> next build
+
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 31ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1139ms
+  Running TypeScript ...
+  Finished TypeScript in 2.2s ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/6) ...
+  Generating static pages using 7 workers (1/6)
+  Generating static pages using 7 workers (2/6)
+  Generating static pages using 7 workers (4/6)
+✓ Generating static pages using 7 workers (6/6) in 756ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/chat
+├ ƒ /api/knowledge/sources
+└ ƒ /api/knowledge/trace
+```

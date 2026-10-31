@@ -43,3 +43,13 @@ provider-wire.test.ts uses MOCK HTTP responses through each real provider adapte
 The bounded live script is `npx --yes tsx --env-file=.env.local scripts/phase17-live.mjs`. It persists call counts in docs/examples/phase17/budget.json and refuses to rerun a provider with recorded task calls. Do not clear this ledger or run the old unbounded scenario scripts in this phase. It invokes the actual /api/chat handler with a Request, instruments real provider HTTP fetches, and reads the resulting SSE with DefaultChatTransport/readUIMessageStream. It does not run a separate HTTP listener. Order: both media, info, retired brochure. Requests are spaced 61 seconds; SDK maxRetries=0 and there are no retry loops. Exactly 3 Google calls, 0 Groq, 0 OpenRouter were made.
 
 Live captures are under docs/examples/phase17. The live info question was refused by the exact grounding boundary; successful 200 status must not be reported as factual-answer success. Earlier safe error examples are historical actual endpoint captures, not new live quota-consuming tests. No deployment in this phase.
+
+## Repeatable covered-question retrieval check
+
+Run `npm test -- tests/server/knowledge/quality.test.ts`: a table-driven suite of 21 realistic questions expects the correct top-ranked source for 17 and an empty list for four. The six required package/cost/rain/meeting phrasings are included. Fixtures live in tests/fixtures/retrieval-quality.json. `npx --yes tsx scripts/capture-retrieval-quality.mjs` emits a score/URL snapshot without a provider call. Threshold is independently asserted to remain 1.
+
+For the exact failed question's current offline route trace use MODEL_MODE=mock and `npx --yes tsx --env-file=.env.local scripts/diagnose-covered-info.mjs after`. It invokes the actual trace handler with the original question, blocks outbound fetch and records query/chunks/threshold/exact context. It does not start a separate HTTP listener. The historical before snapshot is protected from overwrite.
+
+answer.test.ts checks shared context/prompt construction, the exact live trailing-citation output, and fabricated/uncited/unknown-URL rejection. single-call.test.ts replays that raw answer through the actual SDK loop with a MOCK language provider, confirming a sourced USD 250 answer and one call. These are explicitly offline simulations, not a second live validation. Full live before diagnosis used exactly one Google call; its persistent ledger prevents reruns. Do not clear it to spend another diagnostic call.
+
+Groq/OpenRouter keys were absent, so neither received a new live request. Run all required checks with npm run typecheck, npm run lint, npm test and npm run build. Final output is in covered-info-report.md and progress-log.md.

@@ -1,6 +1,8 @@
 import { z } from 'zod';
 export { buildRetrievalQuery } from './query';
 export type { QueryMessage } from './query';
+export { buildModelContext } from './context';
+import { retrievalTokens } from './tokens';
 import packages from '../../../data/knowledge/packages.json';
 import pricing from '../../../data/knowledge/pricing.json';
 import safety from '../../../data/knowledge/safety.json';
@@ -25,50 +27,37 @@ export interface Chunk {
 export const sources = z
   .array(sourceSchema)
   .parse([packages, pricing, safety, weather, booking]);
-const tokens = (s: string) =>
-  [...new Set(s.toLowerCase().match(/[a-z0-9]+/g) ?? [])].filter(
-    (t) =>
-      ![
-        'the',
-        'a',
-        'is',
-        'what',
-        'how',
-        'do',
-        'i',
-        'and',
-        'can',
-        'you',
-        'me',
-        'please',
-        'your',
-        'about',
-        'it',
-      ].includes(t),
-  );
-/** Pure keyword retrieval, minimum one discriminating token, deterministic top three. */
+/** Unchanged minimum lexical evidence needed for a returned chunk. */
+export const RETRIEVAL_THRESHOLD = 1;
+/** Pure normalized keyword retrieval: text matches weigh 1, title evidence totals 2 across title tokens. */
 export function retrieve(
   question: string,
   corpus: readonly Source[] = sources,
 ): Chunk[] {
-  const query = tokens(question);
+  const query = retrievalTokens(question);
   return corpus
     .flatMap((source, si) =>
       source.text
         .split(/\n+/)
         .filter(Boolean)
-        .map((text, ci) => ({
-          id: `${si}-${ci}`,
-          text,
-          source,
-          score: query.reduce(
-            (sum, t) =>
-              sum + (tokens(source.title + ' ' + text).includes(t) ? 1 : 0),
-            0,
-          ),
-        })),
+        .map((text, ci) => {
+          const body = retrievalTokens(text);
+          const title = retrievalTokens(source.title);
+          return {
+            id: `${si}-${ci}`,
+            text,
+            source,
+            score: [...query].reduce(
+              (sum, t) =>
+                sum +
+                (body.has(t) ? 1 : 0) +
+                (title.has(t) ? 2 / title.size : 0),
+              0,
+            ),
+          };
+        }),
     )
-    .filter((c) => c.score >= 1)
+    .filter((c) => c.score >= RETRIEVAL_THRESHOLD)
     .sort((a, b) => b.score - a.score || a.id.localeCompare(b.id))
     .slice(0, 3);
 }

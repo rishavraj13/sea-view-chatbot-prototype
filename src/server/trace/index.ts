@@ -1,4 +1,5 @@
 import type { Chunk } from '../knowledge';
+import { buildModelContext } from '../knowledge';
 import type { MediaResult } from '../media';
 import type { ModelMetadata } from '../config';
 /** Exact context, tool execution, and model mode; never includes history or secrets. */
@@ -19,7 +20,7 @@ export function buildTrace(metadata: ModelMetadata, chunks: Chunk[]): Trace {
   return {
     ...metadata,
     chunks,
-    context: chunks.map((c) => `[${c.source.url}] ${c.text}`).join('\n'),
+    context: buildModelContext(chunks),
     toolCalls: [],
     media: [],
     text: '',

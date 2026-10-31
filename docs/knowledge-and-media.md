@@ -11,3 +11,9 @@ sendBrochure and showVideo resolve IDs against the same registry. Unknown, disab
 ## Approved conversational retrieval and media correction
 
 The knowledge public boundary now also exports buildRetrievalQuery and QueryMessage. The pipeline derives a bounded deterministic query from user history before pure keyword retrieval; see ADR 008. Explicit media IDs resolve through the registry, respecting requested media type and unavailable status. Trace optionally accepts full chat-schema history; existing question-only calls still work. See approved-fixes-report.md for exact behavior and evidence.
+
+## Covered-question correction
+
+No request, response metadata, stream or tool-result schema changes. The original covered-question refusal was caused by rejecting a trailing citation, not empty retrieval. buildModelContext now supplies the shared canonical source block. The prompt requires an answer for facts explicitly present and refuses only missing requested facts. groundedAnswer accepts a verbatim source fact with its exact bracketed URL before or after it and canonicalizes citation placement; invented, uncited and unknown-source prose remains rejected.
+
+Retrieval now normalizes bounded customer terms and morphological variants on both sides. Score is body-token matches plus a total title field weight of 2 apportioned across normalized title tokens. Threshold remains 1; top-three and stable tie breaking remain. See [diagnosis and exact before/after context](covered-info-report.md), [quality scores](examples/covered-info/retrieval-quality.json) and ADR 010.

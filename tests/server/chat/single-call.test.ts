@@ -3,6 +3,7 @@ import { MockLanguageModelV4 } from 'ai/test';
 import { retrieve } from '../../../src/server/knowledge';
 import { APICallError } from 'ai';
 import { POST } from '../../../src/app/api/chat/route';
+import diagnostic from '../../../docs/examples/covered-info/live-before.json';
 const state = vi.hoisted(() => ({ model: null as MockLanguageModelV4 | null }));
 vi.mock('@ai-sdk/google', () => ({
   createGoogleGenerativeAI: () => () => state.model,
@@ -20,6 +21,22 @@ const usage = {
 beforeEach(() => {
   vi.stubEnv('MODEL_MODE', 'live');
   vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', 'MOCK-key-never-network');
+});
+it('MOCK replay of the exact live trailing-citation answer returns the covered price in one call', async () => {
+  const model = new MockLanguageModelV4({
+    doGenerate: {
+      content: [{ type: 'text', text: diagnostic.modelText }],
+      finishReason: { unified: 'stop', raw: 'stop' },
+      usage,
+      warnings: [],
+    },
+  });
+  state.model = model;
+  const trace = await runPipeline({ messages: [user(diagnostic.question)] });
+  expect(trace.text).toContain('USD 250');
+  expect(trace.text).toContain('https://example.com/sea-view-demo/pricing');
+  expect(trace.text).not.toContain('I do not have');
+  expect(model.doGenerateCalls).toHaveLength(1);
 });
 it.each([
   ['info', 'What is the tandem price?', []],
