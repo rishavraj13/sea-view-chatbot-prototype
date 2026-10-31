@@ -5,6 +5,7 @@ import {
   mapError,
   runPipeline,
   publicModelMetadata,
+  buildErrorResponse,
 } from '@/server/chat';
 export const runtime = 'nodejs';
 export const maxDuration = 30;
@@ -71,9 +72,9 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     const e = mapError(error);
-    return Response.json(
-      { ...publicModelMetadata(), error: { code: e.code, message: e.message } },
-      { status: e.status, headers: { 'Cache-Control': 'no-store' } },
-    );
+    return Response.json(buildErrorResponse(e, publicModelMetadata()), {
+      status: e.status,
+      headers: { 'Cache-Control': 'no-store' },
+    });
   }
 }

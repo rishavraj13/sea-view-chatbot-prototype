@@ -139,3 +139,19 @@ Offline harness tests cover public answer/tool/source assertions and a MOCK 429 
 Non-inference deployment checks can be repeated in a separately authorized run with `npx tsx scripts/verify-deployed-static.mjs https://sea-view-chatbot-prototype.vercel.app d5caf5366eb8baa96272c0cc649c2e5fad8740fd`. First export actual Vercel function metadata to .vercel/production-runtime.json as an array of {path,runtime,maxDuration}; use `vercel inspect <immutable-url> --json`, select builds.output for the three API paths and project lambda.runtime/lambda.timeout. This script checks public sources against the committed public JSON, PDF signature, one video HEAD and invalid chat/trace bodies, never valid inference requests.
 
 Quota: this is a shared free Groq quota. Exhaustion produces typed RATE_LIMIT with a retry-later message and no automatic mock fallback. The planned frontend can show a manual retry option. The Knowledge view is pending; its test-question button will use one live call to the same pipeline per valid test, sharing this quota.
+
+## Rate-limit diagnostics and retry contract
+
+The one-request direct diagnostic has already completed with HTTP 200. Do not rerun scripts/diagnose-rate-limit.mjs or reset docs/examples/rate-limit-diagnostics/direct-budget.json in this task. It read the key only through readEnv/.env.local, sent qwen/qwen3.8-27b with max_tokens:1 and no retries/redirects, and printed only status and safe quota/error fields. The success body was not printed or parsed. No second live request, production check or deployment occurred.
+
+```powershell
+npm test -- tests/server/chat/errors.test.ts
+npm run typecheck
+npm run lint
+npm test
+npm run build
+```
+
+The 32 new offline cases exercise unchanged status mapping, present/absent/garbage retry headers, clamping, HTTP dates, schema rejection of invalid integers or retry fields on other errors, actual mocked Groq HTTP through chat and trace, one log per mapped error, safe type/code fallback from response JSON, fixed header allowlisting, key/conversation exclusion and no input-error log. All HTTP in these tests is MOCK; no provider/network call occurs. Six separately captured mocked route responses are explicitly labelled OFFLINE MOCK in examples/rate-limit-diagnostics/mock-errors.json. Raw provider error messages are never made public. Both routes validate the same public error envelope.
+
+Full diagnostic headers, interpretation and real final command output are in rate-limit-diagnostics-report.md. The observed header limits are daily requests and per-minute tokens; a later successful minimal call cannot identify the bucket behind the earlier production 429. This revision is not deployed.

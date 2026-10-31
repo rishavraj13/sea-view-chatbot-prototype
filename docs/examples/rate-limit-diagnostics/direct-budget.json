@@ -1,0 +1,7 @@
+{
+  "calls": 1,
+  "maxCalls": 1,
+  "modelId": "qwen/qwen3.8-27b",
+  "maxTokens": 1,
+  "startedAt": "2026-10-31T16:56:02.852Z"
+}

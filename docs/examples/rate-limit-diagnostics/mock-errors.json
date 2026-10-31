@@ -1,0 +1,149 @@
+{
+  "evidence": "OFFLINE MOCK Groq HTTP through actual route handlers; zero live provider calls",
+  "captures": [
+    {
+      "route": "chat",
+      "scenario": "present",
+      "status": 429,
+      "body": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "error": {
+          "code": "RATE_LIMIT",
+          "message": "The model rate limit was reached. Please retry later.",
+          "retryAfterSeconds": 12
+        }
+      },
+      "serverLog": {
+        "event": "provider_error",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "upstreamStatus": 429,
+        "errorType": "rate_limit_error",
+        "errorCode": "tokens",
+        "rateLimitHeaders": {
+          "retry-after": "12"
+        }
+      }
+    },
+    {
+      "route": "trace",
+      "scenario": "present",
+      "status": 429,
+      "body": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "error": {
+          "code": "RATE_LIMIT",
+          "message": "The model rate limit was reached. Please retry later.",
+          "retryAfterSeconds": 12
+        }
+      },
+      "serverLog": {
+        "event": "provider_error",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "upstreamStatus": 429,
+        "errorType": "rate_limit_error",
+        "errorCode": "tokens",
+        "rateLimitHeaders": {
+          "retry-after": "12"
+        }
+      }
+    },
+    {
+      "route": "chat",
+      "scenario": "absent",
+      "status": 429,
+      "body": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "error": {
+          "code": "RATE_LIMIT",
+          "message": "The model rate limit was reached. Please retry later."
+        }
+      },
+      "serverLog": {
+        "event": "provider_error",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "upstreamStatus": 429,
+        "errorType": "rate_limit_error",
+        "errorCode": "tokens",
+        "rateLimitHeaders": {}
+      }
+    },
+    {
+      "route": "trace",
+      "scenario": "absent",
+      "status": 429,
+      "body": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "error": {
+          "code": "RATE_LIMIT",
+          "message": "The model rate limit was reached. Please retry later."
+        }
+      },
+      "serverLog": {
+        "event": "provider_error",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "upstreamStatus": 429,
+        "errorType": "rate_limit_error",
+        "errorCode": "tokens",
+        "rateLimitHeaders": {}
+      }
+    },
+    {
+      "route": "chat",
+      "scenario": "garbage",
+      "status": 429,
+      "body": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "error": {
+          "code": "RATE_LIMIT",
+          "message": "The model rate limit was reached. Please retry later."
+        }
+      },
+      "serverLog": {
+        "event": "provider_error",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "upstreamStatus": 429,
+        "errorType": "rate_limit_error",
+        "errorCode": "tokens",
+        "rateLimitHeaders": {}
+      }
+    },
+    {
+      "route": "trace",
+      "scenario": "garbage",
+      "status": 429,
+      "body": {
+        "mode": "live",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "error": {
+          "code": "RATE_LIMIT",
+          "message": "The model rate limit was reached. Please retry later."
+        }
+      },
+      "serverLog": {
+        "event": "provider_error",
+        "provider": "groq",
+        "modelId": "qwen/qwen3.8-27b",
+        "upstreamStatus": 429,
+        "errorType": "rate_limit_error",
+        "errorCode": "tokens",
+        "rateLimitHeaders": {}
+      }
+    }
+  ]
+}

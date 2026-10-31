@@ -79,7 +79,7 @@ This is not semantic entailment: it cannot prove nonnumeric claims, scope, negat
 
 ## Typed errors and runtime
 
-All routes runtime=nodejs. maxDuration chat/trace=30 seconds, sources=10. Request deadline remains 20 seconds. Errors before SSE: `{mode,provider,modelId,error:{code,message}}`. No stack, raw upstream payload, quota ID or key is exposed.
+All routes runtime=nodejs. maxDuration chat/trace=30 seconds, sources=10. Request deadline remains 20 seconds. Errors before SSE: `{mode,provider,modelId,error:{code,message,retryAfterSeconds?}}`. Only RATE_LIMIT can include retryAfterSeconds; existing fields/messages/statuses stay unchanged. No stack, raw upstream payload, quota ID or key is exposed.
 
 | Code          | HTTP | Safe message                                                       |
 | ------------- | ---- | ------------------------------------------------------------------ |
@@ -109,3 +109,44 @@ The model is instructed to write direct, question-relevant prose without URLs/ci
 Attribution uses the existing lexical normalizer plus bounded stop/question/discourse-word removal and excludes URL/digit-only evidence. A chunk supports an answer at >=0.5 overlap coefficient (shared distinct content words divided by the smaller content-word set), with >=2 matched words. Order by overlap, tie by retrieval order, deduplicate URL, limit two. Numeric/currency/duration/altitude/range validation is unchanged and applies to the full retrieved context. A bare known URL or generic one-word answer does not qualify. The calibration table and limitations are in ADR 015; lexical overlap does not prove entailment or associate every amount/claim with the right entity.
 
 The current [actual live captures](examples/source-attribution/qwen-qwen3-8-27b-initial.json) include raw URL-free answers, delivered attributed sources separately, visible text, tool calls and provider-bound messages. [The report](source-attribution-report.md) includes the evidence table and quota-blocked cases. No live trace call was added to spend quota; offline trace captures and parity tests use the identical pipeline. A live HTTP 429 stopped the campaign; no retries/fallback followed.
+
+## Rate-limit retry guidance and server observability
+
+Both chat and trace use the shared Zod errorResponseSchema/buildErrorResponse. Only error.code=RATE_LIMIT can include `error.retryAfterSeconds`, an integer in 1..3600. It comes from a case-insensitive upstream retry-after header: nonnegative integer delta-seconds clamp to that range (0 -> 1, 5000 -> 3600); a valid HTTP date becomes seconds from server time, rounded up and clamped. Absent, blank, negative, fractional or garbage values are omitted. No default delay is invented. HTTP-date handling depends on the server clock. No upstream headers or provider error prose are added to the public response.
+
+Actual OFFLINE MOCK route capture with retry-after:12 (not a live 429 capture):
+
+```json
+{
+  "mode": "live",
+  "provider": "groq",
+  "modelId": "qwen/qwen3.8-27b",
+  "error": {
+    "code": "RATE_LIMIT",
+    "message": "The model rate limit was reached. Please retry later.",
+    "retryAfterSeconds": 12
+  }
+}
+```
+
+Actual OFFLINE MOCK route capture with absent or garbage retry-after:
+
+```json
+{
+  "mode": "live",
+  "provider": "groq",
+  "modelId": "qwen/qwen3.8-27b",
+  "error": {
+    "code": "RATE_LIMIT",
+    "message": "The model rate limit was reached. Please retry later."
+  }
+}
+```
+
+Six actual chat/trace mocked HTTP captures, including their server log objects, are in examples/rate-limit-diagnostics/mock-errors.json. The one authorized direct diagnostic returned HTTP 200 and produced no live error example. This change was not deployed; the hosted API still runs its previously committed error behavior.
+
+Exact mapping: the mapper preserves existing ChatError instances. A JavaScript Error named TimeoutError/AbortError becomes TIMEOUT/504. Only AI SDK APICallError.isInstance(error) with statusCode===429 becomes RATE_LIMIT/429, regardless of provider error.type/code. Other SDK statuses (including 400/401/403/408/500/503/504), missing statuses, plain objects with status/code 429, and ordinary exceptions become MODEL_FAILURE/502. No matching of error-message text, nested causes or provider labels is used. Pipeline catch calls mapError with the selected provider/model; route catch receives the mapped ChatError and does not log it twice. See src/server/chat/errors.ts and pipeline.ts.
+
+Server-only observability writes one JSON line for an SDK API error, timeout/abort, or error crossing the provider pipeline boundary. Fields are event=provider_error, provider, modelId, upstreamStatus (or null), errorType, errorCode (or null), rateLimitHeaders. Only bounded identifier-style labels survive, with known/configured key material removed. Provider error.type/code are read from SDK data, with response JSON fallback because the installed Groq SDK schema drops code. A bounded known exception name is the fallback type. No provider message, stack, request/response body, URL, request headers or conversation is logged.
+
+Fixed header-name allowlist: retry-after; x-ratelimit-limit-requests; x-ratelimit-limit-tokens; x-ratelimit-remaining-requests; x-ratelimit-remaining-tokens; x-ratelimit-reset-requests; x-ratelimit-reset-tokens. Names are normalized to lowercase. Values must be bounded numeric counters, recognized numeric duration strings on reset fields, or a valid HTTP date on retry-after; malformed/secret-looking values and every other header are dropped. These headers stay server-side. Already mapped ChatError values and route input failures do not emit provider-error logs. This adds diagnostics/retry guidance without changing provider selection, retries, request shapes, stream protocol or tool results.

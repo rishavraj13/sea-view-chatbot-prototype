@@ -108,6 +108,6 @@ export async function runPipeline(
       trace.media.some((m) => m.isDemo);
     return trace;
   } catch (error) {
-    throw mapError(error);
+    throw mapError(error, { provider: p.provider, modelId: p.modelId });
   }
 }
