@@ -4,7 +4,7 @@ import {
   ChatError,
   mapError,
   runPipeline,
-  modelMode,
+  publicModelMetadata,
 } from '@/server/chat';
 export const runtime = 'nodejs';
 export const maxDuration = 30;
@@ -25,7 +25,12 @@ export async function POST(request: Request) {
         writer.write({
           type: 'start',
           messageId: crypto.randomUUID(),
-          messageMetadata: { mode: result.mode, isDemo: true },
+          messageMetadata: {
+            mode: result.mode,
+            provider: result.provider,
+            modelId: result.modelId,
+            isDemo: true,
+          },
         });
         writer.write({ type: 'start-step' });
         for (const [i, call] of result.toolCalls.entries()) {
@@ -49,7 +54,12 @@ export async function POST(request: Request) {
         writer.write({
           type: 'finish',
           finishReason: 'stop',
-          messageMetadata: { mode: result.mode, isDemo: true },
+          messageMetadata: {
+            mode: result.mode,
+            provider: result.provider,
+            modelId: result.modelId,
+            isDemo: true,
+          },
         });
       },
       onError: () => 'The response stream failed.',
@@ -61,7 +71,7 @@ export async function POST(request: Request) {
   } catch (error) {
     const e = mapError(error);
     return Response.json(
-      { mode: modelMode(), error: { code: e.code, message: e.message } },
+      { ...publicModelMetadata(), error: { code: e.code, message: e.message } },
       { status: e.status, headers: { 'Cache-Control': 'no-store' } },
     );
   }

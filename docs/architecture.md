@@ -21,3 +21,9 @@ SDK references checked before version/protocol selection: [AI SDK Google](https:
 ## Approved conversational retrieval and media correction
 
 The knowledge public boundary now also exports buildRetrievalQuery and QueryMessage. The pipeline derives a bounded deterministic query from user history before pure keyword retrieval; see ADR 008. Explicit media IDs resolve through the registry, respecting requested media type and unavailable status. Trace optionally accepts full chat-schema history; existing question-only calls still work. See approved-fixes-report.md for exact behavior and evidence.
+
+## Phase 1.7 architecture
+
+The shared pipeline invokes generateText once, with AI SDK's default single-step stop, maxRetries=0 and the existing deadline. Tool handlers execute locally in that step; no model continuation is requested. Explicit-ID registry binding and deduplication are unchanged. Pure chat.summarizeMedia(media) formats only returned title/URL or unavailable status. Grounded same-step model text is preserved; empty/rejected media text uses the summary.
+
+config exports modelMetadataSchema and ModelMetadata in addition to readEnv. ModelMetadata is mode/provider/modelId; Trace extends it, and SSE start/finish metadata includes it. chat also exports publicModelMetadata for safe error envelopes. The provider factory builds only the selected adapter, with validated explicit keys and model-specific reasoning controls. No cross-provider or error-to-mock fallback. No request/stream/tool-result shape changes beyond additive public selection metadata. See ADR 009 and docs/providers.md.

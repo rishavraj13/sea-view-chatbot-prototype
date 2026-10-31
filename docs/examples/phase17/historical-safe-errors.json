@@ -1,0 +1,35 @@
+{
+  "TIMEOUT": {
+    "source": "docs/examples/verification/credentialed-live.json",
+    "status": 504,
+    "response": {
+      "mode": "live",
+      "error": {
+        "code": "TIMEOUT",
+        "message": "The model timed out. Please retry."
+      }
+    }
+  },
+  "RATE_LIMIT": {
+    "source": "docs/examples/verification/credentialed-live.json",
+    "status": 429,
+    "response": {
+      "mode": "live",
+      "error": {
+        "code": "RATE_LIMIT",
+        "message": "The model rate limit was reached. Please retry later."
+      }
+    }
+  },
+  "MODEL_FAILURE": {
+    "source": "docs/examples/verification/invalid-key.json",
+    "status": 502,
+    "response": {
+      "mode": "live",
+      "error": {
+        "code": "MODEL_FAILURE",
+        "message": "The model is temporarily unavailable."
+      }
+    }
+  }
+}

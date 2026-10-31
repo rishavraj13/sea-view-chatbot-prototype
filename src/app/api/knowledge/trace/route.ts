@@ -3,7 +3,7 @@ import {
   mapError,
   runPipeline,
   traceRequestSchema,
-  modelMode,
+  publicModelMetadata,
 } from '@/server/chat';
 export const runtime = 'nodejs';
 export const maxDuration = 30;
@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   } catch (error) {
     const e = mapError(error);
     return Response.json(
-      { mode: modelMode(), error: { code: e.code, message: e.message } },
+      { ...publicModelMetadata(), error: { code: e.code, message: e.message } },
       { status: e.status },
     );
   }

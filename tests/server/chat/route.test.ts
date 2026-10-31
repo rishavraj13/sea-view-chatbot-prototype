@@ -2,6 +2,7 @@ import { expect, it } from 'vitest';
 import { APICallError, readUIMessageStream } from 'ai';
 import { POST } from '../../../src/app/api/chat/route';
 import { chatRequestSchema, mapError } from '../../../src/server/chat';
+import { modelMetadataSchema } from '../../../src/server/config';
 it('streams both tools and accepts the returned assistant history', async () => {
   const request = {
     messages: [
@@ -36,6 +37,11 @@ it('streams both tools and accepts the returned assistant history', async () => 
   let last;
   for await (const message of readUIMessageStream({ stream })) last = message;
   expect(last?.parts.filter((p) => p.type.startsWith('tool-'))).toHaveLength(2);
+  expect(modelMetadataSchema.parse(last?.metadata)).toEqual({
+    mode: 'mock',
+    provider: 'google',
+    modelId: 'gemini-2.5-flash',
+  });
   expect(
     chatRequestSchema.safeParse({
       messages: [

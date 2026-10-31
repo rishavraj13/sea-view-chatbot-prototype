@@ -1,7 +1,8 @@
 import type { Chunk } from '../knowledge';
 import type { MediaResult } from '../media';
+import type { ModelMetadata } from '../config';
 /** Exact context, tool execution, and model mode; never includes history or secrets. */
-export interface Trace {
+export interface Trace extends ModelMetadata {
   mode: 'live' | 'mock';
   chunks: Chunk[];
   context: string;
@@ -14,9 +15,9 @@ export interface Trace {
   text: string;
 }
 /** Creates a request-local trace. */
-export function buildTrace(mode: Trace['mode'], chunks: Chunk[]): Trace {
+export function buildTrace(metadata: ModelMetadata, chunks: Chunk[]): Trace {
   return {
-    mode,
+    ...metadata,
     chunks,
     context: chunks.map((c) => `[${c.source.url}] ${c.text}`).join('\n'),
     toolCalls: [],

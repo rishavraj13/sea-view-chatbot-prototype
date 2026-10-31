@@ -1,3 +1,5 @@
+> Phase 1.7: mode metadata now includes provider and modelId; live generation is one step. Current details below supersede older captures without these additive fields. Request shapes, SSE protocol and tool-result union are unchanged.
+
 > Current approved extension: trace accepts optional messages with the same schema/limits as chat. See the approved contract below; earlier captured requests remain valid historical examples.
 
 # API contract
@@ -148,3 +150,62 @@ Both seven-case suites completed with real Google calls. Info, brochure, video, 
 An actual history-bearing live trace request and its quota-blocked response are in [approved-live.json](examples/verification/approved-live.json). Offline route tests assert exact equality to the shared chat pipeline with that history. Follow-up query construction is deterministic (ADR 008). Explicit asset IDs are bound to registry resolution before model completion, using the same tool execution handler; resulting trace toolCalls describe server handler executions, not proof that a model emitted each explicit selection.
 
 See [diagnosis, test output, and evidence](approved-fixes-report.md).
+
+## Phase 1.7 provider metadata and single-step generation
+
+Every successful chat start/finish messageMetadata includes `{mode, provider, modelId, isDemo:true}`. Trace JSON adds provider and modelId beside mode. The shared Zod modelMetadataSchema validates `{mode:"live"|"mock",provider:"google"|"groq"|"openrouter",modelId:string}`. Typed error JSON also carries the same public selection; it never includes key values, provider response bodies, stacks, quota IDs or reasoning. Invalid deployment configuration uses the existing safe mock error label with provider google/modelId unconfigured. Missing selected keys use explicit mock metadata rather than silently claiming live generation.
+
+```json
+{
+  "mode": "live",
+  "provider": "google",
+  "modelId": "gemini-2.5-flash",
+  "isDemo": true
+}
+```
+
+Live generation uses exactly one provider call with no retry or post-tool continuation. The provider may select both tools in that one step. Tool execution remains local. Registry-only summarizeMedia supplies text when no acceptable same-step text exists; grounded same-step text is kept and registry summaries appended. The exact-line grounding guard now accepts retrieval lines or exact registry-summary lines; unsupported factual text is still rejected. Mock mode uses no provider calls and all mock labels remain. Media-result discriminants and fields are unchanged.
+
+Real Phase 1.7 live chat SSE and parsed SDK messages are in [live-google.json](examples/phase17/live-google.json), with measured call counts and latency. Info returned the existing refusal despite a covered question, so it is not counted as factual-answer success. Trace history remains the approved `{question,messages?}` body without any new request fields.
+
+### Real user-safe error examples
+
+These are actual earlier endpoint captures, not fabricated current live errors. Their mode/error fields remain valid; current responses additionally include provider/modelId as above. Capturing new artificial error cases would waste the three-call live budget. Current MOCK-provider route tests verify the new envelope for all three errors.
+
+HTTP 429 — RATE_LIMIT (actual capture: docs/examples/verification/credentialed-live.json)
+
+```json
+{
+  "mode": "live",
+  "error": {
+    "code": "RATE_LIMIT",
+    "message": "The model rate limit was reached. Please retry later."
+  }
+}
+```
+
+HTTP 504 — TIMEOUT (actual capture: docs/examples/verification/credentialed-live.json)
+
+```json
+{
+  "mode": "live",
+  "error": {
+    "code": "TIMEOUT",
+    "message": "The model timed out. Please retry."
+  }
+}
+```
+
+HTTP 502 — MODEL_FAILURE (actual capture: docs/examples/verification/invalid-key.json)
+
+```json
+{
+  "mode": "live",
+  "error": {
+    "code": "MODEL_FAILURE",
+    "message": "The model is temporarily unavailable."
+  }
+}
+```
+
+See [provider research](providers.md), [ADR 009](decisions/009-provider-selection-and-single-step.md) and [Phase 1.7 report](phase-1.7-report.md). No deployments in this phase.
