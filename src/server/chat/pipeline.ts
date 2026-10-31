@@ -9,6 +9,7 @@ import { mapError } from './errors';
 import { selectMedia } from './media-selection';
 import { summarizeMedia } from './media-summary';
 import { buildSystemPrompt, groundedAnswer } from './answer';
+import { presentCitations } from './citations';
 /** Shared request-local pipeline for chat and trace; no conversation persistence. */
 export async function runPipeline(
   request: ChatRequest,
@@ -84,6 +85,9 @@ export async function runPipeline(
       });
       trace.text = groundedAnswer(result.text, trace.chunks, trace.media);
     }
+    const presented = presentCitations(trace.text, trace.chunks);
+    trace.text = presented.text;
+    trace.citations = presented.citations;
     const summary = summarizeMedia(trace.media);
     if (summary)
       trace.text = trace.text ? `${trace.text}\n${summary}` : summary;

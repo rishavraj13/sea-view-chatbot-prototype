@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import { mediaResultSchema } from '../media';
+import { citationSchema } from '../knowledge';
 const partSchema = z.union([
+  citationSchema,
   z.object({
     type: z.literal('text'),
     text: z.string().trim().min(1).max(4000),

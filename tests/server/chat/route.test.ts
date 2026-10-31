@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest';
-import { APICallError, readUIMessageStream } from 'ai';
+import { APICallError, DefaultChatTransport, readUIMessageStream } from 'ai';
 import { POST } from '../../../src/app/api/chat/route';
 import { chatRequestSchema, mapError } from '../../../src/server/chat';
 import { modelMetadataSchema } from '../../../src/server/config';
@@ -70,4 +70,74 @@ it('maps provider rate limits', () => {
       }),
     ).code,
   ).toBe('RATE_LIMIT');
+});
+it('DefaultChatTransport plus readUIMessageStream preserves text, tools, citations and resendable history', async () => {
+  const messages = [
+    {
+      id: 'u',
+      role: 'user' as const,
+      parts: [
+        {
+          type: 'text' as const,
+          text: 'How much is VIP? Send brochure and video.',
+        },
+      ],
+    },
+  ];
+  const transport = new DefaultChatTransport({
+    api: 'http://localhost/api/chat',
+    fetch: async (input, init) =>
+      POST(new Request(input instanceof Request ? input : String(input), init)),
+  });
+  const stream = await transport.sendMessages({
+    trigger: 'submit-message',
+    chatId: 'citations-test',
+    messages,
+    messageId: undefined,
+    abortSignal: undefined,
+  });
+  let final;
+  for await (const message of readUIMessageStream({ stream })) final = message;
+  expect(final).toBeDefined();
+  const citations = final!.parts.filter((part) => part.type === 'source-url');
+  expect(citations.length).toBeGreaterThan(0);
+  expect(citations[0]).toMatchObject({
+    type: 'source-url',
+    url: 'https://www.greedyadventures.com/experiences/sea-view-skydiving#options',
+    title: 'VIP',
+  });
+  const text = final!.parts
+    .filter((part) => part.type === 'text')
+    .map((part) => part.text)
+    .join('');
+  expect(text).toContain('฿14,000');
+  expect(text).not.toContain('greedyadventures.com/experiences/');
+  expect(
+    final!.parts.filter((part) => part.type.startsWith('tool-')),
+  ).toHaveLength(2);
+  expect(
+    chatRequestSchema.safeParse({
+      messages: [
+        ...messages,
+        final,
+        {
+          id: 'next',
+          role: 'user',
+          parts: [{ type: 'text', text: 'What does that include?' }],
+        },
+      ],
+    }).success,
+  ).toBe(true);
+});
+it('rejects invalid or oversized structured citations in supplied history', () => {
+  const source = { type: 'source-url', sourceId: 'id', url: 'not-a-url' };
+  for (const part of [
+    source,
+    { ...source, url: 'https://valid.invalid', sourceId: 'x'.repeat(2049) },
+  ])
+    expect(
+      chatRequestSchema.safeParse({
+        messages: [{ id: 'u', role: 'user', parts: [part] }],
+      }).success,
+    ).toBe(false);
 });

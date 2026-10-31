@@ -13,6 +13,7 @@
     "context": "",
     "toolCalls": [],
     "media": [],
-    "text": "[MOCK] I do not have that information."
+    "text": "[MOCK] I do not have that information.",
+    "citations": []
   }
 }

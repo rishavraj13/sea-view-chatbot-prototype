@@ -50,6 +50,26 @@
     "context": "[https://www.greedyadventures.com/experiences/sea-view-skydiving#options] ECO\nThe jump, nothing else\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿9,500 per person\n[https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day] Step 1\nArrival and check-in\nSign in at the dropzone and bring your photo ID.\nStep 2\nSafety briefing and gear fitting\nMeet your instructor for the safety briefing and harness fitting.\nStep 3\nBoarding and the climb\nBoard the aircraft and climb to jump altitude.\nStep 4\nExit and freefall\nExit with your instructor for freefall over the Gulf of Thailand.\nStep 5\nCanopy flight and landing\nFly under the parachute with your instructor and land back at the dropzone.\n[https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs] Which package should I choose?\nChoose ECO for the standard jump, Deluxe if you want handy cam video, and VIP if you want full media coverage.",
     "toolCalls": [],
     "media": [],
-    "text": "[MOCK] [https://www.greedyadventures.com/experiences/sea-view-skydiving#options] ECO\nThe jump, nothing else\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿9,500 per person\n[https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day] Step 1\nArrival and check-in\nSign in at the dropzone and bring your photo ID.\nStep 2\nSafety briefing and gear fitting\nMeet your instructor for the safety briefing and harness fitting.\nStep 3\nBoarding and the climb\nBoard the aircraft and climb to jump altitude.\nStep 4\nExit and freefall\nExit with your instructor for freefall over the Gulf of Thailand.\nStep 5\nCanopy flight and landing\nFly under the parachute with your instructor and land back at the dropzone.\n[https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs] Which package should I choose?\nChoose ECO for the standard jump, Deluxe if you want handy cam video, and VIP if you want full media coverage."
+    "text": "[MOCK] ECO\nThe jump, nothing else\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿9,500 per person\nStep 1\nArrival and check-in\nSign in at the dropzone and bring your photo ID.\nStep 2\nSafety briefing and gear fitting\nMeet your instructor for the safety briefing and harness fitting.\nStep 3\nBoarding and the climb\nBoard the aircraft and climb to jump altitude.\nStep 4\nExit and freefall\nExit with your instructor for freefall over the Gulf of Thailand.\nStep 5\nCanopy flight and landing\nFly under the parachute with your instructor and land back at the dropzone.\nWhich package should I choose?\nChoose ECO for the standard jump, Deluxe if you want handy cam video, and VIP if you want full media coverage.",
+    "citations": [
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+        "title": "ECO"
+      },
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#the-day",
+        "title": "The plan"
+      },
+      {
+        "type": "source-url",
+        "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs",
+        "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs",
+        "title": "Which package should I choose?"
+      }
+    ]
   }
 }

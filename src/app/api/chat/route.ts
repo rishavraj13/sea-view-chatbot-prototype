@@ -50,6 +50,7 @@ export async function POST(request: Request) {
         writer.write({ type: 'text-start', id: 'answer' });
         writer.write({ type: 'text-delta', id: 'answer', delta: result.text });
         writer.write({ type: 'text-end', id: 'answer' });
+        for (const citation of result.citations) writer.write(citation);
         writer.write({ type: 'finish-step' });
         writer.write({
           type: 'finish',

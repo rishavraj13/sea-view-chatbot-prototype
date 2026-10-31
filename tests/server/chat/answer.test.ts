@@ -27,6 +27,11 @@ it('builds exact real source context and preserves package contradictions in the
   );
   expect(prompt).toContain('identical inclusions');
   expect(prompt).toContain('do not invent whether photos');
+  expect(prompt).toContain('1 to 3 short sentences in your own words');
+  expect(prompt).toContain('using only facts relevant to the question');
+  expect(prompt).toContain(
+    'Never mention diving, paragliding, snowboarding or other activities unless the question asks',
+  );
   expect(buildModelContext([])).toBe('');
 });
 it.each([

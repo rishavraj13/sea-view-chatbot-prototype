@@ -38,7 +38,8 @@ it('MOCK replay of the real-fact trailing-citation fixture returns the covered p
   state.model = model;
   const trace = await runPipeline({ messages: [user(diagnostic.question)] });
   expect(trace.text).toContain('฿14,000');
-  expect(trace.text).toContain(
+  expect(trace.text).not.toContain('https://');
+  expect(trace.citations[0]?.url).toBe(
     'https://www.greedyadventures.com/experiences/sea-view-skydiving#options',
   );
   expect(trace.text).not.toContain('I do not have');
@@ -99,6 +100,36 @@ it.each([
       expect(trace.media[0]?.kind).toBe('unavailable');
   },
 );
+it.each([
+  [
+    'If weather holds your jump, you can move to another date at no cost or receive a full refund.',
+    true,
+  ],
+  ['If it rains, you receive a refund within 99999 working days.', false],
+])(
+  'MOCK provider replay checks paraphrased weather prose before separating its citation: %s',
+  async (answer, accepted) => {
+    state.model = new MockLanguageModelV4({
+      doGenerate: {
+        content: [
+          {
+            type: 'text',
+            text: `${answer} (https://www.greedyadventures.com/cancellations#page-content)`,
+          },
+        ],
+        finishReason: { unified: 'stop', raw: 'stop' },
+        usage,
+        warnings: [],
+      },
+    });
+    const trace = await runPipeline({ messages: [user('What if it rains?')] });
+    expect(state.model.doGenerateCalls).toHaveLength(1);
+    expect(trace.text).toBe(
+      accepted ? answer : 'I do not have that information.',
+    );
+    expect(trace.citations).toHaveLength(accepted ? 1 : 0);
+  },
+);
 it('keeps grounded text emitted with tools and never calls for a continuation', async () => {
   const chunk = retrieve('VIP price')[0]!;
   const text = `[${chunk.source.url}] ${chunk.text}`;
@@ -122,7 +153,8 @@ it('keeps grounded text emitted with tools and never calls for a continuation', 
   const trace = await runPipeline({
     messages: [user('VIP price and brochure')],
   });
-  expect(trace.text).toContain(text);
+  expect(trace.text).toContain(retrieve('VIP price')[0]!.text);
+  expect(trace.citations[0]?.url).toBe(retrieve('VIP price')[0]!.source.url);
   expect(trace.text).toContain('/demo/brochure.pdf');
   expect(model.doGenerateCalls).toHaveLength(1);
 });

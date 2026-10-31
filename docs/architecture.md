@@ -2,15 +2,15 @@
 
 Backend only. No database, auth, payments, crawler, UI features or server conversation state. The client sends bounded full history. Static website JSON is validated and imported as modules for serverless packaging.
 
-Flow: route Zod validation -> deterministic conversation query -> pure normalized section retrieval -> shared source context -> one provider generation step/tool execution -> citation/numeric property guard -> UIMessage SSE or JSON trace. Trace invokes the identical chat pipeline. Media summaries bypass model prose only when built from registry outputs. Provider errors remain typed and user-safe; no automatic provider/model/mock fallback after an error.
+Flow: route Zod validation -> deterministic conversation query -> pure normalized section retrieval -> shared source context -> one provider generation step/tool execution -> unchanged citation/numeric property guard -> citation presentation -> registry media summary -> UIMessage SSE or JSON trace. Trace invokes the identical chat pipeline. Citation presentation removes raw knowledge URLs from guarded prose and emits deduplicated source-url parts; rejected prose yields no citations. Media summaries retain registry links. Provider errors remain typed and user-safe; no automatic provider/model/mock fallback after an error.
 
 Public module interfaces:
 
 - config: readEnv, modelMetadataSchema, ModelMetadata. env.ts is the only environment reader.
-- knowledge: Source (now includes isDemo and date-only capturedAt), Chunk, sources, RETRIEVAL_THRESHOLD, retrieve, buildRetrievalQuery, QueryMessage, buildModelContext.
+- knowledge: Source (now includes isDemo and date-only capturedAt), Chunk, sources, RETRIEVAL_THRESHOLD, retrieve, buildRetrievalQuery, QueryMessage, buildModelContext, Citation and citationSchema.
 - media: MediaResult, mediaResultSchema, registry, resolveMedia. Optional posterUrl is public and page-supplied.
-- chat: runPipeline, request schemas/types, error mapping, publicModelMetadata, summarizeMedia, buildSystemPrompt, evaluateGrounding/GroundingResult, groundedAnswer, answerProperties.
-- trace: Trace (mode/provider/modelId/isDemo, source-bearing chunks, exact context and executed tools/media), buildTrace.
+- chat: runPipeline, request schemas/types, error mapping, publicModelMetadata, summarizeMedia, buildSystemPrompt, evaluateGrounding/GroundingResult, groundedAnswer, answerProperties, presentCitations.
+- trace: Trace (mode/provider/modelId/isDemo, source-bearing chunks, exact context, executed tools/media, visible text and structured citations), buildTrace.
 
 Other layers import public index boundaries. Capture and PDF scripts are authoring tools, not runtime loaders. Fifteen logical source sections are atomic chunks so package facts and policy scopes stay together. Threshold remains 1; source coverage abstains on the known absent facets rather than fabricating answers.
 

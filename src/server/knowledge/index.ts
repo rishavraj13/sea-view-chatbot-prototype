@@ -2,6 +2,8 @@ import { z } from 'zod';
 export { buildRetrievalQuery } from './query';
 export type { QueryMessage } from './query';
 export { buildModelContext } from './context';
+export { citationSchema } from './citations';
+export type { Citation } from './citations';
 import { retrievalTokens } from './tokens';
 import eco from '../../../data/knowledge/eco.json';
 import deluxe from '../../../data/knowledge/deluxe.json';

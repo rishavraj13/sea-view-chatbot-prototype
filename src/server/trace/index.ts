@@ -1,4 +1,4 @@
-import type { Chunk } from '../knowledge';
+import type { Chunk, Citation } from '../knowledge';
 import { buildModelContext } from '../knowledge';
 import type { MediaResult } from '../media';
 import type { ModelMetadata } from '../config';
@@ -15,6 +15,7 @@ export interface Trace extends ModelMetadata {
   }[];
   media: MediaResult[];
   text: string;
+  citations: Citation[];
 }
 /** Creates a request-local trace. */
 export function buildTrace(metadata: ModelMetadata, chunks: Chunk[]): Trace {
@@ -26,5 +27,6 @@ export function buildTrace(metadata: ModelMetadata, chunks: Chunk[]): Trace {
     toolCalls: [],
     media: [],
     text: '',
+    citations: [],
   };
 }

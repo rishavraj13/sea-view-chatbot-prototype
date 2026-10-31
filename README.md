@@ -15,7 +15,7 @@ Captured 2026-10-31 as fifteen logical JSON sections with isDemo:false. Text is 
 
 The actual page video is linked with isDemo:false and a page-supplied poster. It was HEAD-verified but not downloaded or playback-tested. public/demo/brochure.pdf is generated DEMO MATERIAL from the real package facts (isDemo:true), not an official site PDF. The retired test asset remains unavailable. UI should render per-record badges.
 
-Flow: full client history -> pure section retrieval -> source context -> one model step/tools -> property guard -> AI SDK UIMessage SSE. The trace endpoint runs the same pipeline. The guard checks citation and numeric properties, not complete factual entailment; see ADR 011. Source flags distinguish real content from the demo brochure; mode:mock separately labels generation.
+Flow: full client history -> pure section retrieval -> source context -> one model step/tools -> property guard -> separate citations -> AI SDK UIMessage SSE. Knowledge citations are source-url parts and trace.citations; visible prose omits raw citation URLs. The prompt requests 1–3 short, question-relevant sentences. The trace endpoint runs the same pipeline. The unchanged guard checks citation and numeric properties, not complete factual entailment; see ADRs 011 and 012. Source flags distinguish real content from the demo brochure; mode:mock separately labels generation. All source anchors were verified against fresh HTML element ids; repeat the offline check with `python scripts/verify-source-anchors.py`.
 
 Frontend: pending. Knowledge view: pending.
 

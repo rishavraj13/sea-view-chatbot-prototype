@@ -2,6 +2,7 @@ import { expect, it } from 'vitest';
 import { runPipeline } from '../../../src/server/chat';
 import { traceRequestSchema } from '../../../src/server/chat';
 import { POST } from '../../../src/app/api/knowledge/trace/route';
+import { citationSchema } from '../../../src/server/knowledge';
 it('trace returns the shared pipeline retrieval and media', async () => {
   const question = 'brochure video pricing';
   const expected = await runPipeline(
@@ -19,6 +20,10 @@ it('trace returns the shared pipeline retrieval and media', async () => {
     }),
   );
   expect(response.status).toBe(200);
+  expect(expected.citations.length).toBeGreaterThan(0);
+  expect(citationSchema.array().parse(expected.citations)).toEqual(
+    expected.citations,
+  );
   expect(await response.json()).toEqual(expected);
 });
 it('optional history uses the same pipeline and validates the same limits', async () => {

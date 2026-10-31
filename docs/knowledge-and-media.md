@@ -25,6 +25,12 @@ scripts/build-website-sources.py has no network calls and reads the two manually
 
 Old fictional data records were removed; old reports/response files were replaced by explicit supersession notices to avoid misleading current readers. Their previous versions remain in Git history. No history rewrite was performed. Source capture, current response examples, quality scores and video HEAD evidence are under docs/examples/real-knowledge/.
 
-# Captured-text presentation cleanup (2026-10-31)
+## Captured-text presentation cleanup (2026-10-31)
 
 Decorative leading `+` and `•` icons were removed from the captured package, inclusions, jump-facts and location text. Package inclusions now appear as plain sentences beneath one `Included` heading. All 15 JSON sections were checked for stray markup and image alt text; no other such artifacts were found. Facts, taglines, prices, URLs, dates and provenance flags are unchanged. The capture authoring script now performs this presentation cleanup, and the demo-labelled brochure was regenerated from the cleaned package sections. Its extracted names and prices are checked against those sections in the offline suite.
+
+## Verified citation links and presentation
+
+Fresh HTML from both source pages returned HTTP 200 on 2026-10-31. Every used fragment exists as an element id: options, details, the-day and faqs on the experience page; page-content on cancellations. No anchor replacement was necessary. The element-id inventory and raw-HTML hashes are saved in examples/citations/anchor-capture.json and checked offline against all 15 sources. Plain page URLs are required when a future fragment cannot be verified. Source facts and capture dates were not refreshed by this link check.
+
+Knowledge citations are now source-url stream parts and trace.citations, separated from visible answer prose after the unchanged guard validates the original answer. Exact model context keeps source URLs. Media tool payloads and registry links retain their existing shapes. See ADR 012 and api.md.
