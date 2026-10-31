@@ -30,7 +30,14 @@ it('builds exact real source context and preserves package contradictions in the
   expect(prompt).toContain('1 to 3 short sentences in your own words');
   expect(prompt).toContain('using only facts relevant to the question');
   expect(prompt).toContain(
-    'Never mention diving, paragliding, snowboarding or other activities unless the question asks',
+    'Never mention diving, paragliding, snowboarding, courses, multi-day trips or rules for other products or activity types unless the question asks',
+  );
+  expect(prompt).toContain('Do not write URLs or citation labels');
+  expect(prompt).toContain(
+    'Never use the words "context", "retrieved", "source" or "section" in your answer',
+  );
+  expect(prompt).toContain(
+    'Never infer unstated facts or say "likely" or "probably"',
   );
   expect(buildModelContext([])).toBe('');
 });
@@ -47,9 +54,9 @@ it.each([
     );
   },
 );
-it('requires at least one allowed URL and rejects every extra unknown citation', () => {
+it('accepts URL-free supported prose and rejects every unknown model URL', () => {
+  expect(evaluateGrounding('VIP is 14000 baht.', vip).accepted).toBe(true);
   for (const text of [
-    'VIP is 14000 baht.',
     `VIP is 14000 baht. [https://untrusted.invalid]`,
     `[${page}#options] [other](https://untrusted.invalid)`,
     `[${page}#options] [other](/unknown)`,
@@ -96,9 +103,6 @@ it('retains only registry-controlled media fallback for an empty model step', ()
 });
 it('documents the semantic limit: citation/numeric checks do not prove nonnumeric entailment', () => {
   expect(
-    evaluateGrounding(
-      `A purple dragon operates this jump. [${page}#options]`,
-      vip,
-    ).accepted,
+    evaluateGrounding(`VIP does not include a safety briefing.`, vip).accepted,
   ).toBe(true);
 });

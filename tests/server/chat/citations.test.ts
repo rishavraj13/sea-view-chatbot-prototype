@@ -54,6 +54,7 @@ it('does not join factual words when removing a citation in the middle of a sent
   ).toBe('The VIP package is available.');
 });
 it.each([
+  'VIP is ฿14,000 per person.',
   `VIP is ฿14,000 per person. [${url}]`,
   `(${url}) VIP is ฿14,000 per person.`,
   `<${url}> VIP is ฿14,000 per person.`,
@@ -76,7 +77,6 @@ it.each([
   );
 });
 it.each([
-  'VIP is ฿14,000 per person.',
   `VIP is ฿99,000 per person. [${url}]`,
   `VIP is ฿14,000 per person. [https://untrusted.invalid]`,
 ])('does not turn rejected prose into source parts: %s', (raw) => {
@@ -87,7 +87,7 @@ it.each([
     citations: [],
   });
 });
-it('deduplicates cited URLs and does not promote uncited retrieved sections', () => {
+it('deduplicates attributed source URLs', () => {
   const raw = `VIP is ฿14,000. [${url}] (${url})`;
   expect(
     presentCitations(evaluateGrounding(raw, chunks).text, chunks).citations,

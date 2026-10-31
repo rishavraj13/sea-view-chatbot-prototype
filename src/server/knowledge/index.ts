@@ -4,6 +4,13 @@ export type { QueryMessage } from './query';
 export { buildModelContext } from './context';
 export { citationSchema } from './citations';
 export type { Citation } from './citations';
+export {
+  measureSourceOverlap,
+  attributeSources,
+  ATTRIBUTION_MIN_OVERLAP,
+  ATTRIBUTION_MIN_WORDS,
+} from './attribution';
+export type { SourceOverlap } from './attribution';
 import { retrievalTokens } from './tokens';
 import eco from '../../../data/knowledge/eco.json';
 import deluxe from '../../../data/knowledge/deluxe.json';

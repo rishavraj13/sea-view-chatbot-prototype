@@ -32,11 +32,11 @@ if (
   throw Error(
     'Explicit live Groq Qwen configuration, reasoning none and key required',
   );
-const dir = join('docs', 'examples', 'history-revision');
+const dir = join('docs', 'examples', 'source-attribution');
 await mkdir(dir, { recursive: true });
 const ledgerPath = join(dir, 'live-budget.json');
 const ledgerSchema = z.object({
-  calls: z.number().int().min(0).max(30),
+  calls: z.number().int().min(0).max(25),
   lastCallAt: z.number(),
   stopped429: z.boolean(),
   runs: z.array(z.string()),
@@ -107,7 +107,7 @@ globalThis.fetch = async (input, init) => {
   if (
     url.hostname !== 'api.groq.com' ||
     url.pathname !== '/openai/v1/chat/completions' ||
-    ledger.calls >= 30 ||
+    ledger.calls >= 25 ||
     ledger.stopped429
   )
     throw Error('Groq-only campaign budget restriction');
@@ -149,7 +149,7 @@ if (attempt === 'rerun' || resume) {
     ]);
 }
 for (const scenario of selected) {
-  if (ledger.calls >= 30 || ledger.stopped429) break;
+  if (ledger.calls >= 25 || ledger.stopped429) break;
   const user = {
     id: `${runKey}-${scenario.id}`,
     role: 'user',

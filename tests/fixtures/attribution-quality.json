@@ -1,0 +1,170 @@
+[
+  {
+    "id": "eco-price",
+    "answer": "The ECO package costs 9500 baht per person.",
+    "source": "ECO",
+    "support": true
+  },
+  {
+    "id": "deluxe-price",
+    "answer": "DELUXE is ฿12,500 per person.",
+    "source": "DELUXE",
+    "support": true
+  },
+  {
+    "id": "vip-price",
+    "answer": "VIP costs THB 14,000.",
+    "source": "VIP",
+    "support": true
+  },
+  {
+    "id": "inclusions",
+    "answer": "You get a tandem skydive, a safety briefing and a certificate of completion.",
+    "source": "What's included",
+    "support": true
+  },
+  {
+    "id": "vip-tagline",
+    "answer": "VIP has a personal cameraman and edited film.",
+    "source": "VIP",
+    "support": true
+  },
+  {
+    "id": "deluxe-tagline",
+    "answer": "DELUXE lists video and photos included.",
+    "source": "DELUXE",
+    "support": true
+  },
+  {
+    "id": "weather-move",
+    "answer": "If weather holds the flight, you can move to another date at no cost or take a full refund.",
+    "source": "If the weather stops the activity",
+    "support": true
+  },
+  {
+    "id": "weather-refund",
+    "answer": "You can get a full refund if your jump is held for weather.",
+    "source": "If the weather stops the activity",
+    "support": true
+  },
+  {
+    "id": "cancel-notice",
+    "answer": "Cancel with more than 48 hours notice and there is nothing to pay.",
+    "source": "If you cancel",
+    "support": true
+  },
+  {
+    "id": "noshow",
+    "answer": "A no-show is treated as a same-day cancellation and the slot is not refunded.",
+    "source": "If you do not turn up",
+    "support": true
+  },
+  {
+    "id": "location",
+    "answer": "The tandem skydive is in Pattaya, Thailand.",
+    "source": "Location and operator",
+    "support": true
+  },
+  {
+    "id": "pickup",
+    "answer": "Bangkok pickup is available as a fixed-price add-on.",
+    "source": "Is Bangkok pickup available?",
+    "support": true
+  },
+  {
+    "id": "altitude",
+    "answer": "Exit altitude is 13,000 ft.",
+    "source": "Jump facts: altitude, freefall, canopy, instructor and time",
+    "support": true
+  },
+  {
+    "id": "freefall",
+    "answer": "There are sixty seconds of freefall.",
+    "source": "Jump facts: altitude, freefall, canopy, instructor and time",
+    "support": true
+  },
+  {
+    "id": "insurance",
+    "answer": "Travel insurance should explicitly cover skydiving.",
+    "source": "Travel insurance",
+    "support": true
+  },
+  {
+    "id": "plan-id",
+    "answer": "Bring your photo ID when you check in at the dropzone.",
+    "source": "The plan",
+    "support": true
+  },
+  {
+    "id": "refund-method",
+    "answer": "A deposit is returned by the same method it was sent, normally within 7 working days.",
+    "source": "Refunds",
+    "support": true
+  },
+  {
+    "id": "unrelated-astronomy",
+    "answer": "Jupiter has swirling clouds and a giant red storm.",
+    "source": "VIP",
+    "support": false
+  },
+  {
+    "id": "unrelated-food",
+    "answer": "Enjoy a coconut curry with mango dessert.",
+    "source": "If the weather stops the activity",
+    "support": false
+  },
+  {
+    "id": "cross-topic-price",
+    "answer": "The VIP package costs 14000 baht.",
+    "source": "Travel insurance",
+    "support": false
+  },
+  {
+    "id": "cross-topic-weather",
+    "answer": "Weather delays can move your flight to another date.",
+    "source": "ECO",
+    "support": false
+  },
+  {
+    "id": "one-word-package",
+    "answer": "Package.",
+    "source": "Which package should I choose?",
+    "support": false
+  },
+  {
+    "id": "mostly-invented",
+    "answer": "VIP includes a free private limousine and unlimited champagne.",
+    "source": "VIP",
+    "support": false
+  },
+  {
+    "id": "near-topic-invented",
+    "answer": "VIP brochure includes breakfast tickets.",
+    "source": "VIP",
+    "support": false
+  },
+  {
+    "id": "vague-question",
+    "answer": "What is that and where can I see it?",
+    "source": "Location and operator",
+    "support": false
+  },
+  {
+    "id": "url-only",
+    "answer": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+    "source": "VIP",
+    "support": false
+  },
+  {
+    "id": "refusal-only",
+    "answer": "I do not have that information.",
+    "source": "ECO",
+    "support": false
+  },
+  {
+    "id": "function-words-only",
+    "answer": "By us, with you and for them.",
+    "source": "If you cancel",
+    "support": false
+  }
+]

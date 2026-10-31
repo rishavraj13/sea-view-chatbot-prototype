@@ -65,6 +65,19 @@ export const scenarios = [
     refuse: true,
   },
   { id: 'clothing', question: 'What should I wear?', refuse: true },
+  { id: 'deluxe', question: 'How much is DELUXE?', fact: true },
+  {
+    id: 'deluxe-follow-up',
+    question: "what's included?",
+    fact: true,
+    historyFrom: 'deluxe',
+  },
+  {
+    id: 'rain-refund-follow-up',
+    question: 'and can I get a refund?',
+    fact: true,
+    historyFrom: 'rain',
+  },
 ];
 
 /** Independent outcome checks for visible prose, factual sources, tool choice, provenance and refusal. */
@@ -75,6 +88,10 @@ export function checkScenario(scenario, record) {
   check('HTTP 200', record.status === 200);
   check('exactly one provider call', record.providerCalls === 1);
   check('nonempty visible text', record.visibleText.trim().length > 0);
+  check(
+    'customer-facing language has no retrieval terminology',
+    !/\b(?:context|retrieved|sources?|sections?)\b/i.test(record.visibleText),
+  );
   if (record.providerMessages)
     check(
       'provider content has no serialized UI parts',

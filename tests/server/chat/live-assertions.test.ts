@@ -14,6 +14,22 @@ const base = {
   tools: [],
   rawToolCalls: [],
 };
+it.each(['context', 'retrieved', 'sources', 'source', 'section'])(
+  'live check rejects customer-facing metadata word %s',
+  (word) => {
+    expect(
+      checkScenario(
+        { fact: true },
+        { ...base, visibleText: `The ${word} says the package is available.` },
+      ).some(
+        (check) =>
+          check.name ===
+            'customer-facing language has no retrieval terminology' &&
+          !check.passed,
+      ),
+    ).toBe(true);
+  },
+);
 it('live factual checks reject missing citations, leaked URLs and an unwanted tool', () => {
   for (const changed of [
     { ...base, citations: [] },

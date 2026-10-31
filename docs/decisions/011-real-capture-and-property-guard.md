@@ -1,5 +1,7 @@
 # Real static knowledge and a property-based answer guard
 
+Citation requirements/selection are superseded by ADR 015 (server-side lexical attribution). Numeric rules and existing public shapes remain unchanged.
+
 Status: accepted; supersedes the fictional corpus and verbatim-line checks described in earlier ADRs. No crawler or deployment.
 
 ## Context

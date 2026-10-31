@@ -1,32 +1,20 @@
-import { citationSchema } from '../knowledge';
-import type { Chunk, Citation } from '../knowledge';
+import { citationSchema, attributeSources } from '../knowledge';
+import type { Chunk } from '../knowledge';
 import {
   CITATION_MARKER,
   stripCitationPresentation,
 } from './citation-presentation';
 
-/** Moves validated source URLs out of prose; call only after grounding has accepted the original answer. */
-export function presentCitations(
-  answer: string,
-  chunks: readonly Chunk[],
-): { text: string; citations: Citation[] } {
-  const citations: Citation[] = [];
-  const seen = new Set<string>();
-  const remember = (url: string) => {
-    const chunk = chunks.find((item) => item.source.url === url);
-    if (!chunk || seen.has(url)) return;
-    seen.add(url);
-    citations.push(
-      citationSchema.parse({
-        type: 'source-url',
-        sourceId: url,
-        url,
-        title: chunk.source.title,
-      }),
-    );
-  };
-  for (const match of answer.matchAll(/\b[a-z][a-z0-9+.-]*:\/\/[^\s<>"\]]+/gi))
-    remember(match[0].replace(/[).,;!?]+$/, ''));
+/** Builds server-attributed source parts and removes optional model URLs after successful grounding. */
+export function presentCitations(answer: string, chunks: readonly Chunk[]) {
+  const citations = attributeSources(answer, chunks).map((chunk) =>
+    citationSchema.parse({
+      type: 'source-url',
+      sourceId: chunk.source.url,
+      url: chunk.source.url,
+      title: chunk.source.title,
+    }),
+  );
   const text = answer
     .replace(/^\s*\[[^\]\n]+\]:\s*(https?:\/\/\S+)\s*$/gm, CITATION_MARKER)
     .replace(

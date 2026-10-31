@@ -20,7 +20,7 @@ export interface CheckedRecord {
   rawToolCalls: readonly { function: { name: string } }[];
   providerMessages?: readonly { role: string; content: string }[];
 }
-/** The twenty-one regression scenarios, including source and media history replay. */
+/** Twenty-four regression turns; the existing rain message is reused for the refund chain. */
 export const scenarios: readonly (ScenarioExpectation & {
   id: string;
   question: string;

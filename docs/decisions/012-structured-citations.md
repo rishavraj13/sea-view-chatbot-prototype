@@ -1,5 +1,7 @@
 # ADR 012: Structured citations after unchanged grounding validation
 
+Citation requirements/selection are superseded by ADR 015 (server-side lexical attribution). Numeric rules and existing public shapes remain unchanged.
+
 Date: 2026-10-31. Status: accepted within the explicitly approved backend freeze exception.
 
 ## Context

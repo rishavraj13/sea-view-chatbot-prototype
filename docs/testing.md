@@ -47,9 +47,9 @@ The one-shot script refuses any existing examples/live-provider/budget.json, cou
 
 See live-provider-report.md and examples/live-provider/groq.json for exact answers, structured citations, tool arguments/results, guard outcomes and timings. Three intended tasks passed; the dependent follow-up failed by selecting a brochure with an unknown id instead of answering. An offline-only replay confirmed the query retrieves VIP first; it did not spend another model call. Dangling Cite: and duplicate DEMO presentation are recorded, not fixed. Four calls total; no retries, provider switch, Google/OpenRouter calls or deployment. The required typecheck/lint/test/build outputs are pasted in the report; the existing offline suite is not evidence that the failed live scenario passed.
 
-## Current Qwen-only history and media regression
+## Current server-attribution regression (Qwen only)
 
-`npm run verify:live` invokes the real chat route in-process and consumes its SSE with DefaultChatTransport + readUIMessageStream. It requires a private GROQ_API_KEY in .env.local and these public settings:
+`npm run verify:live` uses the actual chat route and DefaultChatTransport/readUIMessageStream with MODEL_MODE=live, MODEL_PROVIDER=groq, MODEL_ID=qwen/qwen3.8-27b and REASONING_EFFORT=none. The private key stays in .env.local through readEnv. Current captures/ledger are in docs/examples/source-attribution, with a hard 25-call cap, a 3.1-second spacing target (minimum requirement three seconds), maxRetries=0 and immediate permanent stop on the first 429. `--failures` permits one separate failure-only attempt only if no 429 stop and budget remains. Never reset the ledger to spend more calls in this task.
 
 ```powershell
 $env:MODEL_MODE='live'
@@ -57,22 +57,23 @@ $env:MODEL_PROVIDER='groq'
 $env:MODEL_ID='qwen/qwen3.8-27b'
 $env:REASONING_EFFORT='none'
 npm run verify:live
+# Only when permitted by the ledger and remaining budget:
 npm run verify:live -- --failures
 ```
 
-Only Qwen/reasoning none is accepted; no Llama, Google or OpenRouter calls. Current captures and the shared thirty-call ledger are under docs/examples/history-revision. Provider starts have a 3.1-second scheduling target to meet the three-second minimum. maxRetries=0, stop permanently on first 429, and no model/attempt can run twice. The second command explicitly reruns only initial failures once; it is not an internal retry. `--resume` only selects unattempted initial scenarios after an interruption and retains real request/assistant history. Do not reset this campaign to spend more calls. A future independently authorized campaign must archive existing captures/ledger rather than erase evidence.
+The preceding 21 scenarios remain. DELUXE price plus its inclusion follow-up adds two turns. With the user's explicit approval, the existing actual rain SDK message is reused for the refund follow-up, adding one turn: 24 planned initial calls and at most one budget-fitting rerun. Real messages, including source/tool parts, are preserved in harness history; the shared pipeline still projects text only. All prior checks remain, with an added visible-language check for context/retrieved/source(s)/section(s). Source parts now come from server attribution, without requiring a model-written URL. Full provider-bound messages, raw answers, separate attributed sources, visible prose, tools, checks, call counts/timing and safe errors are captured.
 
-The twenty-one scenarios are declared in scripts/live-scenarios.mjs. They include the previous eighteen plus a mixed VIP-price/brochure request, a brochure request, and its ECO-price follow-up. Both dependent histories use the actual message objects returned by the SDK reader, including step/source/tool parts; the pipeline projects only visible text into model history. The harness captures the exact provider-bound message array (system context plus text-only conversational content) from the outgoing HTTP body, as well as raw provider answer, structured citations separately, visible text, raw/executed tools, safe wire errors, call counts/timestamps and provider/route timing. No keys, authorization, hidden reasoning or upstream error bodies are captured.
+Groq returned HTTP 429 on call 16; the script stopped. Ten automated passes, five model/tool omissions, one rate-limit failure; eight planned turns and all reruns were unattempted. Do not run the example rerun command for this stopped campaign. Manual review additionally flags the cancellation answer's unasked course rule despite its automated pass. Those observations are not waived by offline success; see source-attribution-report.md. No Llama/Google/OpenRouter call or deployment.
 
-Assertions require no raw URL, Cite label, empty wrapper, opening brace, sourceId or part-type name in visible text. Factual non-refusal replies need structured sources and terminal punctuation. The refusal must never coexist with media results. Non-media turns must have no model tools, and requested media must resolve correctly; mixed turns require both the factual source and file. Missing knowledge must refuse without sources. ECO photos may honestly abstain or cite page wording; the bounded claim check rejects an affirmative ECO-photo entitlement, not an honest uncertainty. These checks are not a general semantic entailment proof; inspect raw outputs.
-
-Offline commands:
+Offline checks:
 
 ```text
-npm test -- tests/server/chat/history.test.ts tests/server/chat/punctuation.test.ts tests/server/chat/single-call.test.ts tests/server/chat/media-summary.test.ts tests/server/chat/live-assertions.test.ts
-npx tsx scripts/capture-history-diagnosis.mjs
+npm test -- tests/server/knowledge/attribution.test.ts tests/server/chat/attribution-replay.test.ts
+npx tsx scripts/capture-attribution-quality.mjs
 ```
 
-history.test.ts mocks only provider HTTP and obtains real SDK assistant objects through both transport and reader. It sends them back through the actual route, captures the outgoing Groq messages, and checks source-bearing and brochure/video-bearing history is plain text. It asserts no opening brace, type word, sourceId or part names in the fixture contents. No output sanitizer. The diagnosis script makes zero provider calls and labels its historical reconstruction accurately; the preceding run did not save its HTTP body. Tests also replay exact prior raw PDF/retired acknowledgements, cited price plus tool, text-only failed grounding, and the rain/inclusion/cancel punctuation cases. The core guard is unchanged.
+The evidence fixture contains 28 answer/chunk pairs (17 positive, 11 negative), spanning multiple topics and unrelated/near-topic/function-word cases. It compares threshold candidates and checks rank, URL deduplication, no mutation and the two-source limit. The threshold was selected on the pre-live 27-pair matrix; the added function-word regression did not change it. The evidence script saves tokens/matches/coefficients to quality-evidence.json and makes zero provider calls.
 
-This campaign used 23 real Qwen calls: 21 initial cases and two single failure-only reruns. Initial 19/21; the follow-up recovered; the mixed case still failed because its second attempt lacked a citation and the required guard dropped its price prose. Full results and visible text for every attempt are in history-revision-report.md. No Llama was called; its preceding upstream 404 remains documented with cause unverified. The old forty-call media-gating evidence is retained under its original directory and report, not reused as the current budget. The user's existing citation-report edit remains untouched.
+Exact saved replays cover URL-free VIP follow-up and mixed price prose, rain/cancel/altitude/VIP/ECO abstention. Both URL-free cases now accept and attribute VIP. Invented price/duration, unrelated text and a fabricated URL reject; an allowed model URL pointing to an unrelated retrieved page cannot choose the attributed page. Existing numeric/currency/unit/range tests remain. Additional OFFLINE attribution-only fixtures cover the quota-blocked DELUXE/refund chains; these are not live model success claims. Shared pipeline/trace parity, actual SDK source/tool history, stream-consumer, payload-shape and one-call tests remain.
+
+After reviewing function-word filtering, offline replay verified all recorded delivered source parts remain unchanged; original live records were retained. The full final typecheck/lint/test/build output is pasted in the report. Historical media-gating/history-revision campaigns remain under their original directories and are not this campaign's budget. The pre-existing citation-report edit stays untouched.
