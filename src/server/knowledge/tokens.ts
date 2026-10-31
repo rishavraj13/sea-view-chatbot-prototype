@@ -73,7 +73,10 @@ const vocabulary: Record<string, string> = {
   long: 'duration',
 };
 /** Bounded lexical normalization, shared by source and query scoring; never produces answer facts. */
-export function retrievalTokens(text: string): Set<string> {
+export function retrievalTokens(
+  text: string,
+  inferDuration = true,
+): Set<string> {
   const normalized = text
     .toLowerCase()
     .replace(/[’']/g, '')
@@ -84,6 +87,7 @@ export function retrievalTokens(text: string): Set<string> {
     .map((word) => vocabulary[word] ?? word);
   if (/\bhow much\b/.test(normalized)) words.push('price');
   if (
+    inferDuration &&
     /\bhow long\b|\b\d+\s*h\b|\b(?:seconds?|minutes?|hours?|days?)\b/.test(
       normalized,
     )

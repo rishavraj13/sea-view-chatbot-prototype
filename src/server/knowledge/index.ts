@@ -23,7 +23,10 @@ import faq_location from '../../../data/knowledge/faq-location.json';
 import faq_package from '../../../data/knowledge/faq-package.json';
 import faq_pickup from '../../../data/knowledge/faq-pickup.json';
 import weather from '../../../data/knowledge/weather.json';
-import cancel from '../../../data/knowledge/cancel.json';
+import cancelSingleDay from '../../../data/knowledge/cancel-single-day.json';
+import cancelCourses from '../../../data/knowledge/cancel-courses.json';
+import cancelMultiDay from '../../../data/knowledge/cancel-multi-day.json';
+import cancelHow from '../../../data/knowledge/cancel-how.json';
 import no_show from '../../../data/knowledge/no-show.json';
 import refunds from '../../../data/knowledge/refunds.json';
 import insurance from '../../../data/knowledge/insurance.json';
@@ -59,7 +62,10 @@ export const sources = z
     faq_package,
     faq_pickup,
     weather,
-    cancel,
+    cancelSingleDay,
+    cancelCourses,
+    cancelMultiDay,
+    cancelHow,
     no_show,
     refunds,
     insurance,
@@ -72,6 +78,7 @@ export function retrieve(
   corpus: readonly Source[] = sources,
 ): Chunk[] {
   const query = retrievalTokens(question);
+  const procedural = /^\s*how\s+(?:do|can|should|could)\b/i.test(question);
   if (query.has('weather')) query.delete('cancellation');
   if (unsupportedQuestion(query)) return [];
   const packageNames = ['eco', 'deluxe', 'vip'];
@@ -93,7 +100,8 @@ export function retrieve(
     )
     .map((source) => {
       const body = retrievalTokens(source.text);
-      const title = retrievalTokens(source.title);
+      // A category heading such as "Single-day" is not evidence of an activity's duration.
+      const title = retrievalTokens(source.title, false);
       return {
         id: source.title,
         text: source.text,
@@ -111,6 +119,10 @@ export function retrieve(
     .sort(
       (a, b) =>
         b.score - a.score ||
+        (procedural
+          ? Number(/^how\b/i.test(b.source.title)) -
+            Number(/^how\b/i.test(a.source.title))
+          : 0) ||
         corpus.indexOf(a.source) - corpus.indexOf(b.source),
     )
     .slice(0, 3);

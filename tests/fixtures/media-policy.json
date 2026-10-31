@@ -1,0 +1,132 @@
+[
+  { "text": "What is included in the package?", "state": "none", "tools": [] },
+  {
+    "text": "Can you send me a brochure?",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "Can I see a video of the experience?",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "Send me the brochure and a video.",
+    "state": "required",
+    "tools": ["sendBrochure", "showVideo"]
+  },
+  { "text": "Brochure please", "state": "required", "tools": ["sendBrochure"] },
+  { "text": "Send me the PDF", "state": "required", "tools": ["sendBrochure"] },
+  { "text": "Show me a video", "state": "required", "tools": ["showVideo"] },
+  { "text": "and what's included?", "state": "none", "tools": [] },
+  {
+    "text": "Does DELUXE include video?",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  { "text": "How much is the VIP package?", "state": "none", "tools": [] },
+  {
+    "text": "How much is the VIP package and can you send me the brochure?",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  { "text": "A brochure", "state": "optional", "tools": ["sendBrochure"] },
+  { "text": "Video footage", "state": "optional", "tools": ["showVideo"] },
+  {
+    "text": "PDF and film",
+    "state": "optional",
+    "tools": ["sendBrochure", "showVideo"]
+  },
+  {
+    "text": "Share the leaflet",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  { "text": "Email the flyer", "state": "required", "tools": ["sendBrochure"] },
+  {
+    "text": "Give me the pamphlet",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "Get the document",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  { "text": "View a clip", "state": "required", "tools": ["showVideo"] },
+  {
+    "text": "Download a recording",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  { "text": "Attach the PDF", "state": "required", "tools": ["sendBrochure"] },
+  {
+    "text": "Can I have a brochure?",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "Could I access a film?",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  { "text": "I want a video", "state": "required", "tools": ["showVideo"] },
+  {
+    "text": "I'd like a leaflet",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I’d like a recording",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I need the document",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  { "text": "Watch", "state": "required", "tools": ["showVideo"] },
+  { "text": "Watches", "state": "optional", "tools": ["showVideo"] },
+  {
+    "text": "Leaflets and recordings",
+    "state": "optional",
+    "tools": ["sendBrochure", "showVideo"]
+  },
+  {
+    "text": "PLEASE ATTACH DOCUMENTS AND CLIPS",
+    "state": "required",
+    "tools": ["sendBrochure", "showVideo"]
+  },
+  { "text": "Are photos included?", "state": "none", "tools": [] },
+  { "text": "Please show prices", "state": "none", "tools": [] },
+  { "text": "Can I see the location?", "state": "none", "tools": [] },
+  { "text": "A showcase video", "state": "optional", "tools": ["showVideo"] },
+  {
+    "text": "Senders discuss brochures",
+    "state": "optional",
+    "tools": ["sendBrochure"]
+  },
+  { "text": "Videographers please", "state": "none", "tools": [] },
+  {
+    "text": "What is in the footage?",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "Brochures and PDFs",
+    "state": "optional",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "Show films and pamphlets",
+    "state": "required",
+    "tools": ["sendBrochure", "showVideo"]
+  },
+  {
+    "text": "Do not send a brochure",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  { "text": "We need a PDF", "state": "optional", "tools": ["sendBrochure"] }
+]

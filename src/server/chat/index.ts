@@ -11,5 +11,6 @@ export { evaluateGrounding } from './answer';
 export type { GroundingResult } from './answer';
 export { answerProperties } from './properties';
 export { presentCitations } from './citations';
-export { hasMediaIntent } from './media-intent';
+export { hasMediaIntent, getMediaPolicy } from './media-intent';
+export type { MediaPolicy, MediaToolName } from './media-intent';
 export { buildModelMessages } from './history';

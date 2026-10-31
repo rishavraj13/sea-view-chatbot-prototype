@@ -17,7 +17,7 @@ it.each([
   [initial.find((r) => r.id === 'follow-up')!, 'VIP'],
   [rerun.find((r) => r.id === 'mixed')!, 'VIP'],
   [initial.find((r) => r.id === 'rain')!, 'If the weather stops the activity'],
-  [initial.find((r) => r.id === 'cancel')!, 'If you cancel'],
+  [initial.find((r) => r.id === 'cancel')!, 'How to cancel'],
   [
     initial.find((r) => r.id === 'altitude')!,
     'Jump facts: altitude, freefall, canopy, instructor and time',

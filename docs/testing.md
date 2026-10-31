@@ -77,3 +77,25 @@ The evidence fixture contains 28 answer/chunk pairs (17 positive, 11 negative), 
 Exact saved replays cover URL-free VIP follow-up and mixed price prose, rain/cancel/altitude/VIP/ECO abstention. Both URL-free cases now accept and attribute VIP. Invented price/duration, unrelated text and a fabricated URL reject; an allowed model URL pointing to an unrelated retrieved page cannot choose the attributed page. Existing numeric/currency/unit/range tests remain. Additional OFFLINE attribution-only fixtures cover the quota-blocked DELUXE/refund chains; these are not live model success claims. Shared pipeline/trace parity, actual SDK source/tool history, stream-consumer, payload-shape and one-call tests remain.
 
 After reviewing function-word filtering, offline replay verified all recorded delivered source parts remain unchanged; original live records were retained. The full final typecheck/lint/test/build output is pasted in the report. Historical media-gating/history-revision campaigns remain under their original directories and are not this campaign's budget. The pre-existing citation-report edit stays untouched.
+
+## Required-media policy revision: offline only
+
+No live verification is authorized for this revision. Do not run verify:live or reset its stopped campaign ledger. All new HTTP evidence replaces global fetch completely with MOCK replies and uses a fake key; .env.local is not loaded.
+
+```powershell
+npm run typecheck
+npm run lint
+npm test
+npm run build
+npm test -- tests/server/chat/media-policy.test.ts tests/server/chat/groq-wire.test.ts tests/server/chat/prompt-cleanup.test.ts tests/server/knowledge/cancellation.test.ts
+npx tsx scripts/capture-retrieval-quality.mjs
+npx tsx scripts/capture-attribution-quality.mjs docs/examples/required-media/quality-evidence.json
+python scripts/verify-source-anchors.py
+npx tsx scripts/capture-prompt-cost.mjs
+```
+
+The 42-phrase policy fixture asserts state, matching tool names, SDK toolChoice and exactly one mock-provider generation per case. Actual Groq serialization tests assert no tools for none, auto for optional, required for requested matching tools, strict empty schemas, simultaneous tool execution and a safe failure without retry when a required response is only a promise. Required is at least one call, not all requested calls; a separate mixed tool-only case deliberately demonstrates lost factual prose. The recorded ECO instruction-describing answer is replayed through the unchanged guard and refused.
+
+Cancellation tests compare four concatenated paragraphs against the saved original fixture, including URL/date/provenance, and test procedural tie ordering without changing scores. Retrieval quality is 38/38, including the four requested cancellation questions and seven no-match cases. Attribution calibration remains 28/28 at 0.5 with two matched words; the two cancellation fixture source titles change to Single-day activities without changing coefficients, matched words or classifications.
+
+The prompt-cost script snapshots committed server/data files from 505b90a under ignored .next, imports both pipelines and completely mocks their HTTP transport. It performs 48 MOCK exchanges across all 24 scenarios, asserting one exchange per pipeline/turn. The same historical SDK histories are used before/after; the missing DELUXE root is explicitly MOCK text emitted through readUIMessageStream. It measures serialized messages + tool schemas + choice characters / 4, not billed tokens or latency. JSON overhead is included. See required-media-report.md for every scenario. The average is below 1,500, so no extra prompt optimization is proposed or implemented. Historical live captures and the stopped ledger remain unchanged.

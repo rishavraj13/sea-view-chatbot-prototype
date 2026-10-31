@@ -51,5 +51,8 @@ for path in sorted((ROOT / 'data/knowledge').glob('*.json')):
         raise ValueError(f'Unverified anchor: {path.name}: {fragment}; replace with plain page URL')
     count += 1
 print(f'Verified {count} source URLs against element ids from {len(ids_by_page)} captured pages (offline check).')
+titles = {json.loads(path.read_text(encoding='utf-8'))['title'] for path in (ROOT / 'data/knowledge').glob('*.json')}
+if not {'Single-day activities', 'Courses', 'Multi-day trips and camps', 'How to cancel'} <= titles:
+    raise ValueError('Missing split cancellation section')
 for page in capture['pages']:
     print(f"{page['url']}: HTTP {page['status']}; ids={','.join(page['elementIds'])}")

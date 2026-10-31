@@ -50,7 +50,7 @@
   {
     "id": "cancel-notice",
     "answer": "Cancel with more than 48 hours notice and there is nothing to pay.",
-    "source": "If you cancel",
+    "source": "Single-day activities",
     "support": true
   },
   {
@@ -164,7 +164,7 @@
   {
     "id": "function-words-only",
     "answer": "By us, with you and for them.",
-    "source": "If you cancel",
+    "source": "Single-day activities",
     "support": false
   }
 ]

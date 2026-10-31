@@ -27,4 +27,16 @@ it('every source fragment is an actual element id captured from its public page 
     expect(page, source.url).toBeDefined();
     if (fragment) expect(page!.elementIds, source.url).toContain(fragment);
   }
+  const cancellation = sources.filter((source) =>
+    [
+      'Single-day activities',
+      'Courses',
+      'Multi-day trips and camps',
+      'How to cancel',
+    ].includes(source.title),
+  );
+  expect(cancellation).toHaveLength(4);
+  expect(new Set(cancellation.map((source) => source.url))).toEqual(
+    new Set(['https://www.greedyadventures.com/cancellations#page-content']),
+  );
 });

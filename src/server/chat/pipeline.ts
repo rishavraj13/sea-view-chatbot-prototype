@@ -10,7 +10,7 @@ import { selectMedia } from './media-selection';
 import { summarizeMedia } from './media-summary';
 import { buildSystemPrompt, groundedAnswer } from './answer';
 import { presentCitations } from './citations';
-import { hasMediaIntent } from './media-intent';
+import { getMediaPolicy } from './media-intent';
 import { buildModelMessages } from './history';
 /** Shared request-local pipeline for chat and trace; no conversation persistence. */
 export async function runPipeline(
@@ -58,6 +58,15 @@ export async function runPipeline(
       execute: async () => execute('showVideo', 'video'),
     }),
   };
+  const policy = getMediaPolicy(question);
+  const offeredTools = {
+    ...(policy.tools.includes('sendBrochure')
+      ? { sendBrochure: tools.sendBrochure }
+      : {}),
+    ...(policy.tools.includes('showVideo')
+      ? { showVideo: tools.showVideo }
+      : {}),
+  };
   try {
     // Explicit asset requests must resolve even when a model omits or substitutes their IDs.
     for (const item of selection)
@@ -74,7 +83,13 @@ export async function runPipeline(
         model: p.model(),
         system: buildSystemPrompt(trace.context),
         messages: buildModelMessages(request.messages),
-        ...(hasMediaIntent(question) ? { tools } : {}),
+        ...(policy.state !== 'none' ? { tools: offeredTools } : {}),
+        toolChoice:
+          policy.state === 'none'
+            ? 'none'
+            : policy.state === 'required'
+              ? 'required'
+              : 'auto',
         providerOptions: p.providerOptions,
         maxOutputTokens: 1500,
         maxRetries: 0,

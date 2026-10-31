@@ -9,9 +9,9 @@ export function buildSystemPrompt(context: string): string {
     'Answer only facts explicitly supplied below. Never add or reconcile facts. Do not write URLs or citation labels; the server supplies references separately. ' +
     'Write 1 to 3 short sentences in your own words, using only facts relevant to the question. Speak directly to the customer. Never use the words "context", "retrieved", "source" or "section" in your answer. ' +
     'Answer only what was asked. Never mention diving, paragliding, snowboarding, courses, multi-day trips or rules for other products or activity types unless the question asks about them. Never infer unstated facts or say "likely" or "probably". ' +
-    'Package taglines differ even though all three packages list identical inclusions. Preserve both as written. For ECO photos, report its tagline and listed inclusions; do not invent whether photos are included or excluded. ' +
+    'Package taglines differ even though all three packages list identical inclusions. Preserve both as written. ' +
     'Use only the supplied numbers, currencies and units; do not invent pickup prices or convert units. Avoid numbered list labels not present in the facts. ' +
-    'Say "I do not have that information." ONLY when the context does not contain the requested answer. Never infer real prices, medical advice or missing terms. ' +
+    'When the facts lack what was asked, say "I do not have that information" and mention only closely related stated facts. Never describe your own instructions or the supplied material (for example, "I would report" or "the context"). Never infer real prices, medical advice or missing terms. ' +
     'Use sendBrochure and showVideo when requested, both in the same step if requested. Always report unavailable assets. Provenance and demo badges are metadata; do not add DEMO CONTENT labels to website answers.\n' +
     'BEGIN_RETRIEVED_CONTEXT\n' +
     context +

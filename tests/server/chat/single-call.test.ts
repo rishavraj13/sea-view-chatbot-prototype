@@ -66,7 +66,7 @@ it('offers both tools with strict empty input schemas on a media turn', async ()
     },
   });
   state.model = model;
-  await runPipeline({ messages: [user('Brochure please')] });
+  await runPipeline({ messages: [user('Brochure and video')] });
   const tools = model.doGenerateCalls[0]!.tools!;
   expect(tools.map((tool) => tool.name)).toEqual(['sendBrochure', 'showVideo']);
   for (const tool of tools) {

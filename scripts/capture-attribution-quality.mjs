@@ -1,5 +1,6 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { z } from 'zod';
+import { dirname } from 'node:path';
 import {
   sources,
   measureSourceOverlap,
@@ -60,11 +61,11 @@ const evidence = {
   candidates,
   matrix,
 };
-await mkdir('docs/examples/source-attribution', { recursive: true });
-await writeFile(
-  'docs/examples/source-attribution/quality-evidence.json',
-  JSON.stringify(evidence, null, 2),
-);
+const args = z.array(z.string().min(1)).max(1).parse(process.argv.slice(2));
+const destination =
+  args[0] ?? 'docs/examples/source-attribution/quality-evidence.json';
+await mkdir(dirname(destination), { recursive: true });
+await writeFile(destination, JSON.stringify(evidence, null, 2));
 console.log(
   JSON.stringify(
     {

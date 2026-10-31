@@ -1,0 +1,300 @@
+{
+  "evidence": "OFFLINE MOCK HTTP; zero live provider calls; no .env.local loaded",
+  "baseline": "505b90a",
+  "metric": "JSON.stringify({messages,tools,tool_choice}).length / 4; includes tool schemas and JSON overhead, not a tokenizer",
+  "history": "Identical before/after: recorded SDK VIP, rain and successful media-history messages; DELUXE is explicitly MOCK text produced through readUIMessageStream. This is prompt-size evidence, not model-quality evidence.",
+  "averages": {
+    "before": 722.3229166666666,
+    "after": 672.5729166666666
+  },
+  "rows": [
+    {
+      "id": "included",
+      "question": "What is included in the package?",
+      "before": {
+        "characters": 3253,
+        "approximateTokens": 813.25
+      },
+      "after": {
+        "characters": 3277,
+        "approximateTokens": 819.25
+      }
+    },
+    {
+      "id": "brochure",
+      "question": "Can you send me a brochure?",
+      "before": {
+        "characters": 2463,
+        "approximateTokens": 615.75
+      },
+      "after": {
+        "characters": 2091,
+        "approximateTokens": 522.75
+      }
+    },
+    {
+      "id": "video",
+      "question": "Can I see a video of the experience?",
+      "before": {
+        "characters": 3396,
+        "approximateTokens": 849
+      },
+      "after": {
+        "characters": 3011,
+        "approximateTokens": 752.75
+      }
+    },
+    {
+      "id": "both",
+      "question": "Send me the brochure and a video.",
+      "before": {
+        "characters": 3306,
+        "approximateTokens": 826.5
+      },
+      "after": {
+        "characters": 3334,
+        "approximateTokens": 833.5
+      }
+    },
+    {
+      "id": "brief-brochure",
+      "question": "Brochure please",
+      "before": {
+        "characters": 2451,
+        "approximateTokens": 612.75
+      },
+      "after": {
+        "characters": 2079,
+        "approximateTokens": 519.75
+      }
+    },
+    {
+      "id": "brief-pdf",
+      "question": "Send me the PDF",
+      "before": {
+        "characters": 2451,
+        "approximateTokens": 612.75
+      },
+      "after": {
+        "characters": 2079,
+        "approximateTokens": 519.75
+      }
+    },
+    {
+      "id": "brief-video",
+      "question": "Show me a video",
+      "before": {
+        "characters": 3288,
+        "approximateTokens": 822
+      },
+      "after": {
+        "characters": 2903,
+        "approximateTokens": 725.75
+      }
+    },
+    {
+      "id": "rain",
+      "question": "What if it rains?",
+      "before": {
+        "characters": 3331,
+        "approximateTokens": 832.75
+      },
+      "after": {
+        "characters": 3355,
+        "approximateTokens": 838.75
+      }
+    },
+    {
+      "id": "cancel",
+      "question": "Can I cancel?",
+      "before": {
+        "characters": 4088,
+        "approximateTokens": 1022
+      },
+      "after": {
+        "characters": 2596,
+        "approximateTokens": 649
+      }
+    },
+    {
+      "id": "vip",
+      "question": "How much is the VIP package?",
+      "before": {
+        "characters": 3310,
+        "approximateTokens": 827.5
+      },
+      "after": {
+        "characters": 3334,
+        "approximateTokens": 833.5
+      }
+    },
+    {
+      "id": "follow-up",
+      "question": "and what's included?",
+      "before": {
+        "characters": 3473,
+        "approximateTokens": 868.25
+      },
+      "after": {
+        "characters": 3497,
+        "approximateTokens": 874.25
+      }
+    },
+    {
+      "id": "eco-photos",
+      "question": "Does ECO include photos?",
+      "before": {
+        "characters": 2719,
+        "approximateTokens": 679.75
+      },
+      "after": {
+        "characters": 2743,
+        "approximateTokens": 685.75
+      }
+    },
+    {
+      "id": "altitude",
+      "question": "How high is the jump?",
+      "before": {
+        "characters": 2885,
+        "approximateTokens": 721.25
+      },
+      "after": {
+        "characters": 2909,
+        "approximateTokens": 727.25
+      }
+    },
+    {
+      "id": "mixed",
+      "question": "How much is the VIP package and can you send me the brochure?",
+      "before": {
+        "characters": 4187,
+        "approximateTokens": 1046.75
+      },
+      "after": {
+        "characters": 3815,
+        "approximateTokens": 953.75
+      }
+    },
+    {
+      "id": "media-history",
+      "question": "Send me the brochure",
+      "before": {
+        "characters": 2456,
+        "approximateTokens": 614
+      },
+      "after": {
+        "characters": 2084,
+        "approximateTokens": 521
+      }
+    },
+    {
+      "id": "after-media",
+      "question": "How much is ECO?",
+      "before": {
+        "characters": 2805,
+        "approximateTokens": 701.25
+      },
+      "after": {
+        "characters": 2829,
+        "approximateTokens": 707.25
+      }
+    },
+    {
+      "id": "retired",
+      "question": "Send the brochure with id retired.",
+      "before": {
+        "characters": 3017,
+        "approximateTokens": 754.25
+      },
+      "after": {
+        "characters": 2645,
+        "approximateTokens": 661.25
+      }
+    },
+    {
+      "id": "age",
+      "question": "What is the age limit?",
+      "before": {
+        "characters": 1614,
+        "approximateTokens": 403.5
+      },
+      "after": {
+        "characters": 1638,
+        "approximateTokens": 409.5
+      }
+    },
+    {
+      "id": "weight",
+      "question": "What is the weight limit?",
+      "before": {
+        "characters": 1617,
+        "approximateTokens": 404.25
+      },
+      "after": {
+        "characters": 1641,
+        "approximateTokens": 410.25
+      }
+    },
+    {
+      "id": "pickup-price",
+      "question": "What is the Bangkok pickup price?",
+      "before": {
+        "characters": 1625,
+        "approximateTokens": 406.25
+      },
+      "after": {
+        "characters": 1649,
+        "approximateTokens": 412.25
+      }
+    },
+    {
+      "id": "clothing",
+      "question": "What should I wear?",
+      "before": {
+        "characters": 1611,
+        "approximateTokens": 402.75
+      },
+      "after": {
+        "characters": 1635,
+        "approximateTokens": 408.75
+      }
+    },
+    {
+      "id": "deluxe",
+      "question": "How much is DELUXE?",
+      "before": {
+        "characters": 2695,
+        "approximateTokens": 673.75
+      },
+      "after": {
+        "characters": 2719,
+        "approximateTokens": 679.75
+      }
+    },
+    {
+      "id": "deluxe-follow-up",
+      "question": "what's included?",
+      "before": {
+        "characters": 2585,
+        "approximateTokens": 646.25
+      },
+      "after": {
+        "characters": 2609,
+        "approximateTokens": 652.25
+      }
+    },
+    {
+      "id": "rain-refund-follow-up",
+      "question": "and can I get a refund?",
+      "before": {
+        "characters": 4717,
+        "approximateTokens": 1179.25
+      },
+      "after": {
+        "characters": 4095,
+        "approximateTokens": 1023.75
+      }
+    }
+  ]
+}

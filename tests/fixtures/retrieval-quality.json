@@ -25,7 +25,7 @@
   },
   {
     "question": "Can I cancel?",
-    "expected": "If you cancel"
+    "expected": "How to cancel"
   },
   {
     "question": "Do I get photos with ECO?",
@@ -109,7 +109,7 @@
   },
   {
     "question": "How much cancellation notice should I give?",
-    "expected": "If you cancel"
+    "expected": "Single-day activities"
   },
   {
     "question": "What is the age limit for this jump?",
@@ -138,5 +138,17 @@
   {
     "question": "Can a child jump?",
     "expected": null
+  },
+  {
+    "question": "How do I cancel a tandem?",
+    "expected": "How to cancel"
+  },
+  {
+    "question": "What about courses?",
+    "expected": "Courses"
+  },
+  {
+    "question": "Is there a charge if I cancel late?",
+    "expected": "Single-day activities"
   }
 ]

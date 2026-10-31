@@ -134,8 +134,24 @@ for node in content.nodes():
         sections[current] = []
     elif node.tag == 'p' and current:
         sections[current].append(clean(node.text()))
-for name, heading in [('weather', 'If the weather stops the activity'), ('cancel', 'If you cancel'), ('no-show', 'If you do not turn up'), ('insurance', 'Travel insurance')]:
+for name, heading in [('weather', 'If the weather stops the activity'), ('no-show', 'If you do not turn up'), ('insurance', 'Travel insurance')]:
     add(name, heading, policy+'#page-content', sections[heading])
+cancellation_paragraphs = sections['If you cancel']
+if len(cancellation_paragraphs) != 4:
+    raise ValueError('Expected four cancellation paragraphs; review the capture before authoring')
+for (name, title), paragraph in zip([
+    ('cancel-single-day', 'Single-day activities'),
+    ('cancel-courses', 'Courses'),
+    ('cancel-multi-day', 'Multi-day trips and camps'),
+    ('cancel-how', 'How to cancel'),
+], cancellation_paragraphs):
+    prefix = {'cancel-single-day': 'Single-day activities', 'cancel-courses': 'Courses', 'cancel-multi-day': 'Multi-day trips and camps', 'cancel-how': 'To cancel,'}[name]
+    if not paragraph.startswith(prefix):
+        raise ValueError('Cancellation paragraph order changed; review the capture')
+    add(name, title, policy+'#page-content', [paragraph])
+legacy = Path('data/knowledge/cancel.json')
+if legacy.exists():
+    legacy.unlink()
 refunds = []
 for heading in ('If the activity is stopped part-way', 'If we or the operator cancel', 'How refunds are paid'):
     refunds.extend([heading]+sections[heading])

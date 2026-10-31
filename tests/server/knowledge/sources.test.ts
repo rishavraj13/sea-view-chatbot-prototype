@@ -27,7 +27,7 @@ it('public sources expose real-knowledge and mixed-media flags', async () => {
   );
 });
 it('loads only real dated sections of the two authorized pages', () => {
-  expect(sources).toHaveLength(15);
+  expect(sources).toHaveLength(18);
   for (const source of sources) {
     expect(source.isDemo).toBe(false);
     expect(source.capturedAt).toBe('2026-10-31');

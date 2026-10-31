@@ -1,8 +1,8 @@
 {
   "evidence": "OFFLINE pure retrieval; zero provider calls",
   "threshold": 1,
-  "total": 35,
-  "passed": 35,
+  "total": 38,
+  "passed": 38,
   "results": [
     {
       "question": "How much is the VIP package?",
@@ -156,26 +156,26 @@
     },
     {
       "question": "Can I cancel?",
-      "expected": "If you cancel",
-      "actual": "If you cancel",
+      "expected": "How to cancel",
+      "actual": "How to cancel",
       "passed": true,
       "chunks": [
         {
-          "id": "If you cancel",
-          "score": 3,
-          "title": "If you cancel",
+          "id": "How to cancel",
+          "score": 2,
+          "title": "How to cancel",
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         },
         {
-          "id": "If you do not turn up",
+          "id": "Single-day activities",
           "score": 1,
-          "title": "If you do not turn up",
+          "title": "Single-day activities",
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         },
         {
-          "id": "Refunds",
+          "id": "Courses",
           "score": 1,
-          "title": "Refunds",
+          "title": "Courses",
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         }
       ]
@@ -251,9 +251,9 @@
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         },
         {
-          "id": "If you cancel",
+          "id": "Single-day activities",
           "score": 1,
-          "title": "If you cancel",
+          "title": "Single-day activities",
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         }
       ]
@@ -591,9 +591,9 @@
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         },
         {
-          "id": "If you cancel",
+          "id": "Courses",
           "score": 1,
-          "title": "If you cancel",
+          "title": "Courses",
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         }
       ]
@@ -617,9 +617,9 @@
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         },
         {
-          "id": "If you cancel",
+          "id": "Courses",
           "score": 1,
-          "title": "If you cancel",
+          "title": "Courses",
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         }
       ]
@@ -660,26 +660,26 @@
     },
     {
       "question": "How much cancellation notice should I give?",
-      "expected": "If you cancel",
-      "actual": "If you cancel",
+      "expected": "Single-day activities",
+      "actual": "Single-day activities",
       "passed": true,
       "chunks": [
         {
-          "id": "If you cancel",
-          "score": 4,
-          "title": "If you cancel",
+          "id": "Single-day activities",
+          "score": 2,
+          "title": "Single-day activities",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "How to cancel",
+          "score": 2,
+          "title": "How to cancel",
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         },
         {
           "id": "If you do not turn up",
           "score": 2,
           "title": "If you do not turn up",
-          "url": "https://www.greedyadventures.com/cancellations#page-content"
-        },
-        {
-          "id": "Refunds",
-          "score": 2,
-          "title": "Refunds",
           "url": "https://www.greedyadventures.com/cancellations#page-content"
         }
       ]
@@ -732,6 +732,72 @@
       "actual": null,
       "passed": true,
       "chunks": []
+    },
+    {
+      "question": "How do I cancel a tandem?",
+      "expected": "How to cancel",
+      "actual": "How to cancel",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "How to cancel",
+          "score": 2,
+          "title": "How to cancel",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "Single-day activities",
+          "score": 2,
+          "title": "Single-day activities",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "ECO",
+          "score": 1,
+          "title": "ECO",
+          "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options"
+        }
+      ]
+    },
+    {
+      "question": "What about courses?",
+      "expected": "Courses",
+      "actual": "Courses",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Courses",
+          "score": 3,
+          "title": "Courses",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
+    },
+    {
+      "question": "Is there a charge if I cancel late?",
+      "expected": "Single-day activities",
+      "actual": "Single-day activities",
+      "passed": true,
+      "chunks": [
+        {
+          "id": "Single-day activities",
+          "score": 3,
+          "title": "Single-day activities",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "If the weather stops the activity",
+          "score": 2,
+          "title": "If the weather stops the activity",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        },
+        {
+          "id": "How to cancel",
+          "score": 2,
+          "title": "How to cancel",
+          "url": "https://www.greedyadventures.com/cancellations#page-content"
+        }
+      ]
     }
   ]
 }
