@@ -1,4 +1,4 @@
-import { isMediaRequest } from './media-request';
+import { isMediaRequest, isNegatedMediaRequest } from './media-request';
 /** Model capability names selected by the unchanged media-noun vocabulary. */
 export type MediaToolName = 'sendBrochure' | 'showVideo';
 /** Latest-turn lexical policy; request forms affect choice, never registry identity. */
@@ -8,6 +8,8 @@ export interface MediaPolicy {
 }
 /** Pure latest-turn policy: no noun -> none; recognized request form -> required; otherwise optional. */
 export function getMediaPolicy(latestUserText: string): MediaPolicy {
+  if (isNegatedMediaRequest(latestUserText))
+    return { state: 'none', tools: [] };
   const tools: MediaToolName[] = [];
   if (
     /\b(?:brochures?|pdfs?|leaflets?|flyers?|pamphlets?|documents?)\b/i.test(

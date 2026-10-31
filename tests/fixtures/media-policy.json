@@ -91,7 +91,7 @@
   },
   {
     "text": "View a clip",
-    "state": "optional",
+    "state": "required",
     "tools": ["showVideo"]
   },
   {
@@ -111,27 +111,27 @@
   },
   {
     "text": "Could I access a film?",
-    "state": "optional",
+    "state": "required",
     "tools": ["showVideo"]
   },
   {
     "text": "I want a video",
-    "state": "optional",
+    "state": "required",
     "tools": ["showVideo"]
   },
   {
     "text": "I'd like a leaflet",
-    "state": "optional",
+    "state": "required",
     "tools": ["sendBrochure"]
   },
   {
     "text": "I’d like a recording",
-    "state": "optional",
+    "state": "required",
     "tools": ["showVideo"]
   },
   {
     "text": "I need the document",
-    "state": "optional",
+    "state": "required",
     "tools": ["sendBrochure"]
   },
   {
@@ -201,8 +201,8 @@
   },
   {
     "text": "Do not send a brochure",
-    "state": "optional",
-    "tools": ["sendBrochure"]
+    "state": "none",
+    "tools": []
   },
   {
     "text": "We need a PDF",
@@ -473,5 +473,165 @@
     "text": "Will I get a video of my jump, please?",
     "state": "optional",
     "tools": ["showVideo"]
+  },
+  {
+    "text": "I'd like a brochure",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I would like the PDF please",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I want to see the video",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I need the brochure",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I'd like to know about the video",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I want to understand what the film shows",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I need to know what document to bring",
+    "state": "optional",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "Don't send the video",
+    "state": "none",
+    "tools": []
+  },
+  {
+    "text": "no brochure please",
+    "state": "none",
+    "tools": []
+  },
+  {
+    "text": "Watch the video",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "Video",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "Brochure",
+    "state": "optional",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I'm after the video",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I’m after a brochure",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "Could you play the video?",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "Can you open the PDF?",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "Access the film",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "Play the clip",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I need to ask about the document",
+    "state": "optional",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I want to find out if video is included",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I would like to learn about the film",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I need to check the video length",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I want to confirm the document requirements",
+    "state": "optional",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I need to clarify which brochure applies",
+    "state": "optional",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I want to wonder about the video",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I would like to view the recording",
+    "state": "required",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "I need to access the document",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I want just the brochure",
+    "state": "required",
+    "tools": ["sendBrochure"]
+  },
+  {
+    "text": "I would like to really know about video",
+    "state": "optional",
+    "tools": ["showVideo"]
+  },
+  {
+    "text": "Don’t show me the film",
+    "state": "none",
+    "tools": []
+  },
+  {
+    "text": "Do not open the PDF",
+    "state": "none",
+    "tools": []
+  },
+  {
+    "text": "No video please",
+    "state": "none",
+    "tools": []
   }
 ]
