@@ -26,7 +26,7 @@
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #F3F1ED;
+  color: #f3f1ed;
   letter-spacing: -0.02em;
 }
 
@@ -48,7 +48,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #F3F1ED;
+  color: #f3f1ed;
   margin-bottom: 8px;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .footerLink:hover {
-  color: #F3F1ED;
+  color: #f3f1ed;
 }
 
 .bottomBar {
@@ -83,12 +83,6 @@
   gap: 16px;
   font-size: 0.8125rem;
   color: rgba(243, 241, 237, 0.5);
-}
-
-.credits {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 @media (max-width: 900px) {

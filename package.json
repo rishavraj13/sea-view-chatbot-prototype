@@ -16,7 +16,8 @@
     "test:e2e": "playwright test",
     "verify:live": "tsx --env-file=.env.local scripts/verify-live.mjs",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "verify:offline": "npm run typecheck && npm run lint && npm test && npm run build"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.109",

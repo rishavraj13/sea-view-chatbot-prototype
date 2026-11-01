@@ -48,3 +48,15 @@ export const KNOWLEDGE_COPY = {
 export const KNOWLEDGE_METADATA = {
   title: 'Knowledge & Pipeline Inspection — Sea View Skydiving',
 } as const;
+
+export const KNOWLEDGE_UI = {
+  title: 'Knowledge Base',
+  subtitle:
+    'Read-only transparency view: explore grounded website source sections, registered media assets, and test questions through the real pipeline trace.',
+  backLink: '← Back to experience',
+  tabSources: 'Sources',
+  tabMedia: 'Media',
+  tabTrace: 'Test a question',
+  runTraceButton: 'Run trace',
+  runningTraceButton: 'Running pipeline trace…',
+} as const;

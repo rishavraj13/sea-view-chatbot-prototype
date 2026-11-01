@@ -47,3 +47,18 @@ export const SOURCE_PAGES = [
 ] as const;
 export const CHAT_REFUSAL = 'I do not have that information';
 export const MISSING_FACT_PROMPT = 'What is the age limit?';
+
+export const STARTER_PROMPTS = [
+  'What is included in the package?',
+  'Can you send me a brochure?',
+  'Can I see a video of the experience?',
+  'Send me the brochure and a video.',
+  'What if it rains?',
+] as const;
+
+export const CHAT_UI = {
+  launcher: 'Ask about your jump',
+  sendButton: 'Send',
+  newConversation: 'New conversation',
+  closeButton: 'Close chat',
+} as const;

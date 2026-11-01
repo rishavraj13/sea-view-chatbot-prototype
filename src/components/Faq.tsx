@@ -1,4 +1,4 @@
-import { FAQS } from '@/content';
+import { FAQS, FAQ_UI } from '@/content';
 import styles from './Faq.module.css';
 
 export function Faq() {
@@ -6,9 +6,9 @@ export function Faq() {
     <section id="faq" className={styles.section} aria-labelledby="faq-heading">
       <div className={styles.header}>
         <h2 id="faq-heading" className={styles.title}>
-          Good to know
+          {FAQ_UI.title}
         </h2>
-        <p className={styles.subtitle}>Essential information before your jump</p>
+        <p className={styles.subtitle}>{FAQ_UI.subtitle}</p>
       </div>
 
       <div className={styles.accordion}>
@@ -29,4 +29,3 @@ export function Faq() {
     </section>
   );
 }
-

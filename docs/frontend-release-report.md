@@ -105,3 +105,58 @@ Generating route types...
 ```
 
 Build passes (clamp-build.txt); focused full-viewport browser check: 3 passed (4.5s), clamp-e2e.txt.
+
+
+## Cleanup and hygiene commit
+
+Removed unused brandTag/credits CSS, the obsolete global reveal/echo styles (the actual effects live in their component modules), an unreferenced UnavailableResult alias, and obvious structural comments. No unused assistant-ui runtime piece was found: its imports own the active runtime and parts. The MediaPart export is required by the validation test and remains. Split the mixed content barrel into site/packages/plan/faq modules, with chat/Knowledge/navigation labels in their own existing modules; values and data parity are unchanged. Footer/FAQ/skip labels now use src/content. Split metadata tests from the keyboard walk. Added final viewport screenshot tests, without sleeps or live calls.
+
+Throwaway tsc --noEmit --noUnusedLocals --noUnusedParameters exited 0 with no diagnostics before and after cleanup. A TypeScript-symbol/alias scan found 67 referenced frontend named exports and zero unused named declarations after cleanup; it covers source/tests, not object fields or reflection. The CSS-module selector/import usage search reports zero unused module classes. Four stylesheets remain above ~150 lines (Hero, Packages, ThePlan, ChatPanel): each owns one component's responsive/state rules, so splitting them would scatter one responsibility rather than fix mixed code. No frontend TS/TSX/content file remains above that threshold. Raw checks: unused-before/after.txt, exports-check.json, css-cleanup.json.
+
+Added verify:offline (serial typecheck/lint/unit/build), .gitignore for generated examples and a complete optional legacy GOOGLE_MODEL entry. Package versions, ranges and lockfile are untouched. The formatter ignore list now explicitly protects every frozen directory, verbatim example captures and the owner's citation report before running the global formatter.
+
+Read-only npm audit exit 1: 17 moderate, 0 high/critical (tooling dependency/advisory propagation including transitive minimatch). No audit fix, overrides, install or lock edit. Full machine-readable result: npm-audit.json. The verified dependency baseline intentionally remains unchanged.
+
+Secret scan uses readEnv from the sole env reader, then compares configured provider-key bytes against every tracked file without printing values. Zero configured-key matches and zero key-like provider-prefix candidates; only .env.example is tracked. Prefix patterns require plausible key-length suffixes, so literal prefix documentation is not mistaken for a credential. Scan result: secret-scan.json. No keys, request bodies or private conversations are added.
+
+Screenshot lossless optimization checked decoded mode/dimensions/pixel SHA256 before every write. 39 PNGs shrank from 10,766,879 to 10,300,937 bytes, saving 465,942 bytes, with zero pixel changes. Historical screenshots and referenced raw examples remain because prior reports/tests depend on them; no factual fixture was pruned. Generated future captures are ignored unless curated. Final release figures will be indexed separately from historical evidence. screenshot-compression.json records the check.
+
+### Cleanup real output
+
+#### npm run typecheck
+
+```text
+> assignment@0.1.0 typecheck
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully
+```
+
+#### npm run lint
+
+```text
+> assignment@0.1.0 lint
+> eslint . --max-warnings=0
+```
+
+#### npm run test
+
+```text
+> assignment@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/assignment
+
+
+ Test Files  46 passed (46)
+      Tests  528 passed (528)
+   Start at  02:57:09
+   Duration  4.84s (import 39%, setup 23%, environment 17%, transform 12%, tests 8%, worker 1%)
+
+     Import  235 modules were evaluated 1887 times · 18.05s total, 39% of tracked time
+             ~551ms faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+```
+

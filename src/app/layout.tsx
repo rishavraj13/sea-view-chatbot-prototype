@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import localFont from 'next/font/local';
 import './globals.css';
-import { SITE_METADATA } from '@/content';
+import { SITE_METADATA, ACCESSIBILITY_COPY } from '@/content';
 import { ChatProvider } from '@/components/ChatContext';
 import { ChatContainer } from '@/components/chat/ChatContainer';
 
@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body>
         <a href="#main" className="skip-link">
-          Skip to content
+          {ACCESSIBILITY_COPY.skip}
         </a>
         <ChatProvider>
           {children}

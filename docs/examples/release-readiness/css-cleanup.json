@@ -1,0 +1,22 @@
+{
+  "method": "CSS-module selector/imported-class usage search, plus global source reference search; static, not coverage instrumentation",
+  "unusedModuleClasses": [],
+  "largeFiles": [
+    {
+      "file": "src/components/Hero.module.css",
+      "lines": 208
+    },
+    {
+      "file": "src/components/Packages.module.css",
+      "lines": 194
+    },
+    {
+      "file": "src/components/ThePlan.module.css",
+      "lines": 161
+    },
+    {
+      "file": "src/components/chat/ChatPanel.module.css",
+      "lines": 205
+    }
+  ]
+}

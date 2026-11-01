@@ -296,3 +296,10 @@ Measured baseline local cold loads, corrected plan photo sizes and optimizer can
 ## 2026-11-02 — Frontend pass 5: mock answer disclosure
 
 Added presentation-only >600-character/8-line assistant answer disclosure, with shared labels and aria-expanded/controls. Full original Parts text remains unchanged in the DOM, history and runtime; sources/tools stay outside. Typecheck/lint pass, 528 unit tests (46 files) pass, build passes, three viewport e2e cases pass. Raw output pasted in frontend-release-report.md and stored under examples/release-readiness/clamp-*.txt. No live calls, dependency/backend edits or deployment; ports free around each run.
+
+
+## 2026-11-02 — Frontend pass 5: cleanup and hygiene
+
+Removed proven unused CSS/type alias and obvious comments; split mixed content into section modules without changing facts; centralized footer/FAQ/skip labels; separated metadata tests and added final screenshot coverage. Retained active assistant-ui code and the renderer export used by tests. Typecheck/lint pass; 528 unit tests pass. Throwaway noUnusedLocals/noUnusedParameters before/after has zero diagnostics; final CSS and symbol scans report no unused classes/named declarations. Longer CSS modules remain cohesive. Added verify:offline, safe formatter exclusions, generated-example ignore and the optional legacy env template field. Exact output: frontend-release-report.md.
+
+Read-only npm audit: 17 moderate, zero high/critical; no dependency remediation under the baseline freeze. Key/prefix scan finds no tracked credential; only .env.example tracked. Lossless recompression saves 465,942 screenshot bytes with decoded-pixel hashes identical. Referenced historical evidence is retained. No backend/dependency-version/live/deploy change; ports free around commands.

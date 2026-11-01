@@ -245,3 +245,6 @@ Lighthouse is not installed on PATH, in this repo or in the existing npm cache; 
 
 
 Long assistant answers: assistant-answer.test.tsx verifies <=600 has no toggle, longer text remains byte-for-byte identical as DOM text when collapsed/expanded, and aria-controls/expanded plus escaped literal text. assistant-answer.spec.ts checks a real local MOCK response, 8-line clamp, expansion, collapse and source-chip visibility at every viewport. This is presentation only: request/history projection and backend generation are unchanged.
+
+
+Cleanup uses throwaway `npx tsc --noEmit --noUnusedLocals --noUnusedParameters`, ESLint, a CSS-module class/import search and a TypeScript alias-aware export/reference search. Both compiler unused checks exit 0; remaining long files are cohesive component styles, not mixed modules. `npm run verify:offline` serially runs typecheck, zero-warning lint, all unit tests and build; set MODEL_MODE=mock first. It does not make model calls. Explicit formatter ignores protect all frozen paths and verbatim captures. Generated examples are ignored; selected committed fixtures/evidence remain tracked.

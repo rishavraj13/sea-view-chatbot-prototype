@@ -4,3 +4,13 @@ out/
 coverage/
 package-lock.json
 next-env.d.ts
+
+# Frozen backend and verbatim evidence stay byte-identical.
+src/server/
+src/app/api/
+data/
+public/demo/
+scripts/
+tests/server/
+docs/examples/
+docs/structured-citations-report.md

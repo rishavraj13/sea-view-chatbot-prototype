@@ -10,3 +10,5 @@ export const HEADER_UI = {
     { href: '/knowledge', label: 'Knowledge' },
   ],
 } as const;
+
+export const NAV_BREAKPOINT = 768;

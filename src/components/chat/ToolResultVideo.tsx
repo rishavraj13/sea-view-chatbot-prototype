@@ -13,7 +13,6 @@ export function ToolResultVideo({ result }: ToolResultVideoProps) {
   const [poster, setPoster] = useState<string | undefined>(result.posterUrl);
   const [hasPlaybackError, setHasPlaybackError] = useState(false);
 
-  // If posterUrl fails to load, drop the poster
   useEffect(() => {
     if (!result.posterUrl) return;
     const img = new Image();

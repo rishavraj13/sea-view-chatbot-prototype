@@ -1,53 +1,43 @@
 import Link from 'next/link';
-import { SITE_METADATA } from '@/content';
+import { SITE_METADATA, FOOTER_UI } from '@/content';
 import styles from './Footer.module.css';
 
 export function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        {/* Col 1: Brand summary */}
         <div className={styles.column}>
-          <span className={styles.brandName}>Greedy Adventures</span>
-          <p className={styles.summaryText}>
-            Tandem skydiving over Pattaya, Thailand with sea views from 13,000
-            ft.
-          </p>
-          <p className={styles.prototypeNote}>
-            Assignment prototype. No real bookings or payments.
-          </p>
+          <span className={styles.brandName}>{FOOTER_UI.brand}</span>
+          <p className={styles.summaryText}>{FOOTER_UI.summary}</p>
+          <p className={styles.prototypeNote}>{FOOTER_UI.prototype}</p>
         </div>
-
-        {/* Col 2: Navigation */}
         <div className={styles.column}>
-          <h3 className={styles.columnTitle}>Navigation</h3>
+          <h3 className={styles.columnTitle}>{FOOTER_UI.navigation}</h3>
           <ul className={styles.linksList}>
             <li>
               <Link href="/#packages" className={styles.footerLink}>
-                Packages
+                {FOOTER_UI.packages}
               </Link>
             </li>
             <li>
               <Link href="/#plan" className={styles.footerLink}>
-                The plan
+                {FOOTER_UI.plan}
               </Link>
             </li>
             <li>
               <Link href="/#faq" className={styles.footerLink}>
-                Good to know
+                {FOOTER_UI.faq}
               </Link>
             </li>
             <li>
               <Link href="/knowledge" className={styles.footerLink}>
-                Knowledge view
+                {FOOTER_UI.knowledge}
               </Link>
             </li>
           </ul>
         </div>
-
-        {/* Col 3: Demos */}
         <div className={styles.column}>
-          <h3 className={styles.columnTitle}>Demos</h3>
+          <h3 className={styles.columnTitle}>{FOOTER_UI.demos}</h3>
           <ul className={styles.linksList}>
             <li>
               <a
@@ -56,7 +46,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className={styles.footerLink}
               >
-                Live production ↗
+                {FOOTER_UI.live}
               </a>
             </li>
             <li>
@@ -66,24 +56,22 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className={styles.footerLink}
               >
-                Mock demonstration ↗
+                {FOOTER_UI.mock}
               </a>
             </li>
             <li>
               <Link href="/knowledge" className={styles.footerLink}>
-                Knowledge view
+                {FOOTER_UI.knowledge}
               </Link>
             </li>
           </ul>
         </div>
-
-        {/* Col 4: Credits & Contact */}
         <div className={styles.column}>
-          <h3 className={styles.columnTitle}>Credits</h3>
+          <h3 className={styles.columnTitle}>{FOOTER_UI.credits}</h3>
           <ul className={styles.linksList}>
             <li>
               <span className={styles.summaryText}>
-                Photography and content © Greedy Adventures
+                {FOOTER_UI.photography}
               </span>
             </li>
             <li>
@@ -93,7 +81,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className={styles.footerLink}
               >
-                Contact Greedy Adventures ↗
+                {FOOTER_UI.contact}
               </a>
             </li>
           </ul>
@@ -101,8 +89,8 @@ export function Footer() {
       </div>
 
       <div className={styles.bottomBar}>
-        <p>© Greedy Adventures. All rights reserved.</p>
-        <p>Swiss echo design prototype · Pattaya Sea View</p>
+        <p>{FOOTER_UI.copyright}</p>
+        <p>{FOOTER_UI.design}</p>
       </div>
     </footer>
   );

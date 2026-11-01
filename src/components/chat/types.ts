@@ -3,7 +3,6 @@ export type MediaResult = import('zod').infer<
 >;
 export type BrochureResult = Extract<MediaResult, { kind: 'brochure' }>;
 export type VideoResult = Extract<MediaResult, { kind: 'video' }>;
-export type UnavailableResult = Extract<MediaResult, { kind: 'unavailable' }>;
 
 export interface SourceCitation {
   readonly type: 'source-url';

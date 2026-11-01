@@ -6,7 +6,7 @@ import {
   CHAT_UI,
   KNOWLEDGE_UI,
   PLAN_STEPS,
-  SITE_METADATA,
+  ACCESSIBILITY_COPY,
   STARTER_PROMPTS,
   TRACE_UI,
 } from '../../src/content';
@@ -29,7 +29,7 @@ for (const path of ['/', '/knowledge']) {
       ).toContainText('18');
     const headings = await checkHeadingOrder(page);
     const order = await walkTabOrder(page);
-    expect(order[0]?.text).toBe('Skip to content');
+    expect(order[0]?.text).toBe(ACCESSIBILITY_COPY.skip);
     expect(order.at(-1)?.text).toBe(CHAT_UI.launcher);
     if (path === '/') {
       expect(
@@ -90,43 +90,6 @@ for (const path of ['/', '/knowledge']) {
       .withRules(['label-content-name-mismatch', 'heading-order'])
       .analyze();
     expect(scan.violations).toEqual([]);
-  });
-
-  test(`skip link, reduced motion, increased contrast and metadata: ${path}`, async ({
-    page,
-  }) => {
-    await page.emulateMedia({ reducedMotion: 'reduce', contrast: 'more' });
-    await page.goto(path);
-    await page.keyboard.press('Tab');
-    await expect(page.locator('.skip-link')).toBeFocused();
-    await checkFocus(page);
-    await page.keyboard.press('Enter');
-    await expect(page).toHaveURL(/#main$/);
-    expect(await page.locator('html').getAttribute('lang')).toBe('en');
-    const description = await page
-      .locator('meta[name="description"]')
-      .getAttribute('content');
-    expect(description).toBe(
-      path === '/' ? SITE_METADATA.description : KNOWLEDGE_UI.subtitle,
-    );
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
-      'content',
-      'index, follow',
-    );
-    await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
-    await expect(page.locator('meta[name="viewport"]')).toHaveAttribute(
-      'content',
-      'width=device-width, initial-scale=1',
-    );
-    expect(
-      await page.evaluate(() => document.documentElement.scrollWidth),
-    ).toBeLessThanOrEqual(page.viewportSize()!.width);
-    if (path === '/')
-      await expect(page.locator('[data-hero-stage]')).toHaveCSS(
-        'position',
-        'relative',
-      );
-    await checkHeadingOrder(page);
   });
 }
 

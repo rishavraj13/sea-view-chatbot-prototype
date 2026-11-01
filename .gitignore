@@ -11,3 +11,6 @@ next-env.d.ts
 
 test-results/
 playwright-report/
+
+# Generated captures are ignored; curated tracked evidence remains versioned.
+docs/examples/**
