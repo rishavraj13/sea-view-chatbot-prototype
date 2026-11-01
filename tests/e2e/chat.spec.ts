@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import {
   CHAT_UI,
+  CHAT_COPY,
   PACKAGES,
   packageAskLabel,
   packageQuestion,
@@ -46,6 +47,27 @@ test.describe('Chat modal and conversation flows', () => {
 
     // Focus should be trapped inside dialog
     const composer = dialog.locator('#chat-composer');
+    await expect(composer).toBeFocused();
+
+    for (const prompt of [...STARTER_PROMPTS].reverse()) {
+      await page.keyboard.press('Shift+Tab');
+      await expect(dialog.getByRole('button', { name: prompt, exact: true })).toBeFocused();
+    }
+    await page.keyboard.press('Shift+Tab');
+    await expect(dialog.getByRole('button', {name: CHAT_UI.closeButton, exact: true})).toBeFocused();
+    await page.keyboard.press('Shift+Tab');
+    await expect(dialog.getByRole('button', {name: CHAT_UI.newConversation, exact: true})).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(dialog.getByRole('button', {name: CHAT_UI.closeButton, exact: true})).toBeFocused();
+    for (const prompt of STARTER_PROMPTS) {
+      await page.keyboard.press('Tab');
+      await expect(dialog.getByRole('button', { name: prompt, exact: true })).toBeFocused();
+    }
+    await page.keyboard.press('Tab');
+    await expect(composer).toBeFocused();
+    await page.locator('header a').first().evaluate((element) => {
+      if (element instanceof HTMLElement) element.focus();
+    });
     await expect(composer).toBeFocused();
 
     // Press Escape to close
@@ -100,11 +122,11 @@ test.describe('Chat modal and conversation flows', () => {
 
     // Wait for response in MOCK mode
     await expect(
-      dialog.getByText('Mock mode: scripted answers, not a live model', {
+      dialog.getByText(CHAT_COPY.mock, {
         exact: true,
       }),
     ).toBeVisible({ timeout: 10000 });
-    await expect(dialog.getByText('PDF', { exact: true })).toBeVisible({
+    await expect(dialog.getByText(CHAT_COPY.pdf, { exact: true })).toBeVisible({
       timeout: 10000,
     });
     await expect(

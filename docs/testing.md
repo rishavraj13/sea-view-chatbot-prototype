@@ -10,6 +10,8 @@ tests/components/chat-error-captures.test.ts generates actual typed POST respons
 
 Run `npm run typecheck`, `npm run lint`, `npm run test`, `npm run build`, then `npx playwright test`. For focused chat checks: `npx playwright test tests/e2e/chat.spec.ts tests/e2e/chat-errors.spec.ts tests/e2e/chat-lifecycle.spec.ts tests/e2e/chat-screenshots.spec.ts`. Countdown/slow-loading use page.clock, never sleeps. Error Retry must preserve an identical request body; pending reset must discard a released late response. Five starters cover factual text/source, PDF, video, both and missing-fact refusal. The last shared preset is now the age-limit question; Knowledge's shared preset label inherits this but its trace behavior is not altered.
 
+Keyboard coverage walks the actual in-dialog order backwards and forwards and attempts to focus an inert background link, then verifies Escape and launcher focus return. It does not assume that Tab after the last control wraps immediately: native Chromium may focus browser chrome, which is distinct from escaping into the background DOM. Captured viewport screenshots are not full-document captures; tests preserve the project's original size. No sleeps or animation disabling are used.
+
 ## Frontend foundation pass 1 (2026-11-02)
 
 Use MODEL_MODE=mock for local checks; never start a live-mode server for frontend tests. Confirm ports 3000 and 3100 are free before and after each run, set GIT_PAGER=cat, and run commands serially. Playwright starts its own production server on 3100 with reuseExistingServer:false, 15s test/5s expect timeouts, no retries and unconditional forbidOnly:true.

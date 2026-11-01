@@ -1,5 +1,9 @@
 # Progress log
 
+## 2026-11-02 — Frontend Pass 2: browser behavior regression coverage
+
+Rewrote chat-errors.spec.ts around captured real route envelopes from OFFLINE MOCK exceptions; assertions use product constants, inline alerts, page.clock countdown and identical Retry request bodies. Added pending cancellation/late-response/slow-hint checks, all five real-MOCK starters, mock reset, client-route persistence, populated media/error axe and viewport screenshots/request captures. Strengthened keyboard tests with every starter/header/composer focus step in both directions, blocked background DOM focus and Escape/focus return. Native Chromium can move from the last input to browser chrome; the initial new test incorrectly assumed immediate wrapping to the first button. No custom focus trap or timing workaround was added; the corrected meaningful sequence passes all three projects (3/3, 5.1s). Initial full matrix was 114 passed / 9 failed: three keyboard-expectation failures now corrected and the six deferred Knowledge cases. Final full matrix remains to run.
+
 ## 2026-11-02 — Frontend Pass 2: runtime implementation checks
 
 After adding runtime-composer whitespace/Enter/Shift+Enter/IME/full-thread behavior tests and invalid media rendering, all checks pass: typecheck exit 0, lint (--max-warnings=0) exit 0, **42 files / 491 unit tests passed** (5.28s), build exit 0 (compile 319ms; TypeScript 2.6s; static pages 7/7 in 1027ms). Output is captured under examples/chat-runtime. Backend runtime/body/protocol unchanged; no dependency changes. Browser lifecycle/error/viewport evidence is the next logical step.

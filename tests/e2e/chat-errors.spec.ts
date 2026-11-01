@@ -1,231 +1,81 @@
 import { test, expect } from '@playwright/test';
-import { CHAT_UI } from '../../src/content';
+import captures from '../../docs/examples/chat-runtime/errors.json' with { type: 'json' };
+import { errorEnvelopeSchema } from '../../src/components/chat/api-error';
+import {
+  CHAT_COPY,
+  ERROR_MESSAGES,
+  retryLabel,
+  STARTER_PROMPTS,
+} from '../../src/content';
+import { openChat, sendQuestion, waitForReply } from './helpers/chat';
 
-test.describe('Chat error handling and retry behaviors', () => {
-  test('429 with retryAfterSeconds displays disabled countdown button', async ({
+for (const capture of captures.captures) {
+  test(`${capture.name}: inline product copy and correct Retry state`, async ({
     page,
   }) => {
-    await page.route('/api/chat', async (route) => {
-      await route.fulfill({
-        status: 429,
+    const body = errorEnvelopeSchema.parse(capture.body);
+    await page.clock.install();
+    await page.route('**/api/chat', (route) =>
+      route.fulfill({
+        status: capture.status,
         contentType: 'application/json',
-        body: JSON.stringify({
-          mode: 'live',
-          provider: 'groq',
-          modelId: 'qwen/qwen3.8-27b',
-          error: {
-            code: 'RATE_LIMIT',
-            message: 'The model rate limit was reached. Please retry later.',
-            retryAfterSeconds: 12,
-          },
-        }),
-      });
-    });
-
-    await page.goto('/');
-    await page.getByRole('button', {
-      name: CHAT_UI.launcher,
+        body: JSON.stringify(capture.body),
+      }),
+    );
+    const dialog = await openChat(page);
+    await sendQuestion(page, STARTER_PROMPTS[0]);
+    const alert = dialog.getByRole('alert');
+    await expect(alert).toBeVisible();
+    await expect(alert).toContainText(ERROR_MESSAGES[body.error.code]);
+    await expect(alert).not.toContainText(body.error.message);
+    const seconds =
+      body.error.code === 'RATE_LIMIT'
+        ? body.error.retryAfterSeconds
+        : undefined;
+    const retry = alert.getByRole('button', {
+      name: retryLabel(seconds ?? 0),
       exact: true,
-    }).click();
-    const dialog = page.getByRole('dialog');
-    await expect(dialog).toBeVisible();
-
-    const composer = dialog.locator('#chat-composer');
-    await composer.fill('When can I jump?');
-    await dialog.getByRole('button', { name: CHAT_UI.sendButton, exact: true }).click();
-
-    const errorAlert = dialog.getByRole('alert');
-    await expect(errorAlert).toBeVisible();
+    });
+    if (seconds) {
+      await expect(retry).toBeDisabled();
+      await page.clock.fastForward((seconds - 1) * 1000);
+      await expect(
+        alert.getByRole('button', { name: retryLabel(1), exact: true }),
+      ).toBeDisabled();
+      await page.clock.fastForward(1000);
+    }
     await expect(
-      errorAlert.getByText(
-        'The model rate limit was reached. Please retry later.',
-        { exact: true }
-      )
-    ).toBeVisible();
-
-    const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });
-    await expect(retryButton).toBeVisible();
-    await expect(retryButton).toBeDisabled();
-    await expect(retryButton).toContainText('Retry in 12s');
+      alert.getByRole('button', { name: CHAT_COPY.retry, exact: true }),
+    ).toBeEnabled();
   });
+}
 
-  test('429 without retryAfterSeconds displays immediate enabled Retry button', async ({
-    page,
-  }) => {
-    await page.route('/api/chat', async (route) => {
+test('Retry reloads the failed turn with no duplicated user message', async ({
+  page,
+}) => {
+  const bodies: unknown[] = [];
+  const failure = captures.captures.find(
+    (capture) => capture.name === 'rate-absent',
+  )!;
+  await page.route('**/api/chat', async (route) => {
+    bodies.push(route.request().postDataJSON());
+    if (bodies.length === 1)
       await route.fulfill({
-        status: 429,
+        status: failure.status,
         contentType: 'application/json',
-        body: JSON.stringify({
-          mode: 'live',
-          provider: 'groq',
-          modelId: 'qwen/qwen3.8-27b',
-          error: {
-            code: 'RATE_LIMIT',
-            message: 'The model rate limit was reached. Please retry later.',
-          },
-        }),
+        body: JSON.stringify(failure.body),
       });
-    });
-
-    await page.goto('/');
-    await page.getByRole('button', {
-      name: CHAT_UI.launcher,
-      exact: true,
-    }).click();
-    const dialog = page.getByRole('dialog');
-    await expect(dialog).toBeVisible();
-
-    const composer = dialog.locator('#chat-composer');
-    await composer.fill('How high is the jump?');
-    await dialog.getByRole('button', { name: CHAT_UI.sendButton, exact: true }).click();
-
-    const errorAlert = dialog.getByRole('alert');
-    await expect(errorAlert).toBeVisible();
-    await expect(
-      errorAlert.getByText(
-        'The model rate limit was reached. Please retry later.',
-        { exact: true }
-      )
-    ).toBeVisible();
-
-    const retryButton = errorAlert.getByRole('button', {
-      name: 'Retry',
-      exact: true,
-    });
-    await expect(retryButton).toBeVisible();
-    await expect(retryButton).toBeEnabled();
+    else await route.continue();
   });
-
-  test('504 TIMEOUT displays safe message and enabled retry button', async ({
-    page,
-  }) => {
-    await page.route('/api/chat', async (route) => {
-      await route.fulfill({
-        status: 504,
-        contentType: 'application/json',
-        body: JSON.stringify({
-          mode: 'live',
-          provider: 'groq',
-          modelId: 'qwen/qwen3.8-27b',
-          error: {
-            code: 'TIMEOUT',
-            message: 'The model timed out. Please retry.',
-          },
-        }),
-      });
-    });
-
-    await page.goto('/');
-    await page.getByRole('button', {
-      name: CHAT_UI.launcher,
-      exact: true,
-    }).click();
-    const dialog = page.getByRole('dialog');
-    await expect(dialog).toBeVisible();
-
-    const composer = dialog.locator('#chat-composer');
-    await composer.fill('Do you jump in the rain?');
-    await dialog.getByRole('button', { name: CHAT_UI.sendButton, exact: true }).click();
-
-    const errorAlert = dialog.getByRole('alert');
-    await expect(errorAlert).toBeVisible();
-    await expect(
-      errorAlert.getByText('The model timed out. Please retry.', {
-        exact: true,
-      })
-    ).toBeVisible();
-
-    const retryButton = errorAlert.getByRole('button', {
-      name: 'Retry',
-      exact: true,
-    });
-    await expect(retryButton).toBeVisible();
-    await expect(retryButton).toBeEnabled();
-  });
-
-  test('502 MODEL_FAILURE displays safe message and enabled retry button', async ({
-    page,
-  }) => {
-    await page.route('/api/chat', async (route) => {
-      await route.fulfill({
-        status: 502,
-        contentType: 'application/json',
-        body: JSON.stringify({
-          mode: 'live',
-          provider: 'groq',
-          modelId: 'qwen/qwen3.8-27b',
-          error: {
-            code: 'MODEL_FAILURE',
-            message: 'The model is temporarily unavailable.',
-          },
-        }),
-      });
-    });
-
-    await page.goto('/');
-    await page.getByRole('button', {
-      name: CHAT_UI.launcher,
-      exact: true,
-    }).click();
-    const dialog = page.getByRole('dialog');
-    await expect(dialog).toBeVisible();
-
-    const composer = dialog.locator('#chat-composer');
-    await composer.fill('Can I jump at 14?');
-    await dialog.getByRole('button', { name: CHAT_UI.sendButton, exact: true }).click();
-
-    const errorAlert = dialog.getByRole('alert');
-    await expect(errorAlert).toBeVisible();
-    await expect(
-      errorAlert.getByText('The model is temporarily unavailable.', {
-        exact: true,
-      })
-    ).toBeVisible();
-
-    const retryButton = errorAlert.getByRole('button', {
-      name: 'Retry',
-      exact: true,
-    });
-    await expect(retryButton).toBeVisible();
-    await expect(retryButton).toBeEnabled();
-  });
-
-  test('400 INVALID_INPUT displays safe input error message', async ({
-    page,
-  }) => {
-    await page.route('/api/chat', async (route) => {
-      await route.fulfill({
-        status: 400,
-        contentType: 'application/json',
-        body: JSON.stringify({
-          mode: 'live',
-          provider: 'groq',
-          modelId: 'qwen/qwen3.8-27b',
-          error: {
-            code: 'INVALID_INPUT',
-            message: 'Invalid message history.',
-          },
-        }),
-      });
-    });
-
-    await page.goto('/');
-    await page.getByRole('button', {
-      name: CHAT_UI.launcher,
-      exact: true,
-    }).click();
-    const dialog = page.getByRole('dialog');
-    await expect(dialog).toBeVisible();
-
-    const composer = dialog.locator('#chat-composer');
-    await composer.fill('Invalid question');
-    await dialog.getByRole('button', { name: CHAT_UI.sendButton, exact: true }).click();
-
-    const errorAlert = dialog.getByRole('alert');
-    await expect(errorAlert).toBeVisible();
-    await expect(
-      errorAlert.getByText('Invalid message history.', { exact: true })
-    ).toBeVisible();
-  });
+  const dialog = await openChat(page);
+  await sendQuestion(page, STARTER_PROMPTS[0]);
+  await expect(dialog.getByRole('alert')).toBeVisible();
+  await dialog
+    .getByRole('button', { name: CHAT_COPY.retry, exact: true })
+    .click();
+  await waitForReply(page);
+  await expect(dialog.getByRole('alert')).toBeHidden();
+  expect(bodies).toHaveLength(2);
+  expect(bodies[1]).toEqual(bodies[0]);
+  await expect(dialog.locator('article[data-role="user"]')).toHaveCount(1);
 });
