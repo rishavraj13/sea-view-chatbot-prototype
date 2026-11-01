@@ -1,5 +1,11 @@
 # Progress log
 
+## 2026-11-02 — Frontend foundation A: dependency baseline
+
+Approach **A** succeeded. Registry inspection found @ai-sdk/react 4.0.162 requires exactly ai 7.0.158 and satisfies the adapter's ^4.0.157 range. Restored the backend-v1 lockfile, declared that exact direct dependency and ran ordinary npm install. No overrides, forced/legacy resolution or manual lock edits. ADR 017 records the decision for the next runtime pass.
+
+Proof: 157 lock entries added; **0 existing versions/integrity hashes changed; 0 removed**. All existing package.json ranges unchanged; additions only versus backend-v1. npm ls: ai 7.0.158, gateway 4.0.131, react 4.0.162, provider 4.0.35, provider-utils 5.0.72. Full offline unit suite: **39 files / 463 tests passed**, including the unchanged 434 server cases. Ports 3000/3100 free before/after install and unit tests. npm reported 17 moderate advisories and pending install-script notices; no audit fix or dependency upgrade was attempted. No live call, deployment or backend edit.
+
 ## Real website knowledge and property-based guard — 2026-10-31
 
 The former fictional knowledge, facts and response examples are retired. Original Git history is preserved; historical working-tree files now clearly identify supersession. Current data contains fifteen faithful logical sections from the two specified pages, isDemo:false and capture date 2026-10-31. Taglines and identical inclusion lists are not reconciled.
