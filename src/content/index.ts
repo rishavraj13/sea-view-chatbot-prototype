@@ -1,4 +1,6 @@
 export { HEADER_UI } from './navigation';
+import { MISSING_FACT_PROMPT } from './chat';
+export { CHAT_COPY, retryLabel, SOURCE_PAGES, CHAT_REFUSAL, MISSING_FACT_PROMPT } from './chat';
 export {
   ERROR_MESSAGES,
   PACKAGE_UI,
@@ -196,7 +198,7 @@ export const STARTER_PROMPTS = [
   'Can you send me a brochure?',
   'Can I see a video of the experience?',
   'Send me the brochure and a video.',
-  'What if it rains?',
+  MISSING_FACT_PROMPT,
 ] as const;
 
 export const CHAT_UI = {

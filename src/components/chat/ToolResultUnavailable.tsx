@@ -1,10 +1,10 @@
 import styles from './ToolResultUnavailable.module.css';
+import { CHAT_COPY } from '@/content';
 
 export function ToolResultUnavailable() {
   return (
     <p className={styles.note} role="note">
-      That file isn&apos;t available right now.
+      {CHAT_COPY.unavailable}
     </p>
   );
 }
-

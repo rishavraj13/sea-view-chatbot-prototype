@@ -33,7 +33,8 @@ describe('Tool result renderers', () => {
       title: 'Sea View Skydiving - page video (external link)',
       url: 'https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4',
       isDemo: false,
-      posterUrl: 'https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg',
+      posterUrl:
+        'https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg',
     };
 
     const html = renderToStaticMarkup(<ToolResultVideo result={video} />);
@@ -42,12 +43,14 @@ describe('Tool result renderers', () => {
     expect(html).toContain('controls=""');
     expect(html).toContain('playsInline=""');
     expect(html).toContain('preload="none"');
-    expect(html).toContain('src="https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4"');
+    expect(html).toContain(
+      'src="https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4"',
+    );
   });
 
   it('renders unavailable note without broken card styling', () => {
     const html = renderToStaticMarkup(<ToolResultUnavailable />);
-    expect(html).toContain("That file isn&#x27;t available right now.");
+    expect(html).toContain('That file isn&#x27;t available right now.');
     expect(html).not.toContain('<video');
     expect(html).not.toContain('PDF');
   });

@@ -1,81 +1,51 @@
 'use client';
 
-import {
-  type ChangeEvent,
-  type FormEvent,
-  type KeyboardEvent,
-  useRef,
-  useEffect,
-} from 'react';
-import { CHAT_UI } from '@/content';
+import { ComposerPrimitive, useAuiState } from '@assistant-ui/react';
+import { CHAT_COPY, CHAT_UI } from '@/content';
+import { CHAT_LIMITS } from './limits';
 import styles from './ChatComposer.module.css';
 
-interface ChatComposerProps {
-  readonly text: string;
-  readonly onChange: (text: string) => void;
-  readonly onSubmit: () => void;
-  readonly isLoading: boolean;
-}
-
-export function ChatComposer({
-  text,
-  onChange,
-  onSubmit,
-  isLoading,
-}: ChatComposerProps) {
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-  // Auto-resize textarea height to fit content up to 140px
-  useEffect(() => {
-    const el = textareaRef.current;
-    if (!el) return;
-    el.style.height = 'auto';
-    el.style.height = `${Math.min(el.scrollHeight, 140)}px`;
-  }, [text]);
-
-  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      if (!isLoading && text.trim().length > 0) {
-        onSubmit();
-      }
-    }
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!isLoading && text.trim().length > 0) {
-      onSubmit();
-    }
-  };
-
+export function ChatComposer() {
+  const text = useAuiState((state) => state.composer.text);
+  const running = useAuiState((state) => state.thread.isRunning);
+  const full = useAuiState(
+    (state) => state.thread.messages.length >= CHAT_LIMITS.messages,
+  );
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      {full && <p role="status">{CHAT_COPY.limit}</p>}
+      <ComposerPrimitive.Root className={styles.form}>
         <label htmlFor="chat-composer" className="sr-only">
-          Ask a question
+          {CHAT_COPY.question}
         </label>
-        <textarea
-          ref={textareaRef}
+        <ComposerPrimitive.Input
           id="chat-composer"
           className={styles.textarea}
-          value={text}
-          onChange={(e: ChangeEvent<HTMLTextAreaElement>) => onChange(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Ask a question…"
-          maxLength={4000}
+          placeholder={CHAT_COPY.placeholder}
+          maxLength={CHAT_LIMITS.text}
           rows={1}
-          disabled={isLoading}
+          maxRows={5}
+          disabled={running || full}
+          autoFocus={false}
+          cancelOnEscape={false}
+          addAttachmentOnPaste={false}
+          submitMode="enter"
+          onKeyDown={(event) => {
+            if (
+              event.key === 'Enter' &&
+              !event.shiftKey &&
+              (!text.trim() || full || running)
+            )
+              event.preventDefault();
+          }}
         />
-        <button
-          type="submit"
+        <ComposerPrimitive.Send
           className={styles.sendButton}
-          disabled={isLoading || text.trim().length === 0}
+          disabled={running || full || !text.trim()}
         >
           {CHAT_UI.sendButton}
-        </button>
-      </form>
+        </ComposerPrimitive.Send>
+      </ComposerPrimitive.Root>
     </div>
   );
 }
-

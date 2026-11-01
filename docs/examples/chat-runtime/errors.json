@@ -1,0 +1,71 @@
+{
+  "evidence": "OFFLINE MOCK pipeline exceptions through the actual POST route; zero network/provider calls",
+  "captures": [
+    {
+      "name": "rate-present",
+      "status": 429,
+      "body": {
+        "error": {
+          "code": "RATE_LIMIT",
+          "message": "The model rate limit was reached. Please retry later.",
+          "retryAfterSeconds": 12
+        },
+        "mode": "mock",
+        "provider": "google",
+        "modelId": "gemini-2.5-flash"
+      }
+    },
+    {
+      "name": "rate-absent",
+      "status": 429,
+      "body": {
+        "error": {
+          "code": "RATE_LIMIT",
+          "message": "The model rate limit was reached. Please retry later."
+        },
+        "mode": "mock",
+        "provider": "google",
+        "modelId": "gemini-2.5-flash"
+      }
+    },
+    {
+      "name": "timeout",
+      "status": 504,
+      "body": {
+        "error": {
+          "code": "TIMEOUT",
+          "message": "The model timed out. Please retry."
+        },
+        "mode": "mock",
+        "provider": "google",
+        "modelId": "gemini-2.5-flash"
+      }
+    },
+    {
+      "name": "model-failure",
+      "status": 502,
+      "body": {
+        "error": {
+          "code": "MODEL_FAILURE",
+          "message": "The model is temporarily unavailable."
+        },
+        "mode": "mock",
+        "provider": "google",
+        "modelId": "gemini-2.5-flash"
+      }
+    },
+    {
+      "name": "invalid-input",
+      "status": 400,
+      "body": {
+        "error": {
+          "code": "INVALID_INPUT",
+          "message": "Invalid message history."
+        },
+        "mode": "mock",
+        "provider": "google",
+        "modelId": "gemini-2.5-flash"
+      }
+    }
+  ]
+}

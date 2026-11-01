@@ -170,7 +170,7 @@
 
 .errorMessage {
   font-size: 0.875rem;
-  color: var(--accent);
+  color: var(--ink);
   font-weight: 500;
   line-height: 1.4;
 }

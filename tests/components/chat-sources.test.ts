@@ -7,13 +7,15 @@ describe('Chat sources deduplication and labelling', () => {
     const citations: SourceCitation[] = [
       {
         type: 'source-url',
-        sourceId: 'https://www.greedyadventures.com/experiences/sea-view-skydiving#options',
+        sourceId:
+          'https://www.greedyadventures.com/experiences/sea-view-skydiving#options',
         url: 'https://www.greedyadventures.com/experiences/sea-view-skydiving#options',
         title: 'VIP',
       },
       {
         type: 'source-url',
-        sourceId: 'https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs',
+        sourceId:
+          'https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs',
         url: 'https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs',
         title: 'Which package should I choose?',
       },
@@ -35,7 +37,8 @@ describe('Chat sources deduplication and labelling', () => {
     const citations: SourceCitation[] = [
       {
         type: 'source-url',
-        sourceId: 'https://www.greedyadventures.com/experiences/sea-view-skydiving#options',
+        sourceId:
+          'https://www.greedyadventures.com/experiences/sea-view-skydiving#options',
         url: 'https://www.greedyadventures.com/experiences/sea-view-skydiving#options',
         title: 'Section title that must be ignored',
       },
@@ -46,4 +49,3 @@ describe('Chat sources deduplication and labelling', () => {
     expect(chips[0]!.label).not.toContain('Section title');
   });
 });
-

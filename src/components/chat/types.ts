@@ -1,8 +1,5 @@
 export type ErrorCode =
-  | 'RATE_LIMIT'
-  | 'TIMEOUT'
-  | 'MODEL_FAILURE'
-  | 'INVALID_INPUT';
+  'RATE_LIMIT' | 'TIMEOUT' | 'MODEL_FAILURE' | 'INVALID_INPUT';
 
 export interface ChatErrorData {
   readonly code: ErrorCode | string;
@@ -10,37 +7,12 @@ export interface ChatErrorData {
   readonly retryAfterSeconds?: number;
 }
 
-export interface BrochureResult {
-  readonly kind: 'brochure';
-  readonly type: 'pdf';
-  readonly id: string;
-  readonly title: string;
-  readonly url: string;
-  readonly isDemo: boolean;
-  readonly posterUrl?: string;
-}
-
-export interface VideoResult {
-  readonly kind: 'video';
-  readonly type: 'video';
-  readonly id: string;
-  readonly title: string;
-  readonly url: string;
-  readonly isDemo: boolean;
-  readonly posterUrl?: string;
-}
-
-export interface UnavailableResult {
-  readonly kind: 'unavailable';
-  readonly id: string;
-  readonly title: string;
-  readonly url: '';
-  readonly isDemo: boolean;
-  readonly reason: 'unknown' | 'unavailable' | 'wrong-type';
-  readonly posterUrl?: string;
-}
-
-export type MediaResult = BrochureResult | VideoResult | UnavailableResult;
+export type MediaResult = import('zod').infer<
+  typeof import('./schemas').toolOutputSchema
+>;
+export type BrochureResult = Extract<MediaResult, { kind: 'brochure' }>;
+export type VideoResult = Extract<MediaResult, { kind: 'video' }>;
+export type UnavailableResult = Extract<MediaResult, { kind: 'unavailable' }>;
 
 export interface SourceCitation {
   readonly type: 'source-url';
@@ -54,4 +26,3 @@ export interface PageSourceChip {
   readonly label: 'Sea View Skydiving page' | 'Cancellations page';
   readonly url: string;
 }
-

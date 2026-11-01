@@ -1,63 +1,65 @@
+import { APICallError } from 'ai';
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { getErrorMessage, parseErrorResponse } from '@/components/chat/error-mapping';
+import { ERROR_MESSAGES } from '@/content';
+import { errorCopy, parseChatError } from '@/components/chat/api-error';
 
-interface MockErrorsCapture {
-  evidence: string;
-  captures: Array<{
-    route: string;
-    scenario: string;
-    status: number;
-    body: {
-      mode: string;
-      provider: string;
-      modelId: string;
-      error: {
-        code: string;
-        message: string;
-        retryAfterSeconds?: number;
-      };
-    };
-  }>;
-}
-
-describe('Error mapping and typed error handling', () => {
-  const file = join(process.cwd(), 'docs', 'examples', 'rate-limit-diagnostics', 'mock-errors.json');
-  const fixture: MockErrorsCapture = JSON.parse(readFileSync(file, 'utf8'));
-
-  it('maps RATE_LIMIT error with retryAfterSeconds from real captured 429 fixture', () => {
-    const capture = fixture.captures.find((c) => c.scenario === 'present' && c.route === 'chat')!;
-    const parsed = parseErrorResponse(capture.body);
-
-    expect(parsed.code).toBe('RATE_LIMIT');
-    expect(parsed.retryAfterSeconds).toBe(12);
-    expect(getErrorMessage(parsed)).toBe(
-      'The model rate limit was reached. Please retry later.',
-    );
+const apiError = (body: unknown) =>
+  new APICallError({
+    message: 'Never display this',
+    url: '/api/chat',
+    requestBodyValues: {},
+    statusCode: 429,
+    responseBody: typeof body === 'string' ? body : JSON.stringify(body),
   });
-
-  it('maps RATE_LIMIT error without retryAfterSeconds from real captured 429 fixture', () => {
-    const capture = fixture.captures.find((c) => c.scenario === 'absent' && c.route === 'chat')!;
-    const parsed = parseErrorResponse(capture.body);
-
-    expect(parsed.code).toBe('RATE_LIMIT');
-    expect(parsed.retryAfterSeconds).toBeUndefined();
-    expect(getErrorMessage(parsed)).toBe(
-      'The model rate limit was reached. Please retry later.',
-    );
+describe('Public chat errors', () => {
+  it.each(['RATE_LIMIT', 'TIMEOUT', 'MODEL_FAILURE', 'INVALID_INPUT'] as const)(
+    'validates %s and uses only product copy',
+    (code) => {
+      const parsed = parseChatError(
+        apiError({
+          error: { code, message: 'untrusted backend copy' },
+          mode: 'mock',
+        }),
+      );
+      expect(parsed).toEqual({ code, mode: 'mock' });
+      expect(errorCopy(parsed)).toBe(ERROR_MESSAGES[code]);
+      expect(errorCopy(parsed)).not.toContain('untrusted');
+    },
+  );
+  it('preserves a valid retry delay and omits absent delays', () => {
+    expect(
+      parseChatError(
+        apiError({
+          error: { code: 'RATE_LIMIT', message: 'raw', retryAfterSeconds: 12 },
+        }),
+      ).retryAfterSeconds,
+    ).toBe(12);
+    expect(
+      parseChatError(
+        apiError({ error: { code: 'RATE_LIMIT', message: 'raw' } }),
+      ).retryAfterSeconds,
+    ).toBeUndefined();
   });
-
-  it('maps TIMEOUT, MODEL_FAILURE and INVALID_INPUT codes to safe messages', () => {
-    expect(getErrorMessage({ code: 'TIMEOUT', message: '' })).toBe(
-      'The model timed out. Please retry.',
-    );
-    expect(getErrorMessage({ code: 'MODEL_FAILURE', message: '' })).toBe(
-      'The model is temporarily unavailable.',
-    );
-    expect(getErrorMessage({ code: 'INVALID_INPUT', message: '' })).toBe(
-      'Invalid request. Please check your message history.',
-    );
+  it.each(['garbage', 0, -1, 3601, 1.5, null])(
+    'rejects invalid retry delay %s',
+    (retryAfterSeconds) => {
+      expect(
+        parseChatError(
+          apiError({
+            error: { code: 'RATE_LIMIT', message: 'raw', retryAfterSeconds },
+          }),
+        ),
+      ).toEqual({ code: 'UNKNOWN' });
+    },
+  );
+  it.each([
+    apiError('not JSON'),
+    new DOMException('aborted', 'AbortError'),
+    new TypeError('network'),
+    new Error('raw'),
+    apiError({ error: { code: 'BOGUS', message: 'raw' } }),
+  ])('maps unparseable failures to unknown', (error) => {
+    expect(parseChatError(error)).toEqual({ code: 'UNKNOWN' });
+    expect(errorCopy(parseChatError(error))).toBe(ERROR_MESSAGES.UNKNOWN);
   });
 });
-

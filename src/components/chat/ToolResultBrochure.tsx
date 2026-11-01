@@ -1,4 +1,5 @@
 import type { BrochureResult } from './types';
+import { CHAT_COPY } from '@/content';
 import styles from './ToolResultBrochure.module.css';
 
 interface ToolResultBrochureProps {
@@ -7,14 +8,16 @@ interface ToolResultBrochureProps {
 
 export function ToolResultBrochure({ result }: ToolResultBrochureProps) {
   return (
-    <div className={styles.card} role="region" aria-label="Brochure document">
+    <div className={styles.card} role="region" aria-label={CHAT_COPY.brochure}>
       <div className={styles.headerRow}>
         <span className={styles.pdfBadge} aria-hidden="true">
-          PDF
+          {CHAT_COPY.pdf}
         </span>
         <div className={styles.titleArea}>
           <span className={styles.title}>{result.title}</span>
-          {result.isDemo && <span className={styles.demoBadge}>Demo material</span>}
+          {result.isDemo && (
+            <span className={styles.demoBadge}>{CHAT_COPY.demo}</span>
+          )}
         </div>
       </div>
       <div className={styles.buttonRow}>
@@ -24,13 +27,17 @@ export function ToolResultBrochure({ result }: ToolResultBrochureProps) {
           rel="noopener noreferrer"
           className={`${styles.button} ${styles.primaryButton}`}
         >
-          Open
+          {CHAT_COPY.open}
         </a>
-        <a href={result.url} download className={styles.button}>
-          Download
+        <a
+          href={result.url}
+          download
+          rel="noopener noreferrer"
+          className={styles.button}
+        >
+          {CHAT_COPY.download}
         </a>
       </div>
     </div>
   );
 }
-

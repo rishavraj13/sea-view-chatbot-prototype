@@ -1,5 +1,15 @@
 # Testing and capture verification
 
+## Frontend Pass 2: assistant-ui runtime (2026-11-02)
+
+Use MODEL_MODE=mock, GIT_PAGER=cat, ports 3000/3100 free before and after each serial command. Never use a live provider endpoint. Playwright owns a new mock production server on 3100 with reuseExistingServer:false, 15s test/5s expect timeouts and zero retries.
+
+Unit tests in tests/components/chat-contract.test.tsx mount the real useChatRuntime and validate its generated first/follow-up bodies against the backend's exported chatRequestSchema; the local fetch adapter calls the actual MOCK POST route with no network. History includes SDK step-start, source-url and both completed tool parts. Boundary tests prove the shared 30/8/4000 limits against the frozen schema; no named backend numeric constants exist. Composer behavior tests exercise real runtime Enter/Shift+Enter/IME/blank/full-thread behavior. Other cases cover every error code/invalid delay/network/abort/malformed body, code-to-product-copy mapping, exact URL allow-list edge cases, invalid tool rejection and latest metadata/reset behavior.
+
+tests/components/chat-error-captures.test.ts generates actual typed POST responses using explicitly MOCK pipeline exceptions (zero provider/network calls), writing only an ignored cache artifact. The reviewed capture is copied to docs/examples/chat-runtime/errors.json for browser interception. No backend response text is used as product copy. Existing /knowledge specs and its legacy error helper remain unchanged.
+
+Run `npm run typecheck`, `npm run lint`, `npm run test`, `npm run build`, then `npx playwright test`. For focused chat checks: `npx playwright test tests/e2e/chat.spec.ts tests/e2e/chat-errors.spec.ts tests/e2e/chat-lifecycle.spec.ts tests/e2e/chat-screenshots.spec.ts`. Countdown/slow-loading use page.clock, never sleeps. Error Retry must preserve an identical request body; pending reset must discard a released late response. Five starters cover factual text/source, PDF, video, both and missing-fact refusal. The last shared preset is now the age-limit question; Knowledge's shared preset label inherits this but its trace behavior is not altered.
+
 ## Frontend foundation pass 1 (2026-11-02)
 
 Use MODEL_MODE=mock for local checks; never start a live-mode server for frontend tests. Confirm ports 3000 and 3100 are free before and after each run, set GIT_PAGER=cat, and run commands serially. Playwright starts its own production server on 3100 with reuseExistingServer:false, 15s test/5s expect timeouts, no retries and unconditional forbidOnly:true.

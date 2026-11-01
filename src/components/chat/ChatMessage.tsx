@@ -1,96 +1,99 @@
-import type { UIMessage } from 'ai';
+'use client';
+
+import {
+  MessagePrimitive,
+  useAuiState,
+  type ToolCallMessagePartProps,
+  type TextMessagePartProps,
+} from '@assistant-ui/react';
+import { CHAT_COPY } from '@/content';
 import { deduplicateSourcesByPage } from './source-utils';
+import { toolOutputSchema } from './schemas';
 import { ToolResultBrochure } from './ToolResultBrochure';
 import { ToolResultVideo } from './ToolResultVideo';
 import { ToolResultUnavailable } from './ToolResultUnavailable';
-import type { BrochureResult, SourceCitation, VideoResult } from './types';
 import styles from './ChatMessage.module.css';
 
-interface ChatMessageProps {
-  readonly message: UIMessage;
+export function MediaPart({
+  result,
+}: Pick<ToolCallMessagePartProps, 'result'>) {
+  const parsed = toolOutputSchema.safeParse(result);
+  if (!parsed.success) return null;
+  const output = parsed.data;
+  if (output.kind === 'brochure') return <ToolResultBrochure result={output} />;
+  if (output.kind === 'video') return <ToolResultVideo result={output} />;
+  return <ToolResultUnavailable />;
 }
+const text = ({ text }: TextMessagePartProps) => <span>{text}</span>;
+const hiddenPart = () => null;
+const textParts = {
+  Text: text,
+  Source: hiddenPart,
+  Empty: hiddenPart,
+  tools: { Fallback: hiddenPart },
+};
+const mediaParts = {
+  Text: hiddenPart,
+  Source: hiddenPart,
+  Empty: hiddenPart,
+  tools: {
+    by_name: { sendBrochure: MediaPart, showVideo: MediaPart },
+    Fallback: hiddenPart,
+  },
+};
 
-export function ChatMessage({ message }: ChatMessageProps) {
-  const isUser = message.role === 'user';
-
-  if (isUser) {
-    const text = message.parts
-      .filter((p) => p.type === 'text')
-      .map((p) => ('text' in p ? p.text : ''))
-      .join('\n');
-
-    return (
-      <div className={`${styles.row} ${styles.userRow}`}>
-        <div className={styles.userBubble}>{text}</div>
-      </div>
-    );
-  }
-
-  // Assistant message
-  const textParts: string[] = [];
-  const brochureResults: BrochureResult[] = [];
-  const videoResults: VideoResult[] = [];
-  let hasUnavailable = false;
-  const sourceCitations: SourceCitation[] = [];
-
-  for (const part of message.parts) {
-    if (part.type === 'text' && 'text' in part) {
-      textParts.push(part.text);
-    } else if (part.type === 'source-url') {
-      sourceCitations.push(part as unknown as SourceCitation);
-    } else if (
-      part.type === 'tool-sendBrochure' ||
-      part.type === 'tool-showVideo' ||
-      part.type === 'tool-output-available' ||
-      part.type === 'tool-invocation'
-    ) {
-      const output = 'output' in part ? (part.output as { kind?: string }) : undefined;
-      if (output?.kind === 'brochure') {
-        brochureResults.push(part.output as BrochureResult);
-      } else if (output?.kind === 'video') {
-        videoResults.push(part.output as VideoResult);
-      } else if (output?.kind === 'unavailable') {
-        hasUnavailable = true;
-      }
-    }
-  }
-
-  const chips = deduplicateSourcesByPage(sourceCitations);
-
+export function ChatMessage() {
+  const message = useAuiState((state) => state.message);
+  const user = message.role === 'user';
+  const chips = deduplicateSourcesByPage(
+    message.parts.flatMap((part) =>
+      part.type === 'source' && part.sourceType === 'url'
+        ? [
+            {
+              type: 'source-url',
+              sourceId: part.id,
+              url: part.url,
+              title: part.title,
+            },
+          ]
+        : [],
+    ),
+  );
   return (
-    <div className={`${styles.row} ${styles.assistantRow}`}>
-      {textParts.length > 0 && (
-        <div className={styles.assistantText}>{textParts.join('\n')}</div>
-      )}
-
-      {(brochureResults.length > 0 || videoResults.length > 0 || hasUnavailable) && (
-        <div className={styles.toolResultsArea}>
-          {brochureResults.map((brochure) => (
-            <ToolResultBrochure key={brochure.id} result={brochure} />
-          ))}
-          {videoResults.map((video) => (
-            <ToolResultVideo key={video.id} result={video} />
-          ))}
-          {hasUnavailable && <ToolResultUnavailable />}
+    <MessagePrimitive.Root asChild>
+      <article
+        data-role={message.role}
+        className={`${styles.row} ${user ? styles.userRow : styles.assistantRow}`}
+      >
+        <div className={user ? styles.userBubble : styles.assistantText}>
+          <MessagePrimitive.Parts components={textParts} />
         </div>
-      )}
-
-      {chips.length > 0 && (
-        <div className={styles.sourcesArea} aria-label="Referenced sources">
-          {chips.map((chip) => (
-            <a
-              key={chip.pageKey}
-              href={chip.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.sourceChip}
-            >
-              {chip.label} ↗
-            </a>
-          ))}
-        </div>
-      )}
-    </div>
+        {!user &&
+          message.parts.some(
+            (part) =>
+              part.type === 'tool-call' &&
+              toolOutputSchema.safeParse(part.result).success,
+          ) && (
+            <div className={styles.toolResultsArea}>
+              <MessagePrimitive.Parts components={mediaParts} />
+            </div>
+          )}
+        {chips.length > 0 && (
+          <div className={styles.sourcesArea} aria-label={CHAT_COPY.sources}>
+            {chips.map((chip) => (
+              <a
+                key={chip.pageKey}
+                href={chip.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.sourceChip}
+              >
+                {chip.label} ↗
+              </a>
+            ))}
+          </div>
+        )}
+      </article>
+    </MessagePrimitive.Root>
   );
 }
-

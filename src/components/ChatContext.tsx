@@ -1,49 +1,48 @@
 'use client';
 
-import { createContext, useContext, useState, useMemo, type ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react';
+import { AssistantRuntimeProvider } from '@assistant-ui/react';
+import { useChatRuntime } from '@assistant-ui/react-ai-sdk';
+import { createChatTransport } from './chat/transport';
 
 interface ChatContextValue {
   isOpen: boolean;
-  prefilledPrompt: string;
   openChat: (prompt?: string) => void;
   closeChat: () => void;
-  clearPrefill: () => void;
+  newConversation: () => Promise<void>;
 }
-
 const ChatContext = createContext<ChatContextValue | null>(null);
 
 export function ChatProvider({ children }: { children: ReactNode }) {
+  const transport = useMemo(() => createChatTransport(), []);
+  const runtime = useChatRuntime({ transport });
   const [isOpen, setIsOpen] = useState(false);
-  const [prefilledPrompt, setPrefilledPrompt] = useState('');
-
-  const value = useMemo(
-    () => ({
-      isOpen,
-      prefilledPrompt,
-      openChat: (prompt?: string) => {
-        if (prompt !== undefined) {
-          setPrefilledPrompt(prompt);
-        }
-        setIsOpen(true);
-      },
-      closeChat: () => {
-        setIsOpen(false);
-      },
-      clearPrefill: () => {
-        setPrefilledPrompt('');
-      },
-    }),
-    [isOpen, prefilledPrompt],
+  const value: ChatContextValue = {
+    isOpen,
+    openChat: (prompt) => {
+      if (prompt !== undefined) runtime.thread.composer.setText(prompt);
+      setIsOpen(true);
+    },
+    closeChat: () => setIsOpen(false),
+    newConversation: async () => {
+      runtime.thread.cancelRun();
+      await runtime.threads.switchToNewThread();
+    },
+  };
+  return (
+    <AssistantRuntimeProvider runtime={runtime}>
+      <ChatContext.Provider value={value}>{children}</ChatContext.Provider>
+    </AssistantRuntimeProvider>
   );
-
-  return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
 }
-
 export function useChatDialog(): ChatContextValue {
-  const ctx = useContext(ChatContext);
-  if (!ctx) {
-    throw new Error('useChatDialog must be used within a ChatProvider');
-  }
-  return ctx;
+  const value = useContext(ChatContext);
+  if (!value) throw new Error('ChatProvider is required');
+  return value;
 }
-

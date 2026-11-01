@@ -1,4 +1,4 @@
-import { STARTER_PROMPTS } from '@/content';
+import { CHAT_COPY, STARTER_PROMPTS } from '@/content';
 import styles from './ChatEmptyState.module.css';
 
 interface ChatEmptyStateProps {
@@ -8,10 +8,12 @@ interface ChatEmptyStateProps {
 export function ChatEmptyState({ onSelectPrompt }: ChatEmptyStateProps) {
   return (
     <div className={styles.container}>
-      <p className={styles.intro}>
-        Ask questions about jump packages, weather cancellations, or request media.
-      </p>
-      <div className={styles.chipsList} role="group" aria-label="Suggested starter questions">
+      <p className={styles.intro}>{CHAT_COPY.intro}</p>
+      <div
+        className={styles.chipsList}
+        role="group"
+        aria-label={CHAT_COPY.suggestions}
+      >
         {STARTER_PROMPTS.map((prompt) => (
           <button
             key={prompt}
@@ -29,4 +31,3 @@ export function ChatEmptyState({ onSelectPrompt }: ChatEmptyStateProps) {
     </div>
   );
 }
-

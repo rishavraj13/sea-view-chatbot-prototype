@@ -1,6 +1,12 @@
-# Backend architecture
+# Architecture
 
-Backend only. No database, auth, payments, crawler, UI features or server conversation state. The client sends bounded full history. Static website JSON is validated and imported as modules for serverless packaging.
+The frozen backend has no database, auth, payments, crawler or server conversation state. The client sends bounded full history. Static website JSON is validated and imported as modules for serverless packaging.
+
+## Frontend chat runtime (Pass 2)
+
+The root layout keeps server-rendered children inside a single client ChatProvider. useChatRuntime + DefaultChatTransport (/api/chat) runs under AssistantRuntimeProvider; ThreadPrimitive owns messages/scrolling, MessagePrimitive renders escaped text and validated media tool UIs, and ComposerPrimitive owns drafts and keyboard/IME handling. Native dialog/launcher and warm tokens remain. Closing or client route changes preserve the runtime. Cancellation precedes switching to a new thread, isolating late responses.
+
+One Zod-validated transport projection coalesces/caps history text and keeps supported completed tools/source/step parts. It preserves every turn and refuses histories above the message limit; the composer prevents reaching the backend with an oversized turn. Error flow: SDK APICallError.responseBody → small Zod envelope → product copy by code → inline alert/countdown → runtime reload of the existing failed turn. No backend text is rendered as error copy. Latest message/error metadata determines mock mode; new conversation clears it. Page citations use an exact origin/path allow-list and dedupe by page. No runtime imports from src/server. See ADR 018 for contract tests, limits and honest projection/mock limitations. The Knowledge implementation remains pending its separate fix pass.
 
 Flow: route Zod validation -> deterministic conversation query -> pure normalized section retrieval -> shared source context -> one provider generation step/tool execution -> unchanged citation/numeric property guard -> citation presentation -> registry media summary -> UIMessage SSE or JSON trace. Trace invokes the identical chat pipeline. Citation presentation removes raw knowledge URLs from guarded prose and emits deduplicated source-url parts; rejected prose yields no citations. Media summaries retain registry links. Provider errors remain typed and user-safe; no automatic provider/model/mock fallback after an error.
 

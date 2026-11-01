@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { CHAT_COPY } from '@/content';
 import type { VideoResult } from './types';
 import styles from './ToolResultVideo.module.css';
 
@@ -23,7 +24,7 @@ export function ToolResultVideo({ result }: ToolResultVideoProps) {
   }, [result.posterUrl]);
 
   return (
-    <div className={styles.card} role="region" aria-label="Experience video">
+    <div className={styles.card} role="region" aria-label={CHAT_COPY.video}>
       <span className={styles.title}>{result.title}</span>
       <div className={styles.videoWrapper}>
         <video
@@ -36,20 +37,20 @@ export function ToolResultVideo({ result }: ToolResultVideoProps) {
           title={result.title}
         >
           <source src={result.url} type="video/mp4" />
-          Your browser does not support video playback.
+          {CHAT_COPY.noVideo}
         </video>
       </div>
 
       {hasPlaybackError && (
         <div className={styles.fallbackContainer}>
-          <span className={styles.fallbackText}>Video playback could not load.</span>
+          <span className={styles.fallbackText}>{CHAT_COPY.videoError}</span>
           <a
             href={result.url}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.fallbackLink}
           >
-            Watch on greedyadventures.com
+            {CHAT_COPY.watch}
           </a>
         </div>
       )}

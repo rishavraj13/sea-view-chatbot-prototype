@@ -1,5 +1,15 @@
 # Progress log
 
+## 2026-11-02 — Frontend Pass 2: runtime implementation checks
+
+After adding runtime-composer whitespace/Enter/Shift+Enter/IME/full-thread behavior tests and invalid media rendering, all checks pass: typecheck exit 0, lint (--max-warnings=0) exit 0, **42 files / 491 unit tests passed** (5.28s), build exit 0 (compile 319ms; TypeScript 2.6s; static pages 7/7 in 1027ms). Output is captured under examples/chat-runtime. Backend runtime/body/protocol unchanged; no dependency changes. Browser lifecycle/error/viewport evidence is the next logical step.
+
+## 2026-11-02 — Frontend Pass 2: runtime and contract foundation
+
+First committed frontend-audit.md unchanged (9fb2a17). Read current assistant-ui docs and installed type/source contracts; ADR 018 selects useChatRuntime + DefaultChatTransport and documents the messages-only projection. Replaced manual ChatPanel orchestration with one root AssistantRuntimeProvider and runtime primitives; removed timeout-prefill, legacy tool branches and raw error rendering. Added Zod tool/error/source checks, product-copy errors, absolute-deadline retry countdown, metadata-derived mode, bounded history/composer and native dialog lifecycle. Added missing sr-only utility. Five starters now include a missing-fact question as requested; shared Knowledge preset labels inherit that choice without a trace behavior change.
+
+Offline proof: real runtime first/follow-up bodies pass the frozen backend schema with actual source/step/both-tool history. Limits are checked against the exported Zod schema because backend numeric constants do not exist. Typecheck and lint exited 0; 42 unit files / 490 tests passed (4.29s), including all unchanged server cases; build exited 0. Initial Desktop chat run: 17 passed / 2 failed. New over-broad citation expectation on brochure-only requests corrected to the requested factual starter; populated axe found 4.48:1 error-copy contrast, fixed with the ink token. Browser verification continues; no passing final matrix claimed yet. No backend/dependency edit, live API call or deployment. Found and stopped a verified repo Next dev server on 3000 before further runs; no requests sent to it. Every completed test/build run checked ports free before/after.
+
 ## 2026-11-02 — Frontend foundation G–H: final verification and revealed captures
 
 Final offline checks: typecheck exit 0; eslint --max-warnings=0 exit 0; **39 files / 464 unit tests passed** (434 server + scaffold 1 + frontend/content 29); production build exit 0. Full Desktop/Tablet/Mobile matrix: **26 passed / 6 failed per project, 78 passed / 18 failed total**, zero skipped/flaky cases. Failures are exclusively the four deferred chat-error cases and two deferred knowledge media/trace cases per project. The specs and their deferred code were not modified. All foundation, remaining chat, knowledge header/sources and scoped axe checks pass. Exact output and root causes are in frontend-foundation-report.md and examples/frontend-foundation.

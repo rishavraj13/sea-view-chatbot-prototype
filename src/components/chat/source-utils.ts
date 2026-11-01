@@ -1,42 +1,26 @@
-import type { PageSourceChip, SourceCitation } from './types';
+import { SOURCE_PAGES } from '@/content';
+import type { PageSourceChip } from './types';
+import { sourceSchema } from './schemas';
 
-/**
- * Deduplicate source citations by page and map to strict required labels:
- * - "Sea View Skydiving page"
- * - "Cancellations page"
- * Never uses chunk or section titles.
- */
+/** Page identity uses exact origin/path matching; section fragments share one chip. */
 export function deduplicateSourcesByPage(
-  citations: readonly SourceCitation[],
+  citations: readonly unknown[],
 ): readonly PageSourceChip[] {
-  const seenPages = new Set<string>();
   const chips: PageSourceChip[] = [];
-
-  for (const citation of citations) {
-    const rawUrl = citation.url || citation.sourceId || '';
-    if (!rawUrl) continue;
-
-    if (rawUrl.includes('/cancellations')) {
-      if (!seenPages.has('cancellations')) {
-        seenPages.add('cancellations');
-        chips.push({
-          pageKey: 'cancellations',
-          label: 'Cancellations page',
-          url: rawUrl,
-        });
-      }
-    } else if (rawUrl.includes('/experiences/sea-view-skydiving') || rawUrl.includes('sea-view-skydiving')) {
-      if (!seenPages.has('seaview')) {
-        seenPages.add('seaview');
-        chips.push({
-          pageKey: 'seaview',
-          label: 'Sea View Skydiving page',
-          url: rawUrl,
-        });
-      }
-    }
+  for (const value of citations) {
+    const parsed = sourceSchema.safeParse(value);
+    if (!parsed.success) continue;
+    const url = new URL(parsed.data.url);
+    if (url.username || url.password) continue;
+    const page = SOURCE_PAGES.find(
+      (entry) => entry.origin === url.origin && entry.pathname === url.pathname,
+    );
+    if (!page || chips.some((chip) => chip.pageKey === page.pageKey)) continue;
+    chips.push({
+      pageKey: page.pageKey,
+      label: page.label,
+      url: parsed.data.url,
+    });
   }
-
   return chips;
 }
-
