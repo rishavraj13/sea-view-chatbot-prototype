@@ -1,0 +1,7 @@
+Added lock entries: 157
+Changed versions/integrity: 0
+Removed entries: 0
+Package.json and lockfile: unchanged in Pass 2
+Frozen-path diff: empty
+AI SDK: 7.0.158
+Gateway: 4.0.131

@@ -51,23 +51,39 @@ test.describe('Chat modal and conversation flows', () => {
 
     for (const prompt of [...STARTER_PROMPTS].reverse()) {
       await page.keyboard.press('Shift+Tab');
-      await expect(dialog.getByRole('button', { name: prompt, exact: true })).toBeFocused();
+      await expect(
+        dialog.getByRole('button', { name: prompt, exact: true }),
+      ).toBeFocused();
     }
     await page.keyboard.press('Shift+Tab');
-    await expect(dialog.getByRole('button', {name: CHAT_UI.closeButton, exact: true})).toBeFocused();
+    await expect(
+      dialog.getByRole('button', { name: CHAT_UI.closeButton, exact: true }),
+    ).toBeFocused();
     await page.keyboard.press('Shift+Tab');
-    await expect(dialog.getByRole('button', {name: CHAT_UI.newConversation, exact: true})).toBeFocused();
+    await expect(
+      dialog.getByRole('button', {
+        name: CHAT_UI.newConversation,
+        exact: true,
+      }),
+    ).toBeFocused();
     await page.keyboard.press('Tab');
-    await expect(dialog.getByRole('button', {name: CHAT_UI.closeButton, exact: true})).toBeFocused();
+    await expect(
+      dialog.getByRole('button', { name: CHAT_UI.closeButton, exact: true }),
+    ).toBeFocused();
     for (const prompt of STARTER_PROMPTS) {
       await page.keyboard.press('Tab');
-      await expect(dialog.getByRole('button', { name: prompt, exact: true })).toBeFocused();
+      await expect(
+        dialog.getByRole('button', { name: prompt, exact: true }),
+      ).toBeFocused();
     }
     await page.keyboard.press('Tab');
     await expect(composer).toBeFocused();
-    await page.locator('header a').first().evaluate((element) => {
-      if (element instanceof HTMLElement) element.focus();
-    });
+    await page
+      .locator('header a')
+      .first()
+      .evaluate((element) => {
+        if (element instanceof HTMLElement) element.focus();
+      });
     await expect(composer).toBeFocused();
 
     // Press Escape to close

@@ -7,7 +7,7 @@ export function responseMode(
   messages: readonly UIMessage[],
   error?: ProductError,
 ): 'mock' | 'live' | undefined {
-  if (error) return error.mode;
+  if (error?.mode !== undefined) return error.mode;
   const latest = messages.findLast((message) => message.role === 'assistant');
   const parsed = responseMetadataSchema.safeParse(latest?.metadata);
   return parsed.success ? parsed.data.mode : undefined;

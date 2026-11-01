@@ -70,6 +70,7 @@ describe('Validated rendering and latest mode', () => {
     expect(responseMode([message('mock')])).toBe('mock');
     expect(responseMode([message('mock'), message('live')])).toBe('live');
     expect(responseMode([])).toBeUndefined();
+    expect(responseMode([message('mock')], { code: 'UNKNOWN' })).toBe('mock');
     expect(
       responseMode([message('mock')], { code: 'TIMEOUT', mode: 'live' }),
     ).toBe('live');

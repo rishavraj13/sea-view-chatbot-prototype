@@ -145,5 +145,11 @@ describe('Real assistant-ui runtime to frozen backend contract (OFFLINE MOCK)', 
           ],
         }).success,
       ).toBe(count === CHAT_LIMITS.parts);
+    for (const length of [CHAT_LIMITS.id, CHAT_LIMITS.id + 1])
+      expect(
+        chatRequestSchema.safeParse({
+          messages: [{ ...user(), id: 'x'.repeat(length) }],
+        }).success,
+      ).toBe(length === CHAT_LIMITS.id);
   });
 });

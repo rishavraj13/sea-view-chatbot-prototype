@@ -1,0 +1,25 @@
+[WebServer]
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer]
+[WebServer] (node:8484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 143ms
+[WebServer] ✓ Running next.config.ts took 35ms
+
+Running 3 tests using 1 worker
+
+(node:28768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [Desktop Chrome] › tests\e2e\chat-lifecycle.spec.ts:54:3 › starter 1: real mock backend renders its text/media/refusal (846ms)
+(node:24672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [Tablet Chrome] › tests\e2e\chat-lifecycle.spec.ts:54:3 › starter 1: real mock backend renders its text/media/refusal (665ms)
+(node:17832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 [Mobile Chrome] › tests\e2e\chat-lifecycle.spec.ts:54:3 › starter 1: real mock backend renders its text/media/refusal (591ms)
+
+  3 passed (5.2s)

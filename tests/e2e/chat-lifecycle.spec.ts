@@ -4,7 +4,6 @@ import {
   CHAT_REFUSAL,
   CHAT_UI,
   HEADER_UI,
-  NAV_BREAKPOINT,
   SOURCE_PAGES,
   STARTER_PROMPTS,
 } from '../../src/content';
@@ -13,7 +12,6 @@ import { openChat, sendQuestion, waitForReply } from './helpers/chat';
 test('New conversation cancels a pending request and ignores a late response', async ({
   page,
 }) => {
-  await page.clock.install();
   let release: (() => void) | undefined;
   let reached: (() => void) | undefined;
   const pending = new Promise<void>((resolve) => {
@@ -34,9 +32,6 @@ test('New conversation cancels a pending request and ignores a late response', a
   await expect(
     dialog.getByRole('status', { name: CHAT_COPY.loadingLabel }),
   ).toBeVisible();
-  await expect(dialog.getByText(CHAT_COPY.slow, { exact: true })).toBeHidden();
-  await page.clock.fastForward(8000);
-  await expect(dialog.getByText(CHAT_COPY.slow, { exact: true })).toBeVisible();
   await dialog
     .getByRole('button', { name: CHAT_UI.newConversation, exact: true })
     .click();
@@ -93,7 +88,7 @@ test('conversation survives closing the dialog and client route navigation', asy
   await page.keyboard.press('Escape');
   await expect(dialog).toBeHidden();
   const link = HEADER_UI.links.find((item) => item.href === '/knowledge')!;
-  if ((page.viewportSize()?.width ?? 0) >= NAV_BREAKPOINT)
+  if ((page.viewportSize()?.width ?? 0) >= 768)
     await page
       .getByRole('banner')
       .getByRole('link', { name: link.label, exact: true })

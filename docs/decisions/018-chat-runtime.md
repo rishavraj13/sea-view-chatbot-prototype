@@ -41,6 +41,8 @@ tests/components/chat-contract.test.tsx mounts the real useChatRuntime/Assistant
 
 ## Alternatives and consequences
 
+Final mode detail: an error without metadata (for example a network failure) does not replace the latest validated response's mode. A validated error mode does replace it. New threads have no previous messages/errors and therefore no mode. Unit and browser reset coverage verifies this without a latch.
+
 - Retain handwritten orchestration: rejected; duplicates the SDK state machine and caused lifecycle/error defects.
 - AssistantChatTransport: supported but its extra model-context fields are unused here. No frontend tools are registered as executors.
 - External-store runtime: unnecessary because the installed adapter satisfies the frozen SDK baseline.
