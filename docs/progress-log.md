@@ -1,5 +1,9 @@
 # Progress log
 
+## 2026-11-02 — Frontend foundation E: inclusive nav breakpoint
+
+Header links now show at >=768px and hide at <=767px; compact spacing/type at 768–1023px keeps the four existing links and action pill within the header. Shared header copy moved to src/content/navigation.ts. Nav spec reads the project's viewport; added explicit 768/767 boundary and overflow assertions. Build exited 0; header e2e **9/9 passed** on Desktop/Tablet/Mobile, including the untouched knowledge header test. Ports free before/after both runs.
+
 ## 2026-11-02 — Frontend foundation D: responsive Step 5
 
 Replaced the max-width-only circle rule with explicit width:min(60vw,100%) at narrow widths, retaining aspect-ratio:1/1. Build exited 0; foundation e2e **6/6 passed** across 1440, 768 and 390px (circle plus custom-font assertions). The first new test measured the inner image wrapper, not the circle, and failed 3 cases; corrected its selector to the actual step5Circle ancestor without changing the square assertion. Ports free before/after each run.

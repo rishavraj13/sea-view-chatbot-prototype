@@ -91,3 +91,19 @@ npx playwright test tests/e2e/foundation.spec.ts
 ```
 
 The first new circle selector measured an inner wrapper and produced 3 failures / 3 font passes. Corrected it to the actual circle ancestor; all 6 pass, with unchanged non-zero and <1px square assertions at 1440/768/390. Ports free before/after each run.
+
+## E: Navigation
+
+Shared header copy; project-viewport-aware nav assertions; links visible at 768, hidden at 767; pill visible at both. Compact spacing prevents boundary overflow. All four existing links retained.
+
+```text
+npm run build
+Compiled successfully in 1344ms
+Finished TypeScript in 2.8s
+Generating static pages (7/7) in 726ms
+Exit 0
+npx playwright test --grep "header"
+9 passed (6.9s)
+```
+
+Each project's additional boundary test checks header scrollWidth <= clientWidth and every visible link lies inside the viewport. Ports free before/after build and browser run.

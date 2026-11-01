@@ -24,6 +24,7 @@
 }
 
 .brand {
+  white-space: nowrap;
   font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
@@ -60,6 +61,7 @@
 }
 
 .navLink {
+  white-space: nowrap;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -76,6 +78,7 @@
 }
 
 .actionPill {
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +99,25 @@
   color: var(--bg);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav {
+    gap: 16px;
+  }
+
+  .navLinks {
+    gap: 12px;
+  }
+
+  .navLink {
+    font-size: 12px;
+  }
+
+  .actionPill {
+    padding-inline: 14px;
+  }
+}
+
+@media (max-width: 767px) {
   .navLinks {
     display: none;
   }

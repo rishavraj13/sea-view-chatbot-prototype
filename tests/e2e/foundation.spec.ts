@@ -1,5 +1,30 @@
 import { expect, test } from '@playwright/test';
-import { PLAN_STEPS } from '../../src/content';
+import { HEADER_UI, NAV_BREAKPOINT, PLAN_STEPS } from '../../src/content';
+
+test('header fits at 768px and changes link visibility at 767px', async ({ page }) => {
+  await page.goto('/');
+  const header = page.getByRole('banner');
+  for (const width of [NAV_BREAKPOINT, NAV_BREAKPOINT - 1]) {
+    await page.setViewportSize({ width, height: 1024 });
+    await expect(header.getByRole('link', { name: HEADER_UI.action, exact: true })).toBeVisible();
+    for (const link of HEADER_UI.links) {
+      const item = header.getByRole('link', { name: link.label, exact: true });
+      if (width >= NAV_BREAKPOINT) await expect(item).toBeVisible();
+      else await expect(item).toBeHidden();
+    }
+    const bounds = await header.evaluate((element) => ({
+      scroll: element.scrollWidth,
+      client: element.clientWidth,
+      links: [...element.querySelectorAll('a')].filter((link) => link.getClientRects().length)
+        .map((link) => ({ left: link.getBoundingClientRect().left, right: link.getBoundingClientRect().right })),
+    }));
+    expect(bounds.scroll).toBeLessThanOrEqual(bounds.client);
+    for (const link of bounds.links) {
+      expect(link.left).toBeGreaterThanOrEqual(0);
+      expect(link.right).toBeLessThanOrEqual(width);
+    }
+  }
+});
 
 test('Step 5 photo is a non-zero square at the project viewport', async ({ page }) => {
   await page.goto('/');

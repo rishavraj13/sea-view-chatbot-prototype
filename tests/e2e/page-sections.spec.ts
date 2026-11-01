@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import {
+  HEADER_UI,
   HERO_FACTS,
   LOCATION_INFO,
   NAV_BREAKPOINT,
@@ -17,45 +18,20 @@ test.describe('Homepage layout and sections', () => {
     await expect(skipLink).toBeAttached();
   });
 
-  test('2. renders header banner with navigation links and action pill', async ({
-    page,
-  }) => {
+  test('2. renders header banner with viewport-aware navigation and action pill', async ({ page }, testInfo) => {
     const header = page.getByRole('banner');
     await expect(header).toBeVisible();
-    await expect(
-      header.getByRole('link', { name: 'Greedy Adventures', exact: true })
-    ).toBeVisible();
-    await expect(
-      header.getByRole('link', { name: 'Choose package', exact: true })
-    ).toBeVisible();
-
-    const width = page.viewportSize()?.width ?? 1440;
-    if (width >= NAV_BREAKPOINT) {
-      await expect(
-        header.getByRole('link', { name: 'Packages', exact: true })
-      ).toBeVisible();
-      await expect(
-        header.getByRole('link', { name: 'The plan', exact: true })
-      ).toBeVisible();
-      await expect(
-        header.getByRole('link', { name: 'Good to know', exact: true })
-      ).toBeVisible();
-      await expect(
-        header.getByRole('link', { name: 'Knowledge', exact: true })
-      ).toBeVisible();
-    } else {
-      await expect(
-        header.getByRole('link', { name: 'Packages', exact: true })
-      ).not.toBeVisible();
-      await expect(
-        header.getByRole('link', { name: 'The plan', exact: true })
-      ).not.toBeVisible();
-      await expect(
-        header.getByRole('link', { name: 'Good to know', exact: true })
-      ).not.toBeVisible();
-      await expect(
-        header.getByRole('link', { name: 'Knowledge', exact: true })
-      ).not.toBeVisible();
+    await expect(header.getByRole('link', { name: HEADER_UI.brand, exact: true })).toBeVisible();
+    await expect(header.getByRole('link', { name: HEADER_UI.action, exact: true })).toBeVisible();
+    const width = testInfo.project.use.viewport?.width;
+    expect(width).toBeDefined();
+    for (const link of HEADER_UI.links) {
+      const item = header.getByRole('link', { name: link.label, exact: true });
+      if (width! >= NAV_BREAKPOINT) {
+        await expect(item).toBeVisible();
+      } else {
+        await expect(item).toBeHidden();
+      }
     }
   });
 
