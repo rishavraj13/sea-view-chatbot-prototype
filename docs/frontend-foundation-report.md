@@ -75,3 +75,19 @@ ok hero renders the bundled Familjen Grotesk platform font (387ms)
 ```
 
 CDP CSS.getPlatformFontsForNode requires every rendered font on the hero echo word to have familyName Familjen Grotesk and isCustomFont true. Both ports free before/after both runs. Only mock mode used.
+
+## D: Step 5
+
+Explicit width:min(60vw,100%) fixes the flex-column auto-width collapse at <=900px; aspect-ratio keeps the circle square.
+
+```text
+npm run build
+Compiled successfully in 250ms
+Finished TypeScript in 1706ms
+Generating static pages (7/7) in 745ms
+Exit 0
+npx playwright test tests/e2e/foundation.spec.ts
+6 passed (4.7s)
+```
+
+The first new circle selector measured an inner wrapper and produced 3 failures / 3 font passes. Corrected it to the actual circle ancestor; all 6 pass, with unchanged non-zero and <1px square assertions at 1440/768/390. Ports free before/after each run.

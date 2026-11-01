@@ -1,5 +1,9 @@
 # Progress log
 
+## 2026-11-02 — Frontend foundation D: responsive Step 5
+
+Replaced the max-width-only circle rule with explicit width:min(60vw,100%) at narrow widths, retaining aspect-ratio:1/1. Build exited 0; foundation e2e **6/6 passed** across 1440, 768 and 390px (circle plus custom-font assertions). The first new test measured the inner image wrapper, not the circle, and failed 3 cases; corrected its selector to the actual step5Circle ancestor without changing the square assertion. Ports free before/after each run.
+
 ## 2026-11-02 — Frontend foundation C: font ownership and licences
 
 Removed handwritten --font-* overrides and added fallback stacks at font-family use sites. Kept next/font/local and all three existing binaries. Bundled each upstream OFL notice under public/fonts/licenses and corrected design-notes to name only the implemented families. Production build exited 0. Desktop Chromium CDP e2e passed (1/1): the hero's rendered font is Familjen Grotesk, isCustomFont:true. Ports 3000/3100 free before/after build and e2e. No chat runtime/error logic changed.

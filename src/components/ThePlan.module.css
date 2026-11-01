@@ -156,7 +156,7 @@
   }
 
   .step5Circle {
-    max-width: 60vw;
+    width: min(60vw, 100%);
     margin: 0 auto;
   }
 }
