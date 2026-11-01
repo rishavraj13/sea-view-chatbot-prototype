@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import {
   CHAT_COPY,
   CHAT_REFUSAL,
+  MISSING_FACT_PROMPT,
   CHAT_UI,
   HEADER_UI,
   SOURCE_PAGES,
@@ -62,13 +63,11 @@ for (const [index, prompt] of STARTER_PROMPTS.entries()) {
     await expect(
       dialog.getByRole('region', { name: CHAT_COPY.video, exact: true }),
     ).toHaveCount(index === 2 || index === 3 ? 1 : 0);
-    if (index === 4)
+    if (index === 0 || index === 4)
       await expect(
-        dialog.locator('article[data-role="assistant"]'),
-      ).toContainText(CHAT_REFUSAL);
-    else if (index === 0)
-      await expect(
-        dialog.getByRole('link', { name: new RegExp(SOURCE_PAGES[0].label) }),
+        dialog.getByRole('link', {
+          name: new RegExp(SOURCE_PAGES[index === 4 ? 1 : 0].label),
+        }),
       ).toBeVisible();
     await dialog
       .getByRole('button', { name: CHAT_UI.newConversation, exact: true })
@@ -105,4 +104,19 @@ test('conversation survives closing the dialog and client route navigation', asy
     .click();
   await expect(dialog.locator('article[data-role="user"]')).toHaveCount(1);
   await expect(dialog.locator('article[data-role="assistant"]')).toBeVisible();
+});
+
+test('typed missing-fact question refuses without media', async ({ page }) => {
+  const dialog = await openChat(page);
+  await sendQuestion(page, MISSING_FACT_PROMPT);
+  await waitForReply(page);
+  await expect(dialog.locator('article[data-role="assistant"]')).toContainText(
+    CHAT_REFUSAL,
+  );
+  await expect(
+    dialog.getByRole('region', { name: CHAT_COPY.brochure, exact: true }),
+  ).toHaveCount(0);
+  await expect(
+    dialog.getByRole('region', { name: CHAT_COPY.video, exact: true }),
+  ).toHaveCount(0);
 });

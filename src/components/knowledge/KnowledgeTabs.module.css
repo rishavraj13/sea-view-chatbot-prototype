@@ -25,7 +25,10 @@
   color: var(--muted);
   background-color: transparent;
   cursor: pointer;
-  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
   min-height: 44px;
 }
 
@@ -42,4 +45,16 @@
 
 .tabPanel {
   width: 100%;
+}
+@media (max-width: 480px) {
+  .container {
+    padding-inline: 16px;
+  }
+  .tabList {
+    gap: 4px;
+  }
+  .tab {
+    padding: 12px 10px;
+    font-size: 0.875rem;
+  }
 }

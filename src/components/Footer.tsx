@@ -10,7 +10,8 @@ export function Footer() {
         <div className={styles.column}>
           <span className={styles.brandName}>Greedy Adventures</span>
           <p className={styles.summaryText}>
-            Tandem skydiving over Pattaya, Thailand with sea views from 13,000 ft.
+            Tandem skydiving over Pattaya, Thailand with sea views from 13,000
+            ft.
           </p>
           <p className={styles.prototypeNote}>
             Assignment prototype. No real bookings or payments.
@@ -22,19 +23,19 @@ export function Footer() {
           <h3 className={styles.columnTitle}>Navigation</h3>
           <ul className={styles.linksList}>
             <li>
-              <a href="#packages" className={styles.footerLink}>
+              <Link href="/#packages" className={styles.footerLink}>
                 Packages
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#plan" className={styles.footerLink}>
+              <Link href="/#plan" className={styles.footerLink}>
                 The plan
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#faq" className={styles.footerLink}>
+              <Link href="/#faq" className={styles.footerLink}>
                 Good to know
-              </a>
+              </Link>
             </li>
             <li>
               <Link href="/knowledge" className={styles.footerLink}>
@@ -106,4 +107,3 @@ export function Footer() {
     </footer>
   );
 }
-

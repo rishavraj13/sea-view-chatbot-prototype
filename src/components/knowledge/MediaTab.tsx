@@ -1,21 +1,9 @@
-import type { KnowledgeMediaItem } from './types';
+import { CHAT_COPY, KNOWLEDGE_COPY } from '@/content';
+import type { KnowledgeMediaItem } from './schemas';
 import styles from './MediaTab.module.css';
 
-interface MediaTabProps {
-  readonly media: readonly KnowledgeMediaItem[];
-  readonly isLoading: boolean;
-  readonly error?: string;
-}
-
-export function MediaTab({ media, isLoading, error }: MediaTabProps) {
-  if (isLoading) {
-    return <p>Loading media catalog…</p>;
-  }
-
-  if (error) {
-    return <p role="alert">{error}</p>;
-  }
-
+export function MediaTab({ media }: { media: readonly KnowledgeMediaItem[] }) {
+  if (!media.length) return <p role="status">{KNOWLEDGE_COPY.mediaEmpty}</p>;
   return (
     <div className={styles.grid}>
       {media.map((item) => (
@@ -23,17 +11,23 @@ export function MediaTab({ media, isLoading, error }: MediaTabProps) {
           <div className={styles.topRow}>
             <span className={styles.typeBadge}>{item.type}</span>
             <div className={styles.statusRow}>
-              {item.isDemo && <span className={styles.demoBadge}>Demo material</span>}
-              {item.available ? (
-                <span className={styles.availBadge}>Available</span>
-              ) : (
-                <span className={styles.unavailBadge}>Unavailable</span>
+              {item.isDemo && (
+                <span className={styles.demoBadge}>{CHAT_COPY.demo}</span>
               )}
+              <span
+                className={
+                  item.available ? styles.availBadge : styles.unavailBadge
+                }
+              >
+                {item.available
+                  ? KNOWLEDGE_COPY.available
+                  : KNOWLEDGE_COPY.unavailable}
+              </span>
             </div>
           </div>
           <h3 className={styles.title}>{item.title}</h3>
           <div className={styles.urlRow}>
-            {item.url ? (
+            {item.available && item.url ? (
               <a
                 href={item.url}
                 target="_blank"
@@ -43,7 +37,7 @@ export function MediaTab({ media, isLoading, error }: MediaTabProps) {
                 {item.url} ↗
               </a>
             ) : (
-              <span>No asset URL (unavailable)</span>
+              <span>{KNOWLEDGE_COPY.noAsset}</span>
             )}
           </div>
         </article>
@@ -51,4 +45,3 @@ export function MediaTab({ media, isLoading, error }: MediaTabProps) {
     </div>
   );
 }
-

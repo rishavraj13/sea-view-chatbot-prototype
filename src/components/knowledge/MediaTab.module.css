@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 16px;
 }
 
@@ -47,7 +47,7 @@
   padding: 2px 8px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--accent);
-  color: var(--accent);
+  color: var(--ink);
 }
 
 .availBadge {
@@ -65,7 +65,7 @@
   padding: 2px 8px;
   border-radius: var(--radius-pill);
   background-color: rgba(180, 65, 27, 0.08);
-  color: var(--accent);
+  color: var(--ink);
 }
 
 .title {

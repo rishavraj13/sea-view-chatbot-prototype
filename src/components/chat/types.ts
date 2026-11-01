@@ -1,12 +1,3 @@
-export type ErrorCode =
-  'RATE_LIMIT' | 'TIMEOUT' | 'MODEL_FAILURE' | 'INVALID_INPUT';
-
-export interface ChatErrorData {
-  readonly code: ErrorCode | string;
-  readonly message: string;
-  readonly retryAfterSeconds?: number;
-}
-
 export type MediaResult = import('zod').infer<
   typeof import('./schemas').toolOutputSchema
 >;

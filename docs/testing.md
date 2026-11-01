@@ -1,5 +1,15 @@
 # Testing and capture verification
 
+## Frontend Pass 3: real Knowledge contracts (2026-11-02)
+
+Use MODEL_MODE=mock, GIT_PAGER=cat, one serial command at a time, and confirm ports 3000/3100 free before/after each run. No live provider calls or installs. The existing Playwright mock production server remains on 3100, reuseExistingServer:false, zero retries and unchanged 15s/5s timeouts.
+
+Unit: knowledge-contract.test.ts parses real catalog/trace/error captures and calls the actual sources/trace route functions in-process under mock mode, validating responses and outgoing trace bodies against frozen contracts. The repeatable route capture writes only node_modules/.cache/knowledge-view; reviewed current captures are in examples/knowledge-view/captures.json. Results tests render all six sections for actual brochure, VIP follow-up, unavailable and no-match traces. Behavior tests cover both incomplete history directions, length bounds, actual ARIA keyboard selection, labelled fields, invalid-success recovery/Retry and cancellation on unmount. Legacy string[] types, DTO-only trace test and raw error helper are deleted.
+
+Browser: `npx playwright test tests/e2e/knowledge.spec.ts tests/e2e/knowledge-errors.spec.ts tests/e2e/knowledge-evidence.spec.ts`. Assert 18 sections/dates/details; actual manifest titles and flags read with fs (no Node JSON module import); exact context textContent, six ordered sections, tool name/input/result, empty citations/media/context, history-dependent VIP, empty retrieval/refusal, inline paired-input validation and disabled in-flight submit. Errors on both endpoints use the real captured public envelopes with product copy and page.clock deadlines, retry recovery and identical submitted trace body. Also check malformed success and empty catalog states, ARIA roving tab order, and axe on Sources/Media/empty trace/populated trace/error. Chat's fifth starter is restored to rain; missing age information is tested by typing separately. No skipped/weakened tests or arbitrary delays.
+
+`knowledge-evidence.spec.ts` captures original VIEWPORT sizes for Sources, Media, brochure trace and 429 countdown at all three project widths; no full-document capture. Final matrix, raw output, screenshots and assumptions will be recorded in frontend-knowledge-report.md.
+
 ## Frontend Pass 2: assistant-ui runtime (2026-11-02)
 
 Completed results: typecheck/lint/build exit 0, **491 tests in 42 files passed** (434 unchanged backend cases included). Full three-project e2e: **117 pass / 6 fail**, exactly Knowledge media/trace (2×3), no skips/retries/flaky cases. Chat runtime/error tests all pass. A later pure mode fallback adjustment has full typecheck/lint/unit/build verification plus a three-project real-MOCK mode/reset regression (3 pass). See [the report](frontend-chat-runtime-report.md) for raw output and the precise verification sequence.

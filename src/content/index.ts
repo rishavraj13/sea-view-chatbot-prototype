@@ -1,6 +1,12 @@
 export { HEADER_UI } from './navigation';
-import { MISSING_FACT_PROMPT } from './chat';
-export { CHAT_COPY, retryLabel, SOURCE_PAGES, CHAT_REFUSAL, MISSING_FACT_PROMPT } from './chat';
+export { KNOWLEDGE_COPY } from './knowledge';
+export {
+  CHAT_COPY,
+  retryLabel,
+  SOURCE_PAGES,
+  CHAT_REFUSAL,
+  MISSING_FACT_PROMPT,
+} from './chat';
 export {
   ERROR_MESSAGES,
   PACKAGE_UI,
@@ -181,7 +187,7 @@ export const FAQS: readonly FaqItem[] = [
     id: 'weather',
     question: 'If the weather stops the activity',
     answer:
-      'Skydiving, paragliding and snowboarding all run only in safe conditions, and the person on the ground decides what is safe. Diving is called on sea state and visibility.\nIf your load, flight or dive is held for weather you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund of anything you have paid.\nThere is no charge and no admin fee for a weather move. It is the most common reason an activity does not run and it is nobody\'s fault.',
+      "Skydiving, paragliding and snowboarding all run only in safe conditions, and the person on the ground decides what is safe. Diving is called on sea state and visibility.\nIf your load, flight or dive is held for weather you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund of anything you have paid.\nThere is no charge and no admin fee for a weather move. It is the most common reason an activity does not run and it is nobody's fault.",
   },
 ] as const;
 
@@ -198,7 +204,7 @@ export const STARTER_PROMPTS = [
   'Can you send me a brochure?',
   'Can I see a video of the experience?',
   'Send me the brochure and a video.',
-  MISSING_FACT_PROMPT,
+  'What if it rains?',
 ] as const;
 
 export const CHAT_UI = {
@@ -221,5 +227,3 @@ export const KNOWLEDGE_UI = {
 } as const;
 
 export const NAV_BREAKPOINT = 768;
-
-
