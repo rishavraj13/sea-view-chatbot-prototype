@@ -31,16 +31,16 @@ A warm neutral monochrome palette where real photography provides natural colour
 
 ## Deviations from reference spec & design rationale
 
-Foundation correction (2026-11-02): the Statement uses the captured jump-facts sentence "Same aircraft, altitude and instructors in every package". The previous camera-choice subline was not in the knowledge data and was removed. Header links show from 768px; compact tablet spacing retains the pill and prevents horizontal overflow. The Step 5 circle has an explicit narrow-layout width as well as its square aspect ratio; its inner photo fills the circular frame. No scroll-portal or floating-card redesign is included.
+Foundation correction (2026-11-02): the Statement uses the captured jump-facts sentence "Same aircraft, altitude and instructors in every package". The previous camera-choice subline was not in the knowledge data and was removed. Header links show from 768px; compact tablet spacing retains the pill and prevents horizontal overflow. The foundation originally repaired the Step 5 circle. Pass 4 below supersedes that showcase with ordered 4:3 photo cards and the photo band with the scroll portal.
 
 1. **Grays darkened for WCAG AA compliance**:
    Body text and secondary captions use `--muted` (`#5C5852`) rather than lighter tints, ensuring all text satisfies WCAG 2.1 AA standards (minimum 4.5:1 contrast for normal text).
 2. **No hover-only colour gate**:
    All photographs render in full natural colour upon initial reveal. Hovering adds a subtle `scale(1.03)` transform with smooth easing. Under `prefers-reduced-motion: reduce`, all scaling and motion transitions are disabled.
-3. **Single-element echo effect**:
-   The echo effect on "Skydiving" uses a single semantic `<span>` element with multi-stop `text-shadow`:
+3. **Semantic echo effect**:
+   The portal uses two inline spans in one h1, each with the same warm multi-stop `text-shadow`:
    `-0.04em -0.04em 0 var(--echo-1), -0.08em -0.08em 0 var(--echo-2), -0.12em -0.12em 0 var(--echo-3), -0.16em -0.16em 0 var(--echo-4)`.
-   Padding (`padding-top: 0.16em; padding-left: 0.16em`) ensures the text shadows are not clipped.
+   Portal copy inset and measured title bounds keep echoes in the stage; their colours fade with progress and are transparent at the final state.
 4. **Native `<dialog>` element**:
    The chat assistant panel uses native `<dialog>` invoked with `.showModal()`, providing an accessible modal dialog with browser-native focus trapping, `Escape` key dismissal, and automatic focus restoration without third-party modal libraries.
 
@@ -50,7 +50,7 @@ All images are downloaded into `public/images/`, scaled to at most 1600px wide, 
 
 | Asset | Local path | Dimensions | File size | Source URL | Descriptive alt text |
 |---|---|---|---|---|---|
-| Hero band | `public/images/home-hero-skydivers.webp` | 1536 × 1024 | 109 KB | `https://www.greedyadventures.com/greedy/img/home/home-hero-skydivers.webp` | Tandem skydivers freefalling in open skies above the coastline |
+| Hero portal | `public/images/home-hero-skydivers.webp` | 1536 × 1024 | 109 KB | `https://www.greedyadventures.com/greedy/img/home/home-hero-skydivers.webp` | Tandem skydivers freefalling in open skies above the coastline |
 | Step 2 | `public/images/step-2.jpg` | 1365 × 2048 | 346 KB | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/sea-view-tandem-skydive-pattaya/108d38.jpg` | Skydiver having safety harness fitted during pre-jump briefing |
 | Step 3 | `public/images/step-3.webp` | 1600 × 1066 | 155 KB | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/apex-gallery/plane.webp` | Jump aircraft propeller and fuselage on the runway |
 | Step 4 | `public/images/step-4.webp` | 1600 × 1600 | 179 KB | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/apex-gallery/tandem-with-sea-view.webp` | Tandem skydivers in freefall with the sea and coastline below |
@@ -69,3 +69,25 @@ Familjen Grotesk Bold uses clamp(2rem, 6vw, 6.5rem). Whole-title scale is 1→1.
 Each warm blend layer reaches .4 opacity; a fixed .45 ink scrim keeps the photographic sky behind the moving letters dark enough. The photo remains visible, including both skydivers. CTA/facts occur once in the following intro, and the video opens externally with noopener noreferrer. The footer reserves 76px plus safe-area inset for the unchanged launcher. Reduced motion uses a static final photo/title, no pin, panels, dots or scroll/resize listeners.
 
 See frontend-scroll-report.md and examples/scroll-hero for screenshot measurements and the limits of the sampling method.
+
+
+## Pass 4, commit 2: floating plan cards
+
+The plan is now an ol of five li cards in source order, replacing the old out-of-order pill/circle showcase. The first card is text-only, preserving check-in/photo-ID copy; all four original photographs remain. Step labels and heading/subtitle live in src/content. Each card uses --surface, --hair, 12px radius, 20px padding and the single shared --shadow-float token: 0 1px 2px rgba(20,19,17,.06), 0 24px 48px -24px rgba(20,19,17,.28). Hover strengthens the same warm shadow slightly and lifts the inner surface 6px; it reveals no content and creates no tab stop.
+
+Desktop is a 12-column grid, spans 4/5, with alternating 0/56px offsets and 24px neighbour overlap. Later cards have higher z-index. Tablet has two columns and 32px alternating offsets; mobile has one column and 16px gaps, no static offsets or overlap. Natural caption wrapping is retained at narrow widths rather than truncating source text. Photos have 4:3 frames, 8px radius and the existing once-only clip-path reveal.
+
+Drift amplitudes are 12/16/20/24/18px. The hook measures the untransformed li; a descendant translates by (.5 - p) × amplitude. Keeping the measurement outside the moving layer avoids geometric feedback. The separate inner surface owns hover lift, so it cannot overwrite scroll drift. Reduced motion removes both transformations and listeners. Static top offsets never animate. Only transforms animate for float/hover; the existing explicitly requested RevealImage clip-path is the reveal exception.
+
+Desktop text has an additional 8px end gutter inside the standard 20px card padding: the 24px overlapping neighbour would otherwise cover up to 4px of copy. Titles/captions wrap before that overlap; photographs retain their full frame. A browser assertion checks caption clearance.
+
+
+Portal geometry at the tested widths:
+
+| Viewport | Base display size | Whole scale | Tracking in em | Word travel (each own width) |
+|---|---|---|---|---|
+| 390px | 32px (clamp minimum) | 1→1.1 | −.04→−.08 | 20% |
+| 768px | 46.08px (6vw) | 1→1.1 | −.04→−.08 | 30% |
+| 1440px | 86.4px (6vw) | 1→1.1 | −.04→−.08 | 50% |
+
+The base title occupies approximately 65% on mobile and 48% on tablet/desktop. Both the complete h1 and its independently translated words are measured in the viewport-bound assertions, rather than assuming the formula alone guarantees fit.

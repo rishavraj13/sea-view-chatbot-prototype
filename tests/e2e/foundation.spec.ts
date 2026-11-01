@@ -34,25 +34,19 @@ test('header fits at 768px and changes link visibility at 767px', async ({
   }
 });
 
-test('Step 5 photo is a non-zero square at the project viewport', async ({
-  page,
-}) => {
+test('all retained plan photos have non-zero 4:3 frames', async ({ page }) => {
   await page.goto('/');
-  const landingImage = PLAN_STEPS.find((step) => step.stepNumber === 5)?.image;
-  expect(landingImage).toBeDefined();
-  const image = page.getByRole('img', { name: landingImage!.alt, exact: true });
-  const circle = image.locator(
-    'xpath=ancestor::div[contains(@class, "step5Circle")]',
-  );
-  const box = await circle.boundingBox();
-  expect(box).not.toBeNull();
-  expect(box!.width).toBeGreaterThan(0);
-  expect(box!.height).toBeGreaterThan(0);
-  expect(Math.abs(box!.width - box!.height)).toBeLessThan(1);
-  const imageBox = await image.boundingBox();
-  expect(imageBox).not.toBeNull();
-  expect(Math.abs(imageBox!.width - box!.width)).toBeLessThan(1);
-  expect(Math.abs(imageBox!.height - box!.height)).toBeLessThan(1);
+  for (const step of PLAN_STEPS.filter((step) => step.image)) {
+    const image = page.getByRole('img', { name: step.image!.alt, exact: true });
+    const frame = image.locator('xpath=ancestor::div[@data-plan-photo]');
+    const box = await frame.boundingBox();
+    expect(box!.width).toBeGreaterThan(0);
+    expect(box!.height).toBeGreaterThan(0);
+    expect(box!.width / box!.height).toBeCloseTo(4 / 3, 2);
+    const imageBox = await image.boundingBox();
+    expect(imageBox!.width).toBeCloseTo(box!.width, 0);
+    expect(imageBox!.height).toBeCloseTo(box!.height, 0);
+  }
 });
 
 test('hero renders the bundled Familjen Grotesk platform font', async ({

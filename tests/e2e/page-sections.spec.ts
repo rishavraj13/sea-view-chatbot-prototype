@@ -9,6 +9,7 @@ import {
   PACKAGES,
   SITE_METADATA,
   PACKAGE_UI,
+  PLAN_UI,
   STATEMENT_UI,
 } from '../../src/content';
 
@@ -126,7 +127,7 @@ test.describe('Homepage layout and sections', () => {
     const plan = page.locator('#plan');
     await expect(plan).toBeVisible();
     await expect(
-      plan.getByText('Five steps, from check-in to landing', { exact: true }),
+      plan.getByText(PLAN_UI.subtitle, { exact: true }),
     ).toBeVisible();
   });
 

@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { ChatProvider } from '@/components/ChatContext';
@@ -14,6 +15,8 @@ import {
   PACKAGES,
   PACKAGE_UI,
   PLAN_STEPS,
+  PLAN_UI,
+  stepLabel,
   STATEMENT_UI,
 } from '@/content';
 
@@ -54,8 +57,27 @@ describe('Packages section', () => {
 describe('The Plan section', () => {
   it('renders 5 steps in the plan with correct headings and captions', () => {
     const html = renderToStaticMarkup(<ThePlan />);
-    expect(html).toContain('The plan');
-    expect(html).toContain('Five steps, from check-in to landing');
+    expect(html).toContain(PLAN_UI.title);
+    expect(html).toContain(PLAN_UI.subtitle);
+    const document = new DOMParser().parseFromString(html, 'text/html');
+    const list = document.querySelector('ol')!;
+    expect(list).not.toBeNull();
+    expect(list.children).toHaveLength(5);
+    for (const [index, item] of [...list.children].entries()) {
+      expect(item.tagName).toBe('LI');
+      expect(item.textContent).toContain(
+        stepLabel(PLAN_STEPS[index]!.stepNumber),
+      );
+      expect(item.querySelector('h3')?.textContent).toBe(
+        PLAN_STEPS[index]!.title,
+      );
+      expect(item.querySelector('[aria-hidden=true]')?.textContent).toBe(
+        String(index + 1).padStart(2, '0'),
+      );
+      expect(item.querySelectorAll('button, a, [tabindex]')).toHaveLength(0);
+    }
+    expect(list.children[0]!.querySelector('img')).toBeNull();
+    expect(list.querySelectorAll('img')).toHaveLength(4);
 
     for (const step of PLAN_STEPS) {
       expect(html).toContain(step.title);

@@ -5,6 +5,7 @@
   --muted: #5C5852;
   --hair: rgba(20, 19, 17, 0.14);
   --accent: #B4411B;
+  --shadow-float: 0 1px 2px rgba(20, 19, 17, .06), 0 24px 48px -24px rgba(20, 19, 17, .28);
   --header-h: 80px;
   --launcher-clearance: calc(76px + env(safe-area-inset-bottom, 0px));
 

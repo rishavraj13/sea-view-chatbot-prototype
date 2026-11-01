@@ -5,8 +5,10 @@ test('visible UI has no saturated blue/teal hues, including borders and shadows'
   page,
 }) => {
   await page.goto('/');
-  for (const fraction of [0, 0.5, 1]) {
-    await positionHero(page, fraction);
+  for (const target of [0, 0.5, 1, 'plan'] as const) {
+    if (target === 'plan')
+      await page.locator('#plan-heading').scrollIntoViewIfNeeded();
+    else await positionHero(page, target);
     const blue = await page.evaluate(() => {
       const canvas = document.createElement('canvas');
       canvas.width = 1;

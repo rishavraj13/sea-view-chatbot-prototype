@@ -4,163 +4,158 @@
   padding: 80px 24px;
   width: 100%;
 }
-
 .header {
   margin-bottom: 48px;
 }
-
 .title {
   font-family: var(--font-display), system-ui, sans-serif;
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--ink);
   margin-bottom: 8px;
 }
-
 .subtitle {
   font-size: 1.125rem;
   color: var(--muted);
 }
-
-.step1Notice {
-  margin-bottom: 48px;
-  padding: 20px 24px;
-  background-color: var(--surface);
-  border-left: 3px solid var(--ink);
-  border-radius: 4px;
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-}
-
-.step1Tag {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
-.step1Text {
-  font-size: 0.9375rem;
-  color: var(--muted);
-}
-
 .grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 32px;
-  align-items: center;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 48px 24px;
+  align-items: start;
+  list-style: none;
+  padding-bottom: 68px;
 }
-
-.stepWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.stepNumber {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.stepCaption {
-  font-family: var(--font-display), system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 1.125rem;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-
-.stepDesc {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.4;
-}
-
-/* Step 4: 8 cols wide rectangle */
-.step4Col {
-  grid-column: span 8;
-}
-
-.step4Image {
-  border-radius: var(--radius-card);
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-/* Step 3: 4 cols vertical pill (500px, radius 9999px) */
-.step3Col {
+.card {
+  --p: 0.5;
+  --drift: 12px;
+  position: relative;
+  min-width: 0;
   grid-column: span 4;
 }
-
-.step3Pill {
-  border-radius: 9999px;
-  height: 500px;
-  overflow: hidden;
+.card:nth-child(1) {
+  z-index: 1;
 }
-
-.step3Pill :global(img) {
-  height: 500px;
-  object-fit: cover;
+.card:nth-child(2) {
+  --drift: 16px;
+  top: 56px;
+  margin-left: -48px;
+  z-index: 2;
 }
-
-/* Step 5: Circle (aspect-square) */
-.step5Col {
-  grid-column: span 5;
+.card:nth-child(3) {
+  --drift: 20px;
+  margin-left: -48px;
+  z-index: 3;
 }
-
-.step5Circle {
-  border-radius: 50%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
+.card:nth-child(4) {
+  --drift: 24px;
+  grid-column: 3 / span 5;
+  top: 56px;
+  z-index: 4;
 }
-
-.step5Circle > div {
+.card:nth-child(5) {
+  --drift: 18px;
+  grid-column: 8 / span 5;
+  margin-left: -48px;
+  z-index: 5;
+}
+.drift {
+  transform: translateY(calc((0.5 - var(--p)) * var(--drift)));
+  will-change: transform;
+}
+.surface {
+  background: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow-float);
+  transition: transform 180ms ease-out;
+}
+.card:hover .surface {
+  transform: translateY(-6px);
+  box-shadow:
+    0 1px 2px rgba(20, 19, 17, 0.08),
+    0 28px 52px -24px rgba(20, 19, 17, 0.32);
+}
+.label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.numeral {
+  display: block;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(3.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+  margin-block: 12px;
+}
+.stepTitle {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.caption {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.photo {
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: clip;
+  margin-top: 20px;
+}
+.photo > div {
   height: 100%;
 }
-
-/* Step 2: 7 cols wide rectangle */
-.step2Col {
-  grid-column: span 7;
+@media (min-width: 1024px) {
+  .stepTitle,
+  .caption {
+    max-inline-size: calc(100% - 8px);
+  }
 }
-
-.step2Image {
-  border-radius: var(--radius-card);
-  aspect-ratio: 16 / 11;
-  overflow: hidden;
-}
-
-@media (max-width: 900px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+    padding-bottom: 44px;
   }
-
-  .step4Col,
-  .step3Col,
-  .step5Col,
-  .step2Col {
-    grid-column: span 1;
+  .card:nth-child(n) {
+    grid-column: auto;
+    margin-left: 0;
+    top: 0;
   }
-
-  .step3Pill {
-    border-radius: 24px;
-    height: 380px;
+  .card:nth-child(even) {
+    top: 32px;
   }
-
-  .step3Pill :global(img) {
-    height: 380px;
+}
+@media (max-width: 767px) {
+  .section {
+    padding: 56px 24px;
   }
-
-  .step5Circle {
-    width: min(60vw, 100%);
-    margin: 0 auto;
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding-bottom: 12px;
+  }
+  .card:nth-child(n) {
+    grid-column: auto;
+    margin-left: 0;
+    top: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drift,
+  .card:hover .surface {
+    transform: none;
+    will-change: auto;
+  }
+  .surface {
+    transition: none;
   }
 }

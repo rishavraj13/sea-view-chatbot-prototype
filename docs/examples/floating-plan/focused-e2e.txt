@@ -1,0 +1,40 @@
+[WebServer] 
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer] 
+[WebServer] (node:30744) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 103ms
+[WebServer] ✓ Running next.config.ts took 26ms
+
+Running 18 tests using 1 worker
+
+(node:27392) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [Desktop Chrome] › tests\e2e\foundation.spec.ts:4:1 › header fits at 768px and changes link visibility at 767px (412ms)
+  ok  2 [Desktop Chrome] › tests\e2e\foundation.spec.ts:37:1 › all retained plan photos have non-zero 4:3 frames (314ms)
+  ok  3 [Desktop Chrome] › tests\e2e\foundation.spec.ts:52:1 › hero renders the bundled Familjen Grotesk platform font (264ms)
+  ok  4 [Desktop Chrome] › tests\e2e\plan-cards.spec.ts:22:1 › five ordered cards, responsive stagger, reveal-once photos and viewport capture (2.2s)
+  ok  5 [Desktop Chrome] › tests\e2e\plan-cards.spec.ts:81:1 › card drift follows passage position, hover lift is decorative, reduced motion stops both (1.0s)
+  ok  6 [Desktop Chrome] › tests\e2e\warm-palette.spec.ts:4:1 › visible UI has no saturated blue/teal hues, including borders and shadows (441ms)
+(node:18468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  7 [Tablet Chrome] › tests\e2e\foundation.spec.ts:4:1 › header fits at 768px and changes link visibility at 767px (346ms)
+  ok  8 [Tablet Chrome] › tests\e2e\foundation.spec.ts:37:1 › all retained plan photos have non-zero 4:3 frames (321ms)
+  ok  9 [Tablet Chrome] › tests\e2e\foundation.spec.ts:52:1 › hero renders the bundled Familjen Grotesk platform font (271ms)
+  ok 10 [Tablet Chrome] › tests\e2e\plan-cards.spec.ts:22:1 › five ordered cards, responsive stagger, reveal-once photos and viewport capture (2.1s)
+  ok 11 [Tablet Chrome] › tests\e2e\plan-cards.spec.ts:81:1 › card drift follows passage position, hover lift is decorative, reduced motion stops both (918ms)
+  ok 12 [Tablet Chrome] › tests\e2e\warm-palette.spec.ts:4:1 › visible UI has no saturated blue/teal hues, including borders and shadows (326ms)
+(node:24180) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 13 [Mobile Chrome] › tests\e2e\foundation.spec.ts:4:1 › header fits at 768px and changes link visibility at 767px (353ms)
+  ok 14 [Mobile Chrome] › tests\e2e\foundation.spec.ts:37:1 › all retained plan photos have non-zero 4:3 frames (300ms)
+  ok 15 [Mobile Chrome] › tests\e2e\foundation.spec.ts:52:1 › hero renders the bundled Familjen Grotesk platform font (260ms)
+  ok 16 [Mobile Chrome] › tests\e2e\plan-cards.spec.ts:22:1 › five ordered cards, responsive stagger, reveal-once photos and viewport capture (2.1s)
+  ok 17 [Mobile Chrome] › tests\e2e\plan-cards.spec.ts:81:1 › card drift follows passage position, hover lift is decorative, reduced motion stops both (499ms)
+  ok 18 [Mobile Chrome] › tests\e2e\warm-palette.spec.ts:4:1 › visible UI has no saturated blue/teal hues, including borders and shadows (424ms)
+
+  18 passed (15.8s)
