@@ -33,3 +33,4 @@ describe('Hero component', () => {
     }
   });
 });
+
