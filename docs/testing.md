@@ -217,3 +217,12 @@ All eight requested turns passed; eight requests/provider calls expected from th
 Raw public wire/visible answers, separate sources and executed results are preserved. Private pre-guard provider text and upstream HTTP count remain unobservable over the unchanged API; expected one provider call per turn is based on deployed code/offline tests, while eight public requests are directly measured. No direct provider requests were made in this deployment task. There is no automatic fallback between URLs. Mock is a separately selected, always-available scripted fallback independent of provider quota, not a live model substitute presented as live.
 
 See backend-v1-release-report.md for the full table, every answer, deployment output and real final typecheck/lint/test/build output. The existing protected citation-report edit remains untouched. Source provenance remains real knowledge/video plus a demo PDF, independent of generation mode. The planned Knowledge test button uses one live call per valid test on the live site.
+
+
+## Frontend pass 4: portal checks (offline mock)
+
+Run npm run typecheck, npm run lint, npm test, npm run build, then npx playwright test, serially with MODEL_MODE=mock. Confirm ports 3000/3100 are free before and after each command. The configured production-build server runs on 3100 with reuseExistingServer:false; no live provider is called.
+
+New scroll-progress unit tables cover both pure functions before/start/inside/end/past and zero-height inputs. Hero e2e checks all endpoints, intermediate values, reverse equality, title bounds, reduced motion, axe and computed warm UI colours across all three viewports. hero-visual.spec.ts saves viewport captures and measures opaque glyph-core contrast at five fractions against a separate background-only screenshot. It excludes glyph antialiasing and the one-pixel antialiased moving panel seam, not whole regions. Audit photo captures temporarily hide the foreground panels/title/dots because the actual p=0 photo is covered. They retain the same scrim/grade. Actual screenshots are unmodified. RGB means cover the stage inset by 20px. The check requires contrast >=3 and reduced blue-minus-red mean. hero-performance.spec.ts records observed CLS and long-task durations during navigation and a reversible scroll; this is a short lab observation, not a Lighthouse score or a performance guarantee.
+
+Real command transcripts and JSON measurements: examples/scroll-hero/. Reviewed screenshots: screenshots/hero-{390,768,1440}-p{0,0.25,0.5,0.75,1}.png.

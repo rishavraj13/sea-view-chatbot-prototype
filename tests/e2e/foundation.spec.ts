@@ -67,7 +67,7 @@ test('hero renders the bundled Familjen Grotesk platform font', async ({
     const { root } = await session.send('DOM.getDocument');
     const { nodeId } = await session.send('DOM.querySelector', {
       nodeId: root.nodeId,
-      selector: '#hero-heading .echo-word',
+      selector: '#hero-heading span:last-child',
     });
     const { fonts } = await session.send('CSS.getPlatformFontsForNode', {
       nodeId,

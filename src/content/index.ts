@@ -1,4 +1,5 @@
 export { HEADER_UI } from './navigation';
+export { HERO_UI, PLAN_UI, stepLabel } from './experience';
 export { KNOWLEDGE_COPY } from './knowledge';
 export {
   CHAT_COPY,

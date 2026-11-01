@@ -2,7 +2,7 @@
   background-color: var(--ink);
   color: rgba(243, 241, 237, 0.65);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 80px 24px 48px;
+  padding: 80px 24px calc(48px + var(--launcher-clearance));
   margin-top: auto;
 }
 

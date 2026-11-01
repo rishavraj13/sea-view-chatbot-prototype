@@ -1,6 +1,6 @@
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
-import { PhotoBand } from '@/components/PhotoBand';
+import { HeroIntro } from '@/components/HeroIntro';
 import { Statement } from '@/components/Statement';
 import { Packages } from '@/components/Packages';
 import { ThePlan } from '@/components/ThePlan';
@@ -14,7 +14,7 @@ export default function Home() {
       <Header />
       <main id="main">
         <Hero />
-        <PhotoBand />
+        <HeroIntro />
         <Statement />
         <Packages />
         <ThePlan />

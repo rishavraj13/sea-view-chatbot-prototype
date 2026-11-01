@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import {
   HEADER_UI,
   HERO_FACTS,
+  HERO_IMAGE,
+  HERO_UI,
   LOCATION_INFO,
   NAV_BREAKPOINT,
   PACKAGES,
@@ -52,15 +54,20 @@ test.describe('Homepage layout and sections', () => {
     await expect(
       heroHeading.getByText('Sea View', { exact: true }),
     ).toBeVisible();
-    await expect(heroHeading.locator('.echo-word')).toHaveText(
+    await expect(heroHeading).toHaveText(SITE_METADATA.heroHeading);
+    await expect(heroHeading.locator('span').last()).toHaveText(
       SITE_METADATA.echoWord,
     );
+    const intro = page.getByRole('region', {
+      name: HERO_UI.intro,
+      exact: true,
+    });
     await expect(
-      hero.getByText(SITE_METADATA.fromPrice, { exact: true }),
-    ).toBeVisible();
+      intro.getByText(SITE_METADATA.fromPrice, { exact: true }),
+    ).toHaveCount(1);
     await expect(
-      hero.getByRole('link', { name: 'Watch the jump', exact: true }),
-    ).toBeVisible();
+      intro.getByRole('link', { name: HERO_UI.watch, exact: true }),
+    ).toHaveAttribute('href', SITE_METADATA.videoUrl);
   });
 
   test('4. renders key jump facts from content constants', async ({ page }) => {
@@ -71,11 +78,19 @@ test.describe('Homepage layout and sections', () => {
     }
   });
 
-  test('5. renders hero photo band', async ({ page }) => {
-    const photoBand = page.locator(
-      'img[alt="Tandem skydivers freefalling in open skies above the coastline"]',
+  test('5. renders the portal photo in its stage', async ({ page }) => {
+    const image = page.getByRole('img', { name: HERO_IMAGE.alt, exact: true });
+    await expect(image).toBeAttached();
+    await expect(image).toHaveJSProperty('complete', true);
+    expect(
+      await image.evaluate((element) =>
+        element instanceof HTMLImageElement ? element.naturalWidth : 0,
+      ),
+    ).toBeGreaterThan(0);
+    await expect(page.locator('[data-hero-stage]')).toHaveCSS(
+      'overflow-x',
+      'clip',
     );
-    await expect(photoBand).toBeAttached();
   });
 
   test('6. renders experience statement overview', async ({ page }) => {
@@ -164,53 +179,27 @@ test.describe('Homepage layout and sections', () => {
     ).toBeVisible();
   });
 
-  test('12. has no horizontal scroll and captures responsive screenshot', async ({
+  test('12. has no horizontal scroll and reveals the retained plan photos', async ({
     page,
   }) => {
-    const scrollWidth = await page.evaluate(
-      () => document.documentElement.scrollWidth,
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBeLessThanOrEqual(
+      await page.evaluate(() => document.documentElement.clientWidth),
     );
-    const clientWidth = await page.evaluate(
-      () => document.documentElement.clientWidth,
-    );
-    expect(scrollWidth).toBeLessThanOrEqual(clientWidth + 1);
-
-    const viewport = page.viewportSize();
-    if (viewport) {
-      await page.evaluate(() => document.fonts.ready);
-      for (const image of await page.locator('main img').all()) {
-        await image.scrollIntoViewIfNeeded();
-        await expect(image).toHaveJSProperty('complete', true);
-        await expect
-          .poll(() =>
-            image.evaluate((element) =>
-              element instanceof HTMLImageElement ? element.naturalWidth : 0,
-            ),
-          )
-          .toBeGreaterThan(0);
-        await image.evaluate(async (element) => {
-          if (element instanceof HTMLImageElement) await element.decode();
-        });
-        const reveal = image.locator('..');
-        await expect(reveal).toHaveClass(/isRevealed/);
-        await expect(reveal).toHaveCSS('clip-path', 'inset(0px)');
-      }
-      await page.evaluate(() =>
-        window.scrollTo({ top: 0, behavior: 'instant' }),
-      );
-      const height = await page.evaluate(
-        () => document.documentElement.scrollHeight,
-      );
-      await page.setViewportSize({ width: viewport.width, height });
-      for (const image of await page.locator('main img').all()) {
-        await expect(image.locator('..')).toHaveClass(/isRevealed/);
-        await expect(image.locator('..')).toHaveCSS('clip-path', 'inset(0px)');
-      }
-      await page.screenshot({
-        path: `docs/screenshots/home-${viewport.width}.png`,
-        fullPage: true,
-        scale: 'css',
+    for (const image of await page.locator('#plan img').all()) {
+      await image.scrollIntoViewIfNeeded();
+      await expect(image).toHaveJSProperty('complete', true);
+      await image.evaluate(async (element) => {
+        if (element instanceof HTMLImageElement) await element.decode();
       });
+      expect(
+        await image.evaluate((element) =>
+          element instanceof HTMLImageElement ? element.naturalWidth : 0,
+        ),
+      ).toBeGreaterThan(0);
+      await expect(image.locator('..')).toHaveClass(/isRevealed/);
+      await expect(image.locator('..')).toHaveCSS('clip-path', 'inset(0px)');
     }
   });
 });

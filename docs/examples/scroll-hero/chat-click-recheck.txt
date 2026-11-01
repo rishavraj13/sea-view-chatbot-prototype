@@ -1,0 +1,24 @@
+[WebServer] 
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer] 
+[WebServer] (node:3736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 109ms
+[WebServer] ✓ Running next.config.ts took 30ms
+
+Running 6 tests using 1 worker
+
+(node:19060) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:13:3 › rate-present: inline product copy and correct Retry state (582ms)
+  ok 2 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:13:3 › rate-absent: inline product copy and correct Retry state (476ms)
+  ok 3 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:13:3 › timeout: inline product copy and correct Retry state (479ms)
+  ok 4 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:13:3 › model-failure: inline product copy and correct Retry state (490ms)
+  ok 5 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:13:3 › invalid-input: inline product copy and correct Retry state (477ms)
+  ok 6 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:53:1 › Retry reloads the failed turn with no duplicated user message (592ms)
+
+  6 passed (4.9s)

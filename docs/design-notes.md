@@ -58,3 +58,14 @@ All images are downloaded into `public/images/`, scaled to at most 1600px wide, 
 
 *Note: The video (`https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4`) is streamed via external URL and is never stored locally.*
 
+
+
+## Pass 4, commit 1: scroll portal
+
+The photo reveal replaces the separate photo band. One semantic, single-line h1 contains two inline spans with a real separating space; both have the warm echo. A 220dvh section contains a sticky stage below the shared 80px header. Its panels slide by their own widths. The pure pin/passage geometry drives a single CSS property through passive events and a coalesced animation frame; no React frame state or timed progress.
+
+Familjen Grotesk Bold uses clamp(2rem, 6vw, 6.5rem). Whole-title scale is 1→1.1, tracking −.04em→−.08em. Word travel is 50% of each word above 1023px, 30% at tablet, 20% below 768px. Bounds are asserted at 390/768/1440px. The title stays in the upper sky, away from the people, travelling dots and thin rules. Its colour reaches a middle warm grey while both paper and photo are exposed, then finishes paper; echoes fade quadratically to transparent. This pacing avoids an unreadable near-background colour during the panel transition.
+
+Each warm blend layer reaches .4 opacity; a fixed .45 ink scrim keeps the photographic sky behind the moving letters dark enough. The photo remains visible, including both skydivers. CTA/facts occur once in the following intro, and the video opens externally with noopener noreferrer. The footer reserves 76px plus safe-area inset for the unchanged launcher. Reduced motion uses a static final photo/title, no pin, panels, dots or scroll/resize listeners.
+
+See frontend-scroll-report.md and examples/scroll-hero for screenshot measurements and the limits of the sampling method.

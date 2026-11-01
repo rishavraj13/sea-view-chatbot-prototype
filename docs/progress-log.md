@@ -272,3 +272,8 @@ Final release verification passed: typecheck, lint, all 435 tests in 31 files an
 
 
 
+
+
+## 2026-11-02 — Frontend pass 4, commit 1: scroll portal hero
+
+Replaced the separate hero/photo band with a reversible sticky portal, pure pin/passage progress and a CSS-property hook, one-line echo h1, warm photo grade, reduced-motion static state, source-backed intro CTA/facts, and footer launcher clearance. No chat/knowledge/backend/dependency changes. Typecheck and zero-warning lint pass; 526 unit tests across 45 files pass; production build passes. Full e2e first run: 197 pass/1 launcher actionability timeout; unchanged focused chat-errors recheck 6/6 pass. No test weakened and no delay added. Final full matrix follows commit 2. Reviewed requested 390/1440 hero screenshots; five-point contrast minima >=3.40 at both widths. Desktop photo blue-minus-red mean 67.76→32.64. Full outputs, sampling caveats, observations and assumptions: frontend-scroll-report.md and examples/scroll-hero/. All checks explicitly mock, ports 3000/3100 free before/after; no live calls or deployment.
