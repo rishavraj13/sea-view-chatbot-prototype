@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import localFont from 'next/font/local';
 import './globals.css';
 import { SITE_METADATA } from '@/content';
+import { ChatProvider } from '@/components/ChatContext';
 
 const displayFont = localFont({
   src: '../../public/fonts/FamiljenGrotesk-Bold.woff2',
@@ -41,7 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        {children}
+        <ChatProvider>{children}</ChatProvider>
       </body>
     </html>
   );

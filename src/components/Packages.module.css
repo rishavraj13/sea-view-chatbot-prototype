@@ -1,0 +1,194 @@
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+  width: 100%;
+}
+
+.sectionHeader {
+  margin-bottom: 32px;
+}
+
+.sectionHeading {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background-color: var(--hair);
+  gap: 1px;
+}
+
+.card {
+  background-color: var(--bg);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.2s ease;
+  min-height: 380px;
+}
+
+.card:hover {
+  background-color: var(--surface);
+}
+
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.packageName {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.packageTagline {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.4;
+  min-height: 44px;
+}
+
+.priceBlock {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.priceAmount {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.pricePerPerson {
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cardAction {
+  margin-top: 32px;
+}
+
+.askButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  background-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-height: 48px;
+}
+
+.askButton:hover {
+  background-color: var(--ink);
+  color: var(--bg);
+}
+
+.inclusionsBlock {
+  margin-top: 64px;
+  padding: 40px;
+  background-color: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+}
+
+.inclusionsTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.inclusionsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 32px;
+  list-style: none;
+  margin-bottom: 32px;
+}
+
+.inclusionItem {
+  font-size: 0.9375rem;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  line-height: 1.5;
+}
+
+.inclusionBullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  flex-shrink: 0;
+  position: relative;
+  top: -2px;
+}
+
+.inclusionsFooter {
+  border-top: 1px solid var(--hair);
+  padding-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.externalLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  transition: color 0.15s ease;
+}
+
+.externalLink:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: auto;
+  }
+
+  .inclusionsList {
+    grid-template-columns: 1fr;
+  }
+
+  .inclusionsBlock {
+    padding: 24px;
+  }
+}

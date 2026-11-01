@@ -140,3 +140,19 @@ Final release verification passed: typecheck, lint, all 435 tests in 31 files an
    - Created typed `src/content/index.ts` capturing packages (ECO, DELUXE, VIP), prices, taglines, inclusions, step descriptions, FAQs, location metadata, and starter chips.
    - Added `tests/content/parity.test.ts` asserting exact parity with `data/knowledge` and `data/media/manifest.json`. All 4 parity tests pass.
 
+## 2026-11-01 — Remaining page sections (Milestone 2)
+
+1. **Page "/" section implementation**:
+   - `Statement.tsx`: Rendered 1px × 64px hairline, statement heading with serif italic accent, and subline without paraphrase.
+   - `Packages.tsx`: 3-column hairline grid for ECO, DELUXE, and VIP packages with real `<button>` controls triggering `openChat("Tell me about the {name} package.")`. Included verbatim 4-item inclusion list and greedyadventures.com link.
+   - `ThePlan.tsx`: 12-column asymmetric grid (step 4 wide 8 cols, step 3 pill 4 cols 500px radius 9999px, step 5 circle aspect-square, step 2 wide 7 cols) with Step 1 caption line, using verbatim plan descriptions and `RevealImage`.
+   - `Faq.tsx`: Native `<details>` accordion rendering the 3 page FAQs plus the cancellation weather answer verbatim from `data/knowledge/`.
+   - `WhereAndWho.tsx`: Location lines and "Operated by Dropzone Thailand" text-only without invented copy.
+   - `Footer.tsx`: Dark footer (`--ink`) with 4 columns (prototype notice, navigation, demos, credits) and 5% white top border.
+2. **State coordination**:
+   - Created `ChatContext.tsx` providing `ChatProvider` and `useChatDialog()` so package cards can prefill the chat composer and open the modal dialog without sending.
+3. **Verification**:
+   - Added `tests/components/sections.test.tsx` verifying all rendered sections against constants and knowledge data.
+   - Typecheck, lint, and all 447 tests pass. Next.js production build exits 0.
+
+

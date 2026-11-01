@@ -1,0 +1,162 @@
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px 24px;
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 48px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+.step1Notice {
+  margin-bottom: 48px;
+  padding: 20px 24px;
+  background-color: var(--surface);
+  border-left: 3px solid var(--ink);
+  border-radius: 4px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.step1Tag {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.step1Text {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.stepWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stepNumber {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.stepCaption {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.stepDesc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Step 4: 8 cols wide rectangle */
+.step4Col {
+  grid-column: span 8;
+}
+
+.step4Image {
+  border-radius: var(--radius-card);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+/* Step 3: 4 cols vertical pill (500px, radius 9999px) */
+.step3Col {
+  grid-column: span 4;
+}
+
+.step3Pill {
+  border-radius: 9999px;
+  height: 500px;
+  overflow: hidden;
+}
+
+.step3Pill :global(img) {
+  height: 500px;
+  object-fit: cover;
+}
+
+/* Step 5: Circle (aspect-square) */
+.step5Col {
+  grid-column: span 5;
+}
+
+.step5Circle {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+/* Step 2: 7 cols wide rectangle */
+.step2Col {
+  grid-column: span 7;
+}
+
+.step2Image {
+  border-radius: var(--radius-card);
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .step4Col,
+  .step3Col,
+  .step5Col,
+  .step2Col {
+    grid-column: span 1;
+  }
+
+  .step3Pill {
+    border-radius: 24px;
+    height: 380px;
+  }
+
+  .step3Pill :global(img) {
+    height: 380px;
+  }
+
+  .step5Circle {
+    max-width: 60vw;
+    margin: 0 auto;
+  }
+}
