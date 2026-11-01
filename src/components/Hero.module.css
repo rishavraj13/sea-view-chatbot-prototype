@@ -1,0 +1,134 @@
+.hero {
+  padding: 64px 24px 48px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.kicker {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.headingPrimary {
+  display: block;
+}
+
+.subline {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 36px;
+  max-width: 640px;
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.primaryPill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  background-color: var(--ink);
+  color: var(--bg);
+  min-height: 48px;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.primaryPill:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.priceTag {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.videoLink {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.15s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.videoLink:hover {
+  color: var(--muted);
+}
+
+.factRow {
+  border-top: 1px solid var(--hair);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-top: 32px;
+}
+
+.factItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.factValue {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.factLabel {
+  font-size: 0.875rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 20px 32px;
+  }
+
+  .actionRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .factRow {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 24px;
+  }
+}

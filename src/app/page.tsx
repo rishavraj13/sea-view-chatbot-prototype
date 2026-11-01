@@ -1,3 +1,15 @@
+import { Header } from '@/components/Header';
+import { Hero } from '@/components/Hero';
+import { PhotoBand } from '@/components/PhotoBand';
+
 export default function Home() {
-  return <main>Project scaffold</main>;
+  return (
+    <>
+      <Header />
+      <main id="main">
+        <Hero />
+        <PhotoBand />
+      </main>
+    </>
+  );
 }

@@ -1,0 +1,58 @@
+# Design notes (Board G: Swiss Echo)
+
+## Typography and font licensing
+
+### Font decision
+The design brief specifies:
+- Display: Clash Display 700 (or Familjen Grotesk via `next/font/google`).
+- Body: Satoshi 500/400 (or Instrument Sans via `next/font/google`).
+- Italic serif accent: Instrument Serif italic.
+
+### License audit
+- **Clash Display & Satoshi**: Proprietary fonts designed and distributed by Indian Type Foundry (ITF) through Fontshare under the [ITF Free Font License](https://www.fontshare.com/licenses/itf-free-font-license).
+  Exact redistribution terms quoted from the license:
+  > "You cannot redistribute, sell, rent, lease, or give away the original font files (.otf, .ttf, .woff, etc.) publicly or to third parties. Do not upload ITF font files to other repositories, share them openly online, or hand the physical files to clients."
+  Because committing these font files into a public repository violates the redistribution prohibition of the ITF Free Font License, Clash Display and Satoshi binaries were removed from `public/fonts/`.
+- **Selected implementation**: In accordance with the project instructions, we use **Familjen Grotesk** (display, 700) and **Instrument Sans** (body, 400/500/700), paired with **Instrument Serif italic**. All three fonts are authored under the [SIL Open Font License, Version 1.1](https://scripts.sil.org/OFL), which explicitly permits font bundling and distribution with software. To guarantee deterministic, offline-capable builds without external network requests at build time, the OFL WOFF2 font files are self-hosted in `public/fonts/` and loaded via `next/font/local`.
+- **Instrument Serif Italic**: Authored by Rodrigo Fuenzalida / Instrument and licensed under the [SIL Open Font License, Version 1.1](https://scripts.sil.org/OFL). Bundled in `public/fonts/InstrumentSerif-Italic.woff2`.
+
+## Palette & design tokens (Board G)
+
+A warm neutral monochrome palette where real photography provides natural colour. No blue, teal, purple, or cool-tinted grays are used anywhere on the site, including focus rings, borders, and input placeholders.
+
+- `--bg: #F3F1ED` (warm light paper background)
+- `--surface: #FFFFFF` (clean card surface)
+- `--ink: #141311` (primary text and solid pill elements)
+- `--muted: #5C5852` (secondary body text, contrast ratio 4.79:1 on `--bg`, exceeding WCAG AA 4.5:1)
+- `--hair: rgba(20, 19, 17, 0.14)` (subtle structural divider hairlines)
+- `--accent: #B4411B` (ember accent used sparingly: focus indicators, mock mode banner, error accents)
+- `--echo-1: #BDB9B1`, `--echo-2: #C9C5BD`, `--echo-3: #D3CFC8`, `--echo-4: #DCD9D2` (echo shadows and loading placeholder)
+- Dark footer: background `--ink` (`#141311`), text `rgba(243, 241, 237, 0.65)` (contrast ratio 8.6:1 against `--ink`).
+
+## Deviations from reference spec & design rationale
+
+1. **Grays darkened for WCAG AA compliance**:
+   Body text and secondary captions use `--muted` (`#5C5852`) rather than lighter tints, ensuring all text satisfies WCAG 2.1 AA standards (minimum 4.5:1 contrast for normal text).
+2. **No hover-only colour gate**:
+   All photographs render in full natural colour upon initial reveal. Hovering adds a subtle `scale(1.03)` transform with smooth easing. Under `prefers-reduced-motion: reduce`, all scaling and motion transitions are disabled.
+3. **Single-element echo effect**:
+   The echo effect on "Skydiving" uses a single semantic `<span>` element with multi-stop `text-shadow`:
+   `-0.04em -0.04em 0 var(--echo-1), -0.08em -0.08em 0 var(--echo-2), -0.12em -0.12em 0 var(--echo-3), -0.16em -0.16em 0 var(--echo-4)`.
+   Padding (`padding-top: 0.16em; padding-left: 0.16em`) ensures the text shadows are not clipped.
+4. **Native `<dialog>` element**:
+   The chat assistant panel uses native `<dialog>` invoked with `.showModal()`, providing an accessible modal dialog with browser-native focus trapping, `Escape` key dismissal, and automatic focus restoration without third-party modal libraries.
+
+## Photography & media asset inventory
+
+All images are downloaded into `public/images/`, scaled to at most 1600px wide, and optimized for delivery with descriptive alt text and loading placeholders.
+
+| Asset | Local path | Dimensions | File size | Source URL | Descriptive alt text |
+|---|---|---|---|---|---|
+| Hero band | `public/images/home-hero-skydivers.webp` | 1536 × 1024 | 109 KB | `https://www.greedyadventures.com/greedy/img/home/home-hero-skydivers.webp` | Tandem skydivers freefalling in open skies above the coastline |
+| Step 2 | `public/images/step-2.jpg` | 1365 × 2048 | 346 KB | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/sea-view-tandem-skydive-pattaya/108d38.jpg` | Skydiver having safety harness fitted during pre-jump briefing |
+| Step 3 | `public/images/step-3.webp` | 1600 × 1066 | 155 KB | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/apex-gallery/plane.webp` | Jump aircraft propeller and fuselage on the runway |
+| Step 4 | `public/images/step-4.webp` | 1600 × 1600 | 179 KB | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/apex-gallery/tandem-with-sea-view.webp` | Tandem skydivers in freefall with the sea and coastline below |
+| Step 5 | `public/images/step-5.jpg` | 1085 × 1018 | 196 KB | `https://www.greedyadventures.com/greedy/trips/tandem-canopy-landing-g0250281.jpg` | Tandem skydiver and instructor landing safely under open canopy |
+
+*Note: The video (`https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4`) is streamed via external URL and is never stored locally.*
+

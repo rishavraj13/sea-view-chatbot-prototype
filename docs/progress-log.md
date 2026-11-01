@@ -120,3 +120,23 @@ Redeployed clean 6710c21 to https://sea-view-chatbot-prototype.vercel.app with t
 Created sea-view-chatbot-prototype-mock from the identical archive, explicit MODEL_MODE=mock, no provider key and protection off: https://sea-view-chatbot-prototype-mock.vercel.app. Anonymous checks, exact public data/files, typed invalid input and SDK-consumed [MOCK]/mode:mock response with both tools passed; zero model calls. This separately selected scripted fallback is independent of Groq quota; no automatic fallback exists between URLs. README/testing record both roles and the shared live quota/one-call Knowledge test behavior. Provider-error log retrieval was not applicable because no 429 occurred. Protected citation-report edit remains byte-identical. Docs commit and backend-v1 tag follow passing final checks; tag points to docs with the same backend source as the deployed commit.
 
 Final release verification passed: typecheck, lint, all 435 tests in 31 files and production build. The docs-only release commit is tagged backend-v1; application source remains identical to deployed 6710c21. Real outputs are pasted in backend-v1-release-report.md.
+
+## 2026-11-01 — Frontend setup: typography, photography, tokens, content parity
+
+1. **Font licensing and selection**:
+   - Audited Fontshare's ITF Free Font License (`https://www.fontshare.com/licenses/itf-free-font-license`) for Clash Display and Satoshi. The license prohibits public redistribution: *"You cannot redistribute, sell, rent, lease, or give away the original font files (.otf, .ttf, .woff, etc.) publicly or to third parties. Do not upload ITF font files to other repositories, share them openly online, or hand the physical files to clients."*
+   - Consequently, Clash Display and Satoshi binaries were deleted from `public/fonts/`.
+   - Selected **Familjen Grotesk** (display, 700) and **Instrument Sans** (body, 400/500/700), paired with **Instrument Serif italic**. All three are published under the open-source **SIL Open Font License (OFL) 1.1**, permitting public repository storage and bundling. Self-hosted locally in `public/fonts/` via `next/font/local` to guarantee 100% offline and deterministic builds in standard sandbox environments.
+2. **Photography and image processing**:
+   - Downloaded the five authorized site photographs into `public/images/`.
+   - Used `sharp` to resize and compress `step-2.jpg` from 2.3 MB down to 346 KB (under the 400 KB requirement) at 1365px wide (under 1600px).
+   - Confirmed all five images are strictly under 1600px wide and under 400 KB: `home-hero-skydivers.webp` (1536×1024, 109 KB), `step-2.jpg` (1365×2048, 346 KB), `step-3.webp` (1600×1066, 155 KB), `step-4.webp` (1600×1600, 179 KB), and `step-5.jpg` (1085×1018, 196 KB).
+   - Documented exact dimensions, source URLs, and descriptive alt text in `docs/design-notes.md` and `src/content/index.ts`.
+3. **Dependency verification**:
+   - Verified `npm view @assistant-ui/react peerDependencies` (`react: '^18 || ^19'`) and `npm view @assistant-ui/react-ai-sdk peerDependencies` (`ai: '^7.0.101'`). The installed `ai` (`7.0.158`) and React (`19.3.1`) versions satisfy both peer requirements.
+   - Installed authorized scope-fenced packages: `@assistant-ui/react`, `@assistant-ui/react-ai-sdk`, `@testing-library/react`, `@testing-library/jest-dom`, `@testing-library/user-event`, `jsdom`, `@playwright/test`, and `@axe-core/playwright`.
+   - Verified zero version changes to frozen dependencies (`ai`, `@ai-sdk/*`, `zod`, `next`, `react`, `react-dom`).
+4. **Content single source of truth**:
+   - Created typed `src/content/index.ts` capturing packages (ECO, DELUXE, VIP), prices, taglines, inclusions, step descriptions, FAQs, location metadata, and starter chips.
+   - Added `tests/content/parity.test.ts` asserting exact parity with `data/knowledge` and `data/media/manifest.json`. All 4 parity tests pass.
+
