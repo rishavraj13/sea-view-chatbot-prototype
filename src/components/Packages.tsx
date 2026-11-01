@@ -31,10 +31,10 @@ export function Packages() {
                 type="button"
                 className={styles.askButton}
                 onClick={() => openChat(`Tell me about the ${pkg.name} package.`)}
-                aria-label={`Ask about the ${pkg.name} package`}
               >
                 <span>Ask about this package</span>
-                <span aria-hidden="true">→</span>
+                <span className="sr-only"> ({pkg.name})</span>
+                <span aria-hidden="true"> →</span>
               </button>
             </div>
           </article>

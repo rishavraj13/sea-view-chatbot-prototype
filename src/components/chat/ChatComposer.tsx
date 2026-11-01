@@ -7,6 +7,7 @@ import {
   useRef,
   useEffect,
 } from 'react';
+import { CHAT_UI } from '@/content';
 import styles from './ChatComposer.module.css';
 
 interface ChatComposerProps {
@@ -70,9 +71,8 @@ export function ChatComposer({
           type="submit"
           className={styles.sendButton}
           disabled={isLoading || text.trim().length === 0}
-          aria-label="Send question"
         >
-          Send
+          {CHAT_UI.sendButton}
         </button>
       </form>
     </div>

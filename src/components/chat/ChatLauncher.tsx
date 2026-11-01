@@ -1,5 +1,6 @@
 'use client';
 
+import { CHAT_UI } from '@/content';
 import { useChatDialog } from '../ChatContext';
 import styles from './ChatLauncher.module.css';
 
@@ -11,9 +12,8 @@ export function ChatLauncher() {
       type="button"
       className={styles.launcher}
       onClick={() => openChat()}
-      aria-label="Ask about your jump"
     >
-      Ask about your jump
+      {CHAT_UI.launcher}
     </button>
   );
 }

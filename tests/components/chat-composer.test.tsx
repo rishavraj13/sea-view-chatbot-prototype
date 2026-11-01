@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { CHAT_UI } from '@/content';
 import { ChatComposer } from '@/components/chat/ChatComposer';
 
 describe('ChatComposer component', () => {
@@ -8,8 +9,8 @@ describe('ChatComposer component', () => {
     render(
       <ChatComposer
         text=""
-        onChange={() => {}}
-        onSubmit={() => {}}
+        onChange={() => { }}
+        onSubmit={() => { }}
         isLoading={false}
       />,
     );
@@ -25,7 +26,7 @@ describe('ChatComposer component', () => {
     render(
       <ChatComposer
         text="Tell me about ECO"
-        onChange={() => {}}
+        onChange={() => { }}
         onSubmit={onSubmit}
         isLoading={false}
       />,
@@ -46,20 +47,20 @@ describe('ChatComposer component', () => {
     const { rerender } = render(
       <ChatComposer
         text=""
-        onChange={() => {}}
-        onSubmit={() => {}}
+        onChange={() => { }}
+        onSubmit={() => { }}
         isLoading={false}
       />,
     );
 
-    const sendBtn = screen.getByRole('button', { name: 'Send question' });
+    const sendBtn = screen.getByRole('button', { name: CHAT_UI.sendButton });
     expect(sendBtn.hasAttribute('disabled')).toBe(true);
 
     rerender(
       <ChatComposer
         text="Hello"
-        onChange={() => {}}
-        onSubmit={() => {}}
+        onChange={() => { }}
+        onSubmit={() => { }}
         isLoading={true}
       />,
     );

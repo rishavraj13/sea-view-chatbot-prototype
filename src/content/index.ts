@@ -47,9 +47,9 @@ export const SITE_METADATA = {
 } as const;
 
 export const HERO_FACTS = [
-  { label: 'Exit altitude', value: '13,000 ft' },
-  { label: 'Freefall', value: '~60 s of freefall' },
-  { label: 'Under canopy', value: '5–7 min under canopy' },
+  { label: 'exit altitude', value: '13,000 ft' },
+  { label: 'of freefall', value: '~60 s' },
+  { label: 'under canopy', value: '5–7 min' },
 ] as const;
 
 export const HERO_IMAGE = {
@@ -188,4 +188,27 @@ export const STARTER_PROMPTS = [
   'Send me the brochure and a video.',
   'What if it rains?',
 ] as const;
+
+export const CHAT_UI = {
+  launcher: 'Ask about your jump',
+  sendButton: 'Send',
+  newConversation: 'New conversation',
+  closeButton: 'Close chat',
+  askPackagePre: 'Ask about this package',
+} as const;
+
+export const KNOWLEDGE_UI = {
+  title: 'Knowledge Base',
+  subtitle:
+    'Read-only transparency view: explore grounded website source sections, registered media assets, and test questions through the real pipeline trace.',
+  backLink: '← Back to experience',
+  tabSources: 'Sources',
+  tabMedia: 'Media',
+  tabTrace: 'Test a question',
+  runTraceButton: 'Run trace',
+  runningTraceButton: 'Running pipeline trace…',
+} as const;
+
+export const NAV_BREAKPOINT = 768;
+
 

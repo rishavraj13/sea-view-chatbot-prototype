@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { STARTER_PROMPTS } from '@/content';
+import { KNOWLEDGE_UI, STARTER_PROMPTS } from '@/content';
 import { getErrorMessage, parseErrorResponse } from '../chat/error-mapping';
 import type { ChatErrorData } from '../chat/types';
 import type { TraceResponse } from './types';
@@ -158,9 +158,7 @@ export function TraceTab() {
           className={styles.submitButton}
           disabled={isLoading || !question.trim()}
         >
-          {isLoading
-            ? 'Running pipeline trace…'
-            : 'Run test (calls the model when the server runs in live mode)'}
+          {isLoading ? KNOWLEDGE_UI.runningTraceButton : KNOWLEDGE_UI.runTraceButton}
         </button>
       </form>
 

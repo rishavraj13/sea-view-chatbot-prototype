@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { DefaultChatTransport, readUIMessageStream, type UIMessage } from 'ai';
+import { CHAT_UI } from '@/content';
 import { useChatDialog } from '../ChatContext';
 import { ChatEmptyState } from './ChatEmptyState';
 import { ChatMessage } from './ChatMessage';
@@ -210,17 +211,16 @@ export function ChatPanel() {
               type="button"
               className={styles.actionButton}
               onClick={handleNewConversation}
-              aria-label="New conversation"
             >
-              New conversation
+              {CHAT_UI.newConversation}
             </button>
             <button
               type="button"
               className={styles.closeButton}
               onClick={closeChat}
-              aria-label="Close chat"
             >
-              ✕
+              <span aria-hidden="true">✕</span>
+              <span className="sr-only">{CHAT_UI.closeButton}</span>
             </button>
           </div>
         </header>
@@ -257,7 +257,6 @@ export function ChatPanel() {
                 className={styles.retryButton}
                 onClick={handleRetry}
                 disabled={countdown > 0}
-                aria-label={countdown > 0 ? `Retry disabled for ${countdown} seconds` : 'Retry'}
               >
                 {countdown > 0 ? `Retry in ${countdown}s` : 'Retry'}
               </button>

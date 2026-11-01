@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { KNOWLEDGE_UI } from '@/content';
 import { SourcesTab } from './SourcesTab';
 import { MediaTab } from './MediaTab';
 import { TraceTab } from './TraceTab';
@@ -45,7 +46,13 @@ export function KnowledgeTabs() {
           className={`${styles.tab} ${activeTab === 'sources' ? styles.tabActive : ''}`}
           onClick={() => setActiveTab('sources')}
         >
-          Sources ({data ? data.sources.length : '…'})
+          <span>{KNOWLEDGE_UI.tabSources}</span>
+          {data ? (
+            <span aria-hidden="true" className={styles.tabBadge}>
+              {' '}
+              ({data.sources.length})
+            </span>
+          ) : null}
         </button>
         <button
           type="button"
@@ -56,7 +63,13 @@ export function KnowledgeTabs() {
           className={`${styles.tab} ${activeTab === 'media' ? styles.tabActive : ''}`}
           onClick={() => setActiveTab('media')}
         >
-          Media ({data ? data.media.length : '…'})
+          <span>{KNOWLEDGE_UI.tabMedia}</span>
+          {data ? (
+            <span aria-hidden="true" className={styles.tabBadge}>
+              {' '}
+              ({data.media.length})
+            </span>
+          ) : null}
         </button>
         <button
           type="button"
@@ -67,7 +80,7 @@ export function KnowledgeTabs() {
           className={`${styles.tab} ${activeTab === 'trace' ? styles.tabActive : ''}`}
           onClick={() => setActiveTab('trace')}
         >
-          Test a question
+          <span>{KNOWLEDGE_UI.tabTrace}</span>
         </button>
       </div>
 

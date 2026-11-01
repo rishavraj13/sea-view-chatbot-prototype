@@ -8,3 +8,6 @@ coverage/
 next-env.d.ts
 *.log
 .vercel/
+
+test-results/
+playwright-report/

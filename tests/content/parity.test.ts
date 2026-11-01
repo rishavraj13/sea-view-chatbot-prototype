@@ -3,7 +3,9 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
   FAQS,
+  HERO_FACTS,
   INCLUSIONS,
+  LOCATION_INFO,
   PACKAGES,
   PLAN_STEPS,
   SITE_METADATA,
@@ -101,6 +103,26 @@ describe('Content and Knowledge parity', () => {
       expect(plan.text).toContain(step.title);
       expect(plan.text).toContain(step.description);
     }
+  });
+
+  it('matches location and operator with data/knowledge/location.json', () => {
+    const locationData = loadKnowledge('location');
+    expect(locationData.text).toContain(LOCATION_INFO.title);
+    expect(locationData.text).toContain(LOCATION_INFO.spot);
+    expect(locationData.text).toContain(LOCATION_INFO.address);
+    expect(locationData.text).toContain(LOCATION_INFO.operatorTitle);
+    expect(locationData.text).toContain(LOCATION_INFO.operator);
+  });
+
+  it('matches hero facts with data/knowledge/jump-facts.json', () => {
+    const jumpFacts = loadKnowledge('jump-facts');
+    const lowerText = jumpFacts.text.toLowerCase();
+    expect(jumpFacts.text).toContain(HERO_FACTS[0].value);
+    expect(lowerText).toContain(HERO_FACTS[0].label.toLowerCase());
+    expect(lowerText).toContain('60 seconds of freefall');
+    expect(lowerText).toContain(HERO_FACTS[1].label.toLowerCase());
+    expect(lowerText).toContain('five to seven minutes under canopy');
+    expect(lowerText).toContain(HERO_FACTS[2].label.toLowerCase());
   });
 });
 

@@ -29,7 +29,8 @@ describe('Packages section', () => {
       expect(html).toContain(pkg.name);
       expect(html).toContain(pkg.tagline);
       expect(html).toContain(pkg.price);
-      expect(html).toContain(`Ask about the ${pkg.name} package`);
+      expect(html).toContain('Ask about this package');
+      expect(html).toContain(`(${pkg.name})`);
     }
 
     expect(html).toContain('Included in every package:');
@@ -69,8 +70,10 @@ describe('Faq section', () => {
 describe('WhereAndWho section', () => {
   it('renders location and operator information without invented facts', () => {
     const html = renderToStaticMarkup(<WhereAndWho />);
+    expect(html).toContain(LOCATION_INFO.title);
     expect(html).toContain(LOCATION_INFO.spot);
     expect(html).toContain(LOCATION_INFO.address);
+    expect(html).toContain(LOCATION_INFO.operatorTitle);
     expect(html).toContain(LOCATION_INFO.operator);
   });
 });
