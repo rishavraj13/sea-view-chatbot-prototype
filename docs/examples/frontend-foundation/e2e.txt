@@ -1,0 +1,624 @@
+[WebServer]
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer]
+[WebServer] (node:16604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 138ms
+[WebServer] ✓ Running next.config.ts took 34ms
+
+Running 96 tests using 1 worker
+
+(node:30548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [Desktop Chrome] › tests\e2e\accessibility.spec.ts:6:3 › Accessibility audit (axe-core) › homepage has zero critical or serious a11y violations (835ms)
+  ok  2 [Desktop Chrome] › tests\e2e\accessibility.spec.ts:29:3 › Accessibility audit (axe-core) › knowledge route has zero critical or serious a11y violations (734ms)
+  ok  3 [Desktop Chrome] › tests\e2e\accessibility.spec.ts:52:3 › Accessibility audit (axe-core) › open chat dialog has zero critical or serious a11y violations (702ms)
+  x   4 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button (5.4s)
+(node:24620) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   5 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button (5.4s)
+(node:30148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   6 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button (5.4s)
+(node:27560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  7 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:147:3 › Chat error handling and retry behaviors › 502 MODEL_FAILURE displays safe message and enabled retry button (437ms)
+  x   8 [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message (5.4s)
+(node:18668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 [Desktop Chrome] › tests\e2e\chat.spec.ts:11:3 › Chat modal and conversation flows › launcher pill appears on both routes and opens native modal dialog (279ms)
+  ok 10 [Desktop Chrome] › tests\e2e\chat.spec.ts:31:3 › Chat modal and conversation flows › keyboard-only open/close of chat with focus trap and focus return (245ms)
+  ok 11 [Desktop Chrome] › tests\e2e\chat.spec.ts:59:3 › Chat modal and conversation flows › package button prefills composer without sending and focuses textarea (271ms)
+  ok 12 [Desktop Chrome] › tests\e2e\chat.spec.ts:80:3 › Chat modal and conversation flows › starter chips send immediately and render text, brochure, video and mock strip (546ms)
+  ok 13 [Desktop Chrome] › tests\e2e\chat.spec.ts:131:3 › Chat modal and conversation flows › captures open chat dialog screenshot (356ms)
+  ok 14 [Desktop Chrome] › tests\e2e\foundation.spec.ts:4:1 › header fits at 768px and changes link visibility at 767px (264ms)
+  ok 15 [Desktop Chrome] › tests\e2e\foundation.spec.ts:37:1 › Step 5 photo is a non-zero square at the project viewport (211ms)
+  ok 16 [Desktop Chrome] › tests\e2e\foundation.spec.ts:57:1 › hero renders the bundled Familjen Grotesk platform font (189ms)
+  ok 17 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:5:3 › Knowledge transparency route (/knowledge) › renders header, navigation and captures screenshots (365ms)
+  ok 18 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:44:3 › Knowledge transparency route (/knowledge) › sources tab displays verified sources, capture dates and expandable text (279ms)
+  x  19 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges (10.2s)
+(node:21444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  20 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6 (5.4s)
+(node:13780) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 21 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:18:3 › Homepage layout and sections › 1. renders skip link attached to DOM (245ms)
+  ok 22 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:23:3 › Homepage layout and sections › 2. renders header banner with viewport-aware navigation and action pill (230ms)
+  ok 23 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:46:3 › Homepage layout and sections › 3. renders hero heading, echo word, from-price and watch link (226ms)
+  ok 24 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:66:3 › Homepage layout and sections › 4. renders key jump facts from content constants (229ms)
+  ok 25 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:74:3 › Homepage layout and sections › 5. renders hero photo band (230ms)
+  ok 26 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:81:3 › Homepage layout and sections › 6. renders experience statement overview (259ms)
+  ok 27 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:95:3 › Homepage layout and sections › 7. renders packages section with three packages and inclusions (239ms)
+  ok 28 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:110:3 › Homepage layout and sections › 8. renders the plan section with 5 steps heading (301ms)
+  ok 29 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:118:3 › Homepage layout and sections › 9. renders good to know FAQ accordion (380ms)
+  ok 30 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:126:3 › Homepage layout and sections › 10. renders location and operator from content constants (334ms)
+  ok 31 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:150:3 › Homepage layout and sections › 11. renders dark footer with assignment notice and credits (314ms)
+  ok 32 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:167:3 › Homepage layout and sections › 12. has no horizontal scroll and captures responsive screenshot (6.6s)
+(node:30660) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 33 [Tablet Chrome] › tests\e2e\accessibility.spec.ts:6:3 › Accessibility audit (axe-core) › homepage has zero critical or serious a11y violations (821ms)
+  ok 34 [Tablet Chrome] › tests\e2e\accessibility.spec.ts:29:3 › Accessibility audit (axe-core) › knowledge route has zero critical or serious a11y violations (666ms)
+  ok 35 [Tablet Chrome] › tests\e2e\accessibility.spec.ts:52:3 › Accessibility audit (axe-core) › open chat dialog has zero critical or serious a11y violations (680ms)
+  x  36 [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button (5.5s)
+(node:6632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  37 [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button (5.5s)
+(node:14976) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  38 [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button (5.5s)
+(node:25036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 39 [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:147:3 › Chat error handling and retry behaviors › 502 MODEL_FAILURE displays safe message and enabled retry button (464ms)
+  x  40 [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message (5.4s)
+(node:31160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 41 [Tablet Chrome] › tests\e2e\chat.spec.ts:11:3 › Chat modal and conversation flows › launcher pill appears on both routes and opens native modal dialog (291ms)
+  ok 42 [Tablet Chrome] › tests\e2e\chat.spec.ts:31:3 › Chat modal and conversation flows › keyboard-only open/close of chat with focus trap and focus return (242ms)
+  ok 43 [Tablet Chrome] › tests\e2e\chat.spec.ts:59:3 › Chat modal and conversation flows › package button prefills composer without sending and focuses textarea (283ms)
+  ok 44 [Tablet Chrome] › tests\e2e\chat.spec.ts:80:3 › Chat modal and conversation flows › starter chips send immediately and render text, brochure, video and mock strip (435ms)
+  ok 45 [Tablet Chrome] › tests\e2e\chat.spec.ts:131:3 › Chat modal and conversation flows › captures open chat dialog screenshot (343ms)
+  ok 46 [Tablet Chrome] › tests\e2e\foundation.spec.ts:4:1 › header fits at 768px and changes link visibility at 767px (254ms)
+  ok 47 [Tablet Chrome] › tests\e2e\foundation.spec.ts:37:1 › Step 5 photo is a non-zero square at the project viewport (277ms)
+  ok 48 [Tablet Chrome] › tests\e2e\foundation.spec.ts:57:1 › hero renders the bundled Familjen Grotesk platform font (213ms)
+  ok 49 [Tablet Chrome] › tests\e2e\knowledge.spec.ts:5:3 › Knowledge transparency route (/knowledge) › renders header, navigation and captures screenshots (332ms)
+  ok 50 [Tablet Chrome] › tests\e2e\knowledge.spec.ts:44:3 › Knowledge transparency route (/knowledge) › sources tab displays verified sources, capture dates and expandable text (316ms)
+  x  51 [Tablet Chrome] › tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges (10.3s)
+(node:22332) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  52 [Tablet Chrome] › tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6 (5.4s)
+(node:31508) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 53 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:18:3 › Homepage layout and sections › 1. renders skip link attached to DOM (245ms)
+  ok 54 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:23:3 › Homepage layout and sections › 2. renders header banner with viewport-aware navigation and action pill (296ms)
+  ok 55 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:46:3 › Homepage layout and sections › 3. renders hero heading, echo word, from-price and watch link (254ms)
+  ok 56 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:66:3 › Homepage layout and sections › 4. renders key jump facts from content constants (243ms)
+  ok 57 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:74:3 › Homepage layout and sections › 5. renders hero photo band (242ms)
+  ok 58 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:81:3 › Homepage layout and sections › 6. renders experience statement overview (267ms)
+  ok 59 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:95:3 › Homepage layout and sections › 7. renders packages section with three packages and inclusions (220ms)
+  ok 60 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:110:3 › Homepage layout and sections › 8. renders the plan section with 5 steps heading (213ms)
+  ok 61 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:118:3 › Homepage layout and sections › 9. renders good to know FAQ accordion (234ms)
+  ok 62 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:126:3 › Homepage layout and sections › 10. renders location and operator from content constants (275ms)
+  ok 63 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:150:3 › Homepage layout and sections › 11. renders dark footer with assignment notice and credits (269ms)
+  ok 64 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:167:3 › Homepage layout and sections › 12. has no horizontal scroll and captures responsive screenshot (5.2s)
+(node:15912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 65 [Mobile Chrome] › tests\e2e\accessibility.spec.ts:6:3 › Accessibility audit (axe-core) › homepage has zero critical or serious a11y violations (766ms)
+  ok 66 [Mobile Chrome] › tests\e2e\accessibility.spec.ts:29:3 › Accessibility audit (axe-core) › knowledge route has zero critical or serious a11y violations (728ms)
+  ok 67 [Mobile Chrome] › tests\e2e\accessibility.spec.ts:52:3 › Accessibility audit (axe-core) › open chat dialog has zero critical or serious a11y violations (697ms)
+  x  68 [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button (5.4s)
+(node:26728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  69 [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button (5.4s)
+(node:31272) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  70 [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button (5.4s)
+(node:29184) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 71 [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:147:3 › Chat error handling and retry behaviors › 502 MODEL_FAILURE displays safe message and enabled retry button (471ms)
+  x  72 [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message (5.4s)
+(node:4924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 73 [Mobile Chrome] › tests\e2e\chat.spec.ts:11:3 › Chat modal and conversation flows › launcher pill appears on both routes and opens native modal dialog (385ms)
+  ok 74 [Mobile Chrome] › tests\e2e\chat.spec.ts:31:3 › Chat modal and conversation flows › keyboard-only open/close of chat with focus trap and focus return (355ms)
+  ok 75 [Mobile Chrome] › tests\e2e\chat.spec.ts:59:3 › Chat modal and conversation flows › package button prefills composer without sending and focuses textarea (352ms)
+  ok 76 [Mobile Chrome] › tests\e2e\chat.spec.ts:80:3 › Chat modal and conversation flows › starter chips send immediately and render text, brochure, video and mock strip (567ms)
+  ok 77 [Mobile Chrome] › tests\e2e\chat.spec.ts:131:3 › Chat modal and conversation flows › captures open chat dialog screenshot (634ms)
+  ok 78 [Mobile Chrome] › tests\e2e\foundation.spec.ts:4:1 › header fits at 768px and changes link visibility at 767px (491ms)
+  ok 79 [Mobile Chrome] › tests\e2e\foundation.spec.ts:37:1 › Step 5 photo is a non-zero square at the project viewport (278ms)
+  ok 80 [Mobile Chrome] › tests\e2e\foundation.spec.ts:57:1 › hero renders the bundled Familjen Grotesk platform font (242ms)
+  ok 81 [Mobile Chrome] › tests\e2e\knowledge.spec.ts:5:3 › Knowledge transparency route (/knowledge) › renders header, navigation and captures screenshots (1.1s)
+  ok 82 [Mobile Chrome] › tests\e2e\knowledge.spec.ts:44:3 › Knowledge transparency route (/knowledge) › sources tab displays verified sources, capture dates and expandable text (454ms)
+  x  83 [Mobile Chrome] › tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges (10.3s)
+(node:23576) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  84 [Mobile Chrome] › tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6 (5.5s)
+(node:16288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 85 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:18:3 › Homepage layout and sections › 1. renders skip link attached to DOM (242ms)
+  ok 86 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:23:3 › Homepage layout and sections › 2. renders header banner with viewport-aware navigation and action pill (248ms)
+  ok 87 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:46:3 › Homepage layout and sections › 3. renders hero heading, echo word, from-price and watch link (246ms)
+  ok 88 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:66:3 › Homepage layout and sections › 4. renders key jump facts from content constants (229ms)
+  ok 89 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:74:3 › Homepage layout and sections › 5. renders hero photo band (202ms)
+  ok 90 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:81:3 › Homepage layout and sections › 6. renders experience statement overview (230ms)
+  ok 91 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:95:3 › Homepage layout and sections › 7. renders packages section with three packages and inclusions (207ms)
+  ok 92 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:110:3 › Homepage layout and sections › 8. renders the plan section with 5 steps heading (224ms)
+  ok 93 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:118:3 › Homepage layout and sections › 9. renders good to know FAQ accordion (213ms)
+  ok 94 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:126:3 › Homepage layout and sections › 10. renders location and operator from content constants (206ms)
+  ok 95 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:150:3 › Homepage layout and sections › 11. renders dark footer with assignment notice and credits (231ms)
+  ok 96 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:167:3 › Homepage layout and sections › 12. has no horizontal scroll and captures responsive screenshot (3.6s)
+
+
+  1) [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+
+
+      42 |         { exact: true }
+      43 |       )
+    > 44 |     ).toBeVisible();
+         |       ^
+      45 |
+      46 |     const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });
+      47 |     await expect(retryButton).toBeVisible();
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:44:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-e3219-s-disabled-countdown-button-Desktop-Chrome\error-context.md
+
+  2) [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+
+
+      88 |         { exact: true }
+      89 |       )
+    > 90 |     ).toBeVisible();
+         |       ^
+      91 |
+      92 |     const retryButton = errorAlert.getByRole('button', {
+      93 |       name: 'Retry',
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:90:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-c7c48-ediate-enabled-Retry-button-Desktop-Chrome\error-context.md
+
+  3) [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })
+
+
+      135 |         exact: true,
+      136 |       })
+    > 137 |     ).toBeVisible();
+          |       ^
+      138 |
+      139 |     const retryButton = errorAlert.getByRole('button', {
+      140 |       name: 'Retry',
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:137:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-515a6-ge-and-enabled-retry-button-Desktop-Chrome\error-context.md
+
+  4) [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })
+
+
+      227 |     await expect(
+      228 |       errorAlert.getByText('Invalid message history.', { exact: true })
+    > 229 |     ).toBeVisible();
+          |       ^
+      230 |   });
+      231 | });
+      232 |
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:229:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-787c6-ys-safe-input-error-message-Desktop-Chrome\error-context.md
+
+  5) [Desktop Chrome] › tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms
+      - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })
+
+
+      77 |         exact: true,
+      78 |       })
+    > 79 |     ).toBeVisible({
+         |       ^
+      80 |       timeout: 10000,
+      81 |     });
+      82 |     await expect(
+        at C:\assignment\tests\e2e\knowledge.spec.ts:79:7
+
+    Error Context: test-results\knowledge-Knowledge-transp-788e7-ts-with-availability-badges-Desktop-Chrome\error-context.md
+
+  6) [Desktop Chrome] › tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main').getByText('1. Model Context', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('main').getByText('1. Model Context', { exact: true })
+
+
+      130 |     await expect(
+      131 |       main.getByText('1. Model Context', { exact: true })
+    > 132 |     ).toBeVisible();
+          |       ^
+      133 |     await expect(
+      134 |       main.getByText('2. Retrieved Chunks', { exact: true })
+      135 |     ).toBeVisible();
+        at C:\assignment\tests\e2e\knowledge.spec.ts:132:7
+
+    Error Context: test-results\knowledge-Knowledge-transp-0a658-enders-ordered-sections-1-6-Desktop-Chrome\error-context.md
+
+  7) [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+
+
+      42 |         { exact: true }
+      43 |       )
+    > 44 |     ).toBeVisible();
+         |       ^
+      45 |
+      46 |     const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });
+      47 |     await expect(retryButton).toBeVisible();
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:44:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-e3219-s-disabled-countdown-button-Tablet-Chrome\error-context.md
+
+  8) [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+
+
+      88 |         { exact: true }
+      89 |       )
+    > 90 |     ).toBeVisible();
+         |       ^
+      91 |
+      92 |     const retryButton = errorAlert.getByRole('button', {
+      93 |       name: 'Retry',
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:90:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-c7c48-ediate-enabled-Retry-button-Tablet-Chrome\error-context.md
+
+  9) [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })
+
+
+      135 |         exact: true,
+      136 |       })
+    > 137 |     ).toBeVisible();
+          |       ^
+      138 |
+      139 |     const retryButton = errorAlert.getByRole('button', {
+      140 |       name: 'Retry',
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:137:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-515a6-ge-and-enabled-retry-button-Tablet-Chrome\error-context.md
+
+  10) [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })
+
+
+      227 |     await expect(
+      228 |       errorAlert.getByText('Invalid message history.', { exact: true })
+    > 229 |     ).toBeVisible();
+          |       ^
+      230 |   });
+      231 | });
+      232 |
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:229:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-787c6-ys-safe-input-error-message-Tablet-Chrome\error-context.md
+
+  11) [Tablet Chrome] › tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms
+      - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })
+
+
+      77 |         exact: true,
+      78 |       })
+    > 79 |     ).toBeVisible({
+         |       ^
+      80 |       timeout: 10000,
+      81 |     });
+      82 |     await expect(
+        at C:\assignment\tests\e2e\knowledge.spec.ts:79:7
+
+    Error Context: test-results\knowledge-Knowledge-transp-788e7-ts-with-availability-badges-Tablet-Chrome\error-context.md
+
+  12) [Tablet Chrome] › tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main').getByText('1. Model Context', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('main').getByText('1. Model Context', { exact: true })
+
+
+      130 |     await expect(
+      131 |       main.getByText('1. Model Context', { exact: true })
+    > 132 |     ).toBeVisible();
+          |       ^
+      133 |     await expect(
+      134 |       main.getByText('2. Retrieved Chunks', { exact: true })
+      135 |     ).toBeVisible();
+        at C:\assignment\tests\e2e\knowledge.spec.ts:132:7
+
+    Error Context: test-results\knowledge-Knowledge-transp-0a658-enders-ordered-sections-1-6-Tablet-Chrome\error-context.md
+
+  13) [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+
+
+      42 |         { exact: true }
+      43 |       )
+    > 44 |     ).toBeVisible();
+         |       ^
+      45 |
+      46 |     const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });
+      47 |     await expect(retryButton).toBeVisible();
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:44:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-e3219-s-disabled-countdown-button-Mobile-Chrome\error-context.md
+
+  14) [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })
+
+
+      88 |         { exact: true }
+      89 |       )
+    > 90 |     ).toBeVisible();
+         |       ^
+      91 |
+      92 |     const retryButton = errorAlert.getByRole('button', {
+      93 |       name: 'Retry',
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:90:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-c7c48-ediate-enabled-Retry-button-Mobile-Chrome\error-context.md
+
+  15) [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })
+
+
+      135 |         exact: true,
+      136 |       })
+    > 137 |     ).toBeVisible();
+          |       ^
+      138 |
+      139 |     const retryButton = errorAlert.getByRole('button', {
+      140 |       name: 'Retry',
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:137:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-515a6-ge-and-enabled-retry-button-Mobile-Chrome\error-context.md
+
+  16) [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })
+
+
+      227 |     await expect(
+      228 |       errorAlert.getByText('Invalid message history.', { exact: true })
+    > 229 |     ).toBeVisible();
+          |       ^
+      230 |   });
+      231 | });
+      232 |
+        at C:\assignment\tests\e2e\chat-errors.spec.ts:229:7
+
+    Error Context: test-results\chat-errors-Chat-error-han-787c6-ys-safe-input-error-message-Mobile-Chrome\error-context.md
+
+  17) [Mobile Chrome] › tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms
+      - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })
+
+
+      77 |         exact: true,
+      78 |       })
+    > 79 |     ).toBeVisible({
+         |       ^
+      80 |       timeout: 10000,
+      81 |     });
+      82 |     await expect(
+        at C:\assignment\tests\e2e\knowledge.spec.ts:79:7
+
+    Error Context: test-results\knowledge-Knowledge-transp-788e7-ts-with-availability-badges-Mobile-Chrome\error-context.md
+
+  18) [Mobile Chrome] › tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main').getByText('1. Model Context', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('main').getByText('1. Model Context', { exact: true })
+
+
+      130 |     await expect(
+      131 |       main.getByText('1. Model Context', { exact: true })
+    > 132 |     ).toBeVisible();
+          |       ^
+      133 |     await expect(
+      134 |       main.getByText('2. Retrieved Chunks', { exact: true })
+      135 |     ).toBeVisible();
+        at C:\assignment\tests\e2e\knowledge.spec.ts:132:7
+
+    Error Context: test-results\knowledge-Knowledge-transp-0a658-enders-ordered-sections-1-6-Mobile-Chrome\error-context.md
+
+  18 failed
+    [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button
+    [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button
+    [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button
+    [Desktop Chrome] › tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message
+    [Desktop Chrome] › tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges
+    [Desktop Chrome] › tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6
+    [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button
+    [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button
+    [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button
+    [Tablet Chrome] › tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message
+    [Tablet Chrome] › tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges
+    [Tablet Chrome] › tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6
+    [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button
+    [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button
+    [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button
+    [Mobile Chrome] › tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message
+    [Mobile Chrome] › tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges
+    [Mobile Chrome] › tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6
+  78 passed (2.8m)

@@ -1,0 +1,15 @@
+
+> assignment@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/assignment
+
+
+ Test Files  39 passed (39)
+      Tests  464 passed (464)
+   Start at  00:40:56
+   Duration  3.03s (setup 37%, import 31%, transform 16%, tests 8%, environment 6%, worker 1%)
+
+    Isolate  39 workers spawned · ~284ms startup each (spawn + environment, per file)
+             at least ~569ms faster with isolate: false — reuses workers across files instead of one per file

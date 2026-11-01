@@ -122,6 +122,10 @@
   overflow: hidden;
 }
 
+.step5Circle > div {
+  height: 100%;
+}
+
 /* Step 2: 7 cols wide rectangle */
 .step2Col {
   grid-column: span 7;

@@ -40,14 +40,19 @@ test('Step 5 photo is a non-zero square at the project viewport', async ({
   await page.goto('/');
   const landingImage = PLAN_STEPS.find((step) => step.stepNumber === 5)?.image;
   expect(landingImage).toBeDefined();
-  const circle = page
-    .getByRole('img', { name: landingImage!.alt, exact: true })
-    .locator('xpath=ancestor::div[contains(@class, "step5Circle")]');
+  const image = page.getByRole('img', { name: landingImage!.alt, exact: true });
+  const circle = image.locator(
+    'xpath=ancestor::div[contains(@class, "step5Circle")]',
+  );
   const box = await circle.boundingBox();
   expect(box).not.toBeNull();
   expect(box!.width).toBeGreaterThan(0);
   expect(box!.height).toBeGreaterThan(0);
   expect(Math.abs(box!.width - box!.height)).toBeLessThan(1);
+  const imageBox = await image.boundingBox();
+  expect(imageBox).not.toBeNull();
+  expect(Math.abs(imageBox!.width - box!.width)).toBeLessThan(1);
+  expect(Math.abs(imageBox!.height - box!.height)).toBeLessThan(1);
 });
 
 test('hero renders the bundled Familjen Grotesk platform font', async ({

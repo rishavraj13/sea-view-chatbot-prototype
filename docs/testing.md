@@ -8,6 +8,10 @@ Foundation coverage: `npx playwright test tests/e2e/foundation.spec.ts` checks C
 
 The shared error messages and trace labels are prepared in src/content/foundation.ts for a later pass; error rendering and knowledge media/trace behavior/specs have not been fixed or weakened here. See frontend-foundation-report.md for command output and the final matrix.
 
+Final results: typecheck/lint/build exit 0; 39 unit files / 464 tests pass, including 434 unchanged server tests. Full browser matrix (`npx playwright test --project="Desktop Chrome" --project="Tablet Chrome" --project="Mobile Chrome" --reporter=list,json`): 78 pass / 18 fail (26/6 per project), exclusively the deferred chat-error and knowledge media/trace cases, with no skipped/flaky cases. Foundation cases all pass. Do not mark this as an entirely green e2e suite.
+
+Repeat revealed captures: `npx playwright test tests/e2e/page-sections.spec.ts --grep "12\."`. Final run: 3 pass (17.1s). Original project-size overflow assertions run first. Then scroll every image into view; assert its load/natural size, await decode, check isRevealed and final clip-path. Capture at the same width with the measured full-document height, rechecking reveal state, and scale:'css'. This keeps all layers within the capture viewport: mobile Chromium's beyond-viewport screenshot omitted the hero even when its DOM state and element capture were correct. No arbitrary waits, animation bypass or production reveal changes. Saved home-1440/home-768/home-390.png are 1440/768/390 physical pixels wide. The Step 5 test also checks that the photo fills its circular frame.
+
 Required offline checks: npm run typecheck, npm run lint, npm test, npm run build, npm run format:check. Tests live under tests/server mirroring server modules. tests/setup.ts explicitly selects mock mode and blank keys. MOCK language-provider/HTTP tests exercise the live code path without network access; these are not real-provider success claims.
 
 ## Retrieval quality

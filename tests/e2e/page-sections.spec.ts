@@ -177,9 +177,39 @@ test.describe('Homepage layout and sections', () => {
 
     const viewport = page.viewportSize();
     if (viewport) {
+      await page.evaluate(() => document.fonts.ready);
+      for (const image of await page.locator('main img').all()) {
+        await image.scrollIntoViewIfNeeded();
+        await expect(image).toHaveJSProperty('complete', true);
+        await expect
+          .poll(() =>
+            image.evaluate((element) =>
+              element instanceof HTMLImageElement ? element.naturalWidth : 0,
+            ),
+          )
+          .toBeGreaterThan(0);
+        await image.evaluate(async (element) => {
+          if (element instanceof HTMLImageElement) await element.decode();
+        });
+        const reveal = image.locator('..');
+        await expect(reveal).toHaveClass(/isRevealed/);
+        await expect(reveal).toHaveCSS('clip-path', 'inset(0px)');
+      }
+      await page.evaluate(() =>
+        window.scrollTo({ top: 0, behavior: 'instant' }),
+      );
+      const height = await page.evaluate(
+        () => document.documentElement.scrollHeight,
+      );
+      await page.setViewportSize({ width: viewport.width, height });
+      for (const image of await page.locator('main img').all()) {
+        await expect(image.locator('..')).toHaveClass(/isRevealed/);
+        await expect(image.locator('..')).toHaveCSS('clip-path', 'inset(0px)');
+      }
       await page.screenshot({
         path: `docs/screenshots/home-${viewport.width}.png`,
         fullPage: true,
+        scale: 'css',
       });
     }
   });

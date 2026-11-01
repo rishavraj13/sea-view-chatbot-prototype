@@ -1,0 +1,4128 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\assignment\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--project=Desktop Chrome",
+      "--project=Tablet Chrome",
+      "--project=Mobile Chrome",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\assignment\\playwright.config.ts",
+    "rootDir": "C:/assignment/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/assignment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Desktop Chrome",
+        "name": "Desktop Chrome",
+        "testDir": "C:/assignment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 15000
+      },
+      {
+        "outputDir": "C:/assignment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Tablet Chrome",
+        "name": "Tablet Chrome",
+        "testDir": "C:/assignment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 15000
+      },
+      {
+        "outputDir": "C:/assignment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "C:/assignment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 15000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\assignment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "Desktop Chrome",
+        "testDir": "C:\\assignment\\tests\\e2e",
+        "snapshotDir": "C:\\assignment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 15000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3100",
+          "trace": "on-first-retry",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "Desktop Chrome"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\assignment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "Tablet Chrome",
+        "testDir": "C:\\assignment\\tests\\e2e",
+        "snapshotDir": "C:\\assignment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 15000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3100",
+          "trace": "on-first-retry",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "Tablet Chrome"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\assignment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "Mobile Chrome",
+        "testDir": "C:\\assignment\\tests\\e2e",
+        "snapshotDir": "C:\\assignment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 15000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3100",
+          "trace": "on-first-retry",
+          "userAgent": "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "screen": {
+            "width": 393,
+            "height": 851
+          },
+          "deviceScaleFactor": 2.75,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "Mobile Chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run start -- -H 127.0.0.1 -p 3100",
+      "url": "http://127.0.0.1:3100",
+      "reuseExistingServer": false,
+      "timeout": 30000,
+      "stdout": "pipe",
+      "stderr": "pipe",
+      "env": {
+        "MODEL_MODE": "mock",
+        "PORT": "3100",
+        "HOSTNAME": "127.0.0.1"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "accessibility.spec.ts",
+      "file": "accessibility.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Accessibility audit (axe-core)",
+          "file": "accessibility.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "homepage has zero critical or serious a11y violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 835,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:11.520Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ddd864604af8a6a0198f-6274119f3837a4ad81e2",
+              "file": "accessibility.spec.ts",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "knowledge route has zero critical or serious a11y violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 734,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:12.470Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ddd864604af8a6a0198f-dcf7a40d7d91f54e2255",
+              "file": "accessibility.spec.ts",
+              "line": 29,
+              "column": 3
+            },
+            {
+              "title": "open chat dialog has zero critical or serious a11y violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 702,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:13.213Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ddd864604af8a6a0198f-64c6efe466b7ae7f1f60",
+              "file": "accessibility.spec.ts",
+              "line": 52,
+              "column": 3
+            },
+            {
+              "title": "homepage has zero critical or serious a11y violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 821,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:08.291Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ddd864604af8a6a0198f-06061b8e389ad1e7ca8e",
+              "file": "accessibility.spec.ts",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "knowledge route has zero critical or serious a11y violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 666,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:09.246Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ddd864604af8a6a0198f-1d7ccd7a4ecdeb030a18",
+              "file": "accessibility.spec.ts",
+              "line": 29,
+              "column": 3
+            },
+            {
+              "title": "open chat dialog has zero critical or serious a11y violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 680,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:09.919Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ddd864604af8a6a0198f-f707de3210eeec66d656",
+              "file": "accessibility.spec.ts",
+              "line": 52,
+              "column": 3
+            },
+            {
+              "title": "homepage has zero critical or serious a11y violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 766,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:04.455Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ddd864604af8a6a0198f-f26ce400ff6c24c7e22e",
+              "file": "accessibility.spec.ts",
+              "line": 6,
+              "column": 3
+            },
+            {
+              "title": "knowledge route has zero critical or serious a11y violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 728,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:05.461Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ddd864604af8a6a0198f-6b485f4cc1e86d01fc53",
+              "file": "accessibility.spec.ts",
+              "line": 29,
+              "column": 3
+            },
+            {
+              "title": "open chat dialog has zero critical or serious a11y violations",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 697,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:06.196Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "ddd864604af8a6a0198f-367abb49d4cbff64642a",
+              "file": "accessibility.spec.ts",
+              "line": 52,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "chat-errors.spec.ts",
+      "file": "chat-errors.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Chat error handling and retry behaviors",
+          "file": "chat-errors.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "429 with retryAfterSeconds displays disabled countdown button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5444,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:44:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 44
+                        },
+                        "snippet": "  42 |         { exact: true }\n  43 |       )\n> 44 |     ).toBeVisible();\n     |       ^\n  45 |\n  46 |     const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });\n  47 |     await expect(retryButton).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 44
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n\n  42 |         { exact: true }\n  43 |       )\n> 44 |     ).toBeVisible();\n     |       ^\n  45 |\n  46 |     const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });\n  47 |     await expect(retryButton).toBeVisible();\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:44:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:13.936Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-e3219-s-disabled-countdown-button-Desktop-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 44
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-2cb1ba759e82c74357e7",
+              "file": "chat-errors.spec.ts",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "429 without retryAfterSeconds displays immediate enabled Retry button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5436,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:90:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 90
+                        },
+                        "snippet": "  88 |         { exact: true }\n  89 |       )\n> 90 |     ).toBeVisible();\n     |       ^\n  91 |\n  92 |     const retryButton = errorAlert.getByRole('button', {\n  93 |       name: 'Retry',"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 90
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n\n  88 |         { exact: true }\n  89 |       )\n> 90 |     ).toBeVisible();\n     |       ^\n  91 |\n  92 |     const retryButton = errorAlert.getByRole('button', {\n  93 |       name: 'Retry',\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:90:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:19.833Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-c7c48-ediate-enabled-Retry-button-Desktop-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 90
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-d43da41c7b757c149214",
+              "file": "chat-errors.spec.ts",
+              "line": 52,
+              "column": 3
+            },
+            {
+              "title": "504 TIMEOUT displays safe message and enabled retry button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5425,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:137:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 137
+                        },
+                        "snippet": "  135 |         exact: true,\n  136 |       })\n> 137 |     ).toBeVisible();\n      |       ^\n  138 |\n  139 |     const retryButton = errorAlert.getByRole('button', {\n  140 |       name: 'Retry',"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 137
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\u001b[22m\n\n\n  135 |         exact: true,\n  136 |       })\n> 137 |     ).toBeVisible();\n      |       ^\n  138 |\n  139 |     const retryButton = errorAlert.getByRole('button', {\n  140 |       name: 'Retry',\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:137:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:25.782Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-515a6-ge-and-enabled-retry-button-Desktop-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 137
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-504fa5244a627e0cf9d1",
+              "file": "chat-errors.spec.ts",
+              "line": 100,
+              "column": 3
+            },
+            {
+              "title": "502 MODEL_FAILURE displays safe message and enabled retry button",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 437,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:31.737Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-f0b58516f69bd9d3b63c",
+              "file": "chat-errors.spec.ts",
+              "line": 147,
+              "column": 3
+            },
+            {
+              "title": "400 INVALID_INPUT displays safe input error message",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5409,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:229:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 229
+                        },
+                        "snippet": "  227 |     await expect(\n  228 |       errorAlert.getByText('Invalid message history.', { exact: true })\n> 229 |     ).toBeVisible();\n      |       ^\n  230 |   });\n  231 | });\n  232 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 229
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\u001b[22m\n\n\n  227 |     await expect(\n  228 |       errorAlert.getByText('Invalid message history.', { exact: true })\n> 229 |     ).toBeVisible();\n      |       ^\n  230 |   });\n  231 | });\n  232 |\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:229:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:32.288Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-787c6-ys-safe-input-error-message-Desktop-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 229
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-a5a827fb1a438c622ec4",
+              "file": "chat-errors.spec.ts",
+              "line": 194,
+              "column": 3
+            },
+            {
+              "title": "429 with retryAfterSeconds displays disabled countdown button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5483,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:44:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 44
+                        },
+                        "snippet": "  42 |         { exact: true }\n  43 |       )\n> 44 |     ).toBeVisible();\n     |       ^\n  45 |\n  46 |     const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });\n  47 |     await expect(retryButton).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 44
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n\n  42 |         { exact: true }\n  43 |       )\n> 44 |     ).toBeVisible();\n     |       ^\n  45 |\n  46 |     const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });\n  47 |     await expect(retryButton).toBeVisible();\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:44:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:10.625Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-e3219-s-disabled-countdown-button-Tablet-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 44
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-9c0bfc2f0d7fe12cf498",
+              "file": "chat-errors.spec.ts",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "429 without retryAfterSeconds displays immediate enabled Retry button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5459,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:90:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 90
+                        },
+                        "snippet": "  88 |         { exact: true }\n  89 |       )\n> 90 |     ).toBeVisible();\n     |       ^\n  91 |\n  92 |     const retryButton = errorAlert.getByRole('button', {\n  93 |       name: 'Retry',"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 90
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n\n  88 |         { exact: true }\n  89 |       )\n> 90 |     ).toBeVisible();\n     |       ^\n  91 |\n  92 |     const retryButton = errorAlert.getByRole('button', {\n  93 |       name: 'Retry',\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:90:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:16.636Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-c7c48-ediate-enabled-Retry-button-Tablet-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 90
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-c2daab985f42114521e9",
+              "file": "chat-errors.spec.ts",
+              "line": 52,
+              "column": 3
+            },
+            {
+              "title": "504 TIMEOUT displays safe message and enabled retry button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5496,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:137:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 137
+                        },
+                        "snippet": "  135 |         exact: true,\n  136 |       })\n> 137 |     ).toBeVisible();\n      |       ^\n  138 |\n  139 |     const retryButton = errorAlert.getByRole('button', {\n  140 |       name: 'Retry',"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 137
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\u001b[22m\n\n\n  135 |         exact: true,\n  136 |       })\n> 137 |     ).toBeVisible();\n      |       ^\n  138 |\n  139 |     const retryButton = errorAlert.getByRole('button', {\n  140 |       name: 'Retry',\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:137:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:22.780Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-515a6-ge-and-enabled-retry-button-Tablet-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 137
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-e21aab11a37892a0e910",
+              "file": "chat-errors.spec.ts",
+              "line": 100,
+              "column": 3
+            },
+            {
+              "title": "502 MODEL_FAILURE displays safe message and enabled retry button",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 464,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:28.978Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-8405ed080d259cc107e3",
+              "file": "chat-errors.spec.ts",
+              "line": 147,
+              "column": 3
+            },
+            {
+              "title": "400 INVALID_INPUT displays safe input error message",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5437,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:229:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 229
+                        },
+                        "snippet": "  227 |     await expect(\n  228 |       errorAlert.getByText('Invalid message history.', { exact: true })\n> 229 |     ).toBeVisible();\n      |       ^\n  230 |   });\n  231 | });\n  232 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 229
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\u001b[22m\n\n\n  227 |     await expect(\n  228 |       errorAlert.getByText('Invalid message history.', { exact: true })\n> 229 |     ).toBeVisible();\n      |       ^\n  230 |   });\n  231 | });\n  232 |\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:229:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:29.564Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-787c6-ys-safe-input-error-message-Tablet-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 229
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-55c7f59654b46fc07b06",
+              "file": "chat-errors.spec.ts",
+              "line": 194,
+              "column": 3
+            },
+            {
+              "title": "429 with retryAfterSeconds displays disabled countdown button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5402,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:44:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 44
+                        },
+                        "snippet": "  42 |         { exact: true }\n  43 |       )\n> 44 |     ).toBeVisible();\n     |       ^\n  45 |\n  46 |     const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });\n  47 |     await expect(retryButton).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 44
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n\n  42 |         { exact: true }\n  43 |       )\n> 44 |     ).toBeVisible();\n     |       ^\n  45 |\n  46 |     const retryButton = errorAlert.getByRole('button', { name: /Retry in/i });\n  47 |     await expect(retryButton).toBeVisible();\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:44:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:06.912Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-e3219-s-disabled-countdown-button-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 44
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-69cfda27fcf37116c5dd",
+              "file": "chat-errors.spec.ts",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "429 without retryAfterSeconds displays immediate enabled Retry button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5363,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:90:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 90
+                        },
+                        "snippet": "  88 |         { exact: true }\n  89 |       )\n> 90 |     ).toBeVisible();\n     |       ^\n  91 |\n  92 |     const retryButton = errorAlert.getByRole('button', {\n  93 |       name: 'Retry',"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 90
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model rate limit was reached. Please retry later.', { exact: true })\u001b[22m\n\n\n  88 |         { exact: true }\n  89 |       )\n> 90 |     ).toBeVisible();\n     |       ^\n  91 |\n  92 |     const retryButton = errorAlert.getByRole('button', {\n  93 |       name: 'Retry',\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:90:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:12.776Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-c7c48-ediate-enabled-Retry-button-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 90
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-f8a0d7cdecd9d7972aca",
+              "file": "chat-errors.spec.ts",
+              "line": 52,
+              "column": 3
+            },
+            {
+              "title": "504 TIMEOUT displays safe message and enabled retry button",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5396,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:137:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 137
+                        },
+                        "snippet": "  135 |         exact: true,\n  136 |       })\n> 137 |     ).toBeVisible();\n      |       ^\n  138 |\n  139 |     const retryButton = errorAlert.getByRole('button', {\n  140 |       name: 'Retry',"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 137
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('The model timed out. Please retry.', { exact: true })\u001b[22m\n\n\n  135 |         exact: true,\n  136 |       })\n> 137 |     ).toBeVisible();\n      |       ^\n  138 |\n  139 |     const retryButton = errorAlert.getByRole('button', {\n  140 |       name: 'Retry',\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:137:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:18.650Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-515a6-ge-and-enabled-retry-button-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 137
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-eebbbe6fd073bb7aadbb",
+              "file": "chat-errors.spec.ts",
+              "line": 100,
+              "column": 3
+            },
+            {
+              "title": "502 MODEL_FAILURE displays safe message and enabled retry button",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 17,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 471,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:24.564Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-3a1f54f122cbc82b881e",
+              "file": "chat-errors.spec.ts",
+              "line": 147,
+              "column": 3
+            },
+            {
+              "title": "400 INVALID_INPUT displays safe input error message",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 17,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5394,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:229:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                          "column": 7,
+                          "line": 229
+                        },
+                        "snippet": "  227 |     await expect(\n  228 |       errorAlert.getByText('Invalid message history.', { exact: true })\n> 229 |     ).toBeVisible();\n      |       ^\n  230 |   });\n  231 | });\n  232 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                            "column": 7,
+                            "line": 229
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog').getByRole('alert').getByText('Invalid message history.', { exact: true })\u001b[22m\n\n\n  227 |     await expect(\n  228 |       errorAlert.getByText('Invalid message history.', { exact: true })\n> 229 |     ).toBeVisible();\n      |       ^\n  230 |   });\n  231 | });\n  232 |\n    at C:\\assignment\\tests\\e2e\\chat-errors.spec.ts:229:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:25.203Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\chat-errors-Chat-error-han-787c6-ys-safe-input-error-message-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\chat-errors.spec.ts",
+                        "column": 7,
+                        "line": 229
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "c1532902b2ccf494c796-af5bdcbbfa937320b523",
+              "file": "chat-errors.spec.ts",
+              "line": 194,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "chat.spec.ts",
+      "file": "chat.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Chat modal and conversation flows",
+          "file": "chat.spec.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
+            {
+              "title": "launcher pill appears on both routes and opens native modal dialog",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 279,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:38.133Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-e3bd98c19ec2d2a8bf84",
+              "file": "chat.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "keyboard-only open/close of chat with focus trap and focus return",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 245,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:38.512Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-08d1196ecd978d88f730",
+              "file": "chat.spec.ts",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "package button prefills composer without sending and focuses textarea",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 271,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:38.765Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-252063b9d843970496e2",
+              "file": "chat.spec.ts",
+              "line": 59,
+              "column": 3
+            },
+            {
+              "title": "starter chips send immediately and render text, brochure, video and mock strip",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 546,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:39.043Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-0a8a79998a4b2e67850b",
+              "file": "chat.spec.ts",
+              "line": 80,
+              "column": 3
+            },
+            {
+              "title": "captures open chat dialog screenshot",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 356,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:39.597Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-8eca5716683868f39206",
+              "file": "chat.spec.ts",
+              "line": 131,
+              "column": 3
+            },
+            {
+              "title": "launcher pill appears on both routes and opens native modal dialog",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 291,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:35.517Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-13b3afbd5c33b0f8e417",
+              "file": "chat.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "keyboard-only open/close of chat with focus trap and focus return",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 242,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:35.950Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-a22ca735d90971a240d9",
+              "file": "chat.spec.ts",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "package button prefills composer without sending and focuses textarea",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 283,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:36.199Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-d1d168a192adb6ae23f9",
+              "file": "chat.spec.ts",
+              "line": 59,
+              "column": 3
+            },
+            {
+              "title": "starter chips send immediately and render text, brochure, video and mock strip",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 435,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:36.489Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-68bb43140f7fb56766d9",
+              "file": "chat.spec.ts",
+              "line": 80,
+              "column": 3
+            },
+            {
+              "title": "captures open chat dialog screenshot",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 343,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:36.932Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-ed15a9caa66eda544049",
+              "file": "chat.spec.ts",
+              "line": 131,
+              "column": 3
+            },
+            {
+              "title": "launcher pill appears on both routes and opens native modal dialog",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 385,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:31.342Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-9b51b914007faaa82f1a",
+              "file": "chat.spec.ts",
+              "line": 11,
+              "column": 3
+            },
+            {
+              "title": "keyboard-only open/close of chat with focus trap and focus return",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 355,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:31.916Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-e196a200a6b23c8eb5b4",
+              "file": "chat.spec.ts",
+              "line": 31,
+              "column": 3
+            },
+            {
+              "title": "package button prefills composer without sending and focuses textarea",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 352,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:32.281Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-367bb6c92827ccd5464a",
+              "file": "chat.spec.ts",
+              "line": 59,
+              "column": 3
+            },
+            {
+              "title": "starter chips send immediately and render text, brochure, video and mock strip",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 567,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:32.644Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-14a36f8fc8672308e8e6",
+              "file": "chat.spec.ts",
+              "line": 80,
+              "column": 3
+            },
+            {
+              "title": "captures open chat dialog screenshot",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 634,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:33.223Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6dac514d5d837ca37b9e-52b0028f6504083d1c82",
+              "file": "chat.spec.ts",
+              "line": 131,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "foundation.spec.ts",
+      "file": "foundation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "header fits at 768px and changes link visibility at 767px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 264,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T18:59:39.974Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-a961b0856f1210010d54",
+          "file": "foundation.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "Step 5 photo is a non-zero square at the project viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 211,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T18:59:40.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-121855bb0f01f2c55469",
+          "file": "foundation.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "hero renders the bundled Familjen Grotesk platform font",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 189,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T18:59:40.463Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-4e49a9b456f6e982bdd2",
+          "file": "foundation.spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "header fits at 768px and changes link visibility at 767px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Tablet Chrome",
+              "projectName": "Tablet Chrome",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 254,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T19:00:37.291Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-934cd09f898fc0e76a4e",
+          "file": "foundation.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "Step 5 photo is a non-zero square at the project viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Tablet Chrome",
+              "projectName": "Tablet Chrome",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 277,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T19:00:37.550Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-4e7f5d22067d575241ae",
+          "file": "foundation.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "hero renders the bundled Familjen Grotesk platform font",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Tablet Chrome",
+              "projectName": "Tablet Chrome",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 213,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T19:00:37.834Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-fefe142698e2c1069243",
+          "file": "foundation.spec.ts",
+          "line": 57,
+          "column": 1
+        },
+        {
+          "title": "header fits at 768px and changes link visibility at 767px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Mobile Chrome",
+              "projectName": "Mobile Chrome",
+              "results": [
+                {
+                  "workerIndex": 18,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 491,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T19:01:33.890Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-77a3d631c06c02df3b71",
+          "file": "foundation.spec.ts",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "Step 5 photo is a non-zero square at the project viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Mobile Chrome",
+              "projectName": "Mobile Chrome",
+              "results": [
+                {
+                  "workerIndex": 18,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 278,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T19:01:34.397Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-b758eb99268eec2640b0",
+          "file": "foundation.spec.ts",
+          "line": 37,
+          "column": 1
+        },
+        {
+          "title": "hero renders the bundled Familjen Grotesk platform font",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Mobile Chrome",
+              "projectName": "Mobile Chrome",
+              "results": [
+                {
+                  "workerIndex": 18,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 242,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T19:01:34.686Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6b60d0cacd30be8ae473-a5f3a4c3fda7410c9249",
+          "file": "foundation.spec.ts",
+          "line": 57,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "knowledge.spec.ts",
+      "file": "knowledge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Knowledge transparency route (/knowledge)",
+          "file": "knowledge.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "renders header, navigation and captures screenshots",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 365,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:40.665Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-d90773e56e34da0dd043",
+              "file": "knowledge.spec.ts",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "sources tab displays verified sources, capture dates and expandable text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 279,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:41.038Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-0cc42f6860c8960bd6b6",
+              "file": "knowledge.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "media tab displays PDF and video assets with availability badges",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10241,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:79:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                          "column": 7,
+                          "line": 79
+                        },
+                        "snippet": "  77 |         exact: true,\n  78 |       })\n> 79 |     ).toBeVisible({\n     |       ^\n  80 |       timeout: 10000,\n  81 |     });\n  82 |     await expect("
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                            "column": 7,
+                            "line": 79
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\u001b[22m\n\n\n  77 |         exact: true,\n  78 |       })\n> 79 |     ).toBeVisible({\n     |       ^\n  80 |       timeout: 10000,\n  81 |     });\n  82 |     await expect(\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:79:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:41.325Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\knowledge-Knowledge-transp-788e7-ts-with-availability-badges-Desktop-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                        "column": 7,
+                        "line": 79
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-93417b30d60b3c3bcf62",
+              "file": "knowledge.spec.ts",
+              "line": 67,
+              "column": 3
+            },
+            {
+              "title": "trace tab runs question through real pipeline and renders ordered sections 1-6",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5376,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('1. Model Context', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('1. Model Context', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('1. Model Context', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('1. Model Context', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:132:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                          "column": 7,
+                          "line": 132
+                        },
+                        "snippet": "  130 |     await expect(\n  131 |       main.getByText('1. Model Context', { exact: true })\n> 132 |     ).toBeVisible();\n      |       ^\n  133 |     await expect(\n  134 |       main.getByText('2. Retrieved Chunks', { exact: true })\n  135 |     ).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                            "column": 7,
+                            "line": 132
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('1. Model Context', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('1. Model Context', { exact: true })\u001b[22m\n\n\n  130 |     await expect(\n  131 |       main.getByText('1. Model Context', { exact: true })\n> 132 |     ).toBeVisible();\n      |       ^\n  133 |     await expect(\n  134 |       main.getByText('2. Retrieved Chunks', { exact: true })\n  135 |     ).toBeVisible();\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:132:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:52.001Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\knowledge-Knowledge-transp-0a658-enders-ordered-sections-1-6-Desktop-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                        "column": 7,
+                        "line": 132
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-5d381ce27b9ebe97b63a",
+              "file": "knowledge.spec.ts",
+              "line": 97,
+              "column": 3
+            },
+            {
+              "title": "renders header, navigation and captures screenshots",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 332,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:38.060Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-9c8dc686a4129ea9985f",
+              "file": "knowledge.spec.ts",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "sources tab displays verified sources, capture dates and expandable text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 316,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:38.401Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-40f802e60de4d9618b3b",
+              "file": "knowledge.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "media tab displays PDF and video assets with availability badges",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10316,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:79:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                          "column": 7,
+                          "line": 79
+                        },
+                        "snippet": "  77 |         exact: true,\n  78 |       })\n> 79 |     ).toBeVisible({\n     |       ^\n  80 |       timeout: 10000,\n  81 |     });\n  82 |     await expect("
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                            "column": 7,
+                            "line": 79
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\u001b[22m\n\n\n  77 |         exact: true,\n  78 |       })\n> 79 |     ).toBeVisible({\n     |       ^\n  80 |       timeout: 10000,\n  81 |     });\n  82 |     await expect(\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:79:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:38.733Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\knowledge-Knowledge-transp-788e7-ts-with-availability-badges-Tablet-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                        "column": 7,
+                        "line": 79
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-0db7b63addad1dcd64b3",
+              "file": "knowledge.spec.ts",
+              "line": 67,
+              "column": 3
+            },
+            {
+              "title": "trace tab runs question through real pipeline and renders ordered sections 1-6",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5423,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('1. Model Context', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('1. Model Context', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('1. Model Context', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('1. Model Context', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:132:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                          "column": 7,
+                          "line": 132
+                        },
+                        "snippet": "  130 |     await expect(\n  131 |       main.getByText('1. Model Context', { exact: true })\n> 132 |     ).toBeVisible();\n      |       ^\n  133 |     await expect(\n  134 |       main.getByText('2. Retrieved Chunks', { exact: true })\n  135 |     ).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                            "column": 7,
+                            "line": 132
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('1. Model Context', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('1. Model Context', { exact: true })\u001b[22m\n\n\n  130 |     await expect(\n  131 |       main.getByText('1. Model Context', { exact: true })\n> 132 |     ).toBeVisible();\n      |       ^\n  133 |     await expect(\n  134 |       main.getByText('2. Retrieved Chunks', { exact: true })\n  135 |     ).toBeVisible();\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:132:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:49.568Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\knowledge-Knowledge-transp-0a658-enders-ordered-sections-1-6-Tablet-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                        "column": 7,
+                        "line": 132
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-271133baaba4b3bd355b",
+              "file": "knowledge.spec.ts",
+              "line": 97,
+              "column": 3
+            },
+            {
+              "title": "renders header, navigation and captures screenshots",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1074,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:34.946Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-b5b4725a1b0e32667ce3",
+              "file": "knowledge.spec.ts",
+              "line": 5,
+              "column": 3
+            },
+            {
+              "title": "sources tab displays verified sources, capture dates and expandable text",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 454,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:36.032Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-e7da00fff8a10383bca6",
+              "file": "knowledge.spec.ts",
+              "line": 44,
+              "column": 3
+            },
+            {
+              "title": "media tab displays PDF and video assets with availability badges",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 18,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 10322,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:79:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                          "column": 7,
+                          "line": 79
+                        },
+                        "snippet": "  77 |         exact: true,\n  78 |       })\n> 79 |     ).toBeVisible({\n     |       ^\n  80 |       timeout: 10000,\n  81 |     });\n  82 |     await expect("
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                            "column": 7,
+                            "line": 79
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\nExpected: visible\nTimeout: 10000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true }) with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('Sea View Skydiving Pattaya — Experience Brochure', { exact: true })\u001b[22m\n\n\n  77 |         exact: true,\n  78 |       })\n> 79 |     ).toBeVisible({\n     |       ^\n  80 |       timeout: 10000,\n  81 |     });\n  82 |     await expect(\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:79:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:36.498Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\knowledge-Knowledge-transp-788e7-ts-with-availability-badges-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                        "column": 7,
+                        "line": 79
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-cf20052bb67920e5346c",
+              "file": "knowledge.spec.ts",
+              "line": 67,
+              "column": 3
+            },
+            {
+              "title": "trace tab runs question through real pipeline and renders ordered sections 1-6",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 19,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5521,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('1. Model Context', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('1. Model Context', { exact: true })\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('1. Model Context', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('1. Model Context', { exact: true })\u001b[22m\n\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:132:7",
+                        "location": {
+                          "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                          "column": 7,
+                          "line": 132
+                        },
+                        "snippet": "  130 |     await expect(\n  131 |       main.getByText('1. Model Context', { exact: true })\n> 132 |     ).toBeVisible();\n      |       ^\n  133 |     await expect(\n  134 |       main.getByText('2. Retrieved Chunks', { exact: true })\n  135 |     ).toBeVisible();"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                            "column": 7,
+                            "line": 132
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('main').getByText('1. Model Context', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('main').getByText('1. Model Context', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('main').getByText('1. Model Context', { exact: true })\u001b[22m\n\n\n  130 |     await expect(\n  131 |       main.getByText('1. Model Context', { exact: true })\n> 132 |     ).toBeVisible();\n      |       ^\n  133 |     await expect(\n  134 |       main.getByText('2. Retrieved Chunks', { exact: true })\n  135 |     ).toBeVisible();\n    at C:\\assignment\\tests\\e2e\\knowledge.spec.ts:132:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:47.359Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\assignment\\test-results\\knowledge-Knowledge-transp-0a658-enders-ordered-sections-1-6-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\assignment\\tests\\e2e\\knowledge.spec.ts",
+                        "column": 7,
+                        "line": 132
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0828a03cd0e93ee0ce1b-d8191a50dbd3cd0791db",
+              "file": "knowledge.spec.ts",
+              "line": 97,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "page-sections.spec.ts",
+      "file": "page-sections.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Homepage layout and sections",
+          "file": "page-sections.spec.ts",
+          "line": 13,
+          "column": 6,
+          "specs": [
+            {
+              "title": "1. renders skip link attached to DOM",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 245,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:57.891Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-71199b8514143036ab6f",
+              "file": "page-sections.spec.ts",
+              "line": 18,
+              "column": 3
+            },
+            {
+              "title": "2. renders header banner with viewport-aware navigation and action pill",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 230,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:58.238Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-97c6ee2a5b035be63917",
+              "file": "page-sections.spec.ts",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "3. renders hero heading, echo word, from-price and watch link",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 226,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:58.478Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-c70d1bbd499a1a715024",
+              "file": "page-sections.spec.ts",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "4. renders key jump facts from content constants",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 229,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:58.712Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-0cb77c226e967f066076",
+              "file": "page-sections.spec.ts",
+              "line": 66,
+              "column": 3
+            },
+            {
+              "title": "5. renders hero photo band",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 230,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:58.949Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-03141ae71076c186b0c5",
+              "file": "page-sections.spec.ts",
+              "line": 74,
+              "column": 3
+            },
+            {
+              "title": "6. renders experience statement overview",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 259,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:59.188Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-ada9bf3613df4f50bc3d",
+              "file": "page-sections.spec.ts",
+              "line": 81,
+              "column": 3
+            },
+            {
+              "title": "7. renders packages section with three packages and inclusions",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 239,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:59.457Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-bb6c57e7aef29442134a",
+              "file": "page-sections.spec.ts",
+              "line": 95,
+              "column": 3
+            },
+            {
+              "title": "8. renders the plan section with 5 steps heading",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 301,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T18:59:59.705Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-fe1e20bd06d2504e0e92",
+              "file": "page-sections.spec.ts",
+              "line": 110,
+              "column": 3
+            },
+            {
+              "title": "9. renders good to know FAQ accordion",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 380,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:00.015Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-b8e46f1a203acbc1c8e8",
+              "file": "page-sections.spec.ts",
+              "line": 118,
+              "column": 3
+            },
+            {
+              "title": "10. renders location and operator from content constants",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 334,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:00.406Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-b656c846f193fc0caced",
+              "file": "page-sections.spec.ts",
+              "line": 126,
+              "column": 3
+            },
+            {
+              "title": "11. renders dark footer with assignment notice and credits",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 314,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:00.752Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-40f67fd50899f3e2ec3a",
+              "file": "page-sections.spec.ts",
+              "line": 150,
+              "column": 3
+            },
+            {
+              "title": "12. has no horizontal scroll and captures responsive screenshot",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop Chrome",
+                  "projectName": "Desktop Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6640,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:01.075Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-4781c1a769f97b1f5773",
+              "file": "page-sections.spec.ts",
+              "line": 167,
+              "column": 3
+            },
+            {
+              "title": "1. renders skip link attached to DOM",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 245,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:55.645Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-720333fcd185013bbe98",
+              "file": "page-sections.spec.ts",
+              "line": 18,
+              "column": 3
+            },
+            {
+              "title": "2. renders header banner with viewport-aware navigation and action pill",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 296,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:56.003Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-bf846fa18179f637194b",
+              "file": "page-sections.spec.ts",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "3. renders hero heading, echo word, from-price and watch link",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 254,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:56.309Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-7f13214e2ed3969030d1",
+              "file": "page-sections.spec.ts",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "4. renders key jump facts from content constants",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 243,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:56.572Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-7e3b56e5f9062d0993ae",
+              "file": "page-sections.spec.ts",
+              "line": 66,
+              "column": 3
+            },
+            {
+              "title": "5. renders hero photo band",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 242,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:56.823Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-91f9fb990321324b782a",
+              "file": "page-sections.spec.ts",
+              "line": 74,
+              "column": 3
+            },
+            {
+              "title": "6. renders experience statement overview",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 267,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:57.073Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-82dcd1679c65e1cef7a8",
+              "file": "page-sections.spec.ts",
+              "line": 81,
+              "column": 3
+            },
+            {
+              "title": "7. renders packages section with three packages and inclusions",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 220,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:57.348Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-2538af24f720b899ac03",
+              "file": "page-sections.spec.ts",
+              "line": 95,
+              "column": 3
+            },
+            {
+              "title": "8. renders the plan section with 5 steps heading",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 213,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:57.575Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-28f4bef062e3c42292dd",
+              "file": "page-sections.spec.ts",
+              "line": 110,
+              "column": 3
+            },
+            {
+              "title": "9. renders good to know FAQ accordion",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 234,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:57.797Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-70ccc60a70ce68f57619",
+              "file": "page-sections.spec.ts",
+              "line": 118,
+              "column": 3
+            },
+            {
+              "title": "10. renders location and operator from content constants",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 275,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:58.039Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-b091cea5c946d1c99b00",
+              "file": "page-sections.spec.ts",
+              "line": 126,
+              "column": 3
+            },
+            {
+              "title": "11. renders dark footer with assignment notice and credits",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 269,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:58.327Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-e6aa2f6a95a63d83a061",
+              "file": "page-sections.spec.ts",
+              "line": 150,
+              "column": 3
+            },
+            {
+              "title": "12. has no horizontal scroll and captures responsive screenshot",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Tablet Chrome",
+                  "projectName": "Tablet Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5184,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:00:58.618Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-7bde322398620547ab8f",
+              "file": "page-sections.spec.ts",
+              "line": 167,
+              "column": 3
+            },
+            {
+              "title": "1. renders skip link attached to DOM",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 242,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:53.536Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-91bc75532b60dfc9d4a1",
+              "file": "page-sections.spec.ts",
+              "line": 18,
+              "column": 3
+            },
+            {
+              "title": "2. renders header banner with viewport-aware navigation and action pill",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 248,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:53.907Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-7709826532316f06a3d8",
+              "file": "page-sections.spec.ts",
+              "line": 23,
+              "column": 3
+            },
+            {
+              "title": "3. renders hero heading, echo word, from-price and watch link",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 246,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:54.163Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-f5492ef75ab11936ab51",
+              "file": "page-sections.spec.ts",
+              "line": 46,
+              "column": 3
+            },
+            {
+              "title": "4. renders key jump facts from content constants",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 229,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:54.418Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-c6848e44d592fa0f00ee",
+              "file": "page-sections.spec.ts",
+              "line": 66,
+              "column": 3
+            },
+            {
+              "title": "5. renders hero photo band",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 202,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:54.656Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-7f52c9782395e55a2857",
+              "file": "page-sections.spec.ts",
+              "line": 74,
+              "column": 3
+            },
+            {
+              "title": "6. renders experience statement overview",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 230,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:54.864Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-48373498b7757515e928",
+              "file": "page-sections.spec.ts",
+              "line": 81,
+              "column": 3
+            },
+            {
+              "title": "7. renders packages section with three packages and inclusions",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 207,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:55.102Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-04fe1d2eee1352b1cfae",
+              "file": "page-sections.spec.ts",
+              "line": 95,
+              "column": 3
+            },
+            {
+              "title": "8. renders the plan section with 5 steps heading",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 224,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:55.316Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-bd65b748948a5ab67e66",
+              "file": "page-sections.spec.ts",
+              "line": 110,
+              "column": 3
+            },
+            {
+              "title": "9. renders good to know FAQ accordion",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 213,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:55.548Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-88e0ef4fd229072c22c1",
+              "file": "page-sections.spec.ts",
+              "line": 118,
+              "column": 3
+            },
+            {
+              "title": "10. renders location and operator from content constants",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 206,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:55.769Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-182696620340304547b0",
+              "file": "page-sections.spec.ts",
+              "line": 126,
+              "column": 3
+            },
+            {
+              "title": "11. renders dark footer with assignment notice and credits",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 231,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:55.982Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-a673acee525965a21a13",
+              "file": "page-sections.spec.ts",
+              "line": 150,
+              "column": 3
+            },
+            {
+              "title": "12. has no horizontal scroll and captures responsive screenshot",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 20,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3587,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-01T19:01:56.225Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "c9dad5027519ffb5b4a6-6c9cf8d7dc39f9e0cb61",
+              "file": "page-sections.spec.ts",
+              "line": 167,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-01T18:59:09.980Z",
+    "duration": 170375.709,
+    "expected": 78,
+    "skipped": 0,
+    "unexpected": 18,
+    "flaky": 0
+  }
+}

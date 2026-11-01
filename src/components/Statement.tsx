@@ -1,3 +1,4 @@
+import { STATEMENT_UI } from '@/content';
 import styles from './Statement.module.css';
 
 export function Statement() {
@@ -11,5 +12,3 @@ export function Statement() {
     </section>
   );
 }
-
-import { STATEMENT_UI } from '@/content';

@@ -1,0 +1,25 @@
+[WebServer]
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer]
+[WebServer] (node:26600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 184ms
+[WebServer] ✓ Running next.config.ts took 41ms
+
+Running 3 tests using 1 worker
+
+(node:9572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [Desktop Chrome] › tests\e2e\page-sections.spec.ts:167:3 › Homepage layout and sections › 12. has no horizontal scroll and captures responsive screenshot (4.4s)
+(node:9468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [Tablet Chrome] › tests\e2e\page-sections.spec.ts:167:3 › Homepage layout and sections › 12. has no horizontal scroll and captures responsive screenshot (5.2s)
+(node:29716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 [Mobile Chrome] › tests\e2e\page-sections.spec.ts:167:3 › Homepage layout and sections › 12. has no horizontal scroll and captures responsive screenshot (3.8s)
+
+  3 passed (17.1s)
