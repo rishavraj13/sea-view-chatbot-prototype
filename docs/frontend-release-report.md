@@ -272,3 +272,102 @@ Route (app)
 ```
 
 A complete final browser matrix is repeated after this compatible image-prop change. README/architecture/testing/verification now report known gaps rather than implying provider or Lighthouse certification.
+
+## Frozen-backend issue found offline
+
+An additional in-process trace diagnostic, explicitly MODEL_MODE=mock, question “Do not send a brochure”, returned HTTP 200/mode mock and a brochure result even though getMediaPolicy returns {state:none,tools:[]}. Raw public capture: examples/release-readiness/mock-negation.json; zero provider calls. This is not a frontend regression: the frozen runPipeline mock branch loops over selectMedia's noun matches without applying the computed policy, while the live model branch uses the policy's tool set/toolChoice. Mock diagnostic prose can also retain its refusal beside a media summary. The UI does not sanitize or change that text. No backend patch/workaround was authorized or applied. It needs a separately approved backend revision if negated mock requests must behave like the live policy. Passing the 127-row policy/provider-wire tests does not cover this separate explicit-mock execution branch.
+
+## Final reviewer documentation and assumptions
+
+README now describes the actual UI/runtime/Knowledge flow and both historical backend deployments, with demo URLs configured together in src/content/site.ts. Current architecture, verification and testing guides replace stale pending/hand-rolled-runtime claims. The audit has a historical resolution header. AI assistance distinguishes Codex/Antigravity work, owner-directed decisions and owner-attributed Claude review, without claiming a human reviewed every file/image. No private conversation, key or new fact is added.
+
+All requested final 1440/390 viewport screenshots were opened and reviewed, plus the four extra tablet figures. They show home top/scrolled plan, labelled mock reply with disclosure/source chips, and Knowledge tools/context area. Pixel checks confirm the header is present; trace/plan figures show only the viewport portion, with the unchanged floating launcher. Final screenshot links are in design-notes.md. Existing earlier figures/captures are retained as historical evidence rather than overwritten with a new UI under old report names.
+
+Assumptions and limits:
+
+- The no-install constraint prevents Lighthouse execution. All before/after category scores and three-run medians remain unavailable; local CDP/axe are separate evidence. Performance/Accessibility/Best Practices targets cannot be certified here.
+- CDP “initial bytes” are completed encoded lengths of responses observed by the load/fonts/hero-decode (or catalog-ready) checkpoint. Later lazy-image scroll transfer is excluded from that initial response set. Browser/device defaults are preserved; single-load variation/prefetch prevents treating this as a speed benchmark or Lighthouse median.
+- Images use the first practical optimizer bucket near the physical slot, not arbitrary exact-width rendering. The corrected plan candidates round up within 10%; source photos and crop design remain unchanged.
+- Long-answer disclosure applies to all assistant text over 600 characters, not only mock text. Eight lines are CSS presentation; full source text stays in the DOM. Prior history still caps each turn at 4000; no server memory is added.
+- English lexical live media policy/guard limitations remain; the separate frozen mock-negation defect is explicitly reported. No live-provider reliability is inferred from offline tests.
+- Accessible-tree/keyboard/axe and emulated reduced-motion/contrast checks do not claim a human screen-reader, forced-colours or real-phone certification.
+- Existing demo URLs/settings are from backend-v1's last recorded deployment; no remote API/deployment/reachability check ran in this pass. They do not host this newly finished frontend. External source/media/font URLs are checked against captured/configured provenance and syntax, not fetched again.
+- All facts remain the 2026-10-31 static capture. No website recapture, crawler, updated price inference or reconciliation of source contradictions occurred.
+- Historical screenshots/raw examples remain because current reports/tests refer to them. Lossless PNG optimization preserves decoded pixels; generated examples are ignored and only selected evidence is committed. The protected citation report remains untouched.
+- npm audit is a read-only registry operation, not a live model API request. Its 17 moderate findings stay under the approved dependency freeze; no fix/install/override runs. Secrets are scanned in memory through the sole validated reader, never printed.
+
+No source change follows the final green offline/browser gate; remaining edits are documentation, curated captures and lossless encoding. A clean git archive ZIP is created from the final docs commit outside the repository, with its concrete filename, size, SHA256 and largest entries in the delivered companion manifest. Archives contain only committed source/evidence, not .env.local, .vercel, node_modules, .next or test outputs from ignored directories.
+
+## Generated artifact lifecycle fix
+
+The post-preload full run had 237 passes and three Windows UNKNOWN/open errors at page.screenshot writing existing curated PNGs (Desktop hero end, Desktop Knowledge error figure, Mobile hero quarter-point). They occurred before screenshot/contrast assertions could complete; no UI/assertion failure was hidden. Exact output: final-e2e-after-preload.txt. The precise process holding/mapping those files was not identified, so that detail remains unverified.
+
+Root lifecycle correction: e2e tests now write screenshots/JSON into each test's fresh Playwright outputPath under ignored test-results through helpers/artifacts.ts. They no longer truncate committed, potentially viewer-open documents or mutate the fixtures/evidence under review. Pixel buffers/options remain identical; all assertions, audit rules, timeouts and retries are unchanged. No retry/sleep/error-swallowing or OS-file-lock workaround. Selected final captures are promoted once after the successful run into docs/screenshots/final-v5, with raw generations remaining in the test artifacts. This also prevents a failed/partial test run from silently overwriting historical committed evidence.
+
+Actual post-fix offline gate:
+
+```text
+> assignment@0.1.0 verify:offline
+> npm run typecheck && npm run lint && npm test && npm run build
+
+
+> assignment@0.1.0 typecheck
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully
+
+> assignment@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+> assignment@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/assignment
+
+
+ Test Files  46 passed (46)
+      Tests  528 passed (528)
+   Start at  03:26:20
+   Duration  4.38s (import 42%, setup 23%, environment 17%, tests 9%, transform 8%, worker 1%)
+
+     Import  235 modules were evaluated 1888 times · 16.08s total, 42% of tracked time
+             ~490ms faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+
+
+> assignment@0.1.0 build
+> next build
+
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 23ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 275ms
+  Running TypeScript ...
+  Finished TypeScript in 1902ms ...
+  Collecting page data using 8 workers ...
+  Generating static pages using 8 workers (0/7) ...
+  Generating static pages using 8 workers (1/7)
+  Generating static pages using 8 workers (3/7)
+  Generating static pages using 8 workers (5/7)
+✓ Generating static pages using 8 workers (7/7) in 669ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/chat
+├ ƒ /api/knowledge/sources
+├ ƒ /api/knowledge/trace
+└ ○ /knowledge
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+```
+
+The final full browser result follows below. No application/backend code changed for this artifact correction.

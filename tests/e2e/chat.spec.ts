@@ -1,3 +1,4 @@
+import { captureViewport } from './helpers/artifacts';
 import { test, expect } from '@playwright/test';
 import {
   CHAT_UI,
@@ -179,7 +180,7 @@ test.describe('Chat modal and conversation flows', () => {
 
     const viewport = page.viewportSize();
     if (viewport) {
-      await page.screenshot({
+      await captureViewport(page, {
         path: `docs/screenshots/chat-${viewport.width}.png`,
       });
     }

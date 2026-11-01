@@ -1,6 +1,6 @@
+import { writeArtifact } from './helpers/artifacts';
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { writeFile } from 'node:fs/promises';
 import {
   CHAT_COPY,
   CHAT_UI,
@@ -72,7 +72,7 @@ for (const path of ['/', '/knowledge']) {
     await expect(
       page.getByRole('button', { name: CHAT_UI.launcher, exact: true }),
     ).toBeFocused();
-    await writeFile(
+    await writeArtifact(
       `docs/examples/release-readiness/keyboard-${path === '/' ? 'home' : 'knowledge'}-${page.viewportSize()!.width}.json`,
       JSON.stringify(
         {

@@ -304,3 +304,7 @@ Ran npm run format using explicit frozen-path/raw-example/protected-report exclu
 ## 2026-11-02 — Frontend pass 5: image API and capture verification follow-up
 
 Followed the installed Next 16 image deprecation guide: Hero uses preload instead of priority; removed the unused optional RevealImage priority argument, preserving lazy plan photos. Added a passage-state assertion before scrolled screenshots, without sleeps. A suspected missing header was disproved by layout/hit-target and PNG pixel evidence; no header CSS workaround. verify:offline passes (typecheck/lint/528 unit tests/build). Full real output: preload-offline.txt and frontend-release-report.md. Full matrix repeated for the final state. No backend/dependency change, live call or deployment; ports free after runs.
+
+## 2026-11-02 — Frontend pass 5: generated artifact lifecycle
+
+Post-preload matrix: 237 pass/3 Windows UNKNOWN errors opening existing screenshot files, before the relevant image assertions. Preserved failure output; no assertion/timeout/retry was weakened. Root artifact-lifecycle fix routes all e2e screenshot/JSON output through per-test Playwright outputPath under ignored test-results, separating generated artifacts from committed viewer-open/historical evidence. Curated final figures are promoted only after a passing run. UI/buffers/audits unchanged, no sleep or swallowed write error. verify:offline passes (typecheck/lint/528 tests/build); raw output artifact-offline.txt. Full matrix repeated. No backend/dependency/live/deployment change; ports free after runs.

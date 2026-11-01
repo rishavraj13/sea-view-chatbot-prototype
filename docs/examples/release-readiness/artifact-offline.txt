@@ -1,0 +1,63 @@
+
+> assignment@0.1.0 verify:offline
+> npm run typecheck && npm run lint && npm test && npm run build
+
+
+> assignment@0.1.0 typecheck
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully
+
+> assignment@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+> assignment@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/assignment
+
+
+ Test Files  46 passed (46)
+      Tests  528 passed (528)
+   Start at  03:26:20
+   Duration  4.38s (import 42%, setup 23%, environment 17%, tests 9%, transform 8%, worker 1%)
+
+     Import  235 modules were evaluated 1888 times · 16.08s total, 42% of tracked time
+             ~490ms faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+
+
+> assignment@0.1.0 build
+> next build
+
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 23ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 275ms
+  Running TypeScript ...
+  Finished TypeScript in 1902ms ...
+  Collecting page data using 8 workers ...
+  Generating static pages using 8 workers (0/7) ...
+  Generating static pages using 8 workers (1/7) 
+  Generating static pages using 8 workers (3/7) 
+  Generating static pages using 8 workers (5/7) 
+✓ Generating static pages using 8 workers (7/7) in 669ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/chat
+├ ƒ /api/knowledge/sources
+├ ƒ /api/knowledge/trace
+└ ○ /knowledge
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

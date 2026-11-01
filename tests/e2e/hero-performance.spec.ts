@@ -1,5 +1,5 @@
+import { writeArtifact } from './helpers/artifacts';
 import { test } from '@playwright/test';
-import { writeFile } from 'node:fs/promises';
 import { positionHero } from './helpers/hero';
 
 test('record layout shifts and long tasks during a reversible scroll', async ({
@@ -36,7 +36,7 @@ test('record layout shifts and long tasks during a reversible scroll', async ({
         longTasks: number[];
       },
   );
-  await writeFile(
+  await writeArtifact(
     `docs/examples/scroll-hero/performance-${page.viewportSize()!.width}.json`,
     JSON.stringify(evidence, null, 2) + '\n',
   );

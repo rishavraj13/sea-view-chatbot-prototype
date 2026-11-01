@@ -1,3 +1,4 @@
+import { captureViewport } from './helpers/artifacts';
 import { expect, test } from '@playwright/test';
 import { PLAN_STEPS, stepLabel } from '../../src/content';
 
@@ -94,7 +95,7 @@ test('five ordered cards, responsive stagger, reveal-once photos and viewport ca
   await expect(page.locator('#plan img').locator('..').first()).toHaveClass(
     /isRevealed/,
   );
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/plan-${width}.png`,
     scale: 'css',
   });

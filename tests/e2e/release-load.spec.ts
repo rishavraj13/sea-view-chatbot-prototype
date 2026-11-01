@@ -1,5 +1,5 @@
+import { writeArtifact } from './helpers/artifacts';
 import { expect, test } from '@playwright/test';
-import { writeFile } from 'node:fs/promises';
 import { HERO_IMAGE, KNOWLEDGE_UI } from '../../src/content';
 
 for (const path of ['/', '/knowledge']) {
@@ -75,7 +75,7 @@ for (const path of ['/', '/knowledge']) {
       expect(candidate).toBeGreaterThanOrEqual(Math.floor(required));
       expect(candidate).toBeLessThanOrEqual(Math.ceil(required * 1.1));
     }
-    await writeFile(
+    await writeArtifact(
       `docs/examples/release-readiness/load-${path === '/' ? 'home' : 'knowledge'}-${info.project.name.split(' ')[0]}.json`,
       JSON.stringify(
         {

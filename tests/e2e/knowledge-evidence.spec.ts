@@ -1,3 +1,4 @@
+import { captureViewport } from './helpers/artifacts';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import {
@@ -25,7 +26,7 @@ test('viewport captures and axe for Sources, Media, trace result and 429 countdo
   const width = page.viewportSize()!.width;
   const sources = await openKnowledge(page);
   await expect(sources.getByRole('article')).toHaveCount(18);
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/knowledge-sources-${width}.png`,
     scale: 'css',
   });
@@ -38,7 +39,7 @@ test('viewport captures and axe for Sources, Media, trace result and 429 countdo
       .getByRole('tabpanel', { name: KNOWLEDGE_UI.tabMedia, exact: true })
       .getByRole('article'),
   ).toHaveCount(3);
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/knowledge-media-${width}.png`,
     scale: 'css',
   });
@@ -51,7 +52,7 @@ test('viewport captures and axe for Sources, Media, trace result and 429 countdo
   await result
     .getByRole('heading', { name: KNOWLEDGE_COPY.tools, exact: true })
     .scrollIntoViewIfNeeded();
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/knowledge-trace-${width}.png`,
     scale: 'css',
   });
@@ -73,7 +74,7 @@ test('viewport captures and axe for Sources, Media, trace result and 429 countdo
     alert.getByRole('button', { name: retryLabel(12), exact: true }),
   ).toBeDisabled();
   await alert.scrollIntoViewIfNeeded();
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/knowledge-rate-limit-${width}.png`,
     scale: 'css',
   });

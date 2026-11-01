@@ -1,6 +1,6 @@
+import { captureViewport, writeArtifact } from './helpers/artifacts';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { writeFile } from 'node:fs/promises';
 import {
   CHAT_COPY,
   CHAT_UI,
@@ -19,7 +19,7 @@ test('viewport evidence: empty, media/source, mock strip and countdown; populate
   await expect(
     dialog.getByRole('group', { name: CHAT_COPY.suggestions }),
   ).toBeVisible();
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/chat-empty-${width}.png`,
     scale: 'css',
   });
@@ -46,12 +46,12 @@ test('viewport evidence: empty, media/source, mock strip and countdown; populate
     .locator('article[data-role="assistant"]')
     .last()
     .scrollIntoViewIfNeeded();
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/chat-media-${width}.png`,
     scale: 'css',
   });
   await expect(dialog.getByText(CHAT_COPY.mock, { exact: true })).toBeVisible();
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/chat-mock-${width}.png`,
     scale: 'css',
   });
@@ -70,7 +70,7 @@ test('viewport evidence: empty, media/source, mock strip and countdown; populate
       'tool-showVideo',
     ]),
   );
-  await writeFile(
+  await writeArtifact(
     `docs/examples/chat-runtime/requests-${width}.json`,
     JSON.stringify(
       {
@@ -97,7 +97,7 @@ test('viewport evidence: empty, media/source, mock strip and countdown; populate
   await sendQuestion(page, STARTER_PROMPTS[0]);
   await expect(dialog.getByRole('alert')).toBeVisible();
   await expect(dialog.getByRole('alert').getByRole('button')).toBeDisabled();
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/chat-rate-limit-${width}.png`,
     scale: 'css',
   });

@@ -1,3 +1,4 @@
+import { captureViewport } from './helpers/artifacts';
 import { expect, test } from '@playwright/test';
 import {
   HERO_IMAGE,
@@ -23,7 +24,7 @@ test('final home viewport evidence, top and scrolled plan', async ({
     });
   await positionHero(page, 0);
   const width = page.viewportSize()!.width;
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/release-home-${width}-top.png`,
     scale: 'css',
   });
@@ -62,7 +63,7 @@ test('final home viewport evidence, top and scrolled plan', async ({
       ),
     )
     .toBeCloseTo(passageProgress(geometry), 3);
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/release-home-${width}-scrolled.png`,
     scale: 'css',
   });
@@ -76,7 +77,7 @@ test('final mock chat reply viewport evidence', async ({ page }) => {
     dialog.getByRole('button', { name: CHAT_COPY.showFull, exact: true }),
   ).toBeVisible();
   await expect(dialog.getByText(CHAT_COPY.mock, { exact: true })).toBeVisible();
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/release-chat-${page.viewportSize()!.width}.png`,
     scale: 'css',
   });
@@ -88,7 +89,7 @@ test('final Knowledge mock trace viewport evidence', async ({ page }) => {
   await result
     .getByRole('heading', { name: KNOWLEDGE_COPY.tools, exact: true })
     .scrollIntoViewIfNeeded();
-  await page.screenshot({
+  await captureViewport(page, {
     path: `docs/screenshots/release-knowledge-trace-${page.viewportSize()!.width}.png`,
     scale: 'css',
   });
