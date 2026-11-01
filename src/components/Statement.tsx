@@ -2,15 +2,14 @@ import styles from './Statement.module.css';
 
 export function Statement() {
   return (
-    <section className={styles.section} aria-label="Experience overview">
+    <section className={styles.section} aria-label={STATEMENT_UI.label}>
       <div className={styles.hairline} aria-hidden="true" />
       <h2 className={styles.heading}>
-        The <span className="serif-italic">same</span> jump in every package.
+        <span className="serif-italic">{STATEMENT_UI.emphasis}</span>
+        {STATEMENT_UI.heading.slice(STATEMENT_UI.emphasis.length)}
       </h2>
-      <p className={styles.subline}>
-        Choose no cameras, instructor video and photos, or a personal cameraman.
-      </p>
     </section>
   );
 }
 
+import { STATEMENT_UI } from '@/content';

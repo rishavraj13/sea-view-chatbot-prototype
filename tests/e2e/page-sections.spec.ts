@@ -6,6 +6,8 @@ import {
   NAV_BREAKPOINT,
   PACKAGES,
   SITE_METADATA,
+  PACKAGE_UI,
+  STATEMENT_UI,
 } from '../../src/content';
 
 test.describe('Homepage layout and sections', () => {
@@ -18,11 +20,17 @@ test.describe('Homepage layout and sections', () => {
     await expect(skipLink).toBeAttached();
   });
 
-  test('2. renders header banner with viewport-aware navigation and action pill', async ({ page }, testInfo) => {
+  test('2. renders header banner with viewport-aware navigation and action pill', async ({
+    page,
+  }, testInfo) => {
     const header = page.getByRole('banner');
     await expect(header).toBeVisible();
-    await expect(header.getByRole('link', { name: HEADER_UI.brand, exact: true })).toBeVisible();
-    await expect(header.getByRole('link', { name: HEADER_UI.action, exact: true })).toBeVisible();
+    await expect(
+      header.getByRole('link', { name: HEADER_UI.brand, exact: true }),
+    ).toBeVisible();
+    await expect(
+      header.getByRole('link', { name: HEADER_UI.action, exact: true }),
+    ).toBeVisible();
     const width = testInfo.project.use.viewport?.width;
     expect(width).toBeDefined();
     for (const link of HEADER_UI.links) {
@@ -41,11 +49,17 @@ test.describe('Homepage layout and sections', () => {
     const hero = page.locator('section[aria-labelledby="hero-heading"]');
     await expect(hero).toBeVisible();
     const heroHeading = hero.getByRole('heading', { level: 1 });
-    await expect(heroHeading.getByText('Sea View', { exact: true })).toBeVisible();
-    await expect(heroHeading.locator('.echo-word')).toHaveText(SITE_METADATA.echoWord);
-    await expect(hero.getByText(SITE_METADATA.fromPrice, { exact: true })).toBeVisible();
     await expect(
-      hero.getByRole('link', { name: 'Watch the jump', exact: true })
+      heroHeading.getByText('Sea View', { exact: true }),
+    ).toBeVisible();
+    await expect(heroHeading.locator('.echo-word')).toHaveText(
+      SITE_METADATA.echoWord,
+    );
+    await expect(
+      hero.getByText(SITE_METADATA.fromPrice, { exact: true }),
+    ).toBeVisible();
+    await expect(
+      hero.getByRole('link', { name: 'Watch the jump', exact: true }),
     ).toBeVisible();
   });
 
@@ -59,16 +73,22 @@ test.describe('Homepage layout and sections', () => {
 
   test('5. renders hero photo band', async ({ page }) => {
     const photoBand = page.locator(
-      'img[alt="Tandem skydivers freefalling in open skies above the coastline"]'
+      'img[alt="Tandem skydivers freefalling in open skies above the coastline"]',
     );
     await expect(photoBand).toBeAttached();
   });
 
   test('6. renders experience statement overview', async ({ page }) => {
-    const statement = page.locator('section[aria-label="Experience overview"]');
+    const statement = page.getByRole('region', {
+      name: STATEMENT_UI.label,
+      exact: true,
+    });
     await expect(statement).toBeVisible();
     await expect(
-      statement.getByText('The same jump in every package.', { exact: false })
+      statement.getByRole('heading', {
+        name: STATEMENT_UI.heading,
+        exact: true,
+      }),
     ).toBeVisible();
   });
 
@@ -79,11 +99,11 @@ test.describe('Homepage layout and sections', () => {
     await expect(packages).toBeVisible();
     for (const pkg of PACKAGES) {
       await expect(
-        packages.getByRole('heading', { name: pkg.name, exact: true })
+        packages.getByRole('heading', { name: pkg.name, exact: true }),
       ).toBeVisible();
     }
     await expect(
-      packages.getByText('Included in every package:', { exact: true })
+      packages.getByText(PACKAGE_UI.inclusions, { exact: true }),
     ).toBeVisible();
   });
 
@@ -91,7 +111,7 @@ test.describe('Homepage layout and sections', () => {
     const plan = page.locator('#plan');
     await expect(plan).toBeVisible();
     await expect(
-      plan.getByText('Five steps, from check-in to landing', { exact: true })
+      plan.getByText('Five steps, from check-in to landing', { exact: true }),
     ).toBeVisible();
   });
 
@@ -99,7 +119,7 @@ test.describe('Homepage layout and sections', () => {
     const faq = page.locator('#faq');
     await expect(faq).toBeVisible();
     await expect(
-      faq.getByRole('heading', { name: 'Good to know', exact: true })
+      faq.getByRole('heading', { name: 'Good to know', exact: true }),
     ).toBeVisible();
   });
 
@@ -107,23 +127,23 @@ test.describe('Homepage layout and sections', () => {
     page,
   }) => {
     const whereAndWho = page.locator(
-      'section[aria-labelledby="location-heading"]'
+      'section[aria-labelledby="location-heading"]',
     );
     await expect(whereAndWho).toBeVisible();
     await expect(
-      whereAndWho.getByText(LOCATION_INFO.title, { exact: true })
+      whereAndWho.getByText(LOCATION_INFO.title, { exact: true }),
     ).toBeVisible();
     await expect(
-      whereAndWho.getByText(LOCATION_INFO.spot, { exact: true })
+      whereAndWho.getByText(LOCATION_INFO.spot, { exact: true }),
     ).toBeVisible();
     await expect(
-      whereAndWho.getByText(LOCATION_INFO.address, { exact: true })
+      whereAndWho.getByText(LOCATION_INFO.address, { exact: true }),
     ).toBeVisible();
     await expect(
-      whereAndWho.getByText(LOCATION_INFO.operatorTitle, { exact: true })
+      whereAndWho.getByText(LOCATION_INFO.operatorTitle, { exact: true }),
     ).toBeVisible();
     await expect(
-      whereAndWho.getByText(LOCATION_INFO.operator, { exact: true })
+      whereAndWho.getByText(LOCATION_INFO.operator, { exact: true }),
     ).toBeVisible();
   });
 
@@ -135,12 +155,12 @@ test.describe('Homepage layout and sections', () => {
     await expect(
       footer.getByText('Assignment prototype. No real bookings or payments.', {
         exact: true,
-      })
+      }),
     ).toBeVisible();
     await expect(
       footer.getByText('Photography and content © Greedy Adventures', {
         exact: true,
-      })
+      }),
     ).toBeVisible();
   });
 
@@ -148,10 +168,10 @@ test.describe('Homepage layout and sections', () => {
     page,
   }) => {
     const scrollWidth = await page.evaluate(
-      () => document.documentElement.scrollWidth
+      () => document.documentElement.scrollWidth,
     );
     const clientWidth = await page.evaluate(
-      () => document.documentElement.clientWidth
+      () => document.documentElement.clientWidth,
     );
     expect(scrollWidth).toBeLessThanOrEqual(clientWidth + 1);
 

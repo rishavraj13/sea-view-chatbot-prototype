@@ -1,4 +1,12 @@
 export { HEADER_UI } from './navigation';
+export {
+  ERROR_MESSAGES,
+  PACKAGE_UI,
+  packageAskLabel,
+  packageQuestion,
+  STATEMENT_UI,
+  TRACE_UI,
+} from './foundation';
 
 export interface Package {
   readonly id: 'eco' | 'deluxe' | 'vip';
@@ -196,7 +204,6 @@ export const CHAT_UI = {
   sendButton: 'Send',
   newConversation: 'New conversation',
   closeButton: 'Close chat',
-  askPackagePre: 'Ask about this package',
 } as const;
 
 export const KNOWLEDGE_UI = {

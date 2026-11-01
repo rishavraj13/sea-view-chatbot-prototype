@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
-import { CHAT_UI, STARTER_PROMPTS } from '../../src/content';
+import {
+  CHAT_UI,
+  PACKAGES,
+  packageAskLabel,
+  packageQuestion,
+  STARTER_PROMPTS,
+} from '../../src/content';
 
 test.describe('Chat modal and conversation flows', () => {
   test('launcher pill appears on both routes and opens native modal dialog', async ({
@@ -55,7 +61,7 @@ test.describe('Chat modal and conversation flows', () => {
   }) => {
     await page.goto('/');
     const askButton = page.getByRole('button', {
-      name: 'Ask about this package (ECO) →',
+      name: packageAskLabel(PACKAGES[0]!.name),
       exact: true,
     });
     await askButton.click();
@@ -64,7 +70,7 @@ test.describe('Chat modal and conversation flows', () => {
     await expect(dialog).toBeVisible();
 
     const composer = dialog.locator('#chat-composer');
-    await expect(composer).toHaveValue('Tell me about the ECO package.');
+    await expect(composer).toHaveValue(packageQuestion(PACKAGES[0]!.name));
 
     // Ensure it did not auto-send (no assistant bubble or loading skeleton)
     const messages = dialog.locator('article, div[role="status"]');
@@ -75,10 +81,12 @@ test.describe('Chat modal and conversation flows', () => {
     page,
   }) => {
     await page.goto('/');
-    await page.getByRole('button', {
-      name: CHAT_UI.launcher,
-      exact: true,
-    }).click();
+    await page
+      .getByRole('button', {
+        name: CHAT_UI.launcher,
+        exact: true,
+      })
+      .click();
 
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();
@@ -94,36 +102,40 @@ test.describe('Chat modal and conversation flows', () => {
     await expect(
       dialog.getByText('Mock mode: scripted answers, not a live model', {
         exact: true,
-      })
+      }),
     ).toBeVisible({ timeout: 10000 });
     await expect(dialog.getByText('PDF', { exact: true })).toBeVisible({
       timeout: 10000,
     });
     await expect(
-      dialog.getByRole('link', { name: 'Open', exact: true })
+      dialog.getByRole('link', { name: 'Open', exact: true }),
     ).toBeVisible();
     await expect(
-      dialog.getByRole('link', { name: 'Download', exact: true })
+      dialog.getByRole('link', { name: 'Download', exact: true }),
     ).toBeVisible();
     await expect(dialog.locator('video')).toBeVisible();
 
     // 2. New conversation resets state
-    await dialog.getByRole('button', {
-      name: CHAT_UI.newConversation,
-      exact: true,
-    }).click();
+    await dialog
+      .getByRole('button', {
+        name: CHAT_UI.newConversation,
+        exact: true,
+      })
+      .click();
     await expect(
-      dialog.getByRole('button', { name: STARTER_PROMPTS[0], exact: true })
+      dialog.getByRole('button', { name: STARTER_PROMPTS[0], exact: true }),
     ).toBeVisible();
     await expect(dialog.locator('video')).toHaveCount(0);
   });
 
   test('captures open chat dialog screenshot', async ({ page }) => {
     await page.goto('/');
-    await page.getByRole('button', {
-      name: CHAT_UI.launcher,
-      exact: true,
-    }).click();
+    await page
+      .getByRole('button', {
+        name: CHAT_UI.launcher,
+        exact: true,
+      })
+      .click();
     const dialog = page.getByRole('dialog');
     await expect(dialog).toBeVisible();
 

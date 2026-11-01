@@ -26,9 +26,3 @@
   max-width: 800px;
 }
 
-.subline {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--muted);
-  max-width: 580px;
-  line-height: 1.6;
-}

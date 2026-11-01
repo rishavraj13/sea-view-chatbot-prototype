@@ -1,5 +1,13 @@
 # Testing and capture verification
 
+## Frontend foundation pass 1 (2026-11-02)
+
+Use MODEL_MODE=mock for local checks; never start a live-mode server for frontend tests. Confirm ports 3000 and 3100 are free before and after each run, set GIT_PAGER=cat, and run commands serially. Playwright starts its own production server on 3100 with reuseExistingServer:false, 15s test/5s expect timeouts, no retries and unconditional forbidOnly:true.
+
+Foundation coverage: `npx playwright test tests/e2e/foundation.spec.ts` checks Chromium platform font identity/custom-font status, a non-zero square Step 5 at each project's width (1440/768/390), and exact 768/767 header visibility/overflow boundaries. `tests/e2e/page-sections.spec.ts` bases navigation visibility on the project's viewport. Package-prefill e2e imports shared accessible-name and prompt helpers from src/content. `npm run test` includes the source-supported Statement parity case and all unchanged server tests.
+
+The shared error messages and trace labels are prepared in src/content/foundation.ts for a later pass; error rendering and knowledge media/trace behavior/specs have not been fixed or weakened here. See frontend-foundation-report.md for command output and the final matrix.
+
 Required offline checks: npm run typecheck, npm run lint, npm test, npm run build, npm run format:check. Tests live under tests/server mirroring server modules. tests/setup.ts explicitly selects mock mode and blank keys. MOCK language-provider/HTTP tests exercise the live code path without network access; these are not real-provider success claims.
 
 ## Retrieval quality

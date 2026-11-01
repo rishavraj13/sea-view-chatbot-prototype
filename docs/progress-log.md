@@ -1,5 +1,9 @@
 # Progress log
 
+## 2026-11-02 — Frontend foundation F: shared copy and factual statement
+
+The camera-choice sentence is absent from data/knowledge; removed it and its unused style. Statement now uses the exact jump-facts line, covered by parity and rendered-markup assertions. Shared package labels/prefill helpers drive component and chat e2e accessible-name expectations (ECO name, no hidden arrow). Header and touched package/statement copy are in src/content. Added five frontend-safe error messages (owner delegated the wording choice) and trace labels as constants only; error mapping/runtime and TraceTab behavior/specs are deliberately untouched. Full unit suite **464/464**, 39 files, exit 0 (3.83s). Ports free before/after formatting and tests. No facts, backend files or API contracts changed.
+
 ## 2026-11-02 — Frontend foundation E: inclusive nav breakpoint
 
 Header links now show at >=768px and hide at <=767px; compact spacing/type at 768–1023px keeps the four existing links and action pill within the header. Shared header copy moved to src/content/navigation.ts. Nav spec reads the project's viewport; added explicit 768/767 boundary and overflow assertions. Build exited 0; header e2e **9/9 passed** on Desktop/Tablet/Mobile, including the untouched knowledge header test. Ports free before/after both runs.

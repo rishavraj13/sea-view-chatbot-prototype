@@ -9,6 +9,7 @@ import {
   PACKAGES,
   PLAN_STEPS,
   SITE_METADATA,
+  STATEMENT_UI,
 } from '@/content';
 
 interface ManifestItem {
@@ -40,6 +41,12 @@ function loadManifest(): ManifestItem[] {
 }
 
 describe('Content and Knowledge parity', () => {
+  it('renders only the source-supported statement without camera-entitlement claims', () => {
+    expect(loadKnowledge('jump-facts').text.split('\n')).toContain(
+      STATEMENT_UI.heading,
+    );
+    expect(STATEMENT_UI.heading.startsWith(STATEMENT_UI.emphasis)).toBe(true);
+  });
   it('matches package names, taglines, prices and inclusions with data/knowledge', () => {
     const ecoData = loadKnowledge('eco');
     const deluxeData = loadKnowledge('deluxe');
@@ -125,4 +132,3 @@ describe('Content and Knowledge parity', () => {
     expect(lowerText).toContain(HERO_FACTS[2].label.toLowerCase());
   });
 });
-

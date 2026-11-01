@@ -7,13 +7,24 @@ import { ThePlan } from '@/components/ThePlan';
 import { Faq } from '@/components/Faq';
 import { WhereAndWho } from '@/components/WhereAndWho';
 import { Footer } from '@/components/Footer';
-import { FAQS, INCLUSIONS, LOCATION_INFO, PACKAGES, PLAN_STEPS } from '@/content';
+import {
+  FAQS,
+  INCLUSIONS,
+  LOCATION_INFO,
+  PACKAGES,
+  PACKAGE_UI,
+  PLAN_STEPS,
+  STATEMENT_UI,
+} from '@/content';
 
 describe('Statement section', () => {
-  it('renders statement heading with serif italic and subline', () => {
+  it('renders the source-supported statement with serif italic and no unsupported subline', () => {
     const html = renderToStaticMarkup(<Statement />);
-    expect(html).toContain('The <span class="serif-italic">same</span> jump in every package.');
-    expect(html).toContain('Choose no cameras, instructor video and photos, or a personal cameraman.');
+    expect(html).toContain(
+      `<span class="serif-italic">${STATEMENT_UI.emphasis}</span>`,
+    );
+    expect(html.replace(/<[^>]+>/g, '')).toContain(STATEMENT_UI.heading);
+    expect(html).not.toContain('<p');
   });
 });
 
@@ -29,11 +40,11 @@ describe('Packages section', () => {
       expect(html).toContain(pkg.name);
       expect(html).toContain(pkg.tagline);
       expect(html).toContain(pkg.price);
-      expect(html).toContain('Ask about this package');
+      expect(html).toContain(PACKAGE_UI.ask);
       expect(html).toContain(`(${pkg.name})`);
     }
 
-    expect(html).toContain('Included in every package:');
+    expect(html).toContain(PACKAGE_UI.inclusions);
     for (const inc of INCLUSIONS) {
       expect(html).toContain(inc);
     }
@@ -81,9 +92,13 @@ describe('WhereAndWho section', () => {
 describe('Footer component', () => {
   it('renders dark footer with 4 columns, prototype notice, demo links, and credits', () => {
     const html = renderToStaticMarkup(<Footer />);
-    expect(html).toContain('Assignment prototype. No real bookings or payments.');
+    expect(html).toContain(
+      'Assignment prototype. No real bookings or payments.',
+    );
     expect(html).toContain('https://sea-view-chatbot-prototype.vercel.app');
-    expect(html).toContain('https://sea-view-chatbot-prototype-mock.vercel.app');
+    expect(html).toContain(
+      'https://sea-view-chatbot-prototype-mock.vercel.app',
+    );
     expect(html).toContain('Knowledge view');
     expect(html).toContain('Photography and content © Greedy Adventures');
     expect(html).toContain('https://www.greedyadventures.com/contact');

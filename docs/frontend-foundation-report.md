@@ -107,3 +107,21 @@ npx playwright test --grep "header"
 ```
 
 Each project's additional boundary test checks header scrollWidth <= clientWidth and every visible link lies inside the viewport. Ports free before/after build and browser run.
+
+## F: Shared content
+
+No camera-choice statement exists in the captured knowledge. Removed the unsupported sentence; the remaining statement is the exact jump-facts sentence "Same aircraft, altitude and instructors in every package". A new parity case checks the entire line and italic-prefix consistency. Rendering test requires that heading and the absence of the old paragraph.
+
+Header/package/statement copy lives in src/content; package accessible-name and prefill helpers are shared by component/test. The ask-button name contains the package name but no aria-hidden arrow. Five error strings and future trace labels are added to content only; the owner delegated the error wording choice. The existing error mapper/runtime and knowledge media/trace specs remain untouched.
+
+```text
+npm run test
+> vitest run
+RUN v5.0.5 C:/assignment
+Test Files 39 passed (39)
+Tests 464 passed (464)
+Duration 3.83s
+Exit 0
+```
+
+Ports 3000/3100 free before/after formatting and unit checks.
