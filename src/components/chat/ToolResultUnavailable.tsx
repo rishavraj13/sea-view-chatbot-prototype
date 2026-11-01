@@ -7,3 +7,4 @@ export function ToolResultUnavailable() {
     </p>
   );
 }
+

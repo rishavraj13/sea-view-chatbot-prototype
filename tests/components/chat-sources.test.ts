@@ -46,3 +46,4 @@ describe('Chat sources deduplication and labelling', () => {
     expect(chips[0]!.label).not.toContain('Section title');
   });
 });
+

@@ -178,5 +178,27 @@ Final release verification passed: typecheck, lint, all 435 tests in 31 files an
    - Added unit and RTL tests: `chat-sources.test.ts` (page deduplication and labelling), `chat-errors.test.ts` (typed error parsing and messages from real 429 fixtures), `chat-tool-cards.test.tsx` (brochure, video, unavailable renderers), `chat-composer.test.tsx` (keyboard handlers, maxLength, disabled states).
    - All 458 tests pass across 38 files. Typecheck, lint, and production build exit 0.
 
+## 2026-11-01 — Knowledge view route and tests (Milestone 4)
+
+1. **Route "/knowledge" implementation**:
+   - Created `src/app/knowledge/page.tsx` with `KnowledgeHeader`, accessible `KnowledgeTabs`, and dark `Footer`.
+   - `SourcesTab.tsx`: Queries `GET /api/knowledge/sources`, renders title, external link, capture date (`2026-10-31`), demo material badges, and full usable text inside native `<details>`.
+   - `MediaTab.tsx`: Renders PDF and video assets with types, availability chips ("Available" vs "Unavailable"), and demo material tags.
+   - `TraceTab.tsx`: Labelled form targeting `POST /api/knowledge/trace` with 5 starter preset buttons, optional earlier turns inputs (separate user and assistant text fields, not raw JSON), and submit button: "Run test (calls the model when the server runs in live mode)".
+   - Structured trace output displaying in exact required sequence:
+     1. Question
+     2. Retrieval query
+     3. Chunks passed to model (with similarity score, external URL link, full text in `<details>`)
+     4. Tools selected
+     5. Media resolved
+     6. Answer text and citations
+     7. Chips: mode (`mock`/`live`), provider, modelId
+     8. Exact required line: "Output from the real pipeline"
+   - Implemented loading, empty, and typed-error states matching chat error handling.
+2. **Verification**:
+   - Added `tests/components/knowledge-view.test.tsx` verifying Sources, Media, and Trace rendering against real captured JSON fixtures (`docs/examples/real-knowledge/sources.json` and `trace-vip.json`).
+   - All 461 tests pass across 39 files. Production build generates static `/` and `/knowledge` routes cleanly.
+
+
 
 

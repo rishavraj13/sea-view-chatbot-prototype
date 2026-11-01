@@ -66,3 +66,4 @@ describe('ChatComposer component', () => {
     expect(sendBtn.hasAttribute('disabled')).toBe(true);
   });
 });
+

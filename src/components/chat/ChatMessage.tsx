@@ -93,3 +93,4 @@ export function ChatMessage({ message }: ChatMessageProps) {
     </div>
   );
 }
+

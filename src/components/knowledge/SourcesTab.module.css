@@ -1,0 +1,94 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.externalLink {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+}
+
+.externalLink:hover {
+  color: var(--muted);
+}
+
+.demoBadge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.details {
+  border-top: 1px solid var(--hair);
+  padding-top: 10px;
+}
+
+.summary {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+  padding: 4px 0;
+}
+
+.summary:hover {
+  color: var(--ink);
+}
+
+.textBlock {
+  margin-top: 8px;
+  padding: 12px;
+  background-color: var(--bg);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+

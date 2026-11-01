@@ -32,3 +32,4 @@ export function parseErrorResponse(data: unknown): ChatErrorData {
     message: 'The model is temporarily unavailable.',
   };
 }
+

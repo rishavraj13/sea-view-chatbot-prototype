@@ -60,3 +60,4 @@ describe('Error mapping and typed error handling', () => {
     );
   });
 });
+

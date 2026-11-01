@@ -54,3 +54,4 @@ export interface PageSourceChip {
   readonly label: 'Sea View Skydiving page' | 'Cancellations page';
   readonly url: string;
 }
+
