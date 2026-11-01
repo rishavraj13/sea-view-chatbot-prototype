@@ -1,5 +1,7 @@
 export const CHAT_COPY = {
   title: 'Ask about your jump',
+  showFull: 'Show full answer',
+  showLess: 'Show less',
   subtitle: 'Answers come from greedyadventures.com',
   question: 'Ask a question',
   placeholder: 'Ask a question…',

@@ -242,3 +242,6 @@ release-keyboard.spec.ts and helpers/keyboard.ts drive real keyboard Tab/Enter/a
 release-load.spec.ts uses a fresh context and CDP cache-disabled transfer capture. It records initial response paths/encoded bytes and the image candidates after scrolling. Every plan image is bounded to within 10% above its physical slot requirement (normal optimizer bucket rounding). Evidence and exact outputs: examples/release-readiness; before/ retains the pre-fix 390px sample. The accurate sizes cover mobile frame padding, tablet columns and desktop overlaps/max-width.
 
 Lighthouse is not installed on PATH, in this repo or in the existing npm cache; installation is prohibited. Its required three-run medians and target scores are unavailable, not inferred from axe/CDP. This remains a release-verification gap; see frontend-release-report.md. No live API is used.
+
+
+Long assistant answers: assistant-answer.test.tsx verifies <=600 has no toggle, longer text remains byte-for-byte identical as DOM text when collapsed/expanded, and aria-controls/expanded plus escaped literal text. assistant-answer.spec.ts checks a real local MOCK response, 8-line clamp, expansion, collapse and source-chip visibility at every viewport. This is presentation only: request/history projection and backend generation are unchanged.

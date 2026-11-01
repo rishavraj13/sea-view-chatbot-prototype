@@ -7,6 +7,7 @@ import {
   type TextMessagePartProps,
 } from '@assistant-ui/react';
 import { CHAT_COPY } from '@/content';
+import { AssistantAnswer } from './AssistantAnswer';
 import { deduplicateSourcesByPage } from './source-utils';
 import { toolOutputSchema } from './schemas';
 import { ToolResultBrochure } from './ToolResultBrochure';
@@ -45,6 +46,10 @@ const mediaParts = {
 export function ChatMessage() {
   const message = useAuiState((state) => state.message);
   const user = message.role === 'user';
+  const text = message.parts
+    .filter((part) => part.type === 'text')
+    .map((part) => part.text)
+    .join('');
   const chips = deduplicateSourcesByPage(
     message.parts.flatMap((part) =>
       part.type === 'source' && part.sourceType === 'url'
@@ -66,7 +71,13 @@ export function ChatMessage() {
         className={`${styles.row} ${user ? styles.userRow : styles.assistantRow}`}
       >
         <div className={user ? styles.userBubble : styles.assistantText}>
-          <MessagePrimitive.Parts components={textParts} />
+          {user ? (
+            <MessagePrimitive.Parts components={textParts} />
+          ) : (
+            <AssistantAnswer text={text}>
+              <MessagePrimitive.Parts components={textParts} />
+            </AssistantAnswer>
+          )}
         </div>
         {!user &&
           message.parts.some(

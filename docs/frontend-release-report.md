@@ -61,3 +61,47 @@ Generating route types...
 ```
 
 Build passes; full output: quality-build.txt. Focused production-build e2e: 24 passed (21.0s), quality-e2e-final.txt. No retries or timeout changes.
+
+
+## Mock-answer readability commit
+
+Assistant text over 600 characters is clamped to 8 lines with shared Show full answer/Show less labels, aria-expanded and aria-controls. The complete original MessagePrimitive text stays in the same DOM, unmodified; source/tool parts are outside the disclosure. Short answers have no toggle. Unit tests cover the boundary, escaped literal markup and text identity in both states. Browser tests against the actual local mock answer verify eight-line height, expanded height, complete text identity and visible source chips. Initial test typing used Playwright’s exact option in Testing Library, which does not accept that option; corrected to its exact string-name match, without suppressions.
+
+### npm run typecheck
+
+```text
+> assignment@0.1.0 typecheck
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully
+```
+
+### npm run lint
+
+```text
+> assignment@0.1.0 lint
+> eslint . --max-warnings=0
+```
+
+### npm run test
+
+```text
+> assignment@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/assignment
+
+
+ Test Files  46 passed (46)
+      Tests  528 passed (528)
+   Start at  02:51:57
+   Duration  4.15s (import 43%, setup 23%, environment 15%, transform 9%, tests 9%, worker 1%)
+
+     Import  230 modules were evaluated 1824 times · 16.58s total, 43% of tracked time
+             ~519ms faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+```
+
+Build passes (clamp-build.txt); focused full-viewport browser check: 3 passed (4.5s), clamp-e2e.txt.

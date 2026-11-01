@@ -291,3 +291,8 @@ Frozen-path diff versus backend-v1 is empty. All 511 baseline lock entries retai
 ## 2026-11-02 — Frontend pass 5: quality fixes
 
 Measured baseline local cold loads, corrected plan photo sizes and optimizer candidate gaps, added canonical-free SEO metadata from existing page copy and repaired Knowledge h1→h3 jumps with tabpanel h2 headings. Added keyboard-only focus/details/dialog/tab/trace, reduced-motion/increased-contrast, heading/name and image-transfer checks. Typecheck/lint pass; all 526 unit tests pass; build passes; focused production-build mock e2e 24/24. Real output and before/after bytes: frontend-release-report.md and examples/release-readiness/. Lighthouse absent from installed tools/cache; no packages may be installed, so all requested Lighthouse medians/targets are explicitly unverified, a release gap. No live calls, backend/dependency edits or deployment; ports 3000/3100 free around runs.
+
+
+## 2026-11-02 — Frontend pass 5: mock answer disclosure
+
+Added presentation-only >600-character/8-line assistant answer disclosure, with shared labels and aria-expanded/controls. Full original Parts text remains unchanged in the DOM, history and runtime; sources/tools stay outside. Typecheck/lint pass, 528 unit tests (46 files) pass, build passes, three viewport e2e cases pass. Raw output pasted in frontend-release-report.md and stored under examples/release-readiness/clamp-*.txt. No live calls, dependency/backend edits or deployment; ports free around each run.

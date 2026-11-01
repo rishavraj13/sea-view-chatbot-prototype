@@ -1,0 +1,17 @@
+
+> assignment@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/assignment
+
+
+ Test Files  46 passed (46)
+      Tests  528 passed (528)
+   Start at  02:51:57
+   Duration  4.15s (import 43%, setup 23%, environment 15%, transform 9%, tests 9%, worker 1%)
+
+     Import  230 modules were evaluated 1824 times · 16.58s total, 43% of tracked time
+             ~519ms faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+
