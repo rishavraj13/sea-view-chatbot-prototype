@@ -1,0 +1,75 @@
+[WebServer] 
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer] 
+[WebServer] (node:12952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 114ms
+[WebServer] ✓ Running next.config.ts took 32ms
+
+Running 1 test using 1 worker
+
+(node:10736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+before screenshot {
+  rect: {
+    x: 0,
+    y: 0,
+    width: 1440,
+    height: 80,
+    top: 0,
+    right: 1440,
+    bottom: 80,
+    left: 0
+  },
+  style: 'sticky',
+  parent: 'BODY',
+  parentHeight: 6790.765625,
+  scrollY: 3607,
+  link: {
+    x: 104,
+    y: 26,
+    width: 145.09375,
+    height: 27,
+    top: 26,
+    right: 249.09375,
+    bottom: 53,
+    left: 104
+  },
+  opacity: '1',
+  hit: '<span>Greedy Adventures</span>'
+}
+after screenshot {
+  rect: {
+    x: 0,
+    y: 0,
+    width: 1440,
+    height: 80,
+    top: 0,
+    right: 1440,
+    bottom: 80,
+    left: 0
+  },
+  style: 'sticky',
+  parent: 'BODY',
+  parentHeight: 6790.765625,
+  scrollY: 3607,
+  link: {
+    x: 104,
+    y: 26,
+    width: 145.09375,
+    height: 27,
+    top: 26,
+    right: 249.09375,
+    bottom: 53,
+    left: 104
+  },
+  opacity: '1',
+  hit: '<span>Greedy Adventures</span>'
+}
+  ok 1 [Desktop Chrome] › .next\header-inspect.spec.ts:2:5 › inspect scrolled header (2.8s)
+
+  1 passed (4.5s)

@@ -20,7 +20,7 @@ export function Hero() {
             src={HERO_IMAGE.src}
             alt={HERO_IMAGE.alt}
             fill
-            priority
+            preload
             sizes="100vw"
           />
         </div>

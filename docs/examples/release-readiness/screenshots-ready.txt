@@ -1,0 +1,31 @@
+[WebServer] 
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer] 
+[WebServer] (node:29104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 108ms
+[WebServer] ✓ Running next.config.ts took 31ms
+
+Running 9 tests using 1 worker
+
+(node:3644) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [Desktop Chrome] › tests\e2e\release-screenshots.spec.ts:14:1 › final home viewport evidence, top and scrolled plan (2.3s)
+  ok 2 [Desktop Chrome] › tests\e2e\release-screenshots.spec.ts:71:1 › final mock chat reply viewport evidence (653ms)
+  ok 3 [Desktop Chrome] › tests\e2e\release-screenshots.spec.ts:85:1 › final Knowledge mock trace viewport evidence (465ms)
+(node:9500) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 [Tablet Chrome] › tests\e2e\release-screenshots.spec.ts:14:1 › final home viewport evidence, top and scrolled plan (2.2s)
+  ok 5 [Tablet Chrome] › tests\e2e\release-screenshots.spec.ts:71:1 › final mock chat reply viewport evidence (483ms)
+  ok 6 [Tablet Chrome] › tests\e2e\release-screenshots.spec.ts:85:1 › final Knowledge mock trace viewport evidence (445ms)
+(node:27884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 7 [Mobile Chrome] › tests\e2e\release-screenshots.spec.ts:14:1 › final home viewport evidence, top and scrolled plan (2.1s)
+  ok 8 [Mobile Chrome] › tests\e2e\release-screenshots.spec.ts:71:1 › final mock chat reply viewport evidence (477ms)
+  ok 9 [Mobile Chrome] › tests\e2e\release-screenshots.spec.ts:85:1 › final Knowledge mock trace viewport evidence (480ms)
+
+  9 passed (12.8s)

@@ -198,3 +198,77 @@ Generating route types...
              ~511ms faster with isolate: false — shared modules are evaluated once per worker instead of once per file
              learn more: https://vitest.dev/guide/improving-performance#test-isolation
 ```
+
+## Supported image preload and capture-state follow-up
+
+The installed Next image guide explicitly deprecates priority in Next 16 in favor of preload. Hero now uses preload (same intended high-priority image delivery); RevealImage's unused optional priority argument was removed, keeping plan images lazy. No dependency version or backend behavior changed.
+
+Final screenshot capture now asserts the card's --p equals the pure passage function after scrolling, rather than assuming the queued animation-frame update has happened. It adds a state-based readiness assertion, not a sleep or runtime sanitizer. Initial visual interpretation suggested a missing sticky header; a geometry/hit-target probe and decoded PNG sampling disproved that: the header is at y=0 and the brand region contains the same 665 dark pixels at top and scrolled states. No header runtime/CSS workaround was made. The assertion is retained as stronger capture readiness, not presented as a header bug fix. Raw local probe: header-inspect.txt; nine focused screenshot cases passed (12.8s) before the preload replacement.
+
+Actual follow-up offline gate:
+
+```text
+> assignment@0.1.0 verify:offline
+> npm run typecheck && npm run lint && npm test && npm run build
+
+
+> assignment@0.1.0 typecheck
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully
+
+> assignment@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+> assignment@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/assignment
+
+
+ Test Files  46 passed (46)
+      Tests  528 passed (528)
+   Start at  03:19:19
+   Duration  4.49s (import 41%, setup 23%, environment 16%, transform 10%, tests 8%, worker 1%)
+
+     Import  235 modules were evaluated 1889 times · 16.66s total, 41% of tracked time
+             ~507ms faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+
+
+> assignment@0.1.0 build
+> next build
+
+▲ Next.js 16.4.3 (Turbopack)
+- Environments: .env.local
+✓ Running next.config.ts took 22ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 280ms
+  Running TypeScript ...
+  Finished TypeScript in 2.1s ...
+  Collecting page data using 8 workers ...
+  Generating static pages using 8 workers (0/7) ...
+  Generating static pages using 8 workers (1/7)
+  Generating static pages using 8 workers (3/7)
+  Generating static pages using 8 workers (5/7)
+✓ Generating static pages using 8 workers (7/7) in 645ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/chat
+├ ƒ /api/knowledge/sources
+├ ƒ /api/knowledge/trace
+└ ○ /knowledge
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+```
+
+A complete final browser matrix is repeated after this compatible image-prop change. README/architecture/testing/verification now report known gaps rather than implying provider or Lighthouse certification.

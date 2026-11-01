@@ -9,7 +9,6 @@ interface RevealImageProps {
   alt: string;
   width: number;
   height: number;
-  priority?: boolean;
   className?: string;
   style?: React.CSSProperties;
   sizes?: string;
@@ -20,7 +19,6 @@ export function RevealImage({
   alt,
   width,
   height,
-  priority = false,
   className = '',
   style,
   sizes = '(max-width: 768px) 100vw, 1280px',
@@ -61,7 +59,6 @@ export function RevealImage({
           alt={alt}
           width={width}
           height={height}
-          priority={priority}
           sizes={sizes}
           className={styles.imageInner}
         />

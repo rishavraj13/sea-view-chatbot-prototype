@@ -7,6 +7,7 @@ import {
   CHAT_COPY,
 } from '../../src/content';
 import { positionHero } from './helpers/hero';
+import { passageProgress } from '../../src/components/scroll/progress';
 import { openChat, sendQuestion, waitForReply } from './helpers/chat';
 import { openKnowledge, runTrace } from './helpers/knowledge';
 
@@ -44,6 +45,23 @@ test('final home viewport evidence, top and scrolled plan', async ({
     }),
   );
   await expect(page.locator('#plan-heading')).toBeVisible();
+  const firstCard = page.locator('[data-plan-card]').first();
+  const geometry = await firstCard.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return {
+      scrollY,
+      top: rect.top + scrollY,
+      height: rect.height,
+      viewport: innerHeight,
+    };
+  });
+  await expect
+    .poll(() =>
+      firstCard.evaluate((element) =>
+        Number(element.style.getPropertyValue('--p')),
+      ),
+    )
+    .toBeCloseTo(passageProgress(geometry), 3);
   await page.screenshot({
     path: `docs/screenshots/release-home-${width}-scrolled.png`,
     scale: 'css',

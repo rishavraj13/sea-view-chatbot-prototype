@@ -1,5 +1,7 @@
 # Progress log
 
+Current implementation: frontend passes 1–5, with the frozen backend-v1 contract and verified dependency baseline. Earlier entries below are historical records of the state at that phase; “pending”, old counts and superseded implementation descriptions in those dated entries are not current claims. See frontend-release-report.md, architecture.md and testing.md for current verification and open gaps.
+
 ## 2026-11-02 — Frontend Pass 3 complete
 
 Final delivery packages raw typecheck/lint/unit/build and full e2e outputs, actual local MOCK contract captures and all requested viewport screenshots in frontend-knowledge-report.md / examples/knowledge-view. **512 unit tests (44 files), all 434 server cases included; 180/180 browser tests, 60 per viewport; typecheck/lint/build exit 0.** Every requested Desktop/Mobile image was opened and reviewed. No code change after the green full matrix. Baseline proof: 0 changed versions/integrity and 0 removed entries versus backend-v1 (157 frontend additions remain from Pass 1); ai 7.0.158 / gateway 4.0.131 / react adapter 4.0.162. Frozen-path diff empty; README and protected citation report untouched. All runs serial/mock-only with both ports free before/after. No installation, live provider call or deployment. Final commit: feat: knowledge view reflects the real trace contract.
@@ -298,3 +300,7 @@ Read-only npm audit: 17 moderate, zero high/critical; no dependency remediation 
 ## 2026-11-02 — Frontend pass 5: separate formatting
 
 Ran npm run format using explicit frozen-path/raw-example/protected-report exclusions. Only formatting plus the required verification record; no behavior/test assertion changes. Typecheck/lint pass, 528 unit tests pass. Exact output pasted in frontend-release-report.md and format-*.txt; frozen-path and lock/protected-report diffs empty. No installation, live request or deployment; ports free around runs.
+
+## 2026-11-02 — Frontend pass 5: image API and capture verification follow-up
+
+Followed the installed Next 16 image deprecation guide: Hero uses preload instead of priority; removed the unused optional RevealImage priority argument, preserving lazy plan photos. Added a passage-state assertion before scrolled screenshots, without sleeps. A suspected missing header was disproved by layout/hit-target and PNG pixel evidence; no header CSS workaround. verify:offline passes (typecheck/lint/528 unit tests/build). Full real output: preload-offline.txt and frontend-release-report.md. Full matrix repeated for the final state. No backend/dependency change, live call or deployment; ports free after runs.
