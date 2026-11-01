@@ -1,0 +1,38 @@
+{
+  "status": "not-run",
+  "reason": "Lighthouse is absent from PATH, project node_modules and existing npm _npx cache. Installs/new packages are forbidden. No substitute scores or changed throttling/audits.",
+  "pages": {
+    "/": {
+      "before": {
+        "runs": 0,
+        "Performance": null,
+        "Accessibility": null,
+        "Best Practices": null,
+        "SEO": null
+      },
+      "after": {
+        "runs": 0,
+        "Performance": null,
+        "Accessibility": null,
+        "Best Practices": null,
+        "SEO": null
+      }
+    },
+    "/knowledge": {
+      "before": {
+        "runs": 0,
+        "Performance": null,
+        "Accessibility": null,
+        "Best Practices": null,
+        "SEO": null
+      },
+      "after": {
+        "runs": 0,
+        "Performance": null,
+        "Accessibility": null,
+        "Best Practices": null,
+        "SEO": null
+      }
+    }
+  }
+}

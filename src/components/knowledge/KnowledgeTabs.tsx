@@ -87,6 +87,7 @@ export function KnowledgeTabs() {
           hidden={selected !== index}
           className={styles.tabPanel}
         >
+          <h2 className="sr-only">{tab.label}</h2>
           {tab.id === 'trace' ? (
             <TraceTab />
           ) : pending ? (

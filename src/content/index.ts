@@ -1,6 +1,6 @@
 export { HEADER_UI } from './navigation';
 export { HERO_UI, PLAN_UI, stepLabel } from './experience';
-export { KNOWLEDGE_COPY } from './knowledge';
+export { KNOWLEDGE_COPY, KNOWLEDGE_METADATA } from './knowledge';
 export {
   CHAT_COPY,
   retryLabel,
@@ -46,8 +46,7 @@ export interface FaqItem {
 
 export const SITE_METADATA = {
   title: 'Sea View Skydiving — Pattaya, Thailand | Greedy Adventures',
-  description:
-    'Tandem skydiving over Pattaya with stunning sea views. 13,000 ft exit altitude, ~60 s freefall, operated by Dropzone Thailand.',
+  description: 'Tandem jump over Pattaya.',
   kicker: 'Sea View · Pattaya, Thailand',
   heroHeading: 'Sea View Skydiving',
   echoWord: 'Skydiving',

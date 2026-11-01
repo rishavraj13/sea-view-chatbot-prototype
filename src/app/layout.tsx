@@ -31,6 +31,7 @@ const serifFont = localFont({
 export const metadata: Metadata = {
   title: SITE_METADATA.title,
   description: SITE_METADATA.description,
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

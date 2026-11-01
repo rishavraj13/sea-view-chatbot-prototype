@@ -4,6 +4,7 @@ import { stepLabel, type PlanStep } from '@/content';
 import { RevealImage } from './RevealImage';
 import { useScrollProgress } from './scroll/useScrollProgress';
 import styles from './ThePlan.module.css';
+import { planImageSizes } from './plan-image-sizes';
 
 export function PlanCard({ step }: { readonly step: PlanStep }) {
   const ref = useScrollProgress<HTMLLIElement>('passage');
@@ -21,7 +22,7 @@ export function PlanCard({ step }: { readonly step: PlanStep }) {
             <div className={styles.photo} data-plan-photo>
               <RevealImage
                 {...step.image}
-                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 40vw"
+                sizes={planImageSizes(step.stepNumber)}
               />
             </div>
           )}

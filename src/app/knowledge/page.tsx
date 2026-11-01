@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
+import { KNOWLEDGE_METADATA, KNOWLEDGE_UI } from '@/content';
 import { KnowledgeHeader } from '@/components/knowledge/KnowledgeHeader';
 import { KnowledgeTabs } from '@/components/knowledge/KnowledgeTabs';
 import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Knowledge & Pipeline Inspection — Sea View Skydiving',
-  description:
-    'Read-only inspection view of grounded website sources, registered media, and pipeline trace.',
+  title: KNOWLEDGE_METADATA.title,
+  description: KNOWLEDGE_UI.subtitle,
 };
 
 export default function KnowledgePage() {
@@ -20,4 +20,3 @@ export default function KnowledgePage() {
     </>
   );
 }
-

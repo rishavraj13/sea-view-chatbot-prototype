@@ -1,0 +1,43 @@
+[WebServer] 
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer] 
+[WebServer] (node:12996) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 110ms
+[WebServer] ✓ Running next.config.ts took 28ms
+
+Running 21 tests using 1 worker
+
+(node:18580) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [Desktop Chrome] › tests\e2e\release-keyboard.spec.ts:19:3 › keyboard-only order, focus, headings and accessible names: / (1.4s)
+  ok  2 [Desktop Chrome] › tests\e2e\release-keyboard.spec.ts:90:3 › skip link, reduced motion, increased contrast and metadata: / (340ms)
+  ok  3 [Desktop Chrome] › tests\e2e\release-keyboard.spec.ts:19:3 › keyboard-only order, focus, headings and accessible names: /knowledge (1.0s)
+  ok  4 [Desktop Chrome] › tests\e2e\release-keyboard.spec.ts:90:3 › skip link, reduced motion, increased contrast and metadata: /knowledge (283ms)
+  ok  5 [Desktop Chrome] › tests\e2e\release-keyboard.spec.ts:128:1 › Knowledge tabs and trace controls work using only the keyboard (329ms)
+  ok  6 [Desktop Chrome] › tests\e2e\release-load.spec.ts:6:3 › cold-load transfer and image selection: / (2.0s)
+  ok  7 [Desktop Chrome] › tests\e2e\release-load.spec.ts:6:3 › cold-load transfer and image selection: /knowledge (246ms)
+(node:21848) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  8 [Tablet Chrome] › tests\e2e\release-keyboard.spec.ts:19:3 › keyboard-only order, focus, headings and accessible names: / (1.4s)
+  ok  9 [Tablet Chrome] › tests\e2e\release-keyboard.spec.ts:90:3 › skip link, reduced motion, increased contrast and metadata: / (288ms)
+  ok 10 [Tablet Chrome] › tests\e2e\release-keyboard.spec.ts:19:3 › keyboard-only order, focus, headings and accessible names: /knowledge (1.1s)
+  ok 11 [Tablet Chrome] › tests\e2e\release-keyboard.spec.ts:90:3 › skip link, reduced motion, increased contrast and metadata: /knowledge (278ms)
+  ok 12 [Tablet Chrome] › tests\e2e\release-keyboard.spec.ts:128:1 › Knowledge tabs and trace controls work using only the keyboard (315ms)
+  ok 13 [Tablet Chrome] › tests\e2e\release-load.spec.ts:6:3 › cold-load transfer and image selection: / (2.0s)
+  ok 14 [Tablet Chrome] › tests\e2e\release-load.spec.ts:6:3 › cold-load transfer and image selection: /knowledge (254ms)
+(node:28840) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 15 [Mobile Chrome] › tests\e2e\release-keyboard.spec.ts:19:3 › keyboard-only order, focus, headings and accessible names: / (1.3s)
+  ok 16 [Mobile Chrome] › tests\e2e\release-keyboard.spec.ts:90:3 › skip link, reduced motion, increased contrast and metadata: / (288ms)
+  ok 17 [Mobile Chrome] › tests\e2e\release-keyboard.spec.ts:19:3 › keyboard-only order, focus, headings and accessible names: /knowledge (1.1s)
+  ok 18 [Mobile Chrome] › tests\e2e\release-keyboard.spec.ts:90:3 › skip link, reduced motion, increased contrast and metadata: /knowledge (281ms)
+  ok 19 [Mobile Chrome] › tests\e2e\release-keyboard.spec.ts:128:1 › Knowledge tabs and trace controls work using only the keyboard (301ms)
+  ok 20 [Mobile Chrome] › tests\e2e\release-load.spec.ts:6:3 › cold-load transfer and image selection: / (1.9s)
+  ok 21 [Mobile Chrome] › tests\e2e\release-load.spec.ts:6:3 › cold-load transfer and image selection: /knowledge (266ms)
+
+  21 passed (19.6s)

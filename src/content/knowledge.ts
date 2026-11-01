@@ -44,3 +44,7 @@ export const KNOWLEDGE_COPY = {
   status: 'Availability',
   resultRegion: 'Pipeline trace output',
 } as const;
+
+export const KNOWLEDGE_METADATA = {
+  title: 'Knowledge & Pipeline Inspection — Sea View Skydiving',
+} as const;

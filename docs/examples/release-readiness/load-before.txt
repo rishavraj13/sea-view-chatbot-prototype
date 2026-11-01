@@ -1,0 +1,20 @@
+[WebServer] 
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer] 
+[WebServer] (node:24844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 109ms
+[WebServer] ✓ Running next.config.ts took 29ms
+
+Running 2 tests using 1 worker
+
+(node:28924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [Mobile Chrome] › tests\e2e\release-load.spec.ts:6:3 › cold-load transfer and image selection: / (2.1s)
+  ok 2 [Mobile Chrome] › tests\e2e\release-load.spec.ts:6:3 › cold-load transfer and image selection: /knowledge (279ms)
+
+  2 passed (4.2s)
