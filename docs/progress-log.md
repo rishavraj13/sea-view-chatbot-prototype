@@ -155,4 +155,28 @@ Final release verification passed: typecheck, lint, all 435 tests in 31 files an
    - Added `tests/components/sections.test.tsx` verifying all rendered sections against constants and knowledge data.
    - Typecheck, lint, and all 447 tests pass. Next.js production build exits 0.
 
+## 2026-11-01 — Chat interface and test suite (Milestone 3)
+
+1. **Transport & Runtime**:
+   - Integrated AI SDK `DefaultChatTransport({ api: '/api/chat' })` preserving the exact `{ messages: UIMessage[] }` payload and streaming protocol. Runtime is hoisted above page content in `RootLayout` via `ChatProvider` to maintain conversation state across dialog toggles and route changes.
+2. **Component architecture**:
+   - `ChatLauncher.tsx`: Fixed bottom-right pill ("Ask about your jump", no icon) triggering `openChat()`.
+   - `ChatPanel.tsx`: Native `<dialog>` modal invoked via `.showModal()` for browser-native focus trap, `Esc` handling, and focus return. Responsive layout: 440px right-aligned sheet on desktop, full-screen on mobile.
+   - Header with "Ask about your jump", "Answers come from greedyadventures.com", "New conversation" reset, and close button.
+   - Persistent mock strip ("Mock mode: scripted answers, not a live model") whenever response metadata indicates `mode === 'mock'`.
+   - `ChatEmptyState.tsx`: 5 exact starter question chips as real `<button>` elements that send immediately on click.
+   - `ChatMessage.tsx`: User messages styled as ink pill-bubbles; assistant messages rendered as clean prose without `dangerouslySetInnerHTML`.
+   - `ToolResultBrochure.tsx`: PDF card with typographic "PDF" mark, title, "Demo material" badge when `isDemo`, "Open" and "Download" buttons.
+   - `ToolResultVideo.tsx`: 16:9 native `<video controls playsInline preload="none">` card; drops poster if `posterUrl` fails; on playback failure, renders "Watch on greedyadventures.com" external link.
+   - `ToolResultUnavailable.tsx`: Muted inline note ("That file isn't available right now.") preventing broken card display.
+   - Sources: Deduplicated by PAGE ("Sea View Skydiving page" or "Cancellations page"), rendered as outlined pill chips below the answer without parsing text.
+   - Loading: "Looking through the website…" with pulse skeleton; transitions to "Taking longer than usual" after 8 seconds.
+   - Errors & Countdown: Typed error handling (`RATE_LIMIT`, `TIMEOUT`, `MODEL_FAILURE`, `INVALID_INPUT`). On `RATE_LIMIT` with `retryAfterSeconds`, Retry button displays an active seconds countdown and disables until 0; without `retryAfterSeconds`, Retry is immediate.
+   - `ChatComposer.tsx`: Textarea with 4000 character limit, Enter to send, Shift+Enter for newline, disabled Send while loading or empty.
+   - ARIA live region (`aria-live="polite"`) announcing new assistant replies and errors.
+3. **Verification**:
+   - Added unit and RTL tests: `chat-sources.test.ts` (page deduplication and labelling), `chat-errors.test.ts` (typed error parsing and messages from real 429 fixtures), `chat-tool-cards.test.tsx` (brochure, video, unavailable renderers), `chat-composer.test.tsx` (keyboard handlers, maxLength, disabled states).
+   - All 458 tests pass across 38 files. Typecheck, lint, and production build exit 0.
+
+
 

@@ -1,0 +1,39 @@
+.launcher {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: var(--radius-pill);
+  background-color: var(--ink);
+  color: var(--bg);
+  box-shadow: 0 4px 16px rgba(20, 19, 17, 0.15);
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  min-height: 48px;
+}
+
+.launcher:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.launcher:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .launcher {
+    bottom: 16px;
+    right: 16px;
+    padding: 12px 20px;
+    font-size: 0.875rem;
+  }
+}
