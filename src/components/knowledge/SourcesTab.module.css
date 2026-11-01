@@ -23,7 +23,7 @@
 }
 
 .title {
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--ink);
@@ -84,7 +84,7 @@
   padding: 12px;
   background-color: var(--bg);
   border-radius: 4px;
-  font-family: var(--font-body);
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
   color: var(--ink);

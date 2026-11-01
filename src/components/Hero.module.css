@@ -15,7 +15,7 @@
 }
 
 .heading {
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(2.5rem, 7vw, 5.5rem);
   line-height: 0.95;
@@ -100,7 +100,7 @@
 }
 
 .factValue {
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(1.25rem, 2.5vw, 1.75rem);
   letter-spacing: -0.02em;

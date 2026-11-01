@@ -40,7 +40,7 @@
 }
 
 .title {
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 700;
   font-size: 1.125rem;
   letter-spacing: -0.02em;

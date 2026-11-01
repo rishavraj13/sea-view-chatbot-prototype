@@ -60,7 +60,7 @@
 }
 
 .textarea {
-  font-family: var(--font-body);
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 0.9375rem;
   padding: 12px 14px;
   border: 1px solid var(--hair);
@@ -98,7 +98,7 @@
 }
 
 .submitButton {
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-size: 0.9375rem;
   font-weight: 700;
   padding: 14px 24px;
@@ -132,7 +132,7 @@
 }
 
 .pipelineBanner {
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--accent);
@@ -164,7 +164,7 @@
 }
 
 .stepHeader {
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-size: 0.9375rem;
   font-weight: 700;
   text-transform: uppercase;

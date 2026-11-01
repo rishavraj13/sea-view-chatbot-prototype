@@ -16,7 +16,7 @@
 }
 
 .pdfBadge {
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   padding: 4px 8px;

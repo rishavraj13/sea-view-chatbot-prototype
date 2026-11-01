@@ -2,19 +2,19 @@
 
 ## Typography and font licensing
 
-### Font decision
-The design brief specifies:
-- Display: Clash Display 700 (or Familjen Grotesk via `next/font/google`).
-- Body: Satoshi 500/400 (or Instrument Sans via `next/font/google`).
-- Italic serif accent: Instrument Serif italic.
+### Font decision and bundled licences
 
-### License audit
-- **Clash Display & Satoshi**: Proprietary fonts designed and distributed by Indian Type Foundry (ITF) through Fontshare under the [ITF Free Font License](https://www.fontshare.com/licenses/itf-free-font-license).
-  Exact redistribution terms quoted from the license:
-  > "You cannot redistribute, sell, rent, lease, or give away the original font files (.otf, .ttf, .woff, etc.) publicly or to third parties. Do not upload ITF font files to other repositories, share them openly online, or hand the physical files to clients."
-  Because committing these font files into a public repository violates the redistribution prohibition of the ITF Free Font License, Clash Display and Satoshi binaries were removed from `public/fonts/`.
-- **Selected implementation**: In accordance with the project instructions, we use **Familjen Grotesk** (display, 700) and **Instrument Sans** (body, 400/500/700), paired with **Instrument Serif italic**. All three fonts are authored under the [SIL Open Font License, Version 1.1](https://scripts.sil.org/OFL), which explicitly permits font bundling and distribution with software. To guarantee deterministic, offline-capable builds without external network requests at build time, the OFL WOFF2 font files are self-hosted in `public/fonts/` and loaded via `next/font/local`.
-- **Instrument Serif Italic**: Authored by Rodrigo Fuenzalida / Instrument and licensed under the [SIL Open Font License, Version 1.1](https://scripts.sil.org/OFL). Bundled in `public/fonts/InstrumentSerif-Italic.woff2`.
+The implementation uses **Familjen Grotesk 700** for display, **Instrument Sans 400–700** for body copy, and **Instrument Serif italic 400** for accents. The three existing WOFF2 files remain self-hosted through `next/font/local`; builds need no font-service request. CSS uses the generated variables with system/Georgia fallbacks and never redeclares those variables in `:root`.
+
+Full SIL Open Font License 1.1 notices, copied from the upstream repositories on 2026-11-02:
+
+| Family | Bundled notice | Upstream |
+| --- | --- | --- |
+| Familjen Grotesk | [OFL](../public/fonts/licenses/FamiljenGrotesk-OFL.txt) | [Familjen-Sthlm](https://github.com/Familjen-Sthlm/Familjen-Grotesk/blob/master/OFL.txt) |
+| Instrument Sans | [OFL](../public/fonts/licenses/InstrumentSans-OFL.txt) | [Instrument](https://github.com/Instrument/instrument-sans/blob/master/OFL.txt) |
+| Instrument Serif | [OFL](../public/fonts/licenses/InstrumentSerif-OFL.txt) | [Instrument](https://github.com/Instrument/instrument-serif/blob/main/OFL.txt) |
+
+The Chromium e2e check inspects platform fonts for the hero heading and requires Familjen Grotesk with `isCustomFont:true`, rather than merely trusting the CSS family declaration.
 
 ## Palette & design tokens (Board G)
 

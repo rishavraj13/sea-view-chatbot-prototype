@@ -11,9 +11,6 @@
   --echo-3: #D3CFC8;
   --echo-4: #DCD9D2;
 
-  --font-display: 'Familjen Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
 
   --max-width: 1280px;
   --radius-pill: 9999px;
@@ -29,7 +26,7 @@
 }
 
 html {
-  font-family: var(--font-body);
+  font-family: var(--font-body), system-ui, sans-serif;
   background-color: var(--bg);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
@@ -147,7 +144,7 @@ button {
 /* Echo typography effect: 1 semantic element, fluid clamp, multi-stop shadow */
 .echo-word {
   display: inline-block;
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(3.25rem, 15vw, 12.25rem);
   line-height: 0.9;
@@ -164,7 +161,7 @@ button {
 
 /* Serif italic keyword accent */
 .serif-italic {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif), Georgia, serif;
   font-style: italic;
   font-weight: 400;
 }

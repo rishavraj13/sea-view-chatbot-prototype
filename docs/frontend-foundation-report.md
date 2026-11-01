@@ -54,3 +54,24 @@ Exit 0
 ```
 
 forbidOnly is unconditionally true; no process.env in Playwright config, no eslint-disable.
+
+## C: Font verification
+
+Removed :root font-variable overrides, retained local font files and next/font/local, and used generated variables with fallback stacks. Bundled upstream OFL notices and linked them in design-notes. No runtime packages or font binaries changed.
+
+```text
+> assignment@0.1.0 build
+> next build
+Next.js 16.4.3 (Turbopack)
+Compiled successfully in 1485ms
+Finished TypeScript in 3.8s
+Generating static pages using 8 workers (7/7) in 743ms
+Routes: /, /_not-found, /api/chat, /api/knowledge/sources, /api/knowledge/trace, /knowledge
+Exit 0
+
+npx playwright test tests/e2e/foundation.spec.ts --project="Desktop Chrome"
+ok hero renders the bundled Familjen Grotesk platform font (387ms)
+1 passed (2.2s)
+```
+
+CDP CSS.getPlatformFontsForNode requires every rendered font on the hero echo word to have familyName Familjen Grotesk and isCustomFont true. Both ports free before/after both runs. Only mock mode used.

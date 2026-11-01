@@ -13,7 +13,7 @@
 
 .textarea {
   flex: 1;
-  font-family: var(--font-body);
+  font-family: var(--font-body), system-ui, sans-serif;
   font-size: 0.9375rem;
   line-height: 1.45;
   color: var(--ink);
@@ -39,7 +39,7 @@
 }
 
 .sendButton {
-  font-family: var(--font-display);
+  font-family: var(--font-display), system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   text-transform: uppercase;
