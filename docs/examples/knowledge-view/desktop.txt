@@ -1,0 +1,40 @@
+[WebServer]
+[WebServer] > assignment@0.1.0 start
+[WebServer] > next start -H 127.0.0.1 -p 3100
+[WebServer]
+[WebServer] (node:30636) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] ▲ Next.js 16.4.3
+[WebServer] - Local:         http://127.0.0.1:3100
+[WebServer] - Network:       http://127.0.0.1:3100
+[WebServer] ✓ Ready in 106ms
+[WebServer] ✓ Running next.config.ts took 28ms
+
+Running 22 tests using 1 worker
+
+(node:26512) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › sources: rate-present uses product copy, countdown and Retry (458ms)
+  ok  2 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › sources: rate-absent uses product copy, countdown and Retry (367ms)
+  ok  3 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › sources: timeout uses product copy, countdown and Retry (373ms)
+  ok  4 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › sources: model-failure uses product copy, countdown and Retry (395ms)
+  ok  5 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › sources: invalid-input uses product copy, countdown and Retry (358ms)
+  ok  6 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › trace: rate-present uses product copy, countdown and Retry (533ms)
+  ok  7 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › trace: rate-absent uses product copy, countdown and Retry (486ms)
+  ok  8 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › trace: timeout uses product copy, countdown and Retry (452ms)
+  ok  9 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › trace: model-failure uses product copy, countdown and Retry (411ms)
+  ok 10 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:15:5 › trace: invalid-input uses product copy, countdown and Retry (448ms)
+  ok 11 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:86:1 › malformed JSON shapes show generic errors and recover on both endpoints (559ms)
+  ok 12 [Desktop Chrome] › tests\e2e\knowledge-errors.spec.ts:144:1 › empty catalog has explicit source and media empty states (299ms)
+  ok 13 [Desktop Chrome] › tests\e2e\knowledge-evidence.spec.ts:22:1 › viewport captures and axe for Sources, Media, trace result and 429 countdown (2.7s)
+  ok 14 [Desktop Chrome] › tests\e2e\knowledge-evidence.spec.ts:83:1 › Run trace is disabled while a request is pending (330ms)
+  ok 15 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:14:1 › header, exact tab names, counts and home footer targets (289ms)
+  ok 16 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:43:1 › sources: 18 sections, capture dates, safe links and expandable real text (322ms)
+  ok 17 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:62:1 › media: every actual manifest title, type, provenance and availability (303ms)
+  ok 18 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:99:1 › trace brochure: actual context, object tool call, demo receipt, citations area and metadata (382ms)
+  ok 19 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:158:1 › trace earlier turns: VIP-dependent follow-up, exact context and submitted history (393ms)
+  ok 20 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:189:1 › trace age limit: no context, empty chunks/tools/media and honest refusal (330ms)
+  ok 21 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:211:1 › earlier-turn pair validation sends no silently truncated history (348ms)
+  ok 22 [Desktop Chrome] › tests\e2e\knowledge.spec.ts:235:1 › ARIA tabs activate by arrows/Home/End and Tab enters the selected panel (330ms)
+
+  22 passed (13.0s)

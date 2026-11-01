@@ -1,0 +1,933 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\assignment\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/knowledge.spec.ts",
+      "tests/e2e/knowledge-errors.spec.ts",
+      "tests/e2e/knowledge-evidence.spec.ts",
+      "--project=Desktop Chrome",
+      "--reporter=list,json",
+      "--max-failures=5"
+    ],
+    "configFile": "C:\\assignment\\playwright.config.ts",
+    "rootDir": "C:/assignment/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 5,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/assignment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Desktop Chrome",
+        "name": "Desktop Chrome",
+        "testDir": "C:/assignment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 15000
+      },
+      {
+        "outputDir": "C:/assignment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Tablet Chrome",
+        "name": "Tablet Chrome",
+        "testDir": "C:/assignment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 15000
+      },
+      {
+        "outputDir": "C:/assignment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "C:/assignment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 15000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\assignment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "Desktop Chrome",
+        "testDir": "C:\\assignment\\tests\\e2e",
+        "snapshotDir": "C:\\assignment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 15000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3100",
+          "trace": "on-first-retry",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "Desktop Chrome"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run start -- -H 127.0.0.1 -p 3100",
+      "url": "http://127.0.0.1:3100",
+      "reuseExistingServer": false,
+      "timeout": 30000,
+      "stdout": "pipe",
+      "stderr": "pipe",
+      "env": {
+        "MODEL_MODE": "mock",
+        "PORT": "3100",
+        "HOSTNAME": "127.0.0.1"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "knowledge-errors.spec.ts",
+      "file": "knowledge-errors.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "sources: rate-present uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 458,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:25.626Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-6a59a3924a143a154819",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "sources: rate-absent uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 367,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:26.194Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-c9b122bdea7fe7e54b89",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "sources: timeout uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 373,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:26.568Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-62428fa4ad67a1d41d45",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "sources: model-failure uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:26.948Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-0fb7a0d5e6ebb61cb8d5",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "sources: invalid-input uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 358,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:27.349Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-48655c6d694326df950d",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "trace: rate-present uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 533,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:27.714Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-97f804c1ba57b8b103df",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "trace: rate-absent uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 486,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:28.253Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-044d6a39a654f974bb1d",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "trace: timeout uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 452,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:28.746Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-3bce9dbc43db9e640377",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "trace: model-failure uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 411,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:29.204Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-922620740a89742f60b1",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "trace: invalid-input uses product copy, countdown and Retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 448,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:29.620Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-2559a20abe7a631ee18d",
+          "file": "knowledge-errors.spec.ts",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "title": "malformed JSON shapes show generic errors and recover on both endpoints",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 559,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:30.075Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-16a5e5b998863ef87c69",
+          "file": "knowledge-errors.spec.ts",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "empty catalog has explicit source and media empty states",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 299,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:30.640Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "01c979f56710044fae47-b6ab4892c6df03a599a8",
+          "file": "knowledge-errors.spec.ts",
+          "line": 144,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "knowledge-evidence.spec.ts",
+      "file": "knowledge-evidence.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "viewport captures and axe for Sources, Media, trace result and 429 countdown",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2652,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:30.987Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f02acc16bd16f6efd954-73c596fcf4413cefeade",
+          "file": "knowledge-evidence.spec.ts",
+          "line": 22,
+          "column": 1
+        },
+        {
+          "title": "Run trace is disabled while a request is pending",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 330,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:33.645Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "f02acc16bd16f6efd954-a960f4d476f6d2a086d2",
+          "file": "knowledge-evidence.spec.ts",
+          "line": 83,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "knowledge.spec.ts",
+      "file": "knowledge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "header, exact tab names, counts and home footer targets",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 289,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:33.990Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0828a03cd0e93ee0ce1b-8527ef29245cb8018e68",
+          "file": "knowledge.spec.ts",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "sources: 18 sections, capture dates, safe links and expandable real text",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 322,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:34.285Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0828a03cd0e93ee0ce1b-5213d84fb25f092dc037",
+          "file": "knowledge.spec.ts",
+          "line": 43,
+          "column": 1
+        },
+        {
+          "title": "media: every actual manifest title, type, provenance and availability",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 303,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:34.613Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0828a03cd0e93ee0ce1b-db6040499bbc337d6738",
+          "file": "knowledge.spec.ts",
+          "line": 62,
+          "column": 1
+        },
+        {
+          "title": "trace brochure: actual context, object tool call, demo receipt, citations area and metadata",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 382,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:34.921Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0828a03cd0e93ee0ce1b-1f858d618654e1fd1ef5",
+          "file": "knowledge.spec.ts",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "trace earlier turns: VIP-dependent follow-up, exact context and submitted history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 393,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:35.309Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0828a03cd0e93ee0ce1b-33992fe47ef609ee59d8",
+          "file": "knowledge.spec.ts",
+          "line": 158,
+          "column": 1
+        },
+        {
+          "title": "trace age limit: no context, empty chunks/tools/media and honest refusal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 330,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:35.707Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0828a03cd0e93ee0ce1b-d00ae43b8610bf173d29",
+          "file": "knowledge.spec.ts",
+          "line": 189,
+          "column": 1
+        },
+        {
+          "title": "earlier-turn pair validation sends no silently truncated history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 348,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:36.043Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0828a03cd0e93ee0ce1b-882ad9ab4c1c5c6df856",
+          "file": "knowledge.spec.ts",
+          "line": 211,
+          "column": 1
+        },
+        {
+          "title": "ARIA tabs activate by arrows/Home/End and Tab enters the selected panel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 15000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "Desktop Chrome",
+              "projectName": "Desktop Chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 330,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-01T20:22:36.396Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "0828a03cd0e93ee0ce1b-d563819d6c5ddb0daa24",
+          "file": "knowledge.spec.ts",
+          "line": 235,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-01T20:22:24.012Z",
+    "duration": 12999.652,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

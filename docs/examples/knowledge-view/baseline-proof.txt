@@ -1,0 +1,9 @@
+Lock entries added vs backend-v1: 157 (all pre-existing from Pass 1)
+Existing version/integrity changes: 0
+Entries removed: 0
+Package.json and package-lock.json diff in Pass 3: empty
+Frozen-path diff against backend-v1: empty
+README and protected structured-citations report diff in Pass 3: empty
+ai: 7.0.158
+@ai-sdk/gateway: 4.0.131
+@ai-sdk/react: 4.0.162
