@@ -1,5 +1,9 @@
 # Progress log
 
+## 2026-11-02 — Frontend foundation B: strict lint configuration
+
+Replaced the Playwright process.env.CI read with unconditional forbidOnly:true. No lint suppression. npm run lint (eslint . --max-warnings=0) exited 0. Ports 3000/3100 free before and after. Existing timeout, mock webServer and reuseExistingServer:false settings unchanged.
+
 ## 2026-11-02 — Frontend foundation A: dependency baseline
 
 Approach **A** succeeded. Registry inspection found @ai-sdk/react 4.0.162 requires exactly ai 7.0.158 and satisfies the adapter's ^4.0.157 range. Restored the backend-v1 lockfile, declared that exact direct dependency and ran ordinary npm install. No overrides, forced/legacy resolution or manual lock edits. ADR 017 records the decision for the next runtime pass.

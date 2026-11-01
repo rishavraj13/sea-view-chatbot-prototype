@@ -42,3 +42,15 @@ After unit tests: ports 3000 and 3100 free
 ```
 
 434 unchanged server cases, scaffold 1, frontend/content 28. No provider calls; MODEL_MODE=mock. Later sections record the completed UI verification.
+
+## B: Lint
+
+```text
+Before lint: ports 3000 and 3100 free
+> assignment@0.1.0 lint
+> eslint . --max-warnings=0
+After lint: ports 3000 and 3100 free
+Exit 0
+```
+
+forbidOnly is unconditionally true; no process.env in Playwright config, no eslint-disable.
