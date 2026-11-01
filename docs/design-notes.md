@@ -8,11 +8,11 @@ The implementation uses **Familjen Grotesk 700** for display, **Instrument Sans 
 
 Full SIL Open Font License 1.1 notices, copied from the upstream repositories on 2026-11-02:
 
-| Family | Bundled notice | Upstream |
-| --- | --- | --- |
+| Family           | Bundled notice                                          | Upstream                                                                                 |
+| ---------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | Familjen Grotesk | [OFL](../public/fonts/licenses/FamiljenGrotesk-OFL.txt) | [Familjen-Sthlm](https://github.com/Familjen-Sthlm/Familjen-Grotesk/blob/master/OFL.txt) |
-| Instrument Sans | [OFL](../public/fonts/licenses/InstrumentSans-OFL.txt) | [Instrument](https://github.com/Instrument/instrument-sans/blob/master/OFL.txt) |
-| Instrument Serif | [OFL](../public/fonts/licenses/InstrumentSerif-OFL.txt) | [Instrument](https://github.com/Instrument/instrument-serif/blob/main/OFL.txt) |
+| Instrument Sans  | [OFL](../public/fonts/licenses/InstrumentSans-OFL.txt)  | [Instrument](https://github.com/Instrument/instrument-sans/blob/master/OFL.txt)          |
+| Instrument Serif | [OFL](../public/fonts/licenses/InstrumentSerif-OFL.txt) | [Instrument](https://github.com/Instrument/instrument-serif/blob/main/OFL.txt)           |
 
 The Chromium e2e check inspects platform fonts for the hero heading and requires Familjen Grotesk with `isCustomFont:true`, rather than merely trusting the CSS family declaration.
 
@@ -48,17 +48,15 @@ Foundation correction (2026-11-02): the Statement uses the captured jump-facts s
 
 All images are downloaded into `public/images/`, scaled to at most 1600px wide, and optimized for delivery with descriptive alt text and loading placeholders.
 
-| Asset | Local path | Dimensions | File size | Source URL | Descriptive alt text |
-|---|---|---|---|---|---|
-| Hero portal | `public/images/home-hero-skydivers.webp` | 1536 × 1024 | 109 KB | `https://www.greedyadventures.com/greedy/img/home/home-hero-skydivers.webp` | Tandem skydivers freefalling in open skies above the coastline |
-| Step 2 | `public/images/step-2.jpg` | 1365 × 2048 | 346 KB | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/sea-view-tandem-skydive-pattaya/108d38.jpg` | Skydiver having safety harness fitted during pre-jump briefing |
-| Step 3 | `public/images/step-3.webp` | 1600 × 1066 | 155 KB | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/apex-gallery/plane.webp` | Jump aircraft propeller and fuselage on the runway |
-| Step 4 | `public/images/step-4.webp` | 1600 × 1600 | 179 KB | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/apex-gallery/tandem-with-sea-view.webp` | Tandem skydivers in freefall with the sea and coastline below |
-| Step 5 | `public/images/step-5.jpg` | 1085 × 1018 | 196 KB | `https://www.greedyadventures.com/greedy/trips/tandem-canopy-landing-g0250281.jpg` | Tandem skydiver and instructor landing safely under open canopy |
+| Asset       | Local path                               | Dimensions  | File size | Source URL                                                                                                 | Descriptive alt text                                            |
+| ----------- | ---------------------------------------- | ----------- | --------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| Hero portal | `public/images/home-hero-skydivers.webp` | 1536 × 1024 | 109 KB    | `https://www.greedyadventures.com/greedy/img/home/home-hero-skydivers.webp`                                | Tandem skydivers freefalling in open skies above the coastline  |
+| Step 2      | `public/images/step-2.jpg`               | 1365 × 2048 | 346 KB    | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/sea-view-tandem-skydive-pattaya/108d38.jpg` | Skydiver having safety harness fitted during pre-jump briefing  |
+| Step 3      | `public/images/step-3.webp`              | 1600 × 1066 | 155 KB    | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/apex-gallery/plane.webp`                    | Jump aircraft propeller and fuselage on the runway              |
+| Step 4      | `public/images/step-4.webp`              | 1600 × 1600 | 179 KB    | `https://pub-89f493a2b50b4e43b99552a737bef138.r2.dev/offerings/apex-gallery/tandem-with-sea-view.webp`     | Tandem skydivers in freefall with the sea and coastline below   |
+| Step 5      | `public/images/step-5.jpg`               | 1085 × 1018 | 196 KB    | `https://www.greedyadventures.com/greedy/trips/tandem-canopy-landing-g0250281.jpg`                         | Tandem skydiver and instructor landing safely under open canopy |
 
-*Note: The video (`https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4`) is streamed via external URL and is never stored locally.*
-
-
+_Note: The video (`https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4`) is streamed via external URL and is never stored locally._
 
 ## Pass 4, commit 1: scroll portal
 
@@ -70,7 +68,6 @@ Each warm blend layer reaches .4 opacity; a fixed .45 ink scrim keeps the photog
 
 See frontend-scroll-report.md and examples/scroll-hero for screenshot measurements and the limits of the sampling method.
 
-
 ## Pass 4, commit 2: floating plan cards
 
 The plan is now an ol of five li cards in source order, replacing the old out-of-order pill/circle showcase. The first card is text-only, preserving check-in/photo-ID copy; all four original photographs remain. Step labels and heading/subtitle live in src/content. Each card uses --surface, --hair, 12px radius, 20px padding and the single shared --shadow-float token: 0 1px 2px rgba(20,19,17,.06), 0 24px 48px -24px rgba(20,19,17,.28). Hover strengthens the same warm shadow slightly and lifts the inner surface 6px; it reveals no content and creates no tab stop.
@@ -81,13 +78,12 @@ Drift amplitudes are 12/16/20/24/18px. The hook measures the untransformed li; a
 
 Desktop text has an additional 8px end gutter inside the standard 20px card padding: the 24px overlapping neighbour would otherwise cover up to 4px of copy. Titles/captions wrap before that overlap; photographs retain their full frame. A browser assertion checks caption clearance.
 
-
 Portal geometry at the tested widths:
 
-| Viewport | Base display size | Whole scale | Tracking in em | Word travel (each own width) |
-|---|---|---|---|---|
-| 390px | 32px (clamp minimum) | 1→1.1 | −.04→−.08 | 20% |
-| 768px | 46.08px (6vw) | 1→1.1 | −.04→−.08 | 30% |
-| 1440px | 86.4px (6vw) | 1→1.1 | −.04→−.08 | 50% |
+| Viewport | Base display size    | Whole scale | Tracking in em | Word travel (each own width) |
+| -------- | -------------------- | ----------- | -------------- | ---------------------------- |
+| 390px    | 32px (clamp minimum) | 1→1.1       | −.04→−.08      | 20%                          |
+| 768px    | 46.08px (6vw)        | 1→1.1       | −.04→−.08      | 30%                          |
+| 1440px   | 86.4px (6vw)         | 1→1.1       | −.04→−.08      | 50%                          |
 
 The base title occupies approximately 65% on mobile and 48% on tablet/desktop. Both the complete h1 and its independently translated words are measured in the viewport-bound assertions, rather than assuming the formula alone guarantees fit.

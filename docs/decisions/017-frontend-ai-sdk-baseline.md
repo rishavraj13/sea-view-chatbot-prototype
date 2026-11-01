@@ -9,16 +9,16 @@ The backend and both deployments use the backend-v1 lockfile: ai 7.0.158 and @ai
 Read-only npm registry checks returned this mapping:
 
 | @ai-sdk/react | dependencies.ai |
-| --- | --- |
-| 4.0.155 | 7.0.151 |
-| 4.0.156 | 7.0.152 |
-| 4.0.157 | 7.0.153 |
-| 4.0.158 | 7.0.154 |
-| 4.0.159 | 7.0.155 |
-| 4.0.160 | 7.0.156 |
-| 4.0.161 | 7.0.157 |
-| 4.0.162 | 7.0.158 |
-| 4.0.163 | 7.0.159 |
+| ------------- | --------------- |
+| 4.0.155       | 7.0.151         |
+| 4.0.156       | 7.0.152         |
+| 4.0.157       | 7.0.153         |
+| 4.0.158       | 7.0.154         |
+| 4.0.159       | 7.0.155         |
+| 4.0.160       | 7.0.156         |
+| 4.0.161       | 7.0.157         |
+| 4.0.162       | 7.0.158         |
+| 4.0.163       | 7.0.159         |
 
 @assistant-ui/react-ai-sdk 1.4.21 depends on @assistant-ui/ai-sdk ^0.0.16 and permits ai ^7.0.101. @assistant-ui/ai-sdk 0.0.16 depends on @ai-sdk/react ^4.0.157 and permits ai ^7.0.101. Both ranges admit the verified baseline.
 

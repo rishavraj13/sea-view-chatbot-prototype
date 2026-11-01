@@ -72,7 +72,9 @@
   font-size: 1.25rem;
   font-weight: 400;
   color: var(--muted);
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
   flex-shrink: 0;
   margin-left: 16px;
 }

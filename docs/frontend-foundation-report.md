@@ -207,12 +207,12 @@ The unit total is 434 unchanged server cases + 1 scaffold + 29 frontend/content 
 
 Command: `npx playwright test --project="Desktop Chrome" --project="Tablet Chrome" --project="Mobile Chrome" --reporter=list,json`.
 
-| Project | Passed | Failed | Skipped |
-| --- | ---: | ---: | ---: |
-| Desktop Chrome (1440×900) | 26 | 6 | 0 |
-| Tablet Chrome (768×1024) | 26 | 6 | 0 |
-| Mobile Chrome (390×844) | 26 | 6 | 0 |
-| Total | 78 | 18 | 0 |
+| Project                   | Passed | Failed | Skipped |
+| ------------------------- | -----: | -----: | ------: |
+| Desktop Chrome (1440×900) |     26 |      6 |       0 |
+| Tablet Chrome (768×1024)  |     26 |      6 |       0 |
+| Mobile Chrome (390×844)   |     26 |      6 |       0 |
+| Total                     |     78 |     18 |       0 |
 
 ```text
 18 failed

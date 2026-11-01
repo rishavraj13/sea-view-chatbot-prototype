@@ -48,8 +48,14 @@ export function RevealImage({
   }, []);
 
   return (
-    <div ref={containerRef} className={`${styles.wrapper} ${className}`} style={style}>
-      <div className={`${styles.revealContainer} ${revealed ? styles.isRevealed : ''}`}>
+    <div
+      ref={containerRef}
+      className={`${styles.wrapper} ${className}`}
+      style={style}
+    >
+      <div
+        className={`${styles.revealContainer} ${revealed ? styles.isRevealed : ''}`}
+      >
         <Image
           src={src}
           alt={alt}

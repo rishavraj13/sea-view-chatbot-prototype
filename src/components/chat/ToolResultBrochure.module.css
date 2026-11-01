@@ -75,7 +75,9 @@
   align-items: center;
   justify-content: center;
   min-height: 36px;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .button:hover {

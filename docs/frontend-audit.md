@@ -25,21 +25,21 @@ Supplemental read-only browser inspections blocked all non-local requests, used 
 
 ## Source and test map
 
-| Area | Implementation / boundary |
-| --- | --- |
-| / | src/app/page.tsx: Header, Hero, PhotoBand, Statement, Packages, ThePlan, Faq, WhereAndWho, Footer |
-| /knowledge | src/app/knowledge/page.tsx: KnowledgeHeader, KnowledgeTabs, Footer |
-| Root layout | src/app/layout.tsx: local-font declarations, global CSS, skip link, ChatProvider around server-rendered children, persistent ChatContainer |
-| Shared state/hooks | src/components/ChatContext.tsx: custom useChatDialog; other state/effects co-located in ChatPanel, TraceTab, KnowledgeTabs, RevealImage, ToolResultVideo and ChatComposer. No separate hooks directory |
-| Chat | src/components/chat/: custom conversation/controller, native dialog/composer, message projection, source helper, media cards, handwritten types and error parser |
-| Knowledge | src/components/knowledge/: source/media tabs, fetch state, trace form/results, handwritten response types |
-| Copy/data | src/content/index.ts: 214-line manually maintained constants/types, partial CHAT_UI/KNOWLEDGE_UI labels. Components still contain extensive copy |
-| Styles/tokens | src/app/globals.css plus 23 component CSS modules; tokens in :root, not a separate token package/directory |
-| Frozen backend | src/server, src/app/api, data, public/demo, scripts, tests/server; requested diff is empty |
-| Unit/content | tests/components (7 files), tests/content/parity.test.ts (6 parity cases), tests/scaffold.test.tsx; Vitest node default, jsdom annotation for composer, shared setup mocks fonts/keys |
-| Frozen tests | 30 tests/server files unchanged. Historical backend-v1 total 435 included one scaffold case; the frontend changes that scaffold's expected markup. The frozen server files account for 434 cases; 434 + scaffold 1 + frontend/content 28 = current 463 |
-| E2E | tests/e2e: accessibility (3), chat-errors (5), chat (5), knowledge (4), page-sections (12): 29 per project |
-| Browser matrix | Desktop Chrome 1440×900; Tablet Chrome 768×1024; Mobile Chrome uses Pixel 5 with viewport overridden to 390×844 and DPR 2.75 |
+| Area               | Implementation / boundary                                                                                                                                                                                                                                                                       |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| /                  | src/app/page.tsx: Header, Hero, PhotoBand, Statement, Packages, ThePlan, Faq, WhereAndWho, Footer                                                                                                                                                                                               |
+| /knowledge         | src/app/knowledge/page.tsx: KnowledgeHeader, KnowledgeTabs, Footer                                                                                                                                                                                                                              |
+| Root layout        | src/app/layout.tsx: local-font declarations, global CSS, skip link, ChatProvider around server-rendered children, persistent ChatContainer                                                                                                                                                      |
+| Shared state/hooks | src/components/ChatContext.tsx: custom useChatDialog; other state/effects co-located in ChatPanel, TraceTab, KnowledgeTabs, RevealImage, ToolResultVideo and ChatComposer. No separate hooks directory                                                                                          |
+| Chat               | src/components/chat/: custom conversation/controller, native dialog/composer, message projection, source helper, media cards, handwritten types and error parser                                                                                                                                |
+| Knowledge          | src/components/knowledge/: source/media tabs, fetch state, trace form/results, handwritten response types                                                                                                                                                                                       |
+| Copy/data          | src/content/index.ts: 214-line manually maintained constants/types, partial CHAT_UI/KNOWLEDGE_UI labels. Components still contain extensive copy                                                                                                                                                |
+| Styles/tokens      | src/app/globals.css plus 23 component CSS modules; tokens in :root, not a separate token package/directory                                                                                                                                                                                      |
+| Frozen backend     | src/server, src/app/api, data, public/demo, scripts, tests/server; requested diff is empty                                                                                                                                                                                                      |
+| Unit/content       | tests/components (7 files), tests/content/parity.test.ts (6 parity cases), tests/scaffold.test.tsx; Vitest node default, jsdom annotation for composer, shared setup mocks fonts/keys                                                                                                           |
+| Frozen tests       | 30 tests/server files unchanged. Historical backend-v1 total 435 included one scaffold case; the frontend changes that scaffold's expected markup. The frozen server files account for 434 cases; 434 + scaffold 1 + frontend/content 28 = current 463                                          |
+| E2E                | tests/e2e: accessibility (3), chat-errors (5), chat (5), knowledge (4), page-sections (12): 29 per project                                                                                                                                                                                      |
+| Browser matrix     | Desktop Chrome 1440×900; Tablet Chrome 768×1024; Mobile Chrome uses Pixel 5 with viewport overridden to 390×844 and DPR 2.75                                                                                                                                                                    |
 | Dependencies added | Runtime: @assistant-ui/react ^0.15.32, @assistant-ui/react-ai-sdk ^1.4.21. Dev: @axe-core/playwright ^4.14.0, @playwright/test ^1.64.1, @testing-library/jest-dom ^7.0.1, @testing-library/react ^16.3.3, @testing-library/user-event ^14.6.8, jsdom ^30.1.3. start/test:e2e scripts also added |
 
 No frontend runtime import from src/server was found. The matches under src/app are only the frozen API route imports. Server Components remain the default for layout/pages/static sections. Packages is client-rendered for its ask buttons; RevealImage and chat/knowledge interaction boundaries are clients. Passing server-rendered children through ChatProvider does not itself turn every page component into a Client Component.
@@ -48,28 +48,28 @@ The lockfile adds 157 package entries, removes none, and changes the two existin
 
 ## Current state by area
 
-| Area | Status | Evidence / practical result |
-| --- | --- | --- |
-| Homepage sections | Working | All requested structural sections exist and SSR/build succeeds; package/inclusion/plan/FAQ/location parity cases pass |
-| Factual copy discipline | Broken | Constants duplicate source facts rather than derive from JSON; Statement.tsx hard-codes "Choose no cameras, instructor video and photos..." outside src/content and implies a camera entitlement/exclusion not stated by the captured package inclusions |
-| Chat happy path | Working | Local mock both-media request returns 200, x-model-mode:mock, PDF/video cards, source chip and mock strip |
-| assistant-ui runtime | Missing | Packages installed but no frontend import/use of either assistant-ui package; custom React state is the runtime |
-| Typed errors/retry | Broken | Installed transport error has responseBody/statusCode, not response.json; API errors fall into generic MODEL_FAILURE. Countdown never receives the typed 429 delay |
-| Source/media rendering | Working, bounded | Structured source-url chips and correct final tool results render; source helper casts/substring URL matching and unsupported legacy branches remain risks |
-| /knowledge header/tabs/sources | Working | Targeted test finds h1 Knowledge Base, Sources/Media/Test a question and source catalog; trace action Run trace is visible after selecting its tab |
-| /knowledge media | Working UI / Broken test | UI uses actual manifest titles/availability/demo flags; test expects invented titles, wrong capitalization and an absent Official badge |
-| /knowledge trace | Broken | toolCalls typed string[] instead of objects, shows [object Object]; retrieval query repeats submitted question even for history; response.context is never rendered |
-| Automated unit/content checks | Working, incomplete coverage | 463/463 pass, but trace "render" test merely inspects JSON and does not render TraceTab |
-| Lint | Broken | playwright.config.ts:10 reads process.env.CI against the repository restriction |
-| Desktop e2e | Broken | Four typed-error tests plus package accessible-name test fail; cap prevents 18 other tests from running |
-| Responsive header test | Broken boundary | CSS hides links at <=768px; test treats >=768 as desktop. 390px test passes |
-| Accessibility | Working scoped checks / Missing coverage | Three empty/default Desktop axe tests and dialog keyboard focus/return pass; sr-only CSS, ARIA tab arrow/roving focus and populated/error/media states need work |
-| Palette | Working explicit CSS | Warm paper/ink/neutral shadows/ember; no explicit blue, teal, purple or cool-tinted gray declarations found |
-| Font rendering | Broken | next/font registers displayFont/bodyFont/serifFont; :root overwrites their variables with original family names. CDP reports actual hero Arial-BoldMT, isCustomFont:false |
-| Font provenance/licence packaging | Missing complete record | All three binaries have copyright and OFL URL metadata; no standalone OFL/license text is bundled. Full redistribution compliance cannot be established from the repo alone |
-| Image assets | Working | All five decoded successfully and are <=1600px wide; step-2 is already optimized |
-| Responsive Step 5 photo | Broken | .step5Circle is 0×0 at both 768px and 390px; width is auto with max-width:60vw and auto margins inside a flex column |
-| Documentation accuracy | Broken / stale | architecture and ai-assistance still describe frontend/knowledge as pending; progress claims font use/exact request shape not borne out by runtime evidence |
+| Area                              | Status                                   | Evidence / practical result                                                                                                                                                                                                                              |
+| --------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Homepage sections                 | Working                                  | All requested structural sections exist and SSR/build succeeds; package/inclusion/plan/FAQ/location parity cases pass                                                                                                                                    |
+| Factual copy discipline           | Broken                                   | Constants duplicate source facts rather than derive from JSON; Statement.tsx hard-codes "Choose no cameras, instructor video and photos..." outside src/content and implies a camera entitlement/exclusion not stated by the captured package inclusions |
+| Chat happy path                   | Working                                  | Local mock both-media request returns 200, x-model-mode:mock, PDF/video cards, source chip and mock strip                                                                                                                                                |
+| assistant-ui runtime              | Missing                                  | Packages installed but no frontend import/use of either assistant-ui package; custom React state is the runtime                                                                                                                                          |
+| Typed errors/retry                | Broken                                   | Installed transport error has responseBody/statusCode, not response.json; API errors fall into generic MODEL_FAILURE. Countdown never receives the typed 429 delay                                                                                       |
+| Source/media rendering            | Working, bounded                         | Structured source-url chips and correct final tool results render; source helper casts/substring URL matching and unsupported legacy branches remain risks                                                                                               |
+| /knowledge header/tabs/sources    | Working                                  | Targeted test finds h1 Knowledge Base, Sources/Media/Test a question and source catalog; trace action Run trace is visible after selecting its tab                                                                                                       |
+| /knowledge media                  | Working UI / Broken test                 | UI uses actual manifest titles/availability/demo flags; test expects invented titles, wrong capitalization and an absent Official badge                                                                                                                  |
+| /knowledge trace                  | Broken                                   | toolCalls typed string[] instead of objects, shows [object Object]; retrieval query repeats submitted question even for history; response.context is never rendered                                                                                      |
+| Automated unit/content checks     | Working, incomplete coverage             | 463/463 pass, but trace "render" test merely inspects JSON and does not render TraceTab                                                                                                                                                                  |
+| Lint                              | Broken                                   | playwright.config.ts:10 reads process.env.CI against the repository restriction                                                                                                                                                                          |
+| Desktop e2e                       | Broken                                   | Four typed-error tests plus package accessible-name test fail; cap prevents 18 other tests from running                                                                                                                                                  |
+| Responsive header test            | Broken boundary                          | CSS hides links at <=768px; test treats >=768 as desktop. 390px test passes                                                                                                                                                                              |
+| Accessibility                     | Working scoped checks / Missing coverage | Three empty/default Desktop axe tests and dialog keyboard focus/return pass; sr-only CSS, ARIA tab arrow/roving focus and populated/error/media states need work                                                                                         |
+| Palette                           | Working explicit CSS                     | Warm paper/ink/neutral shadows/ember; no explicit blue, teal, purple or cool-tinted gray declarations found                                                                                                                                              |
+| Font rendering                    | Broken                                   | next/font registers displayFont/bodyFont/serifFont; :root overwrites their variables with original family names. CDP reports actual hero Arial-BoldMT, isCustomFont:false                                                                                |
+| Font provenance/licence packaging | Missing complete record                  | All three binaries have copyright and OFL URL metadata; no standalone OFL/license text is bundled. Full redistribution compliance cannot be established from the repo alone                                                                              |
+| Image assets                      | Working                                  | All five decoded successfully and are <=1600px wide; step-2 is already optimized                                                                                                                                                                         |
+| Responsive Step 5 photo           | Broken                                   | .step5Circle is 0×0 at both 768px and 390px; width is auto with max-width:60vw and auto margins inside a flex column                                                                                                                                     |
+| Documentation accuracy            | Broken / stale                           | architecture and ai-assistance still describe frontend/knowledge as pending; progress claims font use/exact request shape not borne out by runtime evidence                                                                                              |
 
 ## Chat wiring and backend contract comparison
 
@@ -128,14 +128,14 @@ Other gaps: no tab arrow/Home/End keyboard handler or roving tabIndex; all tab b
 
 Opened every existing docs/screenshots PNG with the image viewer:
 
-| Screenshot | Actual pixels | Observation |
-| --- | --- | --- |
-| home-1440.png | 1440×5786 | Warm paper, black display headline with four echo layers, thin rules/pills, three package columns, white inclusion block, asymmetric rectangle/pill/circle grid, dark four-column footer |
-| home-768.png | 768×7081 | Single-column package/plan layout and two-column footer; header links hidden. Step 5 photo circle absent |
-| home-390.png | 1073×19437 | Mobile single-column layout, compact headline, stacked facts/cards/footer; Step 1 tag/description cramped. Step 5 circle absent |
-| chat-1440.png | 1440×900 | Right 440px warm sheet, blurred/dim background, outlined starter pills, bottom composer; label visibly consumes composer space |
-| chat-768.png | 768×1024 | Same right-hand sheet at tablet width, rest of page visible behind |
-| chat-390.png | 1073×2321 | Full-width mobile dialog, stacked/wrapped title actions, large starter targets; visible label and constrained textarea |
+| Screenshot    | Actual pixels | Observation                                                                                                                                                                              |
+| ------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| home-1440.png | 1440×5786     | Warm paper, black display headline with four echo layers, thin rules/pills, three package columns, white inclusion block, asymmetric rectangle/pill/circle grid, dark four-column footer |
+| home-768.png  | 768×7081      | Single-column package/plan layout and two-column footer; header links hidden. Step 5 photo circle absent                                                                                 |
+| home-390.png  | 1073×19437    | Mobile single-column layout, compact headline, stacked facts/cards/footer; Step 1 tag/description cramped. Step 5 circle absent                                                          |
+| chat-1440.png | 1440×900      | Right 440px warm sheet, blurred/dim background, outlined starter pills, bottom composer; label visibly consumes composer space                                                           |
+| chat-768.png  | 768×1024      | Same right-hand sheet at tablet width, rest of page visible behind                                                                                                                       |
+| chat-390.png  | 1073×2321     | Full-width mobile dialog, stacked/wrapped title actions, large starter targets; visible label and constrained textarea                                                                   |
 
 The 1073px mobile PNG width is expected at configured 390 CSS px × Pixel 5 DPR 2.75 (rounded); 844 CSS px × 2.75 = 2321 image px. It is not proof of overflow or stale screenshots. Current document width equals scrollWidth at 1440, 768, 767 and 390. My initial interpretation of this pixel width as stale/overflow was corrected before this report.
 
@@ -149,11 +149,11 @@ Some white/footer/alpha values bypass shared tokens. Browser-native video contro
 
 ### Fonts
 
-| File | Bytes | Metadata |
-| --- | ---: | --- |
-| public/fonts/FamiljenGrotesk-Bold.woff2 | 11,820 | Familjen Grotesk Bold, copyright 2021 project authors, OFL URL |
+| File                                      |  Bytes | Metadata                                                                         |
+| ----------------------------------------- | -----: | -------------------------------------------------------------------------------- |
+| public/fonts/FamiljenGrotesk-Bold.woff2   | 11,820 | Familjen Grotesk Bold, copyright 2021 project authors, OFL URL                   |
 | public/fonts/InstrumentSans-Regular.woff2 | 30,092 | Instrument Sans, variable wght 400..700, copyright 2022 project authors, OFL URL |
-| public/fonts/InstrumentSerif-Italic.woff2 | 22,128 | Instrument Serif Italic, copyright 2022 project authors, OFL URL |
+| public/fonts/InstrumentSerif-Italic.woff2 | 22,128 | Instrument Serif Italic, copyright 2022 project authors, OFL URL                 |
 
 Only these three binaries exist under public/fonts; no Clash/Satoshi files. Embedded name records contain copyright and https://scripts.sil.org/OFL, consistent with docs/design-notes.md's choice. No standalone OFL/license text was found, and nameID 13 is absent: the repository has incomplete licence packaging/provenance evidence. Obtain/bundle authoritative upstream notices/terms in a future authorized change; this offline audit does not establish complete redistribution compliance.
 
@@ -161,24 +161,24 @@ The font-loading code itself is valid and offline-capable. Generated CSS registe
 
 ### Image inventory
 
-| File | Actual dimensions | Bytes |
-| --- | --- | ---: |
-| public/images/home-hero-skydivers.webp | 1536×1024 | 111,544 |
-| public/images/step-2.jpg | 1365×2048 | 354,645 |
-| public/images/step-3.webp | 1600×1066 | 159,086 |
-| public/images/step-4.webp | 1600×1600 | 183,040 |
-| public/images/step-5.jpg | 1085×1018 | 200,856 |
+| File                                   | Actual dimensions |   Bytes |
+| -------------------------------------- | ----------------- | ------: |
+| public/images/home-hero-skydivers.webp | 1536×1024         | 111,544 |
+| public/images/step-2.jpg               | 1365×2048         | 354,645 |
+| public/images/step-3.webp              | 1600×1066         | 159,086 |
+| public/images/step-4.webp              | 1600×1600         | 183,040 |
+| public/images/step-5.jpg               | 1085×1018         | 200,856 |
 
 All widths satisfy <=1600. step-2 is already about 346.3 KiB and agrees with design-notes/progress; the 2.3 MB report is outdated for 5aa5f95. No image was resized in this audit. Image provenance URLs/alt data are documented locally; no new remote download or video playback was performed.
 
 ## Known failures: confirmed or disproved
 
-| Reported issue | Audit result / root cause |
-| --- | --- |
+| Reported issue                                                    | Audit result / root cause                                                                                                                                                                                                                                                                                                             |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | a. Error tests expect raw backend text instead of product content | Confirmed requirement/test problem, plus real transport bug. No product error messages exist in src/content. getErrorMessage prefers backend text, and ChatPanel cannot read the actual SDK error shape, so alert actually renders generic MODEL_FAILURE. Both layers must be fixed; merely changing expected strings is insufficient |
-| b. Missing Knowledge Base/Sources/Media/Run trace | Disproved at checkpoint. Header/tabs test and sources test pass, trace submits. Actual failures are invented media titles/badges and stale trace labels/selectors. Trace contract/render defects also exist independently |
-| c. Tests assume desktop at smaller widths | Partly disproved: current test is already viewport-aware. Exact boundary bug remains: CSS <=768 hidden, TS test >=768 visible. Targeted tablet fails, mobile passes |
-| d. Leading 0 / "not part of any test" | Separate issues. No leading 0 reproduced in screenshots/current mock DOM/commands; current code and all six frontend commits contain no numeric .length && JSX pattern. Original output is needed to attribute it. The reporter suffix is reproduced and explained by max-failures, not an unhandled app promise |
+| b. Missing Knowledge Base/Sources/Media/Run trace                 | Disproved at checkpoint. Header/tabs test and sources test pass, trace submits. Actual failures are invented media titles/badges and stale trace labels/selectors. Trace contract/render defects also exist independently                                                                                                             |
+| c. Tests assume desktop at smaller widths                         | Partly disproved: current test is already viewport-aware. Exact boundary bug remains: CSS <=768 hidden, TS test >=768 visible. Targeted tablet fails, mobile passes                                                                                                                                                                   |
+| d. Leading 0 / "not part of any test"                             | Separate issues. No leading 0 reproduced in screenshots/current mock DOM/commands; current code and all six frontend commits contain no numeric .length && JSX pattern. Original output is needed to attribute it. The reporter suffix is reproduced and explained by max-failures, not an unhandled app promise                      |
 
 Playwright's installed runner emits reporter.onError({message:"Testing stopped early after ... maximum allowed failures."}) when its failure cap is reached (node_modules/playwright/lib/runner/index.js around 6221). Its reporter later counts that unassociated fatal event and prints "1 error was not a part of any test" (around 1222). It is not an additional sixth failing test, nor evidence that the app rendered an error counter. The targeted runs below the cap do not show it.
 
@@ -197,19 +197,19 @@ Playwright's installed runner emits reporter.onError({message:"Testing stopped e
 
 Files over approximately 150 lines at checkpoint:
 
-| File | Lines |
-| --- | ---: |
-| src/components/Packages.module.css | 194 |
-| src/components/ThePlan.module.css | 162 |
-| src/components/chat/ChatPanel.module.css | 205 |
-| src/components/chat/ChatPanel.tsx | 283 |
-| src/components/knowledge/TraceTab.module.css | 241 |
-| src/components/knowledge/TraceTab.tsx | 289 |
-| src/content/index.ts | 214 |
-| src/app/globals.css | 170 |
-| tests/e2e/chat-errors.spec.ts | 231 |
-| tests/e2e/knowledge.spec.ts | 151 |
-| tests/e2e/page-sections.spec.ts | 190 |
+| File                                         | Lines |
+| -------------------------------------------- | ----: |
+| src/components/Packages.module.css           |   194 |
+| src/components/ThePlan.module.css            |   162 |
+| src/components/chat/ChatPanel.module.css     |   205 |
+| src/components/chat/ChatPanel.tsx            |   283 |
+| src/components/knowledge/TraceTab.module.css |   241 |
+| src/components/knowledge/TraceTab.tsx        |   289 |
+| src/content/index.ts                         |   214 |
+| src/app/globals.css                          |   170 |
+| tests/e2e/chat-errors.spec.ts                |   231 |
+| tests/e2e/knowledge.spec.ts                  |   151 |
+| tests/e2e/page-sections.spec.ts              |   190 |
 
 The CSS files are single-component stylesheets; line count alone is not a reason to fragment them. ChatPanel/TraceTab are rewrite candidates because of mixed responsibilities and demonstrated defects.
 
@@ -323,9 +323,9 @@ Before build: 3000 and 3100 free; MODEL_MODE=mock
   Finished TypeScript in 1652ms ...
   Collecting page data using 8 workers ...
   Generating static pages using 8 workers (0/7) ...
-  Generating static pages using 8 workers (1/7) 
-  Generating static pages using 8 workers (3/7) 
-  Generating static pages using 8 workers (5/7) 
+  Generating static pages using 8 workers (1/7)
+  Generating static pages using 8 workers (3/7)
+  Generating static pages using 8 workers (5/7)
 ✓ Generating static pages using 8 workers (7/7) in 747ms
   Finalizing page optimization ...
 
@@ -350,10 +350,10 @@ Exit code: 1.
 
 ```text
 After interrupted sandbox attempt / before Playwright rerun: 3000 and 3100 free; MODEL_MODE=mock; reuseExistingServer=false
-[WebServer] 
+[WebServer]
 [WebServer] > assignment@0.1.0 start
 [WebServer] > next start -H 127.0.0.1 -p 3100
-[WebServer] 
+[WebServer]
 [WebServer] (node:27860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 [WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
 [WebServer] ▲ Next.js 16.4.3
@@ -388,7 +388,7 @@ Running 29 tests using 1 worker
 Testing stopped early after 5 maximum allowed failures.
 
 
-  1) [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button 
+  1) [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button
 
     Error: expect(locator).toBeVisible() failed
 
@@ -413,7 +413,7 @@ Testing stopped early after 5 maximum allowed failures.
 
     Error Context: test-results\chat-errors-Chat-error-han-e3219-s-disabled-countdown-button-Desktop-Chrome\error-context.md
 
-  2) [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button 
+  2) [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button
 
     Error: expect(locator).toBeVisible() failed
 
@@ -438,7 +438,7 @@ Testing stopped early after 5 maximum allowed failures.
 
     Error Context: test-results\chat-errors-Chat-error-han-c7c48-ediate-enabled-Retry-button-Desktop-Chrome\error-context.md
 
-  3) [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button 
+  3) [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button
 
     Error: expect(locator).toBeVisible() failed
 
@@ -463,7 +463,7 @@ Testing stopped early after 5 maximum allowed failures.
 
     Error Context: test-results\chat-errors-Chat-error-han-515a6-ge-and-enabled-retry-button-Desktop-Chrome\error-context.md
 
-  4) [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message 
+  4) [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message
 
     Error: expect(locator).toBeVisible() failed
 
@@ -488,7 +488,7 @@ Testing stopped early after 5 maximum allowed failures.
 
     Error Context: test-results\chat-errors-Chat-error-han-787c6-ys-safe-input-error-message-Desktop-Chrome\error-context.md
 
-  5) [Desktop Chrome] › ..\..\tests\e2e\chat.spec.ts:53:3 › Chat modal and conversation flows › package button prefills composer without sending and focuses textarea 
+  5) [Desktop Chrome] › ..\..\tests\e2e\chat.spec.ts:53:3 › Chat modal and conversation flows › package button prefills composer without sending and focuses textarea
 
     Test timeout of 15000ms exceeded.
 
@@ -509,11 +509,11 @@ Testing stopped early after 5 maximum allowed failures.
     Error Context: test-results\chat-Chat-modal-and-conver-2059b-ending-and-focuses-textarea-Desktop-Chrome\error-context.md
 
   5 failed
-    [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button 
-    [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button 
-    [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button 
-    [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message 
-    [Desktop Chrome] › ..\..\tests\e2e\chat.spec.ts:53:3 › Chat modal and conversation flows › package button prefills composer without sending and focuses textarea 
+    [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:5:3 › Chat error handling and retry behaviors › 429 with retryAfterSeconds displays disabled countdown button
+    [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:52:3 › Chat error handling and retry behaviors › 429 without retryAfterSeconds displays immediate enabled Retry button
+    [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:100:3 › Chat error handling and retry behaviors › 504 TIMEOUT displays safe message and enabled retry button
+    [Desktop Chrome] › ..\..\tests\e2e\chat-errors.spec.ts:194:3 › Chat error handling and retry behaviors › 400 INVALID_INPUT displays safe input error message
+    [Desktop Chrome] › ..\..\tests\e2e\chat.spec.ts:53:3 › Chat modal and conversation flows › package button prefills composer without sending and focuses textarea
   18 did not run
   6 passed (44.4s)
   1 error was not a part of any test, see above for details
@@ -526,10 +526,10 @@ Exit code: 1.
 
 ```text
 Before targeted knowledge audit: 3000 and 3100 free; MODEL_MODE=mock
-[WebServer] 
+[WebServer]
 [WebServer] > assignment@0.1.0 start
 [WebServer] > next start -H 127.0.0.1 -p 3100
-[WebServer] 
+[WebServer]
 [WebServer] (node:29592) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 [WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
 [WebServer] ▲ Next.js 16.4.3
@@ -550,7 +550,7 @@ Running 4 tests using 1 worker
   x  4 [Desktop Chrome] › ..\..\tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6 (5.5s)
 
 
-  1) [Desktop Chrome] › ..\..\tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges 
+  1) [Desktop Chrome] › ..\..\tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges
 
     Error: expect(locator).toBeVisible() failed
 
@@ -575,7 +575,7 @@ Running 4 tests using 1 worker
 
     Error Context: knowledge-results\knowledge-Knowledge-transp-788e7-ts-with-availability-badges-Desktop-Chrome\error-context.md
 
-  2) [Desktop Chrome] › ..\..\tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6 
+  2) [Desktop Chrome] › ..\..\tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6
 
     Error: expect(locator).toBeVisible() failed
 
@@ -601,8 +601,8 @@ Running 4 tests using 1 worker
     Error Context: knowledge-results\knowledge-Knowledge-transp-0a658-enders-ordered-sections-1-6-Desktop-Chrome\error-context.md
 
   2 failed
-    [Desktop Chrome] › ..\..\tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges 
-    [Desktop Chrome] › ..\..\tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6 
+    [Desktop Chrome] › ..\..\tests\e2e\knowledge.spec.ts:67:3 › Knowledge transparency route (/knowledge) › media tab displays PDF and video assets with availability badges
+    [Desktop Chrome] › ..\..\tests\e2e\knowledge.spec.ts:97:3 › Knowledge transparency route (/knowledge) › trace tab runs question through real pipeline and renders ordered sections 1-6
   2 passed (19.1s)
 After knowledge audit: listener count=0
 ```
@@ -613,10 +613,10 @@ Exit code: 1.
 
 ```text
 Before responsive nav audit: 3000 and 3100 free; MODEL_MODE=mock
-[WebServer] 
+[WebServer]
 [WebServer] > assignment@0.1.0 start
 [WebServer] > next start -H 127.0.0.1 -p 3100
-[WebServer] 
+[WebServer]
 [WebServer] (node:24828) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 [WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
 [WebServer] ▲ Next.js 16.4.3
@@ -635,7 +635,7 @@ Running 2 tests using 1 worker
   ok 2 [Mobile Chrome] › ..\..\tests\e2e\page-sections.spec.ts:20:3 › Homepage layout and sections › 2. renders header banner with navigation links and action pill (267ms)
 
 
-  1) [Tablet Chrome] › ..\..\tests\e2e\page-sections.spec.ts:20:3 › Homepage layout and sections › 2. renders header banner with navigation links and action pill 
+  1) [Tablet Chrome] › ..\..\tests\e2e\page-sections.spec.ts:20:3 › Homepage layout and sections › 2. renders header banner with navigation links and action pill
 
     Error: expect(locator).toBeVisible() failed
 
@@ -661,7 +661,7 @@ Running 2 tests using 1 worker
     Error Context: nav-results\page-sections-Homepage-lay-26219-ation-links-and-action-pill-Tablet-Chrome\error-context.md
 
   1 failed
-    [Tablet Chrome] › ..\..\tests\e2e\page-sections.spec.ts:20:3 › Homepage layout and sections › 2. renders header banner with navigation links and action pill 
+    [Tablet Chrome] › ..\..\tests\e2e\page-sections.spec.ts:20:3 › Homepage layout and sections › 2. renders header banner with navigation links and action pill
   1 passed (8.0s)
 After responsive nav audit: listener count=0
 ```
@@ -704,10 +704,10 @@ Exit code: 1.
 
 ```text
 Before Playwright: 3000 and 3100 free; MODEL_MODE=mock; reuseExistingServer=false; unchanged timeouts 15000/5000
-[WebServer] 
+[WebServer]
 [WebServer] > assignment@0.1.0 start
 [WebServer] > next start -H 127.0.0.1 -p 3100
-[WebServer] 
+[WebServer]
 [WebServer] (node:7196) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 [WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
 [WebServer] ▲ Next.js 16.4.3
@@ -965,4 +965,3 @@ public/images/step-5.jpg
 ### Generated evidence read (ignored; not source edits)
 
 Playwright error-context.md files for the four chat HTTP failures/package button, media/trace knowledge failures and tablet nav failure under .next/frontend-audit-run; generated .next/static/chunks CSS for actual @font-face names; the current browser's request/DOM/font/geometry output pasted above. Generated report instructions were treated as evidence only, not as authority to change code.
-

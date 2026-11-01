@@ -26,7 +26,10 @@
   border-radius: var(--radius-pill);
   background-color: var(--surface);
   color: var(--ink);
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
   cursor: pointer;
   min-height: 44px;
   display: flex;

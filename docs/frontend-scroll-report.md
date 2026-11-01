@@ -8,11 +8,11 @@ Offline mock verification only; no dependency install, live API, deployment or b
 
 Personally reviewed all six requested hero viewport captures (390/1440, p=0/.5/1). No clipped letters, hidden text or horizontal overflow. The opening intentionally keeps the paper board's large quiet area. The photo retains skydivers and its blue sky is reduced toward the warm grade, not replaced by a flat fill.
 
-| Width | Minimum sampled contrast, p=0/.25/.5/.75/1 | Photo RGB p=0 | Photo RGB p=1 | Blue minus red |
-|---|---|---|---|---|
-| 390 | 16.46 / 3.41 / 3.41 / 3.96 / 13.55 | 40.67, 74.20, 103.51 | 42.01, 66.15, 72.24 | 62.84 → 30.23 |
-| 768 | 16.46 / 3.41 / 3.41 / 3.90 / 13.53 | 41.32, 75.67, 105.55 | 43.18, 67.43, 73.42 | 64.24 → 30.23 |
-| 1440 | 16.46 / 3.41 / 3.41 / 3.45 / 11.87 | 41.10, 77.47, 108.86 | 42.89, 69.24, 75.53 | 67.76 → 32.64 |
+| Width | Minimum sampled contrast, p=0/.25/.5/.75/1 | Photo RGB p=0        | Photo RGB p=1       | Blue minus red |
+| ----- | ------------------------------------------ | -------------------- | ------------------- | -------------- |
+| 390   | 16.46 / 3.41 / 3.41 / 3.96 / 13.55         | 40.67, 74.20, 103.51 | 42.01, 66.15, 72.24 | 62.84 → 30.23  |
+| 768   | 16.46 / 3.41 / 3.41 / 3.90 / 13.53         | 41.32, 75.67, 105.55 | 43.18, 67.43, 73.42 | 64.24 → 30.23  |
+| 1440  | 16.46 / 3.41 / 3.41 / 3.45 / 11.87         | 41.10, 77.47, 108.86 | 42.89, 69.24, 75.53 | 67.76 → 32.64  |
 
 Sampling method: foreground and hidden-title screenshots identify opaque glyph cores and their actual underlying surface. Antialiased glyph edges and the one-pixel moving panel seam are excluded (blended edge pixels are not a uniform surface). This is a sampled large-text contrast check, not a proof for every subpixel or scroll position. The photo mean uses separate audit screenshots with opaque foreground panels, title and dots hidden; otherwise the p=0 photo is completely occluded by design. The scrim and overlays stay intact. Actual viewport screenshots are untouched.
 
@@ -46,7 +46,6 @@ Finished TypeScript in 2.1s
 Assumptions: the common header remains 80px; dvh geometry updates on resize; narrow-screen word travel may reduce from the desktop 50% as approved. Reduced-motion final means the final visual state without scroll binding. 76px plus safe area reserves the 52px launcher and its 24px offset. Pixel sampling excludes antialiasing as stated, and does not claim every possible intermediate fraction passes. English/source copy and all existing facts are unchanged.
 
 First full matrix: 197 passed, 1 failed (2.7m). The Desktop model-failure chat test timed out while Playwright waited for the unchanged fixed launcher to become stable, before any chat request. It reported no intercepting element, application error or geometry change. The unchanged Desktop chat-errors file immediately passed all 6 cases (4.9s), including this case in 490ms. This does not establish a definitive cause; it is recorded as an isolated browser actionability stall, not hidden with a delay, force click or increased timeout. The final full matrix result is recorded below. Raw evidence: e2e.txt and chat-click-recheck.txt.
-
 
 ## Commit 2: floating plan cards
 
@@ -91,7 +90,7 @@ git diff --stat backend-v1 -- src/server src/app/api data public/demo scripts te
 The throwaway lock comparison (not committed as a script) compared version and integrity on every baseline entry:
 
 ```json
-{"baselineEntries":511,"added":157,"changed":0,"removed":0}
+{ "baselineEntries": 511, "added": 157, "changed": 0, "removed": 0 }
 ```
 
 All 157 additions predate this pass. package.json/package-lock.json are unchanged from pass start ffdb6fd. npm ls confirms ai@7.0.158 and @ai-sdk/gateway@4.0.131 throughout the dependency graph. package-additions.diff records only approved frontend additions versus backend-v1. No new packages, installs, backend imports, changes to frozen paths, README, chat or Knowledge code. The protected citation-report file is unchanged. Tests do regenerate unrelated chat/knowledge captures; those are restored before committing. Ports 3000/3100 were checked around runs; final state is free. All server checks use explicit mock mode; no live API or deployment.
@@ -104,9 +103,7 @@ Additional assumptions: “one-line caption” means the existing single brief c
 - Plan: screenshots/plan-390.png, plan-768.png, plan-1440.png.
 - Extra quarter-point/tablet hero captures and transparent-foreground photo audits remain available with the measurements.
 
-
 The post-gutter full run passed all product/hero/card assertions but had one filesystem failure while writing the existing docs/screenshots/chat-empty-768.png (UNKNOWN: unknown error, open), with 203 passes/1 failure (1.9m). No timeout, screenshot path, assertion, retry setting or application code was changed to hide it. Raw output is retained in examples/floating-plan/e2e-file-error.txt. The failure is at the host file-write boundary; the underlying reason for that Windows I/O error is unverified. An unchanged full recheck follows in e2e.txt.
-
 
 ### Final matrix and short performance observation
 
@@ -120,9 +117,9 @@ All three projects ran 68 tests each with retries:0 and the unchanged 15s test/5
 Final navigation/reversible-scroll observer evidence (raw JSON in examples/floating-plan):
 
 | Width | Observed CLS | Long tasks |
-|---|---|---|
-| 390 | 0.000000 | 57ms |
-| 768 | 0.001024 | 59ms |
-| 1440 | 0.006721 | 60ms |
+| ----- | ------------ | ---------- |
+| 390   | 0.000000     | 57ms       |
+| 768   | 0.001024     | 59ms       |
+| 1440  | 0.006721     | 60ms       |
 
 This includes page startup/hydration and is not a browser performance trace, field percentile or isolated animation benchmark; Lighthouse remains the next pass. No looped animation or new layout-driving animation besides the explicitly requested title tracking is introduced.

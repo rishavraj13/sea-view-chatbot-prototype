@@ -67,7 +67,9 @@
   color: var(--muted);
   background-color: transparent;
   min-height: 36px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .actionButton:hover {
@@ -95,7 +97,7 @@
 
 .mockStrip {
   background-color: var(--accent);
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.75rem;
   font-weight: 600;
   padding: 6px 16px;
@@ -146,7 +148,6 @@
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 0.6;
@@ -182,7 +183,7 @@
   padding: 6px 14px;
   border-radius: var(--radius-pill);
   background-color: var(--accent);
-  color: #FFFFFF;
+  color: #ffffff;
   border: none;
   cursor: pointer;
   min-height: 32px;

@@ -15,7 +15,9 @@
   color: var(--bg);
   box-shadow: 0 4px 16px rgba(20, 19, 17, 0.15);
   cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
   min-height: 48px;
 }
 

@@ -194,7 +194,7 @@ Final release verification passed: typecheck, lint, all 435 tests in 31 files an
 ## 2026-11-01 — Frontend setup: typography, photography, tokens, content parity
 
 1. **Font licensing and selection**:
-   - Audited Fontshare's ITF Free Font License (`https://www.fontshare.com/licenses/itf-free-font-license`) for Clash Display and Satoshi. The license prohibits public redistribution: *"You cannot redistribute, sell, rent, lease, or give away the original font files (.otf, .ttf, .woff, etc.) publicly or to third parties. Do not upload ITF font files to other repositories, share them openly online, or hand the physical files to clients."*
+   - Audited Fontshare's ITF Free Font License (`https://www.fontshare.com/licenses/itf-free-font-license`) for Clash Display and Satoshi. The license prohibits public redistribution: _"You cannot redistribute, sell, rent, lease, or give away the original font files (.otf, .ttf, .woff, etc.) publicly or to third parties. Do not upload ITF font files to other repositories, share them openly online, or hand the physical files to clients."_
    - Consequently, Clash Display and Satoshi binaries were deleted from `public/fonts/`.
    - Selected **Familjen Grotesk** (display, 700) and **Instrument Sans** (body, 400/500/700), paired with **Instrument Serif italic**. All three are published under the open-source **SIL Open Font License (OFL) 1.1**, permitting public repository storage and bundling. Self-hosted locally in `public/fonts/` via `next/font/local` to guarantee 100% offline and deterministic builds in standard sandbox environments.
 2. **Photography and image processing**:
@@ -269,15 +269,9 @@ Final release verification passed: typecheck, lint, all 435 tests in 31 files an
    - Added `tests/components/knowledge-view.test.tsx` verifying Sources, Media, and Trace rendering against real captured JSON fixtures (`docs/examples/real-knowledge/sources.json` and `trace-vip.json`).
    - All 461 tests pass across 39 files. Production build generates static `/` and `/knowledge` routes cleanly.
 
-
-
-
-
-
 ## 2026-11-02 — Frontend pass 4, commit 1: scroll portal hero
 
 Replaced the separate hero/photo band with a reversible sticky portal, pure pin/passage progress and a CSS-property hook, one-line echo h1, warm photo grade, reduced-motion static state, source-backed intro CTA/facts, and footer launcher clearance. No chat/knowledge/backend/dependency changes. Typecheck and zero-warning lint pass; 526 unit tests across 45 files pass; production build passes. Full e2e first run: 197 pass/1 launcher actionability timeout; unchanged focused chat-errors recheck 6/6 pass. No test weakened and no delay added. Final full matrix follows commit 2. Reviewed requested 390/1440 hero screenshots; five-point contrast minima >=3.40 at both widths. Desktop photo blue-minus-red mean 67.76→32.64. Full outputs, sampling caveats, observations and assumptions: frontend-scroll-report.md and examples/scroll-hero/. All checks explicitly mock, ports 3000/3100 free before/after; no live calls or deployment.
-
 
 ## 2026-11-02 — Frontend pass 4, commit 2: floating plan cards
 
@@ -287,19 +281,20 @@ Final serial mock checks: typecheck pass, zero-warning lint pass, 526/526 unit t
 
 Frozen-path diff versus backend-v1 is empty. All 511 baseline lock entries retain version/integrity: 0 changed, 0 removed; 157 earlier frontend additions. No package or lockfile change in this pass; ai7.0.158/gateway4.0.131 retained. README, protected citation report, chat and Knowledge code unchanged; unrelated regenerated evidence restored. Ports 3000/3100 free after runs. No install, live API or deployment. Delivery is exactly two commits: feat: scroll portal hero, then feat: floating plan cards.
 
-
 ## 2026-11-02 — Frontend pass 5: quality fixes
 
 Measured baseline local cold loads, corrected plan photo sizes and optimizer candidate gaps, added canonical-free SEO metadata from existing page copy and repaired Knowledge h1→h3 jumps with tabpanel h2 headings. Added keyboard-only focus/details/dialog/tab/trace, reduced-motion/increased-contrast, heading/name and image-transfer checks. Typecheck/lint pass; all 526 unit tests pass; build passes; focused production-build mock e2e 24/24. Real output and before/after bytes: frontend-release-report.md and examples/release-readiness/. Lighthouse absent from installed tools/cache; no packages may be installed, so all requested Lighthouse medians/targets are explicitly unverified, a release gap. No live calls, backend/dependency edits or deployment; ports 3000/3100 free around runs.
 
-
 ## 2026-11-02 — Frontend pass 5: mock answer disclosure
 
 Added presentation-only >600-character/8-line assistant answer disclosure, with shared labels and aria-expanded/controls. Full original Parts text remains unchanged in the DOM, history and runtime; sources/tools stay outside. Typecheck/lint pass, 528 unit tests (46 files) pass, build passes, three viewport e2e cases pass. Raw output pasted in frontend-release-report.md and stored under examples/release-readiness/clamp-*.txt. No live calls, dependency/backend edits or deployment; ports free around each run.
-
 
 ## 2026-11-02 — Frontend pass 5: cleanup and hygiene
 
 Removed proven unused CSS/type alias and obvious comments; split mixed content into section modules without changing facts; centralized footer/FAQ/skip labels; separated metadata tests and added final screenshot coverage. Retained active assistant-ui code and the renderer export used by tests. Typecheck/lint pass; 528 unit tests pass. Throwaway noUnusedLocals/noUnusedParameters before/after has zero diagnostics; final CSS and symbol scans report no unused classes/named declarations. Longer CSS modules remain cohesive. Added verify:offline, safe formatter exclusions, generated-example ignore and the optional legacy env template field. Exact output: frontend-release-report.md.
 
 Read-only npm audit: 17 moderate, zero high/critical; no dependency remediation under the baseline freeze. Key/prefix scan finds no tracked credential; only .env.example tracked. Lossless recompression saves 465,942 screenshot bytes with decoded-pixel hashes identical. Referenced historical evidence is retained. No backend/dependency-version/live/deploy change; ports free around commands.
+
+## 2026-11-02 — Frontend pass 5: separate formatting
+
+Ran npm run format using explicit frozen-path/raw-example/protected-report exclusions. Only formatting plus the required verification record; no behavior/test assertion changes. Typecheck/lint pass, 528 unit tests pass. Exact output pasted in frontend-release-report.md and format-*.txt; frozen-path and lock/protected-report diffs empty. No installation, live request or deployment; ports free around runs.

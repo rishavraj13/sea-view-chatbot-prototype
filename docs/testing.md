@@ -218,7 +218,6 @@ Raw public wire/visible answers, separate sources and executed results are prese
 
 See backend-v1-release-report.md for the full table, every answer, deployment output and real final typecheck/lint/test/build output. The existing protected citation-report edit remains untouched. Source provenance remains real knowledge/video plus a demo PDF, independent of generation mode. The planned Knowledge test button uses one live call per valid test on the live site.
 
-
 ## Frontend pass 4: portal checks (offline mock)
 
 Run npm run typecheck, npm run lint, npm test, npm run build, then npx playwright test, serially with MODEL_MODE=mock. Confirm ports 3000/3100 are free before and after each command. The configured production-build server runs on 3100 with reuseExistingServer:false; no live provider is called.
@@ -227,13 +226,11 @@ New scroll-progress unit tables cover both pure functions before/start/inside/en
 
 Real command transcripts and JSON measurements: examples/scroll-hero/. Reviewed screenshots: screenshots/hero-{390,768,1440}-p{0,0.25,0.5,0.75,1}.png.
 
-
 ### Floating plan cards
 
 plan-cards.spec.ts checks the five li elements in order, no Step 1 image, no tab stops, loaded/revealed photos, exact static 56px desktop and 32px tablet offsets, 24px desktop overlap and stacking, single mobile column with 16px gaps, passage-based transform, hover lift and reduced-motion removal. The foundation test now covers all four non-zero 4:3 frames, replacing the obsolete Step 5 circle assertion. The section unit test parses real markup and verifies ol/li order, shared labels, headings, captions and decorative numerals; existing data parity remains unchanged. The warm-colour scan includes the visible plan UI as well as portal endpoints/midpoint. Existing chat-open axe coverage remains in the full matrix.
 
 Run all commands from the portal section above. Final outputs and dependency proof: examples/floating-plan/. Reviewed plan viewport captures: screenshots/plan-390.png, plan-768.png and plan-1440.png. These show the start of the section, with photos fully revealed before capture; the single mobile viewport necessarily shows a subset of the five vertically stacked cards. No full-document resizing or sleeps are used. Full report: frontend-scroll-report.md.
-
 
 ## Frontend pass 5: keyboard, SEO and load checks
 
@@ -243,8 +240,6 @@ release-load.spec.ts uses a fresh context and CDP cache-disabled transfer captur
 
 Lighthouse is not installed on PATH, in this repo or in the existing npm cache; installation is prohibited. Its required three-run medians and target scores are unavailable, not inferred from axe/CDP. This remains a release-verification gap; see frontend-release-report.md. No live API is used.
 
-
 Long assistant answers: assistant-answer.test.tsx verifies <=600 has no toggle, longer text remains byte-for-byte identical as DOM text when collapsed/expanded, and aria-controls/expanded plus escaped literal text. assistant-answer.spec.ts checks a real local MOCK response, 8-line clamp, expansion, collapse and source-chip visibility at every viewport. This is presentation only: request/history projection and backend generation are unchanged.
-
 
 Cleanup uses throwaway `npx tsc --noEmit --noUnusedLocals --noUnusedParameters`, ESLint, a CSS-module class/import search and a TypeScript alias-aware export/reference search. Both compiler unused checks exit 0; remaining long files are cohesive component styles, not mixed modules. `npm run verify:offline` serially runs typecheck, zero-warning lint, all unit tests and build; set MODEL_MODE=mock first. It does not make model calls. Explicit formatter ignores protect all frozen paths and verbatim captures. Generated examples are ignored; selected committed fixtures/evidence remain tracked.

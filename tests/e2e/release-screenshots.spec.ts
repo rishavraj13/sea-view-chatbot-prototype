@@ -34,17 +34,15 @@ test('final home viewport evidence, top and scrolled plan', async ({
     await expect(image.locator('..')).toHaveClass(/isRevealed/);
     await expect(image.locator('..')).toHaveCSS('clip-path', 'inset(0px)');
   }
-  await page
-    .locator('#plan')
-    .evaluate((element) =>
-      window.scrollTo({
-        top:
-          element.getBoundingClientRect().top +
-          scrollY -
-          parseFloat(getComputedStyle(element).getPropertyValue('--header-h')),
-        behavior: 'instant',
-      }),
-    );
+  await page.locator('#plan').evaluate((element) =>
+    window.scrollTo({
+      top:
+        element.getBoundingClientRect().top +
+        scrollY -
+        parseFloat(getComputedStyle(element).getPropertyValue('--header-h')),
+      behavior: 'instant',
+    }),
+  );
   await expect(page.locator('#plan-heading')).toBeVisible();
   await page.screenshot({
     path: `docs/screenshots/release-home-${width}-scrolled.png`,

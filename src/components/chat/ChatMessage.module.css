@@ -59,7 +59,9 @@
   color: var(--muted);
   background-color: transparent;
   text-decoration: none;
-  transition: border-color 0.15s ease, color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
   min-height: 32px;
 }
 
