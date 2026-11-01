@@ -14,3 +14,6 @@ playwright-report/
 
 # Generated captures are ignored; curated tracked evidence remains versioned.
 docs/examples/**
+
+# Trial capture names are generated; final evidence is curated under final-v5/.
+docs/screenshots/release-*.png

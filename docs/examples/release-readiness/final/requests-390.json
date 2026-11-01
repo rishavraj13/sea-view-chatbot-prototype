@@ -1,0 +1,101 @@
+{
+  "evidence": "Actual browser assistant-ui runtime requests to the local MOCK backend",
+  "bodies": [
+    {
+      "messages": [
+        {
+          "id": "HCTpRzQoAXq8mhbS",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send me the brochure and a video."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "messages": [
+        {
+          "id": "HCTpRzQoAXq8mhbS",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Send me the brochure and a video."
+            }
+          ]
+        },
+        {
+          "id": "eb60d0b5-a4e1-4eac-8937-68165e6d41bd",
+          "role": "assistant",
+          "parts": [
+            {
+              "type": "step-start"
+            },
+            {
+              "type": "text",
+              "text": "[MOCK] DELUXE\nVideo and photos included\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿12,500 per person\nVIP\nPersonal cameraman and edited film\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿14,000 per person\nWhich package should I choose?\nChoose ECO for the standard jump, Deluxe if you want handy cam video, and VIP if you want full media coverage.\nHere is the brochure (demo material).\nHere is the video."
+            },
+            {
+              "type": "source-url",
+              "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+              "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#options",
+              "title": "DELUXE"
+            },
+            {
+              "type": "source-url",
+              "sourceId": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs",
+              "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving#faqs",
+              "title": "Which package should I choose?"
+            },
+            {
+              "type": "tool-sendBrochure",
+              "toolCallId": "tool-0",
+              "state": "output-available",
+              "input": {
+                "id": "brochure"
+              },
+              "output": {
+                "id": "brochure",
+                "title": "Sea View Skydiving package brochure",
+                "isDemo": true,
+                "kind": "brochure",
+                "type": "pdf",
+                "url": "/demo/brochure.pdf"
+              }
+            },
+            {
+              "type": "tool-showVideo",
+              "toolCallId": "tool-1",
+              "state": "output-available",
+              "input": {
+                "id": "video"
+              },
+              "output": {
+                "id": "video",
+                "title": "Sea View Skydiving - page video (external link)",
+                "isDemo": false,
+                "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg",
+                "kind": "video",
+                "type": "video",
+                "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": "XDPAZhLyhve0mbZv",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "How much is ECO?"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "method": "NUL-delimited Git protocol avoids Windows CRLF pathname artifacts",
+  "coverage": {
+    ".env.local": {
+      "ignored": true,
+      "pattern": ".env*"
+    },
+    ".env.production": {
+      "ignored": true,
+      "pattern": ".env*"
+    },
+    ".vercel/project.json": {
+      "ignored": true,
+      "pattern": ".vercel/"
+    },
+    "test-results/example.png": {
+      "ignored": true,
+      "pattern": "test-results/"
+    },
+    "playwright-report/index.html": {
+      "ignored": true,
+      "pattern": "playwright-report/"
+    },
+    ".next/cache/x": {
+      "ignored": true,
+      "pattern": ".next/"
+    },
+    "node_modules/x": {
+      "ignored": true,
+      "pattern": "node_modules/"
+    },
+    "docs/examples/generated.json": {
+      "ignored": true,
+      "pattern": "docs/examples/**"
+    },
+    ".env.example": {
+      "ignored": false,
+      "pattern": "!.env.example"
+    }
+  }
+}

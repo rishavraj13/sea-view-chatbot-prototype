@@ -1,0 +1,114 @@
+{
+  "evidence": "Curated only after 240/240 MOCK e2e passed; generated artifacts stay isolated",
+  "screenshots": [
+    {
+      "source": "test-results/release-screenshots-final-mock-chat-reply-viewport-evidence-Tablet-Chrome/docs/screenshots/release-chat-768.png",
+      "published": "docs/screenshots/final-v5/release-chat-768.png",
+      "originalBytes": 80997,
+      "publishedBytes": 80997,
+      "pixelSHA256": "bf1c0a8d7cacfe9bff2af370a0b49622636a90d76a8ec848cc38e9aaa920db5a"
+    },
+    {
+      "source": "test-results/release-screenshots-final-mock-chat-reply-viewport-evidence-Mobile-Chrome/docs/screenshots/release-chat-390.png",
+      "published": "docs/screenshots/final-v5/release-chat-390.png",
+      "originalBytes": 53336,
+      "publishedBytes": 53336,
+      "pixelSHA256": "efe15b82f040950179a54071d62d3a6c94b8258b51740a05dc5cb94af9233fb4"
+    },
+    {
+      "source": "test-results/release-screenshots-final-mock-chat-reply-viewport-evidence-Desktop-Chrome/docs/screenshots/release-chat-1440.png",
+      "published": "docs/screenshots/final-v5/release-chat-1440.png",
+      "originalBytes": 135980,
+      "publishedBytes": 133805,
+      "pixelSHA256": "f430501efe5331decf61bc52c04f28f461524757a8d0d71c55f81bcd02007df9"
+    },
+    {
+      "source": "test-results/release-screenshots-final--1927c-ock-trace-viewport-evidence-Tablet-Chrome/docs/screenshots/release-knowledge-trace-768.png",
+      "published": "docs/screenshots/final-v5/release-knowledge-trace-768.png",
+      "originalBytes": 74092,
+      "publishedBytes": 73335,
+      "pixelSHA256": "5591082beeec3091931bf2d2a04fafa90729f4fc44366c6a3116a7b39a0a46bd"
+    },
+    {
+      "source": "test-results/release-screenshots-final--1927c-ock-trace-viewport-evidence-Mobile-Chrome/docs/screenshots/release-knowledge-trace-390.png",
+      "published": "docs/screenshots/final-v5/release-knowledge-trace-390.png",
+      "originalBytes": 48786,
+      "publishedBytes": 48486,
+      "pixelSHA256": "97cb5225b9907fac6d214246a9e18c28e994f76e456a565a8e9bcccee8f74283"
+    },
+    {
+      "source": "test-results/release-screenshots-final--1927c-ock-trace-viewport-evidence-Desktop-Chrome/docs/screenshots/release-knowledge-trace-1440.png",
+      "published": "docs/screenshots/final-v5/release-knowledge-trace-1440.png",
+      "originalBytes": 72964,
+      "publishedBytes": 72852,
+      "pixelSHA256": "0ef32165e15f8f868f2dcb8d0117aae4e1f4fc9e0d815e917c5e6673f01ac6d5"
+    },
+    {
+      "source": "test-results/release-screenshots-final--11b67-dence-top-and-scrolled-plan-Tablet-Chrome/docs/screenshots/release-home-768-scrolled.png",
+      "published": "docs/screenshots/final-v5/release-home-768-scrolled.png",
+      "originalBytes": 220577,
+      "publishedBytes": 215774,
+      "pixelSHA256": "7e1ee5f752b887a3c8febbda596be54b4b820df262753629d6de21791e3f5337"
+    },
+    {
+      "source": "test-results/release-screenshots-final--11b67-dence-top-and-scrolled-plan-Tablet-Chrome/docs/screenshots/release-home-768-top.png",
+      "published": "docs/screenshots/final-v5/release-home-768-top.png",
+      "originalBytes": 43825,
+      "publishedBytes": 43606,
+      "pixelSHA256": "004b5b7bdbda95e686ba98b5c101f7c9ea15fdb4ef14af78305b9d06cb3e84a3"
+    },
+    {
+      "source": "test-results/release-screenshots-final--11b67-dence-top-and-scrolled-plan-Mobile-Chrome/docs/screenshots/release-home-390-scrolled.png",
+      "published": "docs/screenshots/final-v5/release-home-390-scrolled.png",
+      "originalBytes": 108584,
+      "publishedBytes": 108117,
+      "pixelSHA256": "3a960a1757e48fa5bf18fe4a47815010815b1ba796071eef1aae850b2d124bcb"
+    },
+    {
+      "source": "test-results/release-screenshots-final--11b67-dence-top-and-scrolled-plan-Mobile-Chrome/docs/screenshots/release-home-390-top.png",
+      "published": "docs/screenshots/final-v5/release-home-390-top.png",
+      "originalBytes": 29975,
+      "publishedBytes": 29975,
+      "pixelSHA256": "c35cd620b5b2fe27159997f7c6ada2304f4d0747720471656068c1132f31564b"
+    },
+    {
+      "source": "test-results/release-screenshots-final--11b67-dence-top-and-scrolled-plan-Desktop-Chrome/docs/screenshots/release-home-1440-scrolled.png",
+      "published": "docs/screenshots/final-v5/release-home-1440-scrolled.png",
+      "originalBytes": 398557,
+      "publishedBytes": 384266,
+      "pixelSHA256": "15763cec501c9ab2115259b9ebe4890b03021ffae1cea2b7087492bc45b337a2"
+    },
+    {
+      "source": "test-results/release-screenshots-final--11b67-dence-top-and-scrolled-plan-Desktop-Chrome/docs/screenshots/release-home-1440-top.png",
+      "published": "docs/screenshots/final-v5/release-home-1440-top.png",
+      "originalBytes": 63285,
+      "publishedBytes": 63285,
+      "pixelSHA256": "682e18ae3cab591920a134728c18819e939abe2d53d70505161cff56cd69233c"
+    }
+  ],
+  "json": [
+    "docs/examples/release-readiness/final/load-home-Tablet.json",
+    "docs/examples/release-readiness/final/load-home-Mobile.json",
+    "docs/examples/release-readiness/final/load-home-Desktop.json",
+    "docs/examples/release-readiness/final/load-knowledge-Tablet.json",
+    "docs/examples/release-readiness/final/load-knowledge-Mobile.json",
+    "docs/examples/release-readiness/final/load-knowledge-Desktop.json",
+    "docs/examples/release-readiness/final/keyboard-knowledge-768.json",
+    "docs/examples/release-readiness/final/keyboard-knowledge-390.json",
+    "docs/examples/release-readiness/final/keyboard-knowledge-1440.json",
+    "docs/examples/release-readiness/final/keyboard-home-768.json",
+    "docs/examples/release-readiness/final/keyboard-home-390.json",
+    "docs/examples/release-readiness/final/keyboard-home-1440.json",
+    "docs/examples/release-readiness/final/hero/measurements-768.json",
+    "docs/examples/release-readiness/final/hero/measurements-390.json",
+    "docs/examples/release-readiness/final/hero/measurements-1440.json",
+    "docs/examples/release-readiness/final/hero/performance-768.json",
+    "docs/examples/release-readiness/final/hero/performance-390.json",
+    "docs/examples/release-readiness/final/hero/performance-1440.json",
+    "docs/examples/release-readiness/final/requests-768.json",
+    "docs/examples/release-readiness/final/requests-390.json",
+    "docs/examples/release-readiness/final/requests-1440.json"
+  ],
+  "screenshotBeforeBytes": 1330958,
+  "screenshotAfterBytes": 1307834
+}

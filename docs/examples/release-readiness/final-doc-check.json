@@ -1,0 +1,16 @@
+{
+  "relativeLinksChecked": 70,
+  "missing": [],
+  "invalidExternalUrlSyntax": [],
+  "externalReachability": "not requested; no live/provider API call",
+  "trackedSizes": {
+    "docs/screenshots/": {
+      "files": 60,
+      "bytes": 11608771
+    },
+    "docs/examples/": {
+      "files": 223,
+      "bytes": 5588830
+    }
+  }
+}

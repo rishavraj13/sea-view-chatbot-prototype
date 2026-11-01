@@ -1,5 +1,7 @@
 # Frontend audit
 
+**Historical audit at 5aa5f95, not the current implementation.** Pass 1 fixed dependencies, fonts, lint, nav, Statement/content and the former Step 5 geometry; Pass 2 fixed assistant-ui/runtime/errors/history; Pass 3 fixed Knowledge shapes/context/tabs; Pass 4 replaced the hero/plan design; Pass 5 added image/SEO/keyboard/readability/cleanup/docs verification. See frontend-release-report.md for current results and unresolved Lighthouse/mock limitations.
+
 Date: 2026-11-01 (Asia/Calcutta). Read-only takeover audit of branch frontend, HEAD 5aa5f957f1929cad71dd83e66bcee7e8845ac066, matching frontend-antigravity-checkpoint. Backend baseline tag backend-v1 resolves to a4626e62fb831c2884e130c8522adec9bc85ea08.
 
 Only docs/frontend-audit.md is written. No commit, source/test/config/dependency edits, package installation, deployment, live provider request or production API request. Requested builds/tests generated ignored cache/test artifacts. Tracked screenshots were inspected but not overwritten. docs/progress-log.md remains read-only under the task's explicit file restriction.

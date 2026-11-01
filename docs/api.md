@@ -1,6 +1,6 @@
 # Backend API
 
-Backend-only prototype. Request bodies and UIMessage SSE v1 protocol remain intact, with additive source-url parts and trace.citations. Static website knowledge was captured on 2026-10-31. The model is not a booking system and does not fetch web content at request time.
+This document describes the frozen backend contract consumed by the frontend. Request bodies and UIMessage SSE v1 protocol remain intact, with additive source-url parts and trace.citations. Static website knowledge was captured on 2026-10-31. The model is not a booking system and does not fetch web content at request time.
 
 ## Sources
 
@@ -150,3 +150,7 @@ Exact mapping: the mapper preserves existing ChatError instances. A JavaScript E
 Server-only observability writes one JSON line for an SDK API error, timeout/abort, or error crossing the provider pipeline boundary. Fields are event=provider_error, provider, modelId, upstreamStatus (or null), errorType, errorCode (or null), rateLimitHeaders. Only bounded identifier-style labels survive, with known/configured key material removed. Provider error.type/code are read from SDK data, with response JSON fallback because the installed Groq SDK schema drops code. A bounded known exception name is the fallback type. No provider message, stack, request/response body, URL, request headers or conversation is logged.
 
 Fixed header-name allowlist: retry-after; x-ratelimit-limit-requests; x-ratelimit-limit-tokens; x-ratelimit-remaining-requests; x-ratelimit-remaining-tokens; x-ratelimit-reset-requests; x-ratelimit-reset-tokens. Names are normalized to lowercase. Values must be bounded numeric counters, recognized numeric duration strings on reset fields, or a valid HTTP date on retry-after; malformed/secret-looking values and every other header are dropped. These headers stay server-side. Already mapped ChatError values and route input failures do not emit provider-error logs. This adds diagnostics/retry guidance without changing provider selection, retries, request shapes, stream protocol or tool results.
+
+## Frontend presentation (Pass 5; no contract change)
+
+The assistant-ui client renders structured source chips and validated media cards. It maps typed error codes to frontend copy and respects optional retryAfterSeconds. Assistant text over 600 characters can be visually clamped to eight lines with an aria-expanded disclosure; full original text remains in the DOM/runtime. History projection still caps each turn at 4000 characters. Wire text, request/stream/tool-result shapes and server behavior are unchanged. Explicit mock is scripted: the frozen negated-file behavior documented in frontend-release-report.md is not evidence of live policy execution.

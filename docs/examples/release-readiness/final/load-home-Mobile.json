@@ -1,0 +1,234 @@
+{
+  "mode": "mock",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "initialBytes": 594182,
+  "initial": [
+    {
+      "path": "/",
+      "mime": "text/html",
+      "bytes": 8538
+    },
+    {
+      "path": "/_next/static/chunks/42dyu4x0xk-1f.css",
+      "mime": "text/css",
+      "bytes": 2910
+    },
+    {
+      "path": "/_next/static/chunks/1ml7gbipw7aaz.css",
+      "mime": "text/css",
+      "bytes": 2718
+    },
+    {
+      "path": "/_next/static/media/FamiljenGrotesk_Bold-s.p.39gd197omjt4j.woff2",
+      "mime": "font/woff2",
+      "bytes": 12120
+    },
+    {
+      "path": "/_next/static/chunks/2n9cn-bwgez2z.css",
+      "mime": "text/css",
+      "bytes": 4117
+    },
+    {
+      "path": "/_next/image?url=%2Fimages%2Fhome-hero-skydivers.webp&w=1200&q=75",
+      "mime": "image/webp",
+      "bytes": 26287
+    },
+    {
+      "path": "/_next/static/media/InstrumentSerif_Italic-s.p.1bk2-9tco4m7m.woff2",
+      "mime": "font/woff2",
+      "bytes": 22428
+    },
+    {
+      "path": "/_next/image?url=%2Fimages%2Fhome-hero-skydivers.webp&w=1080&q=75",
+      "mime": "image/webp",
+      "bytes": 23119
+    },
+    {
+      "path": "/_next/static/chunks/35-9rljg5jepz.js",
+      "mime": "application/javascript",
+      "bytes": 2430
+    },
+    {
+      "path": "/_next/static/chunks/3l26e-r99ox8y.js",
+      "mime": "application/javascript",
+      "bytes": 5688
+    },
+    {
+      "path": "/_next/static/chunks/3bxb_l6ah5qtc.js",
+      "mime": "application/javascript",
+      "bytes": 9050
+    },
+    {
+      "path": "/_next/static/chunks/turbopack-3-ry682tkyiqk.js",
+      "mime": "application/javascript",
+      "bytes": 4336
+    },
+    {
+      "path": "/_next/static/chunks/0a2725nkgp7l0.js",
+      "mime": "application/javascript",
+      "bytes": 11777
+    },
+    {
+      "path": "/_next/static/chunks/1ji3eylza07n_.js",
+      "mime": "application/javascript",
+      "bytes": 45863
+    },
+    {
+      "path": "/_next/static/chunks/31myxh179b6mq.js",
+      "mime": "application/javascript",
+      "bytes": 72346
+    },
+    {
+      "path": "/_next/static/chunks/2q_r771ptu1t_.js",
+      "mime": "application/javascript",
+      "bytes": 40156
+    },
+    {
+      "path": "/_next/static/media/InstrumentSans_Regular-s.p.3h2wr6o8p949u.woff2",
+      "mime": "font/woff2",
+      "bytes": 30392
+    },
+    {
+      "path": "/_next/static/chunks/1y8__ghy6aql5.js",
+      "mime": "application/javascript",
+      "bytes": 63224
+    },
+    {
+      "path": "/_next/static/chunks/0q1zz_as8bw1k.js",
+      "mime": "application/javascript",
+      "bytes": 201595
+    },
+    {
+      "path": "/?_rsc=5CB68i4pnAekjehf",
+      "mime": "text/x-component",
+      "bytes": 733
+    },
+    {
+      "path": "/?_rsc=8nTjltbQWvg6NcbE",
+      "mime": "text/x-component",
+      "bytes": 4355
+    }
+  ],
+  "timings": {
+    "navigation": [
+      {
+        "name": "http://127.0.0.1:3100/",
+        "entryType": "navigation",
+        "startTime": 0,
+        "duration": 148,
+        "navigationId": 2071,
+        "initiatorType": "navigation",
+        "deliveryType": "",
+        "nextHopProtocol": "http/1.1",
+        "renderBlockingStatus": "non-blocking",
+        "contentType": "text/html",
+        "contentEncoding": "gzip",
+        "workerStart": 0,
+        "workerRouterEvaluationStart": 0,
+        "workerCacheLookupStart": 0,
+        "workerMatchedSourceType": "",
+        "workerFinalSourceType": "",
+        "redirectStart": 0,
+        "redirectEnd": 0,
+        "fetchStart": 0.09999999403953552,
+        "domainLookupStart": 0.6999999955296516,
+        "domainLookupEnd": 0.6999999955296516,
+        "connectStart": 0.6999999955296516,
+        "secureConnectionStart": 0,
+        "connectEnd": 1.3999999985098839,
+        "requestStart": 1.3999999985098839,
+        "responseStart": 3.2999999970197678,
+        "firstInterimResponseStart": 0,
+        "finalResponseHeadersStart": 3.2999999970197678,
+        "responseEnd": 3.5999999940395355,
+        "transferSize": 8348,
+        "encodedBodySize": 8048,
+        "decodedBodySize": 43558,
+        "responseStatus": 200,
+        "serverTiming": [],
+        "unloadEventStart": 0,
+        "unloadEventEnd": 0,
+        "domInteractive": 23.69999999552965,
+        "domContentLoadedEventStart": 23.69999999552965,
+        "domContentLoadedEventEnd": 23.69999999552965,
+        "domComplete": 148,
+        "loadEventStart": 148,
+        "loadEventEnd": 148,
+        "type": "navigate",
+        "redirectCount": 0,
+        "activationStart": 0,
+        "criticalCHRestart": 0,
+        "notRestoredReasons": null,
+        "confidence": {
+          "randomizedTriggerRate": 0.4994798,
+          "value": "high"
+        }
+      }
+    ],
+    "paint": [
+      {
+        "name": "first-paint",
+        "entryType": "paint",
+        "startTime": 112,
+        "duration": 0,
+        "navigationId": 2071,
+        "paintTime": 86.19999999552965,
+        "presentationTime": 112
+      },
+      {
+        "name": "first-contentful-paint",
+        "entryType": "paint",
+        "startTime": 112,
+        "duration": 0,
+        "navigationId": 2071,
+        "paintTime": 86.19999999552965,
+        "presentationTime": 112
+      }
+    ]
+  },
+  "images": [
+    {
+      "alt": "Tandem skydivers freefalling in open skies above the coastline",
+      "sizes": "100vw",
+      "width": 421.20001220703125,
+      "dpr": 2.75,
+      "selected": "http://127.0.0.1:3100/_next/image?url=%2Fimages%2Fhome-hero-skydivers.webp&w=1080&q=75",
+      "naturalWidth": 390
+    },
+    {
+      "alt": "Skydiver having safety harness fitted during pre-jump briefing",
+      "sizes": "(max-width: 767px) calc(100vw - 90px), (max-width: 1023px) calc(50vw - 78px), (min-width: 1280px) 401px, calc(33.333vw - 26px)",
+      "width": 300,
+      "dpr": 2.75,
+      "selected": "http://127.0.0.1:3100/_next/image?url=%2Fimages%2Fstep-2.jpg&w=828&q=75",
+      "naturalWidth": 300
+    },
+    {
+      "alt": "Jump aircraft propeller and fuselage on the runway",
+      "sizes": "(max-width: 767px) calc(100vw - 90px), (max-width: 1023px) calc(50vw - 78px), (min-width: 1280px) 401px, calc(33.333vw - 26px)",
+      "width": 300,
+      "dpr": 2.75,
+      "selected": "http://127.0.0.1:3100/_next/image?url=%2Fimages%2Fstep-3.webp&w=828&q=75",
+      "naturalWidth": 300
+    },
+    {
+      "alt": "Tandem skydivers in freefall with the sea and coastline below",
+      "sizes": "(max-width: 767px) calc(100vw - 90px), (max-width: 1023px) calc(50vw - 78px), (min-width: 1280px) 458px, calc(41.667vw - 76px)",
+      "width": 300,
+      "dpr": 2.75,
+      "selected": "http://127.0.0.1:3100/_next/image?url=%2Fimages%2Fstep-4.webp&w=828&q=75",
+      "naturalWidth": 300
+    },
+    {
+      "alt": "Tandem skydiver and instructor landing safely under open canopy",
+      "sizes": "(max-width: 767px) calc(100vw - 90px), (max-width: 1023px) calc(50vw - 78px), (min-width: 1280px) 506px, calc(41.667vw - 28px)",
+      "width": 300,
+      "dpr": 2.75,
+      "selected": "http://127.0.0.1:3100/_next/image?url=%2Fimages%2Fstep-5.jpg&w=828&q=75",
+      "naturalWidth": 300
+    }
+  ]
+}

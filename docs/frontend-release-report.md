@@ -1,5 +1,7 @@
 # Frontend pass 5: release readiness
 
+Current result: typecheck/lint/build and 528 unit tests pass; the final full matrix passes 240/240 after generated-artifact isolation. No live provider call, deployment, installation, backend change or dependency-version change. Open release items: Lighthouse target scores unavailable under the no-install constraint; the frozen scripted mock ignores negation in its media-selection branch; 17 moderate tooling advisories intentionally remain. See the final result below; earlier sections preserve intermediate gates/failures chronologically.
+
 Baseline: frontend at 81f9b27. Verification is local, production build, explicit MOCK mode. No live provider calls, deployment, installations, package-version changes or backend edits. The owner's pre-existing citation-report content is protected.
 
 ## Quality and measurement
@@ -371,3 +373,60 @@ Route (app)
 ```
 
 The final full browser result follows below. No application/backend code changed for this artifact correction.
+
+## Final result after artifact isolation
+
+```text
+npm run verify:offline
+> npm run typecheck && npm run lint && npm test && npm run build
+Generating route types...
+✓ Types generated successfully
+> eslint . --max-warnings=0
+Test Files  46 passed (46)
+Tests       528 passed (528)
+```
+
+Full actual typecheck/lint/test/build output: artifact-offline.txt (pasted in the lifecycle section above). Final browser command/output:
+
+```text
+npx playwright test
+240 passed (2.4m)
+```
+
+80 tests/project, Desktop/Tablet/Mobile; retries:0, unchanged 15s test/5s expect limits. Final stdout is final-e2e-artifacts.txt. All screenshots/options/contrast/audit assertions remain active. The earlier three UNKNOWN/open failures are retained, not disguised as product passes; the corrected test-artifact lifecycle passed the entire matrix without retry. No source code changed after this green gate.
+
+Final selected artifact promotion: 12 PNG viewport figures, original 1,330,958 bytes → 1,307,834 bytes with decoded-pixel identity, plus 21 JSON artifacts. The manifest final-artifact-index.json records generated paths, published paths, sizes and pixel hashes. All 12 final figures were reviewed. Generated outputs remain in ignored test-results; committed final figures are under docs/screenshots/final-v5, separately from historical captures. No test rewrites committed fixtures/captures now.
+
+### Observed 390px browser-load bytes, not Lighthouse
+
+| Page       | Baseline | Final   | Interpretation                                   |
+| ---------- | -------- | ------- | ------------------------------------------------ |
+| /          | 593,987  | 594,182 | Single normal-device load; no median/speed claim |
+| /knowledge | 550,966  | 543,060 | Single normal-device load; no median/speed claim |
+
+The earlier before/after Lighthouse table remains unavailable for every category on both pages; no simulated score is filled from these byte observations. Image-slot/candidate and keyboard/contrast/axe checks independently pass.
+
+Final freeze proof (final-freeze-proof.json):
+
+```json
+{
+  "baselineEntries": 511,
+  "added": 157,
+  "changed": 0,
+  "removed": 0,
+  "frozenDiff": "",
+  "lockAndProtectedDiffFromPassStart": ""
+}
+```
+
+The 157 additions predate Pass 5; package/lock versions are unchanged. final-sdk.txt confirms ai7.0.158/gateway4.0.131, and final-package-additions.diff contains only frontend additions versus backend-v1 (including the new verify:offline script). Frozen diff command prints nothing. The owner's protected citation report is byte-identical to the pass start. Final relative Markdown link check, formatting check, key scan, tracked sizes and archive results accompany this record/delivery. Ports 3000/3100 are free after runs. No full release certification is claimed while the Lighthouse and known mock limitations remain.
+
+### Final hygiene record
+
+- npm run format:check: All matched files use Prettier code style! (final-format-check.txt).
+- Current tracked/staged-file scan: zero configured-provider-key literal matches, zero plausible provider-prefix candidates, only .env.example tracked (final-secret-scan.json). Secret values are not included in the report.
+- Relative documentation links: 70 checked, zero missing; external URL syntax valid, provenance checked without live reachability calls (final-doc-check.json). Additional evidence links below resolve to committed files.
+- Ignore proof uses NUL-delimited git check-ignore input so Windows CRLF cannot become part of a pathname. Private envs/.vercel/test-results/playwright-report/.next/node_modules/generated examples are excluded; .env.example deliberately included (ignore-proof.json).
+- Curated screenshot snapshot: 60 tracked PNGs, 11,608,771 bytes, including the 12 final figures. Historical reference/test evidence remains. The examples snapshot before adding the last check files was 223 files/5,588,830 bytes; the outside-repo final archive manifest is authoritative for final totals.
+
+[Final offline command output](examples/release-readiness/artifact-offline.txt) · [Final full browser output](examples/release-readiness/final-e2e-artifacts.txt) · [Artifact index](examples/release-readiness/final-artifact-index.json) · [Freeze proof](examples/release-readiness/final-freeze-proof.json) · [Known mock defect capture](examples/release-readiness/mock-negation.json) · [Secret scan](examples/release-readiness/final-secret-scan.json).

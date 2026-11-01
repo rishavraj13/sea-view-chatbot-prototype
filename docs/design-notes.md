@@ -34,9 +34,9 @@ A warm neutral monochrome palette where real photography provides natural colour
 Foundation correction (2026-11-02): the Statement uses the captured jump-facts sentence "Same aircraft, altitude and instructors in every package". The previous camera-choice subline was not in the knowledge data and was removed. Header links show from 768px; compact tablet spacing retains the pill and prevents horizontal overflow. The foundation originally repaired the Step 5 circle. Pass 4 below supersedes that showcase with ordered 4:3 photo cards and the photo band with the scroll portal.
 
 1. **Grays darkened for WCAG AA compliance**:
-   Body text and secondary captions use `--muted` (`#5C5852`) rather than lighter tints, ensuring all text satisfies WCAG 2.1 AA standards (minimum 4.5:1 contrast for normal text).
+   Body text and secondary captions use `--muted` (`#5C5852`) rather than lighter tints. Automated contrast/axe checks are reported per tested state; this is not a claim of universal manual WCAG certification.
 2. **No hover-only colour gate**:
-   All photographs render in full natural colour upon initial reveal. Hovering adds a subtle `scale(1.03)` transform with smooth easing. Under `prefers-reduced-motion: reduce`, all scaling and motion transitions are disabled.
+   Plan photographs retain natural colour on reveal; the hero uses the documented warm grade/scrim. Plan image hover adds a subtle `scale(1.03)` transform with smooth easing. Under `prefers-reduced-motion: reduce`, all scaling and motion transitions are disabled.
 3. **Semantic echo effect**:
    The portal uses two inline spans in one h1, each with the same warm multi-stop `text-shadow`:
    `-0.04em -0.04em 0 var(--echo-1), -0.08em -0.08em 0 var(--echo-2), -0.12em -0.12em 0 var(--echo-3), -0.16em -0.16em 0 var(--echo-4)`.
@@ -87,3 +87,21 @@ Portal geometry at the tested widths:
 | 1440px   | 86.4px (6vw)         | 1→1.1       | −.04→−.08      | 50%                          |
 
 The base title occupies approximately 65% on mobile and 48% on tablet/desktop. Both the complete h1 and its independently translated words are measured in the viewport-bound assertions, rather than assuming the formula alone guarantees fit.
+
+## Pass 5: final presentation and image delivery
+
+Responsive image sizes now describe the actual card frames, including padding/borders, grid columns/overlap and max-width. Additional optimizer candidates keep normal slot rounding within 10%; no source photo is rewritten. At 390px/DPR2.75, each 300px plan frame selects 828px instead of 1080px. The hero uses fill/preload (the supported Next 16 successor to priority) with a 100vw slot; a 1440 candidate avoids its old desktop 1920 URL jump. See release-load.spec.ts and the release report for transfer evidence and measurement limits.
+
+Long assistant prose is clamped to eight lines only when longer than 600 characters. Shared Show full answer/Show less labels and aria-expanded/controls disclose the complete, unchanged DOM text. Source chips and tool cards remain outside the clamp. Knowledge panels now have semantic h2 headings without changing their visual tab design. UI styles continue to use warm tokens; focus is solid ink or ember, not browser blue.
+
+### Final viewport screenshot index
+
+These are the current Pass 5 figures; earlier chat/Knowledge/hero files are historical evidence of their respective passes. Every requested 1440/390 figure was personally opened by Codex and reviewed. They are viewport captures, not resized full pages. Plan reveals are asserted complete before capture, without sleeps. The launcher remains fixed and can overlay a viewport edge; footer clearance preserves access by scrolling. The trace screenshot intentionally shows the tools area, not the entire long report.
+
+| Width                | Home top                                              | Home scrolled (plan)                                        | Chat with reply                                    | Knowledge trace                                                |
+| -------------------- | ----------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------------------- |
+| 1440                 | [Top](screenshots/final-v5/release-home-1440-top.png) | [Plan](screenshots/final-v5/release-home-1440-scrolled.png) | [Chat](screenshots/final-v5/release-chat-1440.png) | [Trace](screenshots/final-v5/release-knowledge-trace-1440.png) |
+| 390                  | [Top](screenshots/final-v5/release-home-390-top.png)  | [Plan](screenshots/final-v5/release-home-390-scrolled.png)  | [Chat](screenshots/final-v5/release-chat-390.png)  | [Trace](screenshots/final-v5/release-knowledge-trace-390.png)  |
+| 768 (extra coverage) | [Top](screenshots/final-v5/release-home-768-top.png)  | [Plan](screenshots/final-v5/release-home-768-scrolled.png)  | [Chat](screenshots/final-v5/release-chat-768.png)  | [Trace](screenshots/final-v5/release-knowledge-trace-768.png)  |
+
+The shared two demo-link settings live in src/content/site.ts; colours/fonts are design configuration, not business facts. Knowledge/source facts remain parity-tested against the frozen capture. Screenshot recompression is lossless, with decoded pixel hashes checked before writes. No claim of Lighthouse target scores: the tool was absent and installs forbidden.

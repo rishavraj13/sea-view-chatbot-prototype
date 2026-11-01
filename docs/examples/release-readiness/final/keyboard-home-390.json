@@ -1,0 +1,206 @@
+{
+  "mode": "mock",
+  "order": [
+    {
+      "index": 0,
+      "text": "Skip to content",
+      "tag": "A"
+    },
+    {
+      "index": 1,
+      "text": "Greedy Adventures",
+      "tag": "A",
+      "zone": "HEADER"
+    },
+    {
+      "index": 2,
+      "text": "Choose package",
+      "tag": "A",
+      "zone": "HEADER"
+    },
+    {
+      "index": 3,
+      "text": "Choose package",
+      "tag": "A",
+      "zone": "main"
+    },
+    {
+      "index": 4,
+      "text": "Watch the jump",
+      "tag": "A",
+      "zone": "main"
+    },
+    {
+      "index": 5,
+      "text": "Ask about this package (ECO) →",
+      "tag": "BUTTON",
+      "zone": "packages"
+    },
+    {
+      "index": 6,
+      "text": "Ask about this package (DELUXE) →",
+      "tag": "BUTTON",
+      "zone": "packages"
+    },
+    {
+      "index": 7,
+      "text": "Ask about this package (VIP) →",
+      "tag": "BUTTON",
+      "zone": "packages"
+    },
+    {
+      "index": 8,
+      "text": "View on greedyadventures.com ↗",
+      "tag": "A",
+      "zone": "packages"
+    },
+    {
+      "index": 9,
+      "text": "Which package should I choose?+",
+      "tag": "SUMMARY",
+      "zone": "faq"
+    },
+    {
+      "index": 10,
+      "text": "Where does the activity take place?+",
+      "tag": "SUMMARY",
+      "zone": "faq"
+    },
+    {
+      "index": 11,
+      "text": "Is Bangkok pickup available?+",
+      "tag": "SUMMARY",
+      "zone": "faq"
+    },
+    {
+      "index": 12,
+      "text": "If the weather stops the activity+",
+      "tag": "SUMMARY",
+      "zone": "faq"
+    },
+    {
+      "index": 13,
+      "text": "Packages",
+      "tag": "A",
+      "zone": "FOOTER"
+    },
+    {
+      "index": 14,
+      "text": "The plan",
+      "tag": "A",
+      "zone": "FOOTER"
+    },
+    {
+      "index": 15,
+      "text": "Good to know",
+      "tag": "A",
+      "zone": "FOOTER"
+    },
+    {
+      "index": 16,
+      "text": "Knowledge view",
+      "tag": "A",
+      "zone": "FOOTER"
+    },
+    {
+      "index": 17,
+      "text": "Live production ↗",
+      "tag": "A",
+      "zone": "FOOTER"
+    },
+    {
+      "index": 18,
+      "text": "Mock demonstration ↗",
+      "tag": "A",
+      "zone": "FOOTER"
+    },
+    {
+      "index": 19,
+      "text": "Knowledge view",
+      "tag": "A",
+      "zone": "FOOTER"
+    },
+    {
+      "index": 20,
+      "text": "Contact Greedy Adventures ↗",
+      "tag": "A",
+      "zone": "FOOTER"
+    },
+    {
+      "index": 21,
+      "text": "Ask about your jump",
+      "tag": "BUTTON"
+    }
+  ],
+  "headings": [
+    {
+      "level": 1,
+      "text": "Sea View Skydiving"
+    },
+    {
+      "level": 2,
+      "text": "Same aircraft, altitude and instructors in every package"
+    },
+    {
+      "level": 2,
+      "text": "Packages"
+    },
+    {
+      "level": 3,
+      "text": "ECO"
+    },
+    {
+      "level": 3,
+      "text": "DELUXE"
+    },
+    {
+      "level": 3,
+      "text": "VIP"
+    },
+    {
+      "level": 3,
+      "text": "Included in every package:"
+    },
+    {
+      "level": 2,
+      "text": "The plan"
+    },
+    {
+      "level": 3,
+      "text": "Arrival and check-in"
+    },
+    {
+      "level": 3,
+      "text": "Safety briefing and gear fitting"
+    },
+    {
+      "level": 3,
+      "text": "Boarding and the climb"
+    },
+    {
+      "level": 3,
+      "text": "Exit and freefall"
+    },
+    {
+      "level": 3,
+      "text": "Canopy flight and landing"
+    },
+    {
+      "level": 2,
+      "text": "Good to know"
+    },
+    {
+      "level": 3,
+      "text": "Navigation"
+    },
+    {
+      "level": 3,
+      "text": "Demos"
+    },
+    {
+      "level": 3,
+      "text": "Credits"
+    }
+  ],
+  "nativeDialogChromeBoundary": "Body may be active at the browser-chrome Tab boundary; no background control receives focus."
+}

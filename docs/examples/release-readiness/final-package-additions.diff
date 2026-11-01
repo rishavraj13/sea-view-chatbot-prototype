@@ -1,0 +1,47 @@
+diff --git a/package.json b/package.json
+index 16048b6..7f48aaf 100644
+--- a/package.json
++++ b/package.json
+@@ -9,16 +9,22 @@
+   "scripts": {
+     "dev": "next dev",
+     "build": "next build",
++    "start": "next start",
+     "typecheck": "next typegen && tsc --noEmit",
+     "lint": "eslint . --max-warnings=0",
+     "test": "vitest run",
++    "test:e2e": "playwright test",
+     "verify:live": "tsx --env-file=.env.local scripts/verify-live.mjs",
+     "format": "prettier --write .",
+-    "format:check": "prettier --check ."
++    "format:check": "prettier --check .",
++    "verify:offline": "npm run typecheck && npm run lint && npm test && npm run build"
+   },
+   "dependencies": {
+     "@ai-sdk/google": "^4.0.109",
+     "@ai-sdk/groq": "^4.0.74",
++    "@ai-sdk/react": "4.0.162",
++    "@assistant-ui/react": "^0.15.32",
++    "@assistant-ui/react-ai-sdk": "^1.4.21",
+     "@openrouter/ai-sdk-provider": "^3.1.0",
+     "ai": "^7.0.158",
+     "next": "^16.4.3",
+@@ -28,12 +34,18 @@
+     "zod": "^4.6.7"
+   },
+   "devDependencies": {
++    "@axe-core/playwright": "^4.14.0",
++    "@playwright/test": "^1.64.1",
++    "@testing-library/jest-dom": "^7.0.1",
++    "@testing-library/react": "^16.3.3",
++    "@testing-library/user-event": "^14.6.8",
+     "@types/node": "^24.19.2",
+     "@types/react": "^19.3.0",
+     "@types/react-dom": "^19.3.0",
+     "eslint": "^9.39.5",
+     "eslint-config-next": "^16.4.3",
+     "eslint-config-prettier": "^10.1.8",
++    "jsdom": "^30.1.3",
+     "pdf2json": "4.0.2",
+     "prettier": "^3.9.10",
+     "tsx": "4.23.15",

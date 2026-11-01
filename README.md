@@ -1,55 +1,138 @@
-# Sea View Skydiving chatbot backend
+# Sea View Skydiving customer chatbot prototype
 
-Next.js App Router backend with static website knowledge, keyword retrieval, media tools, one-call generation and a citation/numeric property guard. No booking transactions or frontend features.
+A Next.js App Router + TypeScript experience page, assistant-ui chat and read-only Knowledge view. Answers use a static capture of Greedy Adventures’ public pages; PDF/video delivery uses a registry. This prototype makes no bookings or payments and has no database, authentication or crawler.
 
-Use Node >=22.12: npm ci, copy .env.example to .env.local, then npm run dev. Verify with npm run typecheck, npm run lint, npm test, npm run build and npm run format:check. Secrets are read only by src/server/config/env.ts and never returned.
+## Demos and local frontend
 
-MODEL_MODE=mock is explicitly scripted and makes zero provider calls. Live selection uses MODEL_PROVIDER=google|groq|openrouter and MODEL_ID. Matching keys are GOOGLE_GENERATIVE_AI_API_KEY, GROQ_API_KEY and OPENROUTER_API_KEY. Missing selected key is explicitly labelled mock; provider errors never trigger fallback. Model defaults/controls and compatibility are documented in docs/providers.md. Google 2.5 Flash budget defaults to 0; the existing 20-second deadline and one-step generation remain.
+| Demo                   | URL                                                                 | Behavior                                                   |
+| ---------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Live Groq              | [Live endpoint](https://sea-view-chatbot-prototype.vercel.app)      | One live model step; shared free Groq quota                |
+| Labelled mock fallback | [Mock endpoint](https://sea-view-chatbot-prototype-mock.vercel.app) | Scripted answers, zero provider calls, explicit mock label |
 
-## Selected live provider and switching
+These are the existing backend-v1 deployments. The frontend on this branch has **not** been deployed in Pass 5; run it locally to review the current UI. Runtime demo links are configured together in [src/content/site.ts](src/content/site.ts). There is no automatic fallback between URLs/providers or from a provider error to mock.
 
-The selected Groq configuration is `MODEL_MODE=live`, `MODEL_PROVIDER=groq`, `MODEL_ID=qwen/qwen3.8-27b`, `REASONING_EFFORT=none`, with `GROQ_API_KEY` privately in .env.local. The committed .env.example selects the same provider/model but keeps explicit mock mode until you enable live. The earlier provider-selection run recorded a failed dependent follow-up in docs/live-provider-report.md. The current backend-v1 release smoke passed all eight scenarios, including the VIP follow-up and required brochure/video tools; see docs/backend-v1-release-report.md for exact evidence and limits. Provider choice is configuration only; there is no automatic fallback.
+The live demo shares a free Groq quota. Exhaustion displays a typed rate-limit message with a Retry action, disabled until the optional upstream delay expires. A valid Knowledge test question uses one live model call on a configured live backend, consuming the same quota. The separate mock site is the quota-independent scripted fallback.
 
-To switch explicitly to Google, set `MODEL_PROVIDER=google`, `MODEL_ID=gemini-2.5-flash`, `MODEL_MODE=live` and provide `GOOGLE_GENERATIVE_AI_API_KEY` locally. Its existing thinking-budget default is 0. To select OpenRouter, set `MODEL_PROVIDER=openrouter`, an explicit currently supported tool-capable `MODEL_ID`, and `OPENROUTER_API_KEY`; its model/backend support must be verified before relying on it. `REASONING_EFFORT=none` disables OpenRouter reasoning where supported. Keep keys out of source control, restart the local server after changing configuration, and verify response metadata rather than assuming the provider switched. No Google/OpenRouter live calls were made in this phase. Vercel requires the same explicit provider/model and matching private key scoped to Production, followed by an authorized redeployment. See docs/deployment-plan.md for live-Groq variables and protection-disable steps; current deployment results are below.
+## Quick start
 
-## Sources
+Node >=22.12. Use the committed lockfile; do not upgrade the frozen dependency baseline.
 
-- https://www.greedyadventures.com/experiences/sea-view-skydiving
-- https://www.greedyadventures.com/cancellations
+```powershell
+npm ci
+if (!(Test-Path .env.local)) { Copy-Item .env.example .env.local }
+$env:MODEL_MODE='mock'
+npm run dev
+```
 
-Captured 2026-10-31 and organized as eighteen logical JSON sections with isDemo:false. Text is copied from the requested sections without reconciling differing taglines and identical package inclusions. Static capture is not a crawler or a promise of present-day pricing. Unsupported age/weight/health/clothing/pickup-price/baggage questions return no retrieval match.
+Open [localhost:3000](http://localhost:3000). Keep `.env.local` private and gitignored. Stop the server with Ctrl+C before browser tests. Check ports 3000 and 3100 before/after runs:
 
-The actual page video is linked with isDemo:false and a page-supplied poster. It was HEAD-verified but not downloaded or playback-tested. public/demo/brochure.pdf is generated DEMO MATERIAL from the real package facts (isDemo:true), not an official site PDF. The retired test asset remains unavailable. UI should render per-record badges.
+```powershell
+Get-NetTCPConnection -State Listen -LocalPort 3000,3100 -ErrorAction SilentlyContinue
+```
 
-Flow: full client history -> pure section retrieval -> source context -> one model step/tools -> property guard -> separate citations -> AI SDK UIMessage SSE. Knowledge citations are source-url parts and trace.citations; visible prose omits raw citation URLs. The prompt requests 1–3 short, question-relevant sentences. The trace endpoint runs the same pipeline. The unchanged guard checks citation and numeric properties, not complete factual entailment; see ADRs 011 and 012. Source flags distinguish real content from the demo brochure; mode:mock separately labels generation. All source anchors were verified against fresh HTML element ids; repeat the offline check with `python scripts/verify-source-anchors.py`.
+No rows means neither port is listening. Dev uses 3000; Playwright starts its own **production build** on 3100, forces mock mode and does not reuse an existing server.
 
-Frontend: pending. Knowledge view: pending.
+### Configuration and switching providers
 
-Docs: docs/api.md, knowledge-and-media.md, architecture.md, testing.md, providers.md, ai-assistance.md, progress-log.md and real-knowledge-report.md. AGENTS.md is binding. No database/auth/payments/crawler. Legacy fictional response reports are explicitly superseded; old Git history is retained for audit.
+[.env.example](.env.example) lists every supported setting. Secrets are read and Zod-validated only by [env.ts](src/server/config/env.ts), never sent to the client.
 
-Latest-turn file vocabulary gates model tools; generic see/show/photos/included do not. Pronoun-only "send it" remains a limitation: name brochure/video. Explicit customer ids still resolve through the registry. Model history now uses only user/assistant text from the actual UI messages, omitting source/tool/step parts. A previous file is remembered only through the assistant's visible text; this does not create server memory. Registry summaries use fixed customer phrases, and failed model prose is dropped on media turns while text-only failures retain the refusal. The core guard still cannot prove nonnumeric entailment.
+| Variable                     | Purpose                                                                        |
+| ---------------------------- | ------------------------------------------------------------------------------ |
+| MODEL_MODE                   | `mock` for explicit scripted operation; `live` to enable the selected provider |
+| MODEL_PROVIDER               | `google`, `groq` or `openrouter`; no automatic provider switch                 |
+| MODEL_ID                     | Explicit provider model id; example selects `qwen/qwen3.8-27b`                 |
+| GROQ_API_KEY                 | Private key for Groq                                                           |
+| GOOGLE_GENERATIVE_AI_API_KEY | Private key for Google                                                         |
+| OPENROUTER_API_KEY           | Private key for OpenRouter                                                     |
+| REASONING_EFFORT             | `none`, `low`, `medium`, `high`; selected Qwen example uses `none`             |
+| GOOGLE_THINKING_BUDGET       | Google budget, default 0                                                       |
+| GOOGLE_THINKING_LEVEL        | Google thinking level, default `low`                                           |
+| GOOGLE_MODEL                 | Legacy Google model default when MODEL_ID is absent                            |
 
-The earlier Qwen-only regression passed 19/21 initially and 20/21 after failure-only reruns; the mixed price/file case still omitted a citation on rerun, so visible prose correctly kept only the file summary. Prior Llama returned HTTP 404 for this key (cause unverified); no Llama call in this phase. No production-readiness claim, extra generation or fallback. See ADR 014, docs/history-revision-report.md and the bounded `npm run verify:live` instructions in docs/testing.md.
+The template keeps `MODEL_MODE=mock`. For live Groq, deliberately set `MODEL_MODE=live`, `MODEL_PROVIDER=groq`, `MODEL_ID=qwen/qwen3.8-27b`, `REASONING_EFFORT=none` and the private key. To switch to Google, set its provider/key and an explicit compatible model id (the existing example is `gemini-2.5-flash`). For OpenRouter, set its provider/key and verify the chosen model's tool support. Restart the server and check public mode/provider/modelId metadata. Local Ollama models are outside scope.
 
-Server-side source attribution now supplies source parts from lexical answer/chunk overlap; the model is not required to write URLs. The numeric guard remains unchanged. See ADR 015 and docs/source-attribution-report.md for the threshold evidence, raw live answers and quota-blocked cases. The earlier source-attribution campaign stopped at its first 429 after 16 calls; no further scenarios or reruns were attempted.
+A missing selected key in live mode produces **explicitly labelled mock** as the existing contract documents. A provider error never switches to mock. Provider catalogs/quotas in [providers.md](docs/providers.md) are dated historical research, not a fresh availability guarantee.
 
-A message combining a factual question and a media request can lose one part if the model skips a tool call or writes prose that fails grounding. Detected failures fail closed: the backend refuses or keeps only the registry summary, and never invents a replacement fact. This is not a semantic proof that every surviving model clause is true: lexical attribution cannot validate negation, scope or fact/amount ownership. There is no automatic fallback or extra model call to fill missing parts.
+## Request flow
 
-The latest offline revision uses three-state media selection (ADR 016): no media noun means no tools, a noun alone permits matching tools, and a noun in a recognized request form requires at least one matching tool call. It cannot guarantee both requested tools or factual prose on a mixed turn. The request forms are English-only and lexical: factual question openers stay optional, but a later explicit modal request can qualify. Wording the forms do not recognize falls back to optional with a media noun, otherwise none; pronoun-only requests do not qualify. Negation and indirect wording are not semantically understood. Provider rejection stays a typed error, without a fallback or second call. This revision made no live provider calls and does not establish improved live reliability. Cancellation knowledge is now four verbatim paragraphs rather than one cross-product chunk; lexical ranking/attribution can still include a different product’s paragraph.
+```mermaid
+flowchart LR
+  UI[assistant-ui client] --> API[POST /api/chat]
+  API --> Validate[Zod validation]
+  Validate --> Retrieve[Conversation query and keyword retrieval]
+  Retrieve --> Model[One model step with matching media tools]
+  Model --> Guard[Lexical attribution and numeric guard]
+  Model --> Registry[Media registry and deterministic summary]
+  Guard --> Stream[UIMessage SSE: text, source-url and tool results]
+  Registry --> Stream
+  Stream --> UI
+  Knowledge[Knowledge test question] --> Trace[POST /api/knowledge/trace]
+  Trace --> Validate
+  Guard --> JSON[Trace JSON]
+  Registry --> JSON
+  JSON --> Knowledge
+```
 
-Direct file desires (“I want a video”, “I'd like a brochure”, “I'm after the PDF”) now require a matching media tool; desires to know/ask/find out/understand/learn/check/confirm/clarify/wonder remain optional. Explicit negated file requests offer no model tools, while bare media words remain optional. The English lexical detector is bounded: unrecognized wording is optional with a media noun, otherwise none; negation vetoes the whole turn rather than resolving per-file mixed negation. Request/stream/tool-result shapes remain unchanged.
+The following generation/guard steps describe live mode; explicit mock uses a separate scripted branch.
 
-## Live and labelled mock deployments
+1. The latest user message selects a media policy: **none** offers no tools; **optional** offers tools for the media nouns present; **required** uses a recognized English request/desire form and requires a matching tool call. Negated file requests offer no model tools. Explicit asset ids still go through the registry.
+2. A deterministic query includes relevant conversation history. Pure keyword retrieval selects captured sections; no embeddings or web lookup.
+3. Live mode makes one provider generation step, no continuation/retry loop. Tools have strict empty model-input schemas and resolve fixed registry assets. Required tool choice still depends on the provider/model executing tools correctly.
+4. The guard attributes at most two supporting URLs through normalized content-word overlap and rejects numeric properties absent from the combined retrieved context or a foreign URL. It is a lexical/property check, **not proof of meaning**. Detected failures refuse, or drop ungrounded prose when media already resolved.
+5. Media summaries describe registry results only. Structured source parts become page-deduplicated citation chips. Knowledge URLs are removed from visible prose. Text is escaped React content. The response is streamed after the checked generation, not token-by-token directly from the provider.
 
-Both were deployed from clean commit 6710c21 on 2026-10-31; no code changed during deployment/verification. Authentication/password protection is off and anonymous access passed.
+The single assistant-ui runtime survives dialog close and client-side navigation; New conversation resets it. There is no server memory. Full bounded history is resent each turn. Old long assistant answers are truncated to **4000 characters** in the validated history projection; the original response still stays in the UI/DOM. Assistant text over 600 characters has an eight-line Show full answer/Show less presentation toggle.
 
-| URL                                                                          | Behavior                                                                                                                                               |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Live Groq](https://sea-view-chatbot-prototype.vercel.app)                   | MODEL_MODE=live, MODEL_PROVIDER=groq, MODEL_ID=qwen/qwen3.8-27b, REASONING_EFFORT=none; existing private Groq key and shared free quota.               |
-| [Labelled mock fallback](https://sea-view-chatbot-prototype-mock.vercel.app) | Explicit MODEL_MODE=mock, no provider keys, scripted deterministic answers with mode:mock metadata and a [MOCK] text label; independent of Groq quota. |
+## Module map and sources
 
-The mock deployment is the always-available scripted fallback for quota-independent demonstrations. Users/reviewers choose its separate URL explicitly: there is **no automatic fallback between sites or from live errors to mock**. It uses the same captured real website knowledge and demo brochure; generation mode is separate from source/media isDemo provenance. Mock output is diagnostic/scripted, not evidence of live model quality.
+| Area                                                     | Location                                                                                  |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Routes and layouts                                       | [src/app](src/app)                                                                        |
+| Experience UI and scroll geometry                        | [src/components](src/components), [src/components/scroll](src/components/scroll)          |
+| Shared labels, captured-fact presentation and demo links | [src/content](src/content)                                                                |
+| Chat runtime, transport, errors and parts                | [src/components/chat](src/components/chat), [ChatContext](src/components/ChatContext.tsx) |
+| Knowledge browser and trace                              | [src/components/knowledge](src/components/knowledge)                                      |
+| Frozen retrieval/attribution                             | [src/server/knowledge](src/server/knowledge)                                              |
+| Frozen model/prompt/tools/guard                          | [src/server/chat](src/server/chat)                                                        |
+| Frozen media resolution                                  | [src/server/media](src/server/media)                                                      |
 
-All eight current live smoke scenarios passed, using eight calls, no retries, and >=10-second spacing. Required tool choice worked for brochure, video and both together. Inclusions, VIP price, a dependent follow-up and weather answered with structured citations; age-limit information was refused. Both sites passed public sources (18), PDF signature, video HEAD, invalid-input, runtime/maxDuration checks. Complete exact answers, separate sources/tools, latency and command output are in [the backend-v1 release report](docs/backend-v1-release-report.md). Historical quota-blocked runs remain preserved in their reports.
+Captured **2026-10-31**, eighteen sections, from:
 
-The live demo shares a free Groq quota. Exhaustion returns a typed RATE_LIMIT message, with optional retryAfterSeconds when supplied upstream, and no automatic mock fallback. A frontend can offer manual retry; this backend does not implement a retry button. The Knowledge view remains pending; its planned test-question button calls the shared trace pipeline and uses one live model call per valid test, consuming the same quota.
+- [Sea View Skydiving](https://www.greedyadventures.com/experiences/sea-view-skydiving)
+- [Cancellations](https://www.greedyadventures.com/cancellations)
+
+Read [data/knowledge](data/knowledge): each JSON has title, real URL, capturedAt, exact text and isDemo:false. ECO/DELUXE/VIP taglines and identical listed inclusions remain as the page states them. Importing JSON modules supports serverless packaging; no working-directory filesystem loader is used. This is a static capture, not a crawler or current-price guarantee.
+
+[data/media/manifest.json](data/media/manifest.json) registers the real external video, a generated **demo** brochure and an unavailable retired brochure. The PDF is sample material made from captured facts, not an official site PDF. Video playback can fail independently; the UI provides its external link after a playback error. Source/media `isDemo` provenance is distinct from generation `mode:"mock"`.
+
+Open `/knowledge`: Sources shows the eighteen sections and full text, Media shows actual availability/provenance, and Test a question → Run trace shows the submitted question, exact source context, chunks/scores, executed tools, media, answer/citations and public model metadata. Optional earlier turns require a complete user/assistant pair. The API does not return a retrieval-query field, so the UI does not invent one.
+
+## Repeatable checks
+
+```powershell
+$env:MODEL_MODE='mock'
+npm run verify:offline
+npm run test:e2e
+```
+
+The first command serially runs typecheck, zero-warning lint, all unit tests and production build. The second runs Desktop/Tablet/Mobile against port 3100 with retries off. See [verification guide](docs/verification.md) for numbered scenarios and [testing](docs/testing.md) for exact targeted commands, keyboard walk, fixtures and evidence. Generated captures use fresh per-test test-results directories; selected final figures are curated separately in docs/screenshots/final-v5.
+
+`npm run verify:live` is **not** an offline check. It consumes quota and uses persistent campaign ledgers. Do not run or reset a spent/stopped ledger without a separate approved live-call budget. No live provider call or deployment occurred in Pass 5.
+
+## Limits and release status
+
+- Lexical attribution cannot validate negation, semantic entailment, product scope or which fact owns an amount. A passing guard can still miss a semantic error.
+- A mixed factual/media message can lose one part when the model skips a tool or writes prose that fails grounding; there is no extra generation to fill it.
+- English-only lexical request forms cannot understand every phrasing. A missing media noun falls back to a text turn; a noun without a recognized request form is optional. Required tool choice cannot guarantee every requested tool or accompanying prose.
+- Knowledge is static and contradictory page wording is not reconciled. Unsupported age/weight/health/clothing/baggage/pickup-price facts must not be invented.
+- Mock mode is scripted and can echo long captured context. It is not proof of live answer quality, semantic policy interpretation or tool-calling reliability. An offline check found a known frozen-backend defect: “Do not send a brochure” computes policy none but still returns a brochure in the scripted mock branch. Mock diagnostics can also retain a refusal beside a media summary; the frontend preserves the original text. This is documented, not fixed under the backend freeze.
+- History text is bounded/truncated as described above; reload clears the browser conversation.
+- Shared free quota can stop live answers; Retry is manual and there is no automatic fallback.
+- Read-only npm audit reports **17 moderate, 0 high/critical** advisory entries, rooted in tooling/transitive dependencies and their dependants. They were left untouched intentionally to preserve the verified dependency baseline (`ai 7.0.158`, gateway `4.0.131`); no npm audit fix was run.
+- Lighthouse was not installed and this pass prohibited installs. The requested three-run mobile medians and Performance >=85 / Accessibility >=95 / Best Practices >=95 targets remain **unverified**. Axe, keyboard, load-byte and browser checks are separate evidence, not substitute Lighthouse scores. See [release report](docs/frontend-release-report.md).
+
+## AI assistance and credits
+
+Codex implemented the backend and later frontend passes; Antigravity produced the initial frontend; the owner identifies Claude as a technical reviewer. [AI assistance](docs/ai-assistance.md) distinguishes generated work, recorded review, human decisions and verification limits. No secrets or private conversations belong in captures.
+
+Photography and captured website content © Greedy Adventures, from their public pages. Self-hosted Familjen Grotesk, Instrument Sans and Instrument Serif retain their [OFL notices](public/fonts/licenses); no Clash Display or Satoshi font is used. Thanks to Next.js, React, Vercel AI SDK/provider libraries, assistant-ui, Zod, Vitest, Playwright, axe-core, ESLint and Prettier. See [design notes and screenshot index](docs/design-notes.md), [architecture](docs/architecture.md), [API contract](docs/api.md) and binding [AGENTS.md](AGENTS.md).
