@@ -1,5 +1,9 @@
 # Progress log
 
+## 2026-11-02 — Frontend Pass 3: full browser regression coverage
+
+Replaced stale Knowledge specs with manifest/contract-based coverage and added endpoint errors, request-state/keyboard/axe and viewport evidence specs. Manifest is read with fs and parsed, not imported as a Node JSON module. Browser helpers compare exact context textContent with the actual mock endpoint, while in-process unit route tests prove the frozen schema contract. The shared rain preset and typed age-limit chat refusal are both covered. Final full matrix: **180/180 passed** in 1.7m (**60 per Desktop/Tablet/Mobile**), zero skipped/flaky cases/retries. All prior six Knowledge failures are resolved at their roots; no assertions are disabled. The user/assistant-pair validation, empty chunks/media, actual tool-call objects and all five captured error scenarios pass on every viewport. All eight required viewport images have been opened and reviewed. Baseline proof/report packaging follows as a final documentation commit; no further code change is needed.
+
 ## 2026-11-02 — Frontend Pass 3: validated Knowledge view
 
 Implemented schema-validated catalog/trace responses and shared strict chat error handling. Extracted the chat absolute-deadline countdown/RequestError for reuse and deleted the legacy error helper/types. TraceTab now delegates to a form, request hook and six small result sections. Shows exact returned context, object tool calls as readable fields, registry media, page-attributed citations and metadata; removes invented Retrieval query. Complete earlier-turn pair is validated (4000-char fields), button disables in flight and permanent live-call note is visible. Added roving ARIA tabs, true empty states, safe links and home footer section targets. Restored weather as the shared fifth starter; typed age-limit chat refusal remains covered separately. No source fact, backend or dependency changes.

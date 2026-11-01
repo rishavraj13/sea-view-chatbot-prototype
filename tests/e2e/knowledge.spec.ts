@@ -1,151 +1,268 @@
 import { test, expect } from '@playwright/test';
-import { KNOWLEDGE_UI, STARTER_PROMPTS } from '../../src/content';
+import {
+  CHAT_COPY,
+  CHAT_REFUSAL,
+  KNOWLEDGE_COPY,
+  KNOWLEDGE_UI,
+  MISSING_FACT_PROMPT,
+  SOURCE_PAGES,
+  STARTER_PROMPTS,
+  TRACE_UI,
+} from '../../src/content';
+import { manifest, openKnowledge, runTrace } from './helpers/knowledge';
 
-test.describe('Knowledge transparency route (/knowledge)', () => {
-  test('renders header, navigation and captures screenshots', async ({
-    page,
-  }) => {
-    await page.goto('/knowledge');
+test('header, exact tab names, counts and home footer targets', async ({
+  page,
+}) => {
+  await openKnowledge(page);
+  await expect(
+    page.getByRole('heading', {
+      level: 1,
+      name: KNOWLEDGE_UI.title,
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: KNOWLEDGE_UI.backLink, exact: true }),
+  ).toHaveAttribute('href', '/');
+  const tabs = page.getByRole('tablist', { name: KNOWLEDGE_COPY.tabs });
+  for (const label of [
+    KNOWLEDGE_UI.tabSources,
+    KNOWLEDGE_UI.tabMedia,
+    KNOWLEDGE_UI.tabTrace,
+  ])
+    await expect(
+      tabs.getByRole('tab', { name: label, exact: true }),
+    ).toBeVisible();
+  for (const target of ['packages', 'plan', 'faq'])
+    await expect(
+      page.getByRole('contentinfo').locator(`a[href="/#${target}"]`),
+    ).toHaveCount(1);
+});
 
-    // Header & title
-    const header = page.getByRole('banner');
-    await expect(header).toBeVisible();
-    await expect(
-      header.getByRole('link', { name: KNOWLEDGE_UI.backLink, exact: true })
-    ).toBeVisible();
+test('sources: 18 sections, capture dates, safe links and expandable real text', async ({
+  page,
+}) => {
+  const panel = await openKnowledge(page);
+  await expect(panel.getByRole('article')).toHaveCount(18);
+  await expect(panel.locator('time[datetime="2026-10-31"]')).toHaveCount(18);
+  const article = panel.getByRole('article').first();
+  await expect(
+    article.getByRole('heading', { name: 'ECO', exact: true }),
+  ).toBeVisible();
+  await expect(article.getByRole('link')).toHaveAttribute(
+    'rel',
+    'noopener noreferrer',
+  );
+  await expect(article.locator('details')).not.toHaveAttribute('open');
+  await article.getByText(KNOWLEDGE_COPY.fullSource, { exact: true }).click();
+  await expect(article.locator('pre')).toContainText('฿9,500');
+});
 
+test('media: every actual manifest title, type, provenance and availability', async ({
+  page,
+}) => {
+  const panel = await openKnowledge(page, KNOWLEDGE_UI.tabMedia);
+  await expect(panel.getByRole('article')).toHaveCount(manifest.length);
+  for (const item of manifest) {
+    const article = panel.getByRole('article').filter({
+      has: page.getByRole('heading', { name: item.title, exact: true }),
+    });
+    await expect(article).toBeVisible();
+    await expect(article.getByText(item.type, { exact: true })).toBeVisible();
     await expect(
-      page.getByRole('heading', { level: 1, name: KNOWLEDGE_UI.title, exact: true })
-    ).toBeVisible();
-
-    // Tabs
-    const tabsList = page.getByRole('tablist');
-    await expect(tabsList).toBeVisible();
-    await expect(
-      page.getByRole('tab', { name: KNOWLEDGE_UI.tabSources, exact: true })
+      article.getByText(
+        item.available ? KNOWLEDGE_COPY.available : KNOWLEDGE_COPY.unavailable,
+        { exact: true },
+      ),
     ).toBeVisible();
     await expect(
-      page.getByRole('tab', { name: KNOWLEDGE_UI.tabMedia, exact: true })
-    ).toBeVisible();
-    await expect(
-      page.getByRole('tab', { name: KNOWLEDGE_UI.tabTrace, exact: true })
-    ).toBeVisible();
-
-    // Responsive screenshot
-    const viewport = page.viewportSize();
-    if (viewport) {
-      await page.screenshot({
-        path: `docs/screenshots/knowledge-${viewport.width}.png`,
-        fullPage: true,
-      });
+      article.getByText(CHAT_COPY.demo, { exact: true }),
+    ).toHaveCount(item.isDemo ? 1 : 0);
+    if (item.available) {
+      await expect(article.getByRole('link')).toHaveAttribute('href', item.url);
+      await expect(article.getByRole('link')).toHaveAttribute(
+        'rel',
+        'noopener noreferrer',
+      );
+    } else {
+      await expect(article.getByRole('link')).toHaveCount(0);
+      await expect(
+        article.getByText(KNOWLEDGE_COPY.noAsset, { exact: true }),
+      ).toBeVisible();
     }
+  }
+});
+
+test('trace brochure: actual context, object tool call, demo receipt, citations area and metadata', async ({
+  page,
+}) => {
+  const panel = await openKnowledge(page, KNOWLEDGE_UI.tabTrace);
+  await expect(
+    panel.getByText(KNOWLEDGE_COPY.traceEmpty, { exact: true }),
+  ).toBeVisible();
+  await expect(
+    panel.getByText(KNOWLEDGE_COPY.runNote, { exact: true }),
+  ).toBeVisible();
+  for (const prompt of STARTER_PROMPTS)
+    await expect(
+      panel.getByRole('button', { name: prompt, exact: true }),
+    ).toBeVisible();
+  const { result, data } = await runTrace(page, STARTER_PROMPTS[1]);
+  expect(data.toolCalls.map((call) => call.name)).toContain('sendBrochure');
+  const tools = result.getByRole('region', {
+    name: KNOWLEDGE_COPY.tools,
+    exact: true,
   });
-
-  test('sources tab displays verified sources, capture dates and expandable text', async ({
-    page,
-  }) => {
-    await page.goto('/knowledge');
-    await page.getByRole('tab', { name: KNOWLEDGE_UI.tabSources, exact: true }).click();
-
-    const main = page.getByRole('main');
-    // Verify source items loaded from real /api/knowledge/sources
-    const sourceLinks = main.locator('a[target="_blank"]');
-    await expect(sourceLinks.first()).toBeVisible({ timeout: 10000 });
-
-    // Verify capture date
-    await expect(
-      main.getByText('Captured: 2026-10-31', { exact: true }).first()
-    ).toBeVisible();
-
-    // Expand details
-    const details = main.locator('details').first();
-    await expect(details).toBeVisible();
-    await details.locator('summary').click();
-    await expect(details.locator('pre')).toBeVisible();
+  await expect(
+    tools.getByRole('heading', { name: 'sendBrochure', exact: true }),
+  ).toBeVisible();
+  await expect(tools).toContainText(data.toolCalls[0]!.input.id);
+  const media = result.getByRole('region', {
+    name: KNOWLEDGE_COPY.media,
+    exact: true,
   });
-
-  test('media tab displays PDF and video assets with availability badges', async ({
-    page,
-  }) => {
-    await page.goto('/knowledge');
-    await page.getByRole('tab', { name: KNOWLEDGE_UI.tabMedia, exact: true }).click();
-
-    const main = page.getByRole('main');
-    // Check PDF brochure card
+  await expect(media.getByText(CHAT_COPY.demo, { exact: true })).toBeVisible();
+  await expect(media.getByRole('link')).toHaveAttribute(
+    'href',
+    '/demo/brochure.pdf',
+  );
+  await expect(
+    result.getByRole('region', { name: KNOWLEDGE_COPY.citations, exact: true }),
+  ).toBeVisible();
+  for (const [label, value] of [
+    [TRACE_UI.mode, data.mode],
+    [TRACE_UI.provider, data.provider],
+    [TRACE_UI.model, data.modelId],
+  ])
     await expect(
-      main.getByText('Sea View Skydiving Pattaya — Experience Brochure', {
-        exact: true,
-      })
-    ).toBeVisible({
-      timeout: 10000,
-    });
-    await expect(
-      main.getByText('Demo Material', { exact: true }).first()
+      result.getByText(`${label}: ${value}`, { exact: true }),
     ).toBeVisible();
+  await expect(
+    result.getByText(TRACE_UI.output, { exact: true }),
+  ).toBeVisible();
+  expect(await result.locator('h3').allTextContents()).toEqual([
+    KNOWLEDGE_COPY.question,
+    KNOWLEDGE_COPY.context,
+    KNOWLEDGE_COPY.chunks,
+    KNOWLEDGE_COPY.tools,
+    KNOWLEDGE_COPY.media,
+    KNOWLEDGE_COPY.answer,
+  ]);
+  await expect(result).not.toContainText('[object Object]');
+  await expect(panel).not.toContainText('Retrieval query');
+});
 
-    // Check video card
-    await expect(
-      main.getByText('Sea View Skydiving — Official Dropzone Video', {
-        exact: true,
-      })
-    ).toBeVisible();
-    await expect(
-      main.getByText('Official', { exact: true }).first()
-    ).toBeVisible();
-  });
-
-  test('trace tab runs question through real pipeline and renders ordered sections 1-6', async ({
-    page,
-  }) => {
-    await page.goto('/knowledge');
-    await page.getByRole('tab', { name: KNOWLEDGE_UI.tabTrace, exact: true }).click();
-
-    const main = page.getByRole('main');
-
-    // Click preset
-    const preset = main.getByRole('button', {
-      name: STARTER_PROMPTS[0],
+test('trace earlier turns: VIP-dependent follow-up, exact context and submitted history', async ({
+  page,
+}) => {
+  const panel = await openKnowledge(page, KNOWLEDGE_UI.tabTrace);
+  await panel.getByText(TRACE_UI.earlierTurns, { exact: true }).click();
+  const earlierUser = 'How much is the VIP package?';
+  const earlierAssistant = 'The VIP package costs ฿14,000 per person.';
+  await panel
+    .getByLabel(KNOWLEDGE_COPY.user, { exact: true })
+    .fill(earlierUser);
+  await panel
+    .getByLabel(KNOWLEDGE_COPY.assistant, { exact: true })
+    .fill(earlierAssistant);
+  const { result, data } = await runTrace(page, "and what's included?");
+  expect(data.chunks.some((chunk) => chunk.source.title === 'VIP')).toBe(true);
+  await expect(
+    result.getByRole('region', {
+      name: KNOWLEDGE_COPY.contextText,
       exact: true,
-    });
-    await expect(preset).toBeVisible();
-    await preset.click();
+    }),
+  ).toContainText('VIP');
+  await expect(
+    result.getByRole('region', { name: KNOWLEDGE_COPY.question, exact: true }),
+  ).toContainText(earlierUser);
+  await expect(
+    result.getByRole('region', { name: KNOWLEDGE_COPY.question, exact: true }),
+  ).toContainText(earlierAssistant);
+  await expect(
+    result
+      .getByRole('region', { name: KNOWLEDGE_COPY.citations, exact: true })
+      .getByRole('link', { name: new RegExp(SOURCE_PAGES[0].label) }),
+  ).toBeVisible();
+});
 
-    // Verify textarea populated
-    const textarea = main.locator('#trace-question');
-    await expect(textarea).toHaveValue(STARTER_PROMPTS[0]);
+test('trace age limit: no context, empty chunks/tools/media and honest refusal', async ({
+  page,
+}) => {
+  await openKnowledge(page, KNOWLEDGE_UI.tabTrace);
+  const { result, data } = await runTrace(page, MISSING_FACT_PROMPT);
+  expect(data.chunks).toEqual([]);
+  expect(data.media).toEqual([]);
+  expect(data.toolCalls).toEqual([]);
+  await expect(
+    result.getByText(KNOWLEDGE_COPY.noChunks, { exact: true }),
+  ).toBeVisible();
+  await expect(
+    result.getByText(KNOWLEDGE_COPY.noTools, { exact: true }),
+  ).toBeVisible();
+  await expect(
+    result.getByText(KNOWLEDGE_COPY.noMedia, { exact: true }),
+  ).toBeVisible();
+  await expect(
+    result.getByRole('region', { name: KNOWLEDGE_COPY.answer, exact: true }),
+  ).toContainText(CHAT_REFUSAL);
+});
 
-    // Run trace
-    const runButton = main.getByRole('button', {
-      name: KNOWLEDGE_UI.runTraceButton,
-      exact: true,
-    });
-    await runButton.click();
-
-    // Wait for trace results
-    await expect(
-      main.getByText('Output from the real pipeline', { exact: true })
-    ).toBeVisible({ timeout: 15000 });
-
-    // Verify ordered sections 1 to 6
-    await expect(
-      main.getByText('1. Model Context', { exact: true })
-    ).toBeVisible();
-    await expect(
-      main.getByText('2. Retrieved Chunks', { exact: true })
-    ).toBeVisible();
-    await expect(
-      main.getByText('3. Attributed Sources', { exact: true })
-    ).toBeVisible();
-    await expect(main.getByText('4. Tool Calls', { exact: true })).toBeVisible();
-    await expect(
-      main.getByText('5. Generated Media', { exact: true })
-    ).toBeVisible();
-    await expect(
-      main.getByText('6. Final Answer', { exact: true })
-    ).toBeVisible();
-
-    // Verify final answer contains answer section
-    const finalAnswer = main.locator('section[aria-labelledby="section-answer"]');
-    await expect(finalAnswer).toBeVisible();
+test('earlier-turn pair validation sends no silently truncated history', async ({
+  page,
+}) => {
+  let calls = 0;
+  page.on('request', (request) => {
+    if (new URL(request.url()).pathname === '/api/knowledge/trace') calls++;
   });
+  const panel = await openKnowledge(page, KNOWLEDGE_UI.tabTrace);
+  await panel.getByText(TRACE_UI.earlierTurns, { exact: true }).click();
+  await panel
+    .getByLabel(KNOWLEDGE_COPY.user, { exact: true })
+    .fill('How much is VIP?');
+  await panel
+    .getByLabel(TRACE_UI.question, { exact: true })
+    .fill("and what's included?");
+  await panel
+    .getByRole('button', { name: KNOWLEDGE_UI.runTraceButton, exact: true })
+    .click();
+  await expect(panel.getByRole('alert')).toHaveText(
+    KNOWLEDGE_COPY.historyValidation,
+  );
+  expect(calls).toBe(0);
+});
+
+test('ARIA tabs activate by arrows/Home/End and Tab enters the selected panel', async ({
+  page,
+}) => {
+  await openKnowledge(page);
+  const labels = [
+    KNOWLEDGE_UI.tabSources,
+    KNOWLEDGE_UI.tabMedia,
+    KNOWLEDGE_UI.tabTrace,
+  ];
+  await page.getByRole('tab', { name: labels[0], exact: true }).focus();
+  for (const [key, index] of [
+    ['ArrowRight', 1],
+    ['End', 2],
+    ['ArrowRight', 0],
+    ['ArrowLeft', 2],
+    ['Home', 0],
+  ] as const) {
+    await page.keyboard.press(key);
+    const tab = page.getByRole('tab', { name: labels[index], exact: true });
+    await expect(tab).toBeFocused();
+    await expect(tab).toHaveAttribute('aria-selected', 'true');
+    await expect(tab).toHaveAttribute('tabindex', '0');
+    for (const [other, label] of labels.entries())
+      if (other !== index)
+        await expect(
+          page.getByRole('tab', { name: label, exact: true }),
+        ).toHaveAttribute('tabindex', '-1');
+  }
+  await page.keyboard.press('Tab');
+  await expect(
+    page.getByRole('tabpanel', { name: labels[0], exact: true }),
+  ).toBeFocused();
 });
