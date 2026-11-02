@@ -1,6 +1,6 @@
 # Testing
 
-Current branch frontend; backend-v1 is frozen except the single approved mock media-policy correction (ADR 020). Dependency versions remain frozen. All Pass 5 verification is local/offline with explicit MODEL_MODE=mock. No live provider call, deployment, install, test skip, timeout increase, suppression or automatic retry was used.
+Release branch master (fast-forwarded from frontend); backend-v1 is frozen except the single approved mock media-policy correction (ADR 020). Dependency versions remain frozen. Pass 5 verification was local/offline with explicit MODEL_MODE=mock. The later authorized release deployment and single quota-blocked live request are recorded below; no test skip, timeout increase, suppression or automatic retry was introduced.
 
 ## Setup and full gate
 
@@ -63,7 +63,7 @@ Screenshot contrast sampling uses opaque glyph cores against a separate hidden-t
 
 release-load.spec.ts disables browser cache through CDP in a fresh context and records Network.loadingFinished encodedDataLength, plus paint/navigation entries and image selection after scrolling. It uses each project's normal device/DPR, no substituted Lighthouse throttling. Plan image candidates must meet the physical slot within 10% normal bucket rounding. First-load bytes are single-load observations; plan photos below the 220dvh hero are lazy and do not affect initial transfer. Historical before/ captures remain distinct from final load captures.
 
-Lighthouse is not installed on PATH, in node_modules or in existing npm _npx caches. Installation is prohibited. Required three-run mobile medians and Performance >=85 / Accessibility >=95 / Best Practices >=95 remain unavailable; no audits/throttling were disabled or modified, and axe/CDP are not substitutes. The before/after table is in frontend-release-report.md. A later authorized environment with Lighthouse installed must close this release-verification gap.
+The earlier agent-side Lighthouse unavailability in Pass 5 is historical. The owner has now supplied the actual local three-run medians, recorded verbatim below; the Lighthouse step is measured, with both Performance values below the 85 internal target. No score is inferred from axe/CDP, and no performance work followed the supplied measurement.
 
 Generated screenshot/JSON captures now use each test’s fresh test.info().outputPath under ignored test-results; committed fixtures/history are not overwritten. The shared helpers/artifacts.ts only changes artifact destinations, not screenshot options/buffers or assertions. Final selected figures are promoted after a successful matrix into docs/screenshots/final-v5 and indexed in design-notes.md. Every requested 1440/390 home top/scrolled, chat-reply and Knowledge-trace viewport was reviewed. Historical filenames remain evidence of their original passes, not a claim of the final UI. PNG recompression is lossless with decoded-pixel identity checks.
 
@@ -96,3 +96,46 @@ npm test -- tests/server/chat/mock-media-policy.test.ts
 Expected: 133/133 cases. Every one of the 127 existing policy rows runs through the explicit mock pipeline and both chat/trace routes. None executes no implicit tool, optional deterministically executes permitted tools, required executes only permitted tools. The chat response is consumed with the real AI SDK transport/parser; completed tool results, mode, text and trace/pipeline media/calls must agree. Global fetch fails if called, and zero calls are asserted. This is separate coverage from the existing live-branch mock-provider exposure tests.
 
 Six extra cases preserve explicit-id behavior for available brochure/video, retired, unknown, wrong-type and noun-free explicit requests. Explicit id resolution remains an intentional independent registry action, including when policy is none; no extra implicit tool may come from a noun inside that id. Missing-asset scripting remains covered by existing tests. No request, stream, payload, guard, retrieval, knowledge/media data or dependency changes. Real gate output and the two-file frozen diff are in mock-media-policy-report.md and examples/mock-media-policy/.
+
+## Owner-supplied Lighthouse measurement — 2026-11-02
+
+The owner supplied these measured results verbatim; no scores were altered, rounded or estimated. Tool: Lighthouse `<VERSION>` (the supplied version placeholder is retained; the actual version was not specified).
+
+Command supplied by the owner:
+
+```text
+npx lighthouse <url> --only-categories=performance,accessibility,best-practices,seo --output=json --quiet --chrome-flags="--headless=new"
+```
+
+Method: default mobile emulation and simulated throttling, 3 runs per page, median reported. Target: local production build (`npm run build; npm run start -- -p 3100`) in explicit mock mode on the owner's Windows machine.
+
+```text
+Date: 2026-11-02. Tool: Lighthouse <VERSION>. Command: npx lighthouse <url> --only-categories=performance,
+accessibility,best-practices,seo --output=json --quiet --chrome-flags="--headless=new" (default mobile
+emulation and simulated throttling), 3 runs per page, median reported. Target: local production build
+(npm run build; npm run start -- -p 3100) in explicit mock mode on the owner's Windows machine.
+/ : Performance 84 (runs 82, 84, 84), Accessibility 100 (100, 100, 100), Best Practices 96 (96, 96, 96),
+SEO 100 (100, 100, 100).
+/knowledge : Performance 77 (runs 76, 77, 79), Accessibility 100 (100, 100, 100), Best Practices 96
+(96, 96, 96), SEO 100 (100, 100, 100).
+```
+
+Performance is below the **85 internal target on both pages**. These are local Lighthouse measurements under simulated mobile throttling, **not field data** or deployed-production scores. No performance work was done after measurement. No unverified cause is attributed to the scores. This replaces the earlier “not measured” status; it does not establish universal Lighthouse certification or a passing performance target.
+
+## v1.0 production deployment verification
+
+Live and explicit mock both deploy application commit 34e8ab05cce1dc3b0b102391a4af502fcaae3800, via clean git archive snapshots. Tag v1.0 moves only for the final docs-only commit; code/config/test/dependency files are unchanged. No .env.local, .vercel, node_modules, local test output or owner's uncommitted content entered the snapshot. The sole approved backend code exception is pipeline.ts and its mock-policy regression test, documented in ADR 020.
+
+Production Vercel inspect confirms nodejs26.x and maxDuration chat30/trace30/sources10 on both projects. Environment-name-only inspection confirms the existing live Groq names and no provider key on mock; settings/protection are unchanged. Anonymous route/media/link/catalog checks passed except long image caching (max-age=0 on source and optimized image responses). The initial sources verifier omitted documented top-level isDemo; corrected against the actual contract, the exact 18-section dataset and registry match. No server/config change was made after the owner instructed continuing remaining verification.
+
+The existing remote smoke entry was run once from a fresh task directory, preserving every previous ledger. Exact equivalent command (cwd in examples/release-v1/smoke-run.json):
+
+```powershell
+node C:\assignment\node_modules\tsx\dist\cli.mjs --tsconfig C:\assignment\tsconfig.json C:\assignment\scripts\verify-live.mjs --base-url https://sea-view-chatbot-prototype.vercel.app
+```
+
+This uses the installed verify:live harness entry; npm run verify:live would additionally load .env.local, unnecessary for remote mode. The fixed harness order begins with brochure, then video/both/inclusions/VIP/follow-up/rain/age; all questions equal the brief's sentences. It allows eight requests, >=10-second start spacing, no retries and stops on first 429. First brochure request returned HTTP429 in 1315ms; one request used, zero retries, stopped429:true, seven unattempted. No direct 1-token quota probe: this ledger does not track an extra direct provider request, so the budget was reserved for smoke. The ledger is now closed for this task; do not resume/reset/retry.
+
+Public body has live/groq/qwen metadata and RATE_LIMIT, no retryAfterSeconds. The matching provider_error log is the fixed allowlisted event (no key/body/conversation); see release-v1-report.md. Both deployed mock scenarios pass independently without provider calls. Remote Playwright specs are skipped: existing config hardcodes baseURL plus local production webServer, without CLI/env override; changing config was forbidden. Anonymous fetch and actual SDK stream consumption provide scoped remote checks without claiming an e2e deployment suite pass.
+
+The final tagged source ZIP is built independently after extraction with npm ci and MODEL_MODE=mock npm run verify:offline, then its temporary tree is submitted for cleanup. Automatic approval review rejected the verified deployed-source cleanup, so that tree remains for owner removal; no alternative deletion method is used. Exact concrete ZIP SHA256/size/largest entries and final extracted-build output are delivered in the outside-repo companion manifest. The release report includes deployed-source archive build output and explains the final docs-only tag move. No live test ran from the archive build.

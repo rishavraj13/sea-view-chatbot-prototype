@@ -2,14 +2,14 @@
 
 A Next.js App Router + TypeScript experience page, assistant-ui chat and read-only Knowledge view. Answers use a static capture of Greedy Adventures’ public pages; PDF/video delivery uses a registry. This prototype makes no bookings or payments and has no database, authentication or crawler.
 
-## Demos and local frontend
+## Production demos
 
 | Demo                   | URL                                                                 | Behavior                                                   |
 | ---------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------- |
 | Live Groq              | [Live endpoint](https://sea-view-chatbot-prototype.vercel.app)      | One live model step; shared free Groq quota                |
 | Labelled mock fallback | [Mock endpoint](https://sea-view-chatbot-prototype-mock.vercel.app) | Scripted answers, zero provider calls, explicit mock label |
 
-These are the existing backend-v1 deployments. The frontend on this branch has **not** been deployed in Pass 5; run it locally to review the current UI. Runtime demo links are configured together in [src/content/site.ts](src/content/site.ts). There is no automatic fallback between URLs/providers or from a provider error to mock.
+Both sites now deploy frontend and backend from commit `34e8ab05cce1dc3b0b102391a4af502fcaae3800`, released from tag `v1.0` on 2026-11-02. The final documentation-only release commit is included by moving `v1.0`; its application/test/config/dependency tree is identical to the deployed commit, without another deployment. Runtime demo links remain configured together in [src/content/site.ts](src/content/site.ts). There is no automatic fallback between URLs/providers or from a provider error to mock. See [release deployment report](docs/release-v1-report.md) for deployed IDs, checks and remaining failures.
 
 The live demo shares a free Groq quota. Exhaustion displays a typed rate-limit message with a Retry action, disabled until the optional upstream delay expires. A valid Knowledge test question uses one live model call on a configured live backend, consuming the same quota. The separate mock site is the quota-independent scripted fallback.
 
@@ -129,10 +129,43 @@ The first command serially runs typecheck, zero-warning lint, all unit tests and
 - History text is bounded/truncated as described above; reload clears the browser conversation.
 - Shared free quota can stop live answers; Retry is manual and there is no automatic fallback.
 - Read-only npm audit reports **17 moderate, 0 high/critical** advisory entries, rooted in tooling/transitive dependencies and their dependants. They were left untouched intentionally to preserve the verified dependency baseline (`ai 7.0.158`, gateway `4.0.131`); no npm audit fix was run.
-- Lighthouse was not installed and this pass prohibited installs. The requested three-run mobile medians and Performance >=85 / Accessibility >=95 / Best Practices >=95 targets remain **unverified**. Axe, keyboard, load-byte and browser checks are separate evidence, not substitute Lighthouse scores. See [release report](docs/frontend-release-report.md).
+- Owner-supplied Lighthouse measurements are recorded below. Both Performance medians are below the internal 85 target; do not describe this release as performance-target certified. Earlier agent-side tool unavailability remains historical in [the Pass 5 report](docs/frontend-release-report.md).
+
+## Release deployment verification
+
+`master` fast-forwarded to frontend / v1.0-rc1 before deployment. The sole approved server-code change after backend-v1 is `src/server/chat/pipeline.ts`, making explicit mock media execution honor the shared media policy; its new regression is `tests/server/chat/mock-media-policy.test.ts` (ADR 020). No application, test, config or dependency code changed during release deployment.
+
+Both sites passed anonymous pages/title/description/h1, 18 exact public source sections/registry, PDF signature/type, invalid chat metadata, footer/demo links and anchors. The external video passed one HEAD (200/video/mp4), without download. All images/fonts return 200 with correct types. Hashed fonts have one-year immutable caching, but the five source/optimized images return `public, max-age=0, must-revalidate`: the required long-cache check **fails and remains unfixed**. The owner instructed continuing the remaining release steps after this was reported; no configuration or performance change was made. Runtime inspection confirms nodejs26.x and function maxDuration chat/trace/sources 30/30/10 seconds on both sites. Protection remains off and production env variable names unchanged; the mock project has no provider key.
+
+The bounded live smoke stopped on its **first request, HTTP 429 RATE_LIMIT** (brochure), with no retries and seven turns unattempted. `retryAfterSeconds` was absent in the public error. The matching sanitized runtime event reports upstream 429, type tokens, code rate_limit_exceeded. This is quota-blocked verification, not a model/tool success; no automatic mock fallback was used. Both explicit mock checks passed: brochure+video returns both tools, and the negated brochure request returns none, with mock labels. [Raw responses, quota event and the full scenario table](docs/release-v1-report.md) distinguish live, mock and unattempted evidence.
 
 ## AI assistance and credits
 
 Codex implemented the backend and later frontend passes; Antigravity produced the initial frontend; the owner identifies Claude as a technical reviewer. [AI assistance](docs/ai-assistance.md) distinguishes generated work, recorded review, human decisions and verification limits. No secrets or private conversations belong in captures.
 
 Photography and captured website content © Greedy Adventures, from their public pages. Self-hosted Familjen Grotesk, Instrument Sans and Instrument Serif retain their [OFL notices](public/fonts/licenses); no Clash Display or Satoshi font is used. Thanks to Next.js, React, Vercel AI SDK/provider libraries, assistant-ui, Zod, Vitest, Playwright, axe-core, ESLint and Prettier. See [design notes and screenshot index](docs/design-notes.md), [architecture](docs/architecture.md), [API contract](docs/api.md) and binding [AGENTS.md](AGENTS.md).
+
+## Owner-supplied Lighthouse measurement — 2026-11-02
+
+The owner supplied these measured results verbatim; no scores were altered, rounded or estimated. Tool: Lighthouse `<VERSION>` (the supplied version placeholder is retained; the actual version was not specified).
+
+Command supplied by the owner:
+
+```text
+npx lighthouse <url> --only-categories=performance,accessibility,best-practices,seo --output=json --quiet --chrome-flags="--headless=new"
+```
+
+Method: default mobile emulation and simulated throttling, 3 runs per page, median reported. Target: local production build (`npm run build; npm run start -- -p 3100`) in explicit mock mode on the owner's Windows machine.
+
+```text
+Date: 2026-11-02. Tool: Lighthouse <VERSION>. Command: npx lighthouse <url> --only-categories=performance,
+accessibility,best-practices,seo --output=json --quiet --chrome-flags="--headless=new" (default mobile
+emulation and simulated throttling), 3 runs per page, median reported. Target: local production build
+(npm run build; npm run start -- -p 3100) in explicit mock mode on the owner's Windows machine.
+/ : Performance 84 (runs 82, 84, 84), Accessibility 100 (100, 100, 100), Best Practices 96 (96, 96, 96),
+SEO 100 (100, 100, 100).
+/knowledge : Performance 77 (runs 76, 77, 79), Accessibility 100 (100, 100, 100), Best Practices 96
+(96, 96, 96), SEO 100 (100, 100, 100).
+```
+
+Performance is below the **85 internal target on both pages**. These are local Lighthouse measurements under simulated mobile throttling, **not field data** or deployed-production scores. No performance work was done after measurement. No unverified cause is attributed to the scores. This replaces the earlier “not measured” status; it does not establish universal Lighthouse certification or a passing performance target.

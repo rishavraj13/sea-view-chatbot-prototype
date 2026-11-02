@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "url": "https://www.greedyadventures.com/experiences/sea-view-skydiving",
+      "status": 200,
+      "finalUrl": "https://www.greedyadventures.com/experiences/sea-view-skydiving",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://www.greedyadventures.com/cancellations",
+      "status": 200,
+      "finalUrl": "https://www.greedyadventures.com/cancellations",
+      "contentType": "text/html; charset=utf-8"
+    }
+  ],
+  "localDevelopmentUrl": "http://localhost:3000 is the documented dev command target, intentionally not contacted with ports required free",
+  "deployedDemoUrls": "Already verified anonymously in no-model-checks.json; no extra API or model call",
+  "video": "No repeat HEAD; original single HEAD result retained"
+}

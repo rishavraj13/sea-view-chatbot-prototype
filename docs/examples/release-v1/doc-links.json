@@ -1,0 +1,18 @@
+{
+  "relativeLinks": 32,
+  "missing": [],
+  "externalUrlSyntaxValid": true,
+  "externalUrls": [
+    "http://localhost:3000",
+    "https://sea-view-chatbot-prototype-mock.vercel.app",
+    "https://sea-view-chatbot-prototype.vercel.app",
+    "https://vercel.com/docs/cli/deploy",
+    "https://vercel.com/docs/cli/env",
+    "https://vercel.com/docs/cli/inspect",
+    "https://vercel.com/docs/deployment-protection",
+    "https://www.greedyadventures.com/cancellations",
+    "https://www.greedyadventures.com/experiences/sea-view-skydiving"
+  ],
+  "ownerLighthouseBlockUnchangedInReadmeAndTesting": true,
+  "commands": "Cross-checked against package.json scripts and installed harness/CLI. Commands in fenced historical output are records, not newly executed instructions."
+}

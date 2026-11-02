@@ -1,0 +1,25 @@
+{
+  "evidence": "Vercel runtime logs filtered provider_error, response to one stopped-on-429 smoke request; only fixed event allowlist retained",
+  "events": [
+    {
+      "event": "provider_error",
+      "provider": "groq",
+      "modelId": "qwen/qwen3.8-27b",
+      "upstreamStatus": 429,
+      "errorType": "tokens",
+      "errorCode": "rate_limit_exceeded",
+      "rateLimitHeaders": {
+        "x-ratelimit-limit-requests": "1000",
+        "x-ratelimit-limit-tokens": "8000",
+        "x-ratelimit-remaining-requests": "1000",
+        "x-ratelimit-remaining-tokens": "8000",
+        "x-ratelimit-reset-requests": "1ms",
+        "x-ratelimit-reset-tokens": "1ms"
+      }
+    }
+  ],
+  "checks": {
+    "fixedFieldsOnly": true,
+    "keyPrefixOrConversationPresent": false
+  }
+}

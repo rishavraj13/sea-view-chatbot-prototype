@@ -1,0 +1,94 @@
+[
+  {
+    "id": "brochure",
+    "question": "Can you send me a brochure?",
+    "evidence": "LIVE deployed endpoint through DefaultChatTransport + readUIMessageStream; no direct provider request",
+    "baseUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "request": {
+      "messages": [
+        {
+          "id": "production-brochure",
+          "role": "user",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Can you send me a brochure?"
+            }
+          ]
+        }
+      ]
+    },
+    "status": 429,
+    "startedAt": "2026-11-02T02:16:41.802Z",
+    "latencyMs": 1315,
+    "transportRequests": 1,
+    "providerCalls": {
+      "expected": 1,
+      "measured": null,
+      "basis": "Committed pipeline has one generateText call, maxRetries=0, no continuation; upstream dispatch is not observable over the public API"
+    },
+    "rawProviderAnswer": null,
+    "rawAnswerMeaning": "Exact unsanitized text received from deployed UIMessage stream, after the existing server guard; private pre-guard provider text is not exposed",
+    "rawAnswer": "",
+    "visibleText": "",
+    "citations": [],
+    "tools": [],
+    "rateLimitHeaders": {},
+    "wire": "{\"mode\":\"live\",\"provider\":\"groq\",\"modelId\":\"qwen/qwen3.8-27b\",\"error\":{\"code\":\"RATE_LIMIT\",\"message\":\"The model rate limit was reached. Please retry later.\"}}",
+    "checks": [
+      {
+        "name": "HTTP 200",
+        "passed": false
+      },
+      {
+        "name": "one transport request; no retries",
+        "passed": true
+      },
+      {
+        "name": "live Groq Qwen metadata",
+        "passed": false
+      },
+      {
+        "name": "nonempty answer",
+        "passed": false
+      },
+      {
+        "name": "no raw URL or citation label",
+        "passed": true
+      },
+      {
+        "name": "no serialized parts or retrieval language",
+        "passed": true
+      },
+      {
+        "name": "exact requested executed tools",
+        "passed": false
+      },
+      {
+        "name": "valid structured source shapes",
+        "passed": true
+      },
+      {
+        "name": "valid available media shapes",
+        "passed": true
+      },
+      {
+        "name": "no refusal beside media",
+        "passed": true
+      },
+      {
+        "name": "one demo badge per demo result",
+        "passed": true
+      },
+      {
+        "name": "PDF and video kinds match tools",
+        "passed": true
+      },
+      {
+        "name": "no refusal on covered question or requested file",
+        "passed": true
+      }
+    ],
+    "passed": false
+  }
+]

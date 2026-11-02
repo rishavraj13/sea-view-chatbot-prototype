@@ -1,0 +1,10 @@
+Vercel CLI 65.8.0 (Node.js 24.18.0)
+
+  Directory       ~\AppData\Local\Temp\sea-view-v1-release-xscdsirh\mock
+
+
+✓ Linked          rishiiwithai-4565/sea-view-chatbot-prototype-mock
+
+> Downloading a fresh `VERCEL_OIDC_TOKEN` for sea-view-chatbot-prototype-mock
+
+✓ Created         .env.local file

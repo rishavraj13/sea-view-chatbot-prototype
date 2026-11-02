@@ -1,0 +1,910 @@
+{
+  "evidence": "Anonymous public requests, no cookies/bypass/authorization; valid chat requests only to explicit mock site",
+  "sites": {
+    "live": {
+      "checks": [
+        {
+          "name": "/ anonymous HTTP200/title/description/one h1",
+          "passed": true
+        },
+        {
+          "name": "/knowledge anonymous HTTP200/title/description/one h1",
+          "passed": true
+        },
+        {
+          "name": "anchor #packages",
+          "passed": true
+        },
+        {
+          "name": "anchor #plan",
+          "passed": true
+        },
+        {
+          "name": "anchor #faq",
+          "passed": true
+        },
+        {
+          "name": "sources exactly 18 committed sections + registry, public fields only",
+          "passed": true
+        },
+        {
+          "name": "PDF HTTP200/content type/signature",
+          "passed": true
+        },
+        {
+          "name": "invalid chat 400/INVALID_INPUT/correct metadata",
+          "passed": true
+        },
+        {
+          "name": "source image /images/home-hero-skydivers.webp",
+          "passed": true
+        },
+        {
+          "name": "source image /images/step-2.jpg",
+          "passed": true
+        },
+        {
+          "name": "source image /images/step-3.webp",
+          "passed": true
+        },
+        {
+          "name": "source image /images/step-4.webp",
+          "passed": true
+        },
+        {
+          "name": "source image /images/step-5.jpg",
+          "passed": true
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/home-hero-skydivers.webp",
+          "passed": false
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/step-2.jpg",
+          "passed": false
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/step-3.webp",
+          "passed": false
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/step-4.webp",
+          "passed": false
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/step-5.jpg",
+          "passed": false
+        },
+        {
+          "name": "three bundled font preloads",
+          "passed": true
+        },
+        {
+          "name": "font HTTP200/type/long cache /_next/static/immutable/media/FamiljenGrotesk_Bold-s.p.42bjhzwqu_yty.woff2",
+          "passed": true
+        },
+        {
+          "name": "font HTTP200/type/long cache /_next/static/immutable/media/InstrumentSans_Regular-s.p.1c6_4mawwj-hb.woff2",
+          "passed": true
+        },
+        {
+          "name": "font HTTP200/type/long cache /_next/static/immutable/media/InstrumentSerif_Italic-s.p.3bg-hzmj1g17f.woff2",
+          "passed": true
+        },
+        {
+          "name": "footer link Packages",
+          "passed": true
+        },
+        {
+          "name": "footer link The plan",
+          "passed": true
+        },
+        {
+          "name": "footer link Good to know",
+          "passed": true
+        },
+        {
+          "name": "footer link Knowledge view",
+          "passed": true
+        },
+        {
+          "name": "footer link Live production ↗",
+          "passed": true
+        },
+        {
+          "name": "footer link Mock demonstration ↗",
+          "passed": true
+        },
+        {
+          "name": "footer link Knowledge view",
+          "passed": true
+        },
+        {
+          "name": "footer link Contact Greedy Adventures ↗",
+          "passed": true
+        }
+      ],
+      "pages": [
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "path": "/",
+          "h1": [
+            "Sea View Skydiving"
+          ],
+          "title": "Sea View Skydiving — Pattaya, Thailand | Greedy Adventures",
+          "description": "Tandem jump over Pattaya."
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/knowledge",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/knowledge",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "path": "/knowledge",
+          "h1": [
+            "Knowledge Base"
+          ],
+          "title": "Knowledge & Pipeline Inspection — Sea View Skydiving",
+          "description": "Read-only transparency view: explore grounded website source sections, registered media assets, and test questions through the real pipeline trace."
+        }
+      ],
+      "assets": [
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/images/home-hero-skydivers.webp",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/images/home-hero-skydivers.webp",
+          "redirected": false,
+          "contentType": "image/webp",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/images/step-2.jpg",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/images/step-2.jpg",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/images/step-3.webp",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/images/step-3.webp",
+          "redirected": false,
+          "contentType": "image/webp",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/images/step-4.webp",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/images/step-4.webp",
+          "redirected": false,
+          "contentType": "image/webp",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/images/step-5.jpg",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/images/step-5.jpg",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fhome-hero-skydivers.webp&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fhome-hero-skydivers.webp&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fstep-2.jpg&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fstep-2.jpg&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fstep-3.webp&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fstep-3.webp&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fstep-4.webp&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fstep-4.webp&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/webp",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fstep-5.jpg&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/_next/image?url=%2Fimages%2Fstep-5.jpg&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/_next/static/immutable/media/FamiljenGrotesk_Bold-s.p.42bjhzwqu_yty.woff2",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/_next/static/immutable/media/FamiljenGrotesk_Bold-s.p.42bjhzwqu_yty.woff2",
+          "redirected": false,
+          "contentType": "font/woff2",
+          "cacheControl": "public,max-age=31536000,immutable",
+          "kind": "rendered hashed font",
+          "longCache": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/_next/static/immutable/media/InstrumentSans_Regular-s.p.1c6_4mawwj-hb.woff2",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/_next/static/immutable/media/InstrumentSans_Regular-s.p.1c6_4mawwj-hb.woff2",
+          "redirected": false,
+          "contentType": "font/woff2",
+          "cacheControl": "public,max-age=31536000,immutable",
+          "kind": "rendered hashed font",
+          "longCache": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/_next/static/immutable/media/InstrumentSerif_Italic-s.p.3bg-hzmj1g17f.woff2",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/_next/static/immutable/media/InstrumentSerif_Italic-s.p.3bg-hzmj1g17f.woff2",
+          "redirected": false,
+          "contentType": "font/woff2",
+          "cacheControl": "public,max-age=31536000,immutable",
+          "kind": "rendered hashed font",
+          "longCache": true
+        }
+      ],
+      "footer": [
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Packages",
+          "anchor": "#packages",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "The plan",
+          "anchor": "#plan",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Good to know",
+          "anchor": "#faq",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/knowledge",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/knowledge",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Knowledge view",
+          "anchor": "",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Live production ↗",
+          "anchor": "",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Mock demonstration ↗",
+          "anchor": "",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/knowledge",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/knowledge",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Knowledge view",
+          "anchor": "",
+          "anchorExists": true
+        },
+        {
+          "url": "https://www.greedyadventures.com/contact",
+          "status": 200,
+          "finalUrl": "https://www.greedyadventures.com/contact",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Contact Greedy Adventures ↗",
+          "anchor": "",
+          "anchorExists": true
+        }
+      ],
+      "catalog": {
+        "url": "https://sea-view-chatbot-prototype.vercel.app/api/knowledge/sources",
+        "status": 200,
+        "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/api/knowledge/sources",
+        "redirected": false,
+        "contentType": "application/json",
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "sections": 18,
+        "media": 3,
+        "exactPublicData": true,
+        "verifierCorrection": "Documented top-level isDemo is part of the public schema; initial verifier omitted it."
+      },
+      "pdf": {
+        "url": "https://sea-view-chatbot-prototype.vercel.app/demo/brochure.pdf",
+        "status": 200,
+        "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/demo/brochure.pdf",
+        "redirected": false,
+        "contentType": "application/pdf",
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "signature": "%PDF-"
+      },
+      "invalidChat": {
+        "url": "https://sea-view-chatbot-prototype.vercel.app/api/chat",
+        "status": 400,
+        "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/api/chat",
+        "redirected": false,
+        "contentType": "application/json",
+        "cacheControl": "no-store",
+        "body": {
+          "mode": "live",
+          "provider": "groq",
+          "modelId": "qwen/qwen3.8-27b",
+          "error": {
+            "code": "INVALID_INPUT",
+            "message": "Invalid message history."
+          }
+        }
+      }
+    },
+    "mock": {
+      "checks": [
+        {
+          "name": "/ anonymous HTTP200/title/description/one h1",
+          "passed": true
+        },
+        {
+          "name": "/knowledge anonymous HTTP200/title/description/one h1",
+          "passed": true
+        },
+        {
+          "name": "anchor #packages",
+          "passed": true
+        },
+        {
+          "name": "anchor #plan",
+          "passed": true
+        },
+        {
+          "name": "anchor #faq",
+          "passed": true
+        },
+        {
+          "name": "sources exactly 18 committed sections + registry, public fields only",
+          "passed": true
+        },
+        {
+          "name": "PDF HTTP200/content type/signature",
+          "passed": true
+        },
+        {
+          "name": "invalid chat 400/INVALID_INPUT/correct metadata",
+          "passed": true
+        },
+        {
+          "name": "source image /images/home-hero-skydivers.webp",
+          "passed": true
+        },
+        {
+          "name": "source image /images/step-2.jpg",
+          "passed": true
+        },
+        {
+          "name": "source image /images/step-3.webp",
+          "passed": true
+        },
+        {
+          "name": "source image /images/step-4.webp",
+          "passed": true
+        },
+        {
+          "name": "source image /images/step-5.jpg",
+          "passed": true
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/home-hero-skydivers.webp",
+          "passed": false
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/step-2.jpg",
+          "passed": false
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/step-3.webp",
+          "passed": false
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/step-4.webp",
+          "passed": false
+        },
+        {
+          "name": "rendered image HTTP200/type/long cache /images/step-5.jpg",
+          "passed": false
+        },
+        {
+          "name": "three bundled font preloads",
+          "passed": true
+        },
+        {
+          "name": "font HTTP200/type/long cache /_next/static/immutable/media/FamiljenGrotesk_Bold-s.p.42bjhzwqu_yty.woff2",
+          "passed": true
+        },
+        {
+          "name": "font HTTP200/type/long cache /_next/static/immutable/media/InstrumentSans_Regular-s.p.1c6_4mawwj-hb.woff2",
+          "passed": true
+        },
+        {
+          "name": "font HTTP200/type/long cache /_next/static/immutable/media/InstrumentSerif_Italic-s.p.3bg-hzmj1g17f.woff2",
+          "passed": true
+        },
+        {
+          "name": "footer link Packages",
+          "passed": true
+        },
+        {
+          "name": "footer link The plan",
+          "passed": true
+        },
+        {
+          "name": "footer link Good to know",
+          "passed": true
+        },
+        {
+          "name": "footer link Knowledge view",
+          "passed": true
+        },
+        {
+          "name": "footer link Live production ↗",
+          "passed": true
+        },
+        {
+          "name": "footer link Mock demonstration ↗",
+          "passed": true
+        },
+        {
+          "name": "footer link Knowledge view",
+          "passed": true
+        },
+        {
+          "name": "footer link Contact Greedy Adventures ↗",
+          "passed": true
+        },
+        {
+          "name": "mock scenario Send me the brochure and a video.",
+          "passed": true
+        },
+        {
+          "name": "mock scenario Do not send a brochure",
+          "passed": true
+        }
+      ],
+      "pages": [
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "path": "/",
+          "h1": [
+            "Sea View Skydiving"
+          ],
+          "title": "Sea View Skydiving — Pattaya, Thailand | Greedy Adventures",
+          "description": "Tandem jump over Pattaya."
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/knowledge",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/knowledge",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "path": "/knowledge",
+          "h1": [
+            "Knowledge Base"
+          ],
+          "title": "Knowledge & Pipeline Inspection — Sea View Skydiving",
+          "description": "Read-only transparency view: explore grounded website source sections, registered media assets, and test questions through the real pipeline trace."
+        }
+      ],
+      "assets": [
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/images/home-hero-skydivers.webp",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/images/home-hero-skydivers.webp",
+          "redirected": false,
+          "contentType": "image/webp",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/images/step-2.jpg",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/images/step-2.jpg",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/images/step-3.webp",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/images/step-3.webp",
+          "redirected": false,
+          "contentType": "image/webp",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/images/step-4.webp",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/images/step-4.webp",
+          "redirected": false,
+          "contentType": "image/webp",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/images/step-5.jpg",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/images/step-5.jpg",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "public source image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fhome-hero-skydivers.webp&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fhome-hero-skydivers.webp&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fstep-2.jpg&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fstep-2.jpg&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fstep-3.webp&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fstep-3.webp&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fstep-4.webp&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fstep-4.webp&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/webp",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fstep-5.jpg&w=3840&q=75",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/image?url=%2Fimages%2Fstep-5.jpg&w=3840&q=75",
+          "redirected": false,
+          "contentType": "image/jpeg",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "kind": "rendered optimized image",
+          "longCache": false
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/static/immutable/media/FamiljenGrotesk_Bold-s.p.42bjhzwqu_yty.woff2",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/static/immutable/media/FamiljenGrotesk_Bold-s.p.42bjhzwqu_yty.woff2",
+          "redirected": false,
+          "contentType": "font/woff2",
+          "cacheControl": "public,max-age=31536000,immutable",
+          "kind": "rendered hashed font",
+          "longCache": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/static/immutable/media/InstrumentSans_Regular-s.p.1c6_4mawwj-hb.woff2",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/static/immutable/media/InstrumentSans_Regular-s.p.1c6_4mawwj-hb.woff2",
+          "redirected": false,
+          "contentType": "font/woff2",
+          "cacheControl": "public,max-age=31536000,immutable",
+          "kind": "rendered hashed font",
+          "longCache": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/static/immutable/media/InstrumentSerif_Italic-s.p.3bg-hzmj1g17f.woff2",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/_next/static/immutable/media/InstrumentSerif_Italic-s.p.3bg-hzmj1g17f.woff2",
+          "redirected": false,
+          "contentType": "font/woff2",
+          "cacheControl": "public,max-age=31536000,immutable",
+          "kind": "rendered hashed font",
+          "longCache": true
+        }
+      ],
+      "footer": [
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Packages",
+          "anchor": "#packages",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "The plan",
+          "anchor": "#plan",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Good to know",
+          "anchor": "#faq",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/knowledge",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/knowledge",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Knowledge view",
+          "anchor": "",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Live production ↗",
+          "anchor": "",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Mock demonstration ↗",
+          "anchor": "",
+          "anchorExists": true
+        },
+        {
+          "url": "https://sea-view-chatbot-prototype-mock.vercel.app/knowledge",
+          "status": 200,
+          "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/knowledge",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Knowledge view",
+          "anchor": "",
+          "anchorExists": true
+        },
+        {
+          "url": "https://www.greedyadventures.com/contact",
+          "status": 200,
+          "finalUrl": "https://www.greedyadventures.com/contact",
+          "redirected": false,
+          "contentType": "text/html; charset=utf-8",
+          "cacheControl": "public, max-age=0, must-revalidate",
+          "text": "Contact Greedy Adventures ↗",
+          "anchor": "",
+          "anchorExists": true
+        }
+      ],
+      "catalog": {
+        "url": "https://sea-view-chatbot-prototype-mock.vercel.app/api/knowledge/sources",
+        "status": 200,
+        "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/api/knowledge/sources",
+        "redirected": false,
+        "contentType": "application/json",
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "sections": 18,
+        "media": 3,
+        "exactPublicData": true,
+        "verifierCorrection": "Documented top-level isDemo is part of the public schema; initial verifier omitted it."
+      },
+      "pdf": {
+        "url": "https://sea-view-chatbot-prototype-mock.vercel.app/demo/brochure.pdf",
+        "status": 200,
+        "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/demo/brochure.pdf",
+        "redirected": false,
+        "contentType": "application/pdf",
+        "cacheControl": "public, max-age=0, must-revalidate",
+        "signature": "%PDF-"
+      },
+      "invalidChat": {
+        "url": "https://sea-view-chatbot-prototype-mock.vercel.app/api/chat",
+        "status": 400,
+        "finalUrl": "https://sea-view-chatbot-prototype-mock.vercel.app/api/chat",
+        "redirected": false,
+        "contentType": "application/json",
+        "cacheControl": "no-store",
+        "body": {
+          "mode": "mock",
+          "provider": "groq",
+          "modelId": "qwen/qwen3.8-27b",
+          "error": {
+            "code": "INVALID_INPUT",
+            "message": "Invalid message history."
+          }
+        }
+      },
+      "mock": [
+        {
+          "question": "Send me the brochure and a video.",
+          "text": "[MOCK] DELUXE\nVideo and photos included\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿12,500 per person\nVIP\nPersonal cameraman and edited film\nIncluded\nTandem skydive experience in Pattaya, Thailand\nSafety briefing and tandem instructor support\nAircraft ascent and ocean-view jump experience\nCertificate of completion\n฿14,000 per person\nWhich package should I choose?\nChoose ECO for the standard jump, Deluxe if you want handy cam video, and VIP if you want full media coverage.\nHere is the brochure (demo material).\nHere is the video.",
+          "metadata": {
+            "mode": "mock",
+            "provider": "groq",
+            "modelId": "qwen/qwen3.8-27b",
+            "isDemo": true
+          },
+          "tools": [
+            {
+              "type": "tool-sendBrochure",
+              "toolCallId": "tool-0",
+              "state": "output-available",
+              "input": {
+                "id": "brochure"
+              },
+              "output": {
+                "id": "brochure",
+                "title": "Sea View Skydiving package brochure",
+                "url": "/demo/brochure.pdf",
+                "isDemo": true,
+                "kind": "brochure",
+                "type": "pdf"
+              }
+            },
+            {
+              "type": "tool-showVideo",
+              "toolCallId": "tool-1",
+              "state": "output-available",
+              "input": {
+                "id": "video"
+              },
+              "output": {
+                "id": "video",
+                "title": "Sea View Skydiving - page video (external link)",
+                "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+                "isDemo": false,
+                "posterUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero-poster.jpg",
+                "kind": "video",
+                "type": "video"
+              }
+            }
+          ]
+        },
+        {
+          "question": "Do not send a brochure",
+          "text": "[MOCK] A no-show is treated as a same-day cancellation and the slot is not refunded. If something has genuinely gone wrong on the way, tell us as early as you can — we would much rather move you than lose you.\nSkydiving, paragliding and snowboarding all run only in safe conditions, and the person on the ground decides what is safe. Diving is called on sea state and visibility.\nIf your load, flight or dive is held for weather you can wait for the next window the same day at no cost, move to any other date at no cost, or take a full refund of anything you have paid.\nThere is no charge and no admin fee for a weather move. It is the most common reason an activity does not run and it is nobody's fault.\nCourses. Cancel more than 7 days before the start date and any deposit is refunded in full. Inside 7 days the deposit may be held against the instructor time already reserved. Once a course has started it is not refundable, because the instructor is committed for its whole length — but it can usually be paused and resumed within the same season.",
+          "metadata": {
+            "mode": "mock",
+            "provider": "groq",
+            "modelId": "qwen/qwen3.8-27b",
+            "isDemo": false
+          },
+          "tools": []
+        }
+      ]
+    }
+  },
+  "externalVideo": {
+    "url": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+    "status": 200,
+    "finalUrl": "https://www.greedyadventures.com/greedy/films/sea-view-studio-hero.mp4",
+    "redirected": false,
+    "contentType": "video/mp4",
+    "cacheControl": "public, max-age=604800, stale-while-revalidate=86400",
+    "passed": true,
+    "method": "HEAD",
+    "downloaded": false
+  }
+}

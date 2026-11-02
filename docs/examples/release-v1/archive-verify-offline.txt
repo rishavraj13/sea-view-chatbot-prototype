@@ -1,0 +1,62 @@
+
+> assignment@0.1.0 verify:offline
+> npm run typecheck && npm run lint && npm test && npm run build
+
+
+> assignment@0.1.0 typecheck
+> next typegen && tsc --noEmit
+
+Generating route types...
+✓ Types generated successfully
+
+> assignment@0.1.0 lint
+> eslint . --max-warnings=0
+
+
+> assignment@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 C:/Users/risha/AppData/Local/Temp/sea-view-v1-archive-check-05orm3xy
+
+
+ Test Files  47 passed (47)
+      Tests  661 passed (661)
+   Start at  07:50:11
+   Duration  7.66s (import 38%, setup 22%, transform 19%, environment 14%, tests 8%, worker 1%)
+
+     Import  236 modules were evaluated 1936 times · 25.91s total, 38% of tracked time
+             ~819ms faster with isolate: false — shared modules are evaluated once per worker instead of once per file
+             learn more: https://vitest.dev/guide/improving-performance#test-isolation
+
+
+> assignment@0.1.0 build
+> next build
+
+▲ Next.js 16.4.3 (Turbopack)
+✓ Running next.config.ts took 36ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 3.9s
+  Running TypeScript ...
+  Finished TypeScript in 4.2s ...
+  Collecting page data using 8 workers ...
+  Generating static pages using 8 workers (0/7) ...
+  Generating static pages using 8 workers (1/7) 
+  Generating static pages using 8 workers (3/7) 
+  Generating static pages using 8 workers (5/7) 
+✓ Generating static pages using 8 workers (7/7) in 676ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/chat
+├ ƒ /api/knowledge/sources
+├ ƒ /api/knowledge/trace
+└ ○ /knowledge
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

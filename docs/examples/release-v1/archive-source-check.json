@@ -1,0 +1,12 @@
+{
+  "sourceArchive": "C:\\Users\\risha\\AppData\\Local\\Temp\\sea-view-v1-release-xscdsirh\\source-v1.0.zip",
+  "sourceSHA256": "d3a4ba16701359eaa7c103787ff2144d5226ee11ae72d76a9b627421760766e2",
+  "temporaryDirectory": "C:\\Users\\risha\\AppData\\Local\\Temp\\sea-view-v1-archive-check-05orm3xy",
+  "sourceCommit": "34e8ab05cce1dc3b0b102391a4af502fcaae3800",
+  "privateArtifactsExcluded": true,
+  "lockfileUnchangedAfterCi": true,
+  "npmCiExit": 0,
+  "verifyOfflineExit": 0,
+  "unitTests": 661,
+  "testFiles": 47
+}

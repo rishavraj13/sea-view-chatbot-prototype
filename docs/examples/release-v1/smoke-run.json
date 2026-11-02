@@ -1,0 +1,6 @@
+{
+  "workingDirectory": "C:\\Users\\risha\\AppData\\Local\\Temp\\sea-view-v1-smoke-7l_5o_e1",
+  "entry": "node C:/assignment/node_modules/tsx/dist/cli.mjs --tsconfig C:/assignment/tsconfig.json C:/assignment/scripts/verify-live.mjs --base-url https://sea-view-chatbot-prototype.vercel.app",
+  "ledgerRelativePath": "docs/examples/production-smoke/budget.json",
+  "directProviderQuotaProbe": "Not run: existing ledger tooling covers endpoint calls only; the eight-call budget is reserved for the existing smoke harness."
+}

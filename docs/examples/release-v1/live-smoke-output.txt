@@ -1,0 +1,2 @@
+{"id":"brochure","status":429,"passed":false,"transportRequests":1,"latencyMs":1315,"rateLimitHeaders":{},"failures":["HTTP 200","live Groq Qwen metadata","nonempty answer","exact requested executed tools"]}
+{"completed":1,"planned":8,"passed":0,"requests":1,"stopped429":true,"reruns":0}

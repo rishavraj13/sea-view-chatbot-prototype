@@ -1,0 +1,73 @@
+[
+  {
+    "mode": "live",
+    "deploymentId": "dpl_WgjFesrR2iDH7zDB7a1ard9TNNgK",
+    "url": "sea-view-chatbot-prototype-qwqm9j2pv-rishiiwithai-4565.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "functions": [
+      {
+        "path": "api/chat",
+        "runtime": "nodejs26.x",
+        "maxDuration": 30
+      },
+      {
+        "path": "api/knowledge/trace",
+        "runtime": "nodejs26.x",
+        "maxDuration": 30
+      },
+      {
+        "path": "api/knowledge/sources",
+        "runtime": "nodejs26.x",
+        "maxDuration": 10
+      }
+    ],
+    "project": "sea-view-chatbot-prototype",
+    "nodeVersion": "26.x",
+    "ssoProtection": null,
+    "passwordProtectionConfigured": false,
+    "trustedIpsConfigured": false,
+    "productionEnvironmentNames": [
+      "GROQ_API_KEY",
+      "REASONING_EFFORT",
+      "MODEL_ID",
+      "MODEL_PROVIDER",
+      "MODEL_MODE"
+    ]
+  },
+  {
+    "mode": "mock",
+    "deploymentId": "dpl_4YCmMiMJSoDi2cYWjasVdpQhut9J",
+    "url": "sea-view-chatbot-prototype-mock-ppcr32eec-rishiiwithai-4565.vercel.app",
+    "readyState": "READY",
+    "target": "production",
+    "functions": [
+      {
+        "path": "api/chat",
+        "runtime": "nodejs26.x",
+        "maxDuration": 30
+      },
+      {
+        "path": "api/knowledge/trace",
+        "runtime": "nodejs26.x",
+        "maxDuration": 30
+      },
+      {
+        "path": "api/knowledge/sources",
+        "runtime": "nodejs26.x",
+        "maxDuration": 10
+      }
+    ],
+    "project": "sea-view-chatbot-prototype-mock",
+    "nodeVersion": "26.x",
+    "ssoProtection": null,
+    "passwordProtectionConfigured": false,
+    "trustedIpsConfigured": false,
+    "productionEnvironmentNames": [
+      "REASONING_EFFORT",
+      "MODEL_ID",
+      "MODEL_PROVIDER",
+      "MODEL_MODE"
+    ]
+  }
+]

@@ -1,5 +1,17 @@
 # Progress log
 
+## 2026-11-02 — v1.0 production deployment and owner Lighthouse measurements
+
+Fast-forwarded master to frontend/v1.0-rc1, deployed source 34e8ab05cce1dc3b0b102391a4af502fcaae3800 from clean git archives to both existing projects. Live dpl_WgjFesrR2iDH7zDB7a1ard9TNNgK; mock dpl_4YCmMiMJSoDi2cYWjasVdpQhut9J. No application/test/config/dependency change. Existing production env names/settings unchanged, mock has no provider key, protection off. Node inspection confirms nodejs26.x and maxDuration chat30/trace30/sources10 on both.
+
+Anonymous page/metadata/h1, anchors, exact18 public sections/manifest, PDF, one video HEAD, image/font status/type, invalid chat metadata, footer/demo links and both mock-stream scenarios pass. Long image cache requirement fails (public,max-age=0,must-revalidate); fonts are one-year immutable. Reported/stopped, then owner instructed continuing the remaining steps with no cache/config/performance work. Initial catalog verifier omitted documented top-level isDemo; corrected assumption and exact public data matches.
+
+Fresh unchanged remote verify:live stopped on FIRST brochure call HTTP429 after1315ms: one request, no retries/reruns, seven scenarios unattempted. Public RATE_LIMIT/live/groq/qwen body omits retryAfterSeconds. Matching provider_error event upstream429/type tokens/code rate_limit_exceeded contains only fixed allowlisted fields/headers, no key/body/conversation. No direct quota probe because the existing ledger cannot account for an extra direct call. Old ledgers unchanged; no automatic fallback. Remote Playwright skipped because current config has no remote baseURL/webServer override without code changes.
+
+Owner measurements recorded verbatim in README/testing: date2026-11-02, literal Lighthouse <VERSION> placeholder, exact command/default mobile simulated-throttling method, three runs/page and median. Home84/100/96/100 (P82,84,84), Knowledge77/100/96/100 (P76,77,79), other runs exactly supplied. Both Performance medians are below internal85; local simulated results are not field data. No causes inferred and no performance work followed measurement. The Lighthouse step is measured, superseding earlier tool unavailability without claiming certification.
+
+Clean deployed-source archive independently extracted: npm ci and MODEL_MODE=mock verify:offline pass (typecheck, zero-warning lint, 661 tests/47 files, build); lock unchanged. Actual full output in release-v1-report.md and examples/release-v1. Automatic approval review rejected removal of the verified temp build folder, giving only blocked by policy; it remains for owner cleanup and no alternative deletion method was attempted. The final docs-only commit moves v1.0 with code identical to deployed source. Fresh final tagged ZIP/size/SHA256/largest entries and its independent final build output are delivered in the outside-repo companion manifest. No further live call or deployment; image-cache failure and quota-blocked smoke remain explicit release limitations.
+
 Current implementation: frontend passes 1–5, with the frozen backend-v1 contract and verified dependency baseline. Earlier entries below are historical records of the state at that phase; “pending”, old counts and superseded implementation descriptions in those dated entries are not current claims. See frontend-release-report.md, architecture.md and testing.md for current verification and open gaps.
 
 ## 2026-11-02 — Frontend Pass 3 complete

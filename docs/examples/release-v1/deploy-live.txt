@@ -1,0 +1,39 @@
+Vercel CLI 65.8.0 (Node.js 24.18.0)
+Inspect         https://vercel.com/rishiiwithai-4565/sea-view-chatbot-prototype/WgjFesrR2iDH7zDB7a1ard9TNNgK
+Production      https://sea-view-chatbot-prototype-qwqm9j2pv-rishiiwithai-4565.vercel.app
+▲ Aliased         https://sea-view-chatbot-prototype.vercel.app
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_WgjFesrR2iDH7zDB7a1ard9TNNgK",
+    "url": "https://sea-view-chatbot-prototype-qwqm9j2pv-rishiiwithai-4565.vercel.app",
+    "productionUrl": "https://sea-view-chatbot-prototype.vercel.app",
+    "inspectorUrl": "https://vercel.com/rishiiwithai-4565/sea-view-chatbot-prototype/WgjFesrR2iDH7zDB7a1ard9TNNgK",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_WgjFesrR2iDH7zDB7a1ard9TNNgK",
+    "buildMachine": {
+      "cores": 2,
+      "memory": 8192,
+      "machine": "basic",
+      "selectionType": "fixed",
+      "selectionSource": "plan-default"
+    },
+    "deploymentProtection": []
+  },
+  "message": "Deployment sea-view-chatbot-prototype-qwqm9j2pv-rishiiwithai-4565.vercel.app ready. Production URL: https://sea-view-chatbot-prototype.vercel.app",
+  "next": [
+    {
+      "command": "vercel curl https://sea-view-chatbot-prototype.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect sea-view-chatbot-prototype-qwqm9j2pv-rishiiwithai-4565.vercel.app --no-color",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod --no-color",
+      "when": "Promote to production"
+    }
+  ]
+}
