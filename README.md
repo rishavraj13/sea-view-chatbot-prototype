@@ -121,6 +121,8 @@ The first command serially runs typecheck, zero-warning lint, all unit tests and
 
 ## Limits and release status
 
+**Intermittent refusals on covered questions.** The grounding guard fails closed. In one production smoke run (2026-11-02, 02:41 UTC), “What if it rains?” returned “I do not have that information.” even though the answer exists in the Cancellations page. Two later live runs of the same question passed, and the failure did not reproduce under diagnosis. The pre-guard model text is not exposed, so the cause is unproven. The guard’s design trades occasional false refusals for never showing an unsupported answer. Asking the question again usually works.
+
 - Lexical attribution cannot validate negation, semantic entailment, product scope or which fact owns an amount. A passing guard can still miss a semantic error.
 - A mixed factual/media message can lose one part when the model skips a tool or writes prose that fails grounding; there is no extra generation to fill it.
 - English-only lexical request forms cannot understand every phrasing. A missing media noun falls back to a text turn; a noun without a recognized request form is optional. Required tool choice cannot guarantee every requested tool or accompanying prose.
