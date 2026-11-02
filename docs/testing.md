@@ -139,3 +139,17 @@ This uses the installed verify:live harness entry; npm run verify:live would add
 Public body has live/groq/qwen metadata and RATE_LIMIT, no retryAfterSeconds. The matching provider_error log is the fixed allowlisted event (no key/body/conversation); see release-v1-report.md. Both deployed mock scenarios pass independently without provider calls. Remote Playwright specs are skipped: existing config hardcodes baseURL plus local production webServer, without CLI/env override; changing config was forbidden. Anonymous fetch and actual SDK stream consumption provide scoped remote checks without claiming an e2e deployment suite pass.
 
 The final tagged source ZIP is built independently after extraction with npm ci and MODEL_MODE=mock npm run verify:offline, then its temporary tree is submitted for cleanup. Automatic approval review rejected the verified deployed-source cleanup, so that tree remains for owner removal; no alternative deletion method is used. Exact concrete ZIP SHA256/size/largest entries and final extracted-build output are delivered in the outside-repo companion manifest. The release report includes deployed-source archive build output and explains the final docs-only tag move. No live test ran from the archive build.
+
+## Latest authorized live-only smoke — 2026-11-02, 02:40 UTC
+
+A new authorization ran ONLY the existing remote production verifier from a fresh ledger cwd (examples/live-smoke-final-2026-11-02/run.json). No direct VIP/quota probe, other live endpoint test, source/config/test/dependency/deployment change, retry, fallback or workaround. Equivalent installed verify:live entry:
+
+```powershell
+node C:\assignment\node_modules\tsx\dist\cli.mjs --tsconfig C:\assignment\tsconfig.json C:\assignment\scripts\verify-live.mjs --base-url https://sea-view-chatbot-prototype.vercel.app
+```
+
+The unchanged runner orders brochure/video/both/inclusions then VIP→follow-up, rain, age; all sentences exactly match the brief. Every call returned200. Result **7/8 pass**, eight transport requests/provider calls expected, minimum start spacing10.099s, zero retries/reruns, no429. The eight-call cap leaves no room for a failure rerun. Required toolChoice worked for brochure, video and both. Weather FAILED with “I do not have that information.” and zero citations; its failed covered-answer assertions are retained. The cause is not observable from raw served text alone and was not diagnosed with an extra request. No model/retrieval/guard fix or test weakening. [Full raw served answers, sources separately, tools, latencies, checks and wire/SDK evidence](examples/live-smoke-final-2026-11-02/report.md).
+
+The **first release smoke attempt at02:16 UTC returned429 with all advertised buckets full**: request remaining1000/limit1000, token remaining8000/limit8000 and resets1ms, errorType tokens/code rate_limit_exceeded. Public retryAfterSeconds was absent. That historical event is not rewritten, and does not prove the rejecting daily/minute bucket or request-size causation. This new ledger is also closed: eight calls spent, no ninth call authorized.
+
+Only documentation/evidence changes after the run. Existing build/unit/keyboard/browser checks remain separate offline evidence; docs-only validation commands and code-scope proof are captured with this campaign. The requested final docs commit moves v1.0 only with executable source unchanged; the rebuilt clean tagged ZIP is outside the repo, with path/size/SHA256 in its companion manifest. No redeployment occurs.

@@ -1,0 +1,25 @@
+{
+  "requests": 8,
+  "passed": 7,
+  "attempted": 8,
+  "stopped429": false,
+  "minimumStartSpacingSeconds": 10.099,
+  "reruns": 0,
+  "capRemaining": 0,
+  "requiredToolChoice": {
+    "brochure": true,
+    "video": true,
+    "both": true
+  },
+  "failures": [
+    {
+      "id": "rain",
+      "question": "What if it rains?",
+      "visibleText": "I do not have that information.",
+      "checks": [
+        "covered fact answered with structured sources",
+        "no refusal on covered question or requested file"
+      ]
+    }
+  ]
+}

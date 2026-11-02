@@ -1,0 +1,9 @@
+{"id":"brochure","status":200,"passed":true,"transportRequests":1,"latencyMs":633,"rateLimitHeaders":{},"failures":[]}
+{"id":"video","status":200,"passed":true,"transportRequests":1,"latencyMs":722,"rateLimitHeaders":{},"failures":[]}
+{"id":"both","status":200,"passed":true,"transportRequests":1,"latencyMs":635,"rateLimitHeaders":{},"failures":[]}
+{"id":"included","status":200,"passed":true,"transportRequests":1,"latencyMs":743,"rateLimitHeaders":{},"failures":[]}
+{"id":"vip","status":200,"passed":true,"transportRequests":1,"latencyMs":526,"rateLimitHeaders":{},"failures":[]}
+{"id":"follow-up","status":200,"passed":true,"transportRequests":1,"latencyMs":695,"rateLimitHeaders":{},"failures":[]}
+{"id":"rain","status":200,"passed":false,"transportRequests":1,"latencyMs":587,"rateLimitHeaders":{},"failures":["covered fact answered with structured sources","no refusal on covered question or requested file"]}
+{"id":"age","status":200,"passed":true,"transportRequests":1,"latencyMs":575,"rateLimitHeaders":{},"failures":[]}
+{"completed":8,"planned":8,"passed":7,"requests":8,"stopped429":false,"reruns":0}

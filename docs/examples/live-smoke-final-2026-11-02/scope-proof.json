@@ -1,0 +1,10 @@
+{
+  "taskStartCommit": "46e8343dcc52684229b14e29abc6c363cc57d375",
+  "unchangedCodeConfigTestsDependenciesAndProtectedReport": true,
+  "changedTrackedPaths": [
+    "README.md",
+    "docs/progress-log.md",
+    "docs/testing.md"
+  ],
+  "oldLedgersUntouched": true
+}

@@ -1,0 +1,11 @@
+{
+  "taskStartCommit": "46e8343dcc52684229b14e29abc6c363cc57d375",
+  "workingDirectory": "C:\\Users\\risha\\AppData\\Local\\Temp\\sea-view-v1-live-smoke-lmwnfdg1",
+  "evidenceDirectory": "C:\\assignment\\docs\\examples\\live-smoke-final-2026-11-02",
+  "ledgerRelativePath": "docs/examples/production-smoke/budget.json",
+  "cap": 8,
+  "minimumSpacingMs": 10000,
+  "retries": 0,
+  "command": "node C:/assignment/node_modules/tsx/dist/cli.mjs --tsconfig C:/assignment/tsconfig.json C:/assignment/scripts/verify-live.mjs --base-url https://sea-view-chatbot-prototype.vercel.app",
+  "ordering": "Existing unchanged harness: brochure, video, both, included, VIP, follow-up, rain, age. Exact question text retained."
+}
