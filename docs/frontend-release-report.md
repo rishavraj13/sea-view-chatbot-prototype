@@ -1,5 +1,7 @@
 # Frontend pass 5: release readiness
 
+Historical Pass 5 record. The later single approved backend correction fixes the mock-negation execution defect reported below; see mock-media-policy-report.md and ADR 020. Other Pass 5 gaps and captures remain dated evidence.
+
 Current result: typecheck/lint/build and 528 unit tests pass; the final full matrix passes 240/240 after generated-artifact isolation. No live provider call, deployment, installation, backend change or dependency-version change. Open release items: Lighthouse target scores unavailable under the no-install constraint; the frozen scripted mock ignores negation in its media-selection branch; 17 moderate tooling advisories intentionally remain. See the final result below; earlier sections preserve intermediate gates/failures chronologically.
 
 Baseline: frontend at 81f9b27. Verification is local, production build, explicit MOCK mode. No live provider calls, deployment, installations, package-version changes or backend edits. The owner's pre-existing citation-report content is protected.

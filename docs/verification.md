@@ -37,7 +37,7 @@ Automated: `npx playwright test tests/e2e/chat-lifecycle.spec.ts`; unit media-sh
 
 Send “Can I see a video of the experience?” and then “Send me the brochure and a video.”. Expected: video result for the first, both brochure and video for the second. Results use real registered URLs; the video is external and preload=none. Playback errors show a link fallback, not a new asset or fabricated success. Automated tests intercept media failures rather than depending on the external host.
 
-Automated: `npx playwright test tests/e2e/chat.spec.ts tests/e2e/chat-lifecycle.spec.ts`. Live model tool execution is distinct from mock scripted selection. Known limitation: “Do not send a brochure” computes policy none but still resolves a brochure in explicit mock mode. Do not use this scripted path to certify the live policy; the frozen backend defect is recorded in examples/release-readiness/mock-negation.json.
+Automated: `npx playwright test tests/e2e/chat.spec.ts tests/e2e/chat-lifecycle.spec.ts`. Live model tool execution is distinct from mock scripted selection. The approved ADR 020 correction makes “Do not send a brochure” return no implicit media in explicit mock mode. The old examples/release-readiness/mock-negation.json is before-fix evidence; the full 127-row mock pipeline/route regression is tests/server/chat/mock-media-policy.test.ts. Scripted choices still do not certify live model choice.
 
 ## 6. Missing information
 

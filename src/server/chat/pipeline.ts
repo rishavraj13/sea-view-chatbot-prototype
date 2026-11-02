@@ -72,7 +72,17 @@ export async function runPipeline(
     for (const item of selection)
       if (item.explicit) execute(item.name, item.id);
     if (trace.mode === 'mock') {
-      for (const item of selection) execute(item.name, item.id);
+      if (policy.state !== 'none') {
+        for (const name of policy.tools) {
+          const selected = selection.find((item) => item.name === name);
+          // An asset ID can itself be a media noun; its registry selection owns the type.
+          if (!selected && selection.some((item) => item.explicit)) continue;
+          const id =
+            selected?.id ??
+            (name === 'sendBrochure' ? 'brochure' : 'video');
+          execute(name, id);
+        }
+      }
       trace.text =
         '[MOCK] ' +
         (trace.chunks.length

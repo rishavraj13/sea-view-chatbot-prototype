@@ -1,0 +1,13 @@
+
+> assignment@0.1.0 test
+> vitest run tests/server/chat/mock-media-policy.test.ts
+
+
+ RUN  v5.0.5 C:/assignment
+
+
+ Test Files  1 passed (1)
+      Tests  133 passed (133)
+   Start at  07:17:01
+   Duration  887ms (tests 60%, import 16%, transform 12%, setup 12%)
+

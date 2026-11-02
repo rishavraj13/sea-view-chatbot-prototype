@@ -1,6 +1,6 @@
 # Testing
 
-Current branch frontend; backend-v1 and dependency versions are frozen. All Pass 5 verification is local/offline with explicit MODEL_MODE=mock. No live provider call, deployment, install, test skip, timeout increase, suppression or automatic retry was used.
+Current branch frontend; backend-v1 is frozen except the single approved mock media-policy correction (ADR 020). Dependency versions remain frozen. All Pass 5 verification is local/offline with explicit MODEL_MODE=mock. No live provider call, deployment, install, test skip, timeout increase, suppression or automatic retry was used.
 
 ## Setup and full gate
 
@@ -34,7 +34,7 @@ Final Pass 5 gate: 528 unit tests/46 files; all 240 e2e tests across Desktop 144
 | Knowledge exact context and shapes         | npx playwright test tests/e2e/knowledge.spec.ts tests/e2e/knowledge-errors.spec.ts                                                                                                    |
 | Long-answer presentation                   | npm test -- tests/components/assistant-answer.test.tsx; npx playwright test tests/e2e/assistant-answer.spec.ts                                                                        |
 
-The frozen media-policy tests exercise the live branch with MockLanguageModelV4, not a provider network. Explicit MODEL_MODE=mock has a separate scripted path; it is not a semantic implementation of that policy. An offline diagnostic confirmed “Do not send a brochure” has policy none/no tools yet the scripted pipeline returns a brochure. See examples/release-readiness/mock-negation.json. This known frozen-backend defect is reported, not worked around in the frontend. Mock output may also carry a diagnostic refusal beside a media summary. Do not treat scripted output as live guard/tool reliability.
+The existing media-policy tests exercise the live branch with MockLanguageModelV4, not a provider network. The approved post-backend-v1 correction (ADR 020) makes explicit mock execution use that same computed policy state/tools. The old examples/release-readiness/mock-negation.json is historical before-fix evidence. Mock prose remains scripted and may carry a diagnostic refusal beside media; that separate behavior is unchanged and does not prove live guard/tool reliability.
 
 Error tests use committed OFFLINE MOCK captures (examples/chat-runtime/errors.json) intercepted by Playwright; mock mode itself does not exhaust provider quota. Provider mapping tests mock upstream HTTP. Countdown fixtures use the controlled browser clock; no sleeps are used. Product copy comes from src/content/foundation.ts, not raw API text.
 
@@ -85,3 +85,14 @@ After the final commit, `git archive --format=zip --output=<outside-repo-path> H
 ## LIVE verifier is separate
 
 `npm run verify:live` and its `-- --base-url` form are documented in verification.md, including existing spent/stopped ledgers, call caps and quota warnings. Never run/reset them as part of verify:offline. The remote eight-turn runner spaces calls >=10s and stops on 429; the historical local runner has its own 25-call/3.1s campaign rules and stopped ledger. New live work needs an explicit budget; none ran in Pass 5.
+
+## Approved backend exception: mock media-policy execution
+
+```powershell
+$env:MODEL_MODE='mock'
+npm test -- tests/server/chat/mock-media-policy.test.ts
+```
+
+Expected: 133/133 cases. Every one of the 127 existing policy rows runs through the explicit mock pipeline and both chat/trace routes. None executes no implicit tool, optional deterministically executes permitted tools, required executes only permitted tools. The chat response is consumed with the real AI SDK transport/parser; completed tool results, mode, text and trace/pipeline media/calls must agree. Global fetch fails if called, and zero calls are asserted. This is separate coverage from the existing live-branch mock-provider exposure tests.
+
+Six extra cases preserve explicit-id behavior for available brochure/video, retired, unknown, wrong-type and noun-free explicit requests. Explicit id resolution remains an intentional independent registry action, including when policy is none; no extra implicit tool may come from a noun inside that id. Missing-asset scripting remains covered by existing tests. No request, stream, payload, guard, retrieval, knowledge/media data or dependency changes. Real gate output and the two-file frozen diff are in mock-media-policy-report.md and examples/mock-media-policy/.
